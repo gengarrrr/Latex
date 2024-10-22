@@ -1,0 +1,61 @@
+\documentclass[11pt, twoside]{article}
+\usepackage{holtex}
+
+\makeindex
+
+\begin{document}
+
+\input{HOLdes}
+\input{HOLdesXXprop}
+\tableofcontents
+\cleardoublepage
+\HOLpagestyle
+
+% ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+\section{des Theory}
+\index{des Theory@\textbf  {des Theory}}
+\begin{flushleft}
+\textbf{Built:} \HOLdesDate \\[2pt]
+\textbf{Parent Theories:} sorting, words
+\end{flushleft}
+% ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+% No datatypes
+
+\subsection{Definitions}
+\index{des Theory@\textbf  {des Theory}!Definitions}
+% .....................................
+
+\HOLdesDefinitions
+
+\subsection{Theorems}
+\index{des Theory@\textbf  {des Theory}!Theorems}
+% .....................................
+
+\HOLdesTheorems
+
+% ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+\section{des_prop Theory}
+\index{des_prop Theory@\textbf  {des_prop Theory}}
+\begin{flushleft}
+\textbf{Built:} \HOLdesXXpropDate \\[2pt]
+\textbf{Parent Theories:} probability, des
+\end{flushleft}
+% ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+% No datatypes
+
+\subsection{Definitions}
+\index{des_prop Theory@\textbf  {des_prop Theory}!Definitions}
+% .....................................
+
+\HOLdesXXpropDefinitions
+
+\subsection{Theorems}
+\index{des_prop Theory@\textbf  {des_prop Theory}!Theorems}
+% .....................................
+
+\HOLdesXXpropTheorems
+\HOLindex
+
+\end{document}

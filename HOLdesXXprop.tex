@@ -1,0 +1,703 @@
+\newcommand{\HOLdesXXpropDate}{23 Ottobre 2024}
+\newcommand{\HOLdesXXpropTime}{10:16}
+\begin{SaveVerbatim}{HOLdesXXpropDefinitionsAllpairXorXXdef}
+\HOLTokenTurnstile{} \HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{X}. \HOLConst{AllpairXor} \HOLBoundVar{X} \HOLSymConst{=} \HOLTokenLeftbrace{}(\ensuremath{\HOLBoundVar{x}\sb{\mathrm{1}}}\HOLSymConst{,}\ensuremath{\HOLBoundVar{x}\sb{\mathrm{2}}}) \HOLTokenBar{} \ensuremath{\HOLBoundVar{x}\sb{\mathrm{1}}} \HOLSymConst{\HOLTokenEor{}} \ensuremath{\HOLBoundVar{x}\sb{\mathrm{2}}} \HOLSymConst{=} \HOLBoundVar{X}\HOLTokenRightbrace{}
+\end{SaveVerbatim}
+\newcommand{\HOLdesXXpropDefinitionsAllpairXorXXdef}{\UseVerbatim{HOLdesXXpropDefinitionsAllpairXorXXdef}}
+\begin{SaveVerbatim}{HOLdesXXpropDefinitionscharacterDESXXdef}
+\HOLTokenTurnstile{} \HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{X} \HOLBoundVar{Y} \HOLBoundVar{Yl}.
+     \HOLConst{characterDES} \HOLBoundVar{X} \HOLBoundVar{Y} \HOLBoundVar{Yl} \HOLSymConst{=}
+     (\HOLKeyword{let}
+        \HOLBoundVar{XorR} = \HOLConst{GENLIST} (\HOLTokenLambda{}\HOLBoundVar{i}. \HOLConst{charapairDES} \HOLBoundVar{X} \HOLBoundVar{Yl} \HOLBoundVar{i}) (\HOLConst{LENGTH} \HOLBoundVar{Yl})
+      \HOLKeyword{in}
+        (\HOLBoundVar{X}\HOLSymConst{,}\HOLBoundVar{XorR}\HOLSymConst{,}\HOLBoundVar{Y}))
+\end{SaveVerbatim}
+\newcommand{\HOLdesXXpropDefinitionscharacterDESXXdef}{\UseVerbatim{HOLdesXXpropDefinitionscharacterDESXXdef}}
+\begin{SaveVerbatim}{HOLdesXXpropDefinitionsnonXXweakXXkeysXXdef}
+\HOLTokenTurnstile{} \HOLConst{non_weak_keys} \HOLSymConst{=}
+   [(0xB0B351C802C83DE0w\HOLSymConst{,}0x4739A2F04B7EAB28w);
+    (0x5D460701328F2962w\HOLSymConst{,}0x9FE10D2E8C496143w);
+    (0x4F4CAE37FD37C21Fw\HOLSymConst{,}0xB8C65D0FB48154D7w);
+    (0xA2B9F8FECD70D69Dw\HOLSymConst{,}0x601EF2D173B69EBCw)]
+\end{SaveVerbatim}
+\newcommand{\HOLdesXXpropDefinitionsnonXXweakXXkeysXXdef}{\UseVerbatim{HOLdesXXpropDefinitionsnonXXweakXXkeysXXdef}}
+\begin{SaveVerbatim}{HOLdesXXpropDefinitionsroundkXXL}
+\HOLTokenTurnstile{} (\HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{k}. \HOLConst{RK_L} \HOLNumLit{0} \HOLBoundVar{k} \HOLSymConst{=} \HOLConst{FST} (\HOLConst{PC1} \HOLBoundVar{k})) \HOLSymConst{\HOLTokenConj{}}
+   \HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{n} \HOLBoundVar{k}.
+     \HOLConst{RK_L} (\HOLConst{SUC} \HOLBoundVar{n}) \HOLBoundVar{k} \HOLSymConst{=}
+     (\HOLKeyword{let} \HOLBoundVar{c} = \HOLConst{RK_L} \HOLBoundVar{n} \HOLBoundVar{k}; \HOLBoundVar{r} = \HOLConst{EL} \HOLBoundVar{n} \HOLConst{R_data} \HOLKeyword{in} \HOLBoundVar{c} \HOLSymConst{\HOLTokenRol{}} \HOLBoundVar{r})
+\end{SaveVerbatim}
+\newcommand{\HOLdesXXpropDefinitionsroundkXXL}{\UseVerbatim{HOLdesXXpropDefinitionsroundkXXL}}
+\begin{SaveVerbatim}{HOLdesXXpropDefinitionsroundkXXR}
+\HOLTokenTurnstile{} (\HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{k}. \HOLConst{RK_R} \HOLNumLit{0} \HOLBoundVar{k} \HOLSymConst{=} \HOLConst{SND} (\HOLConst{PC1} \HOLBoundVar{k})) \HOLSymConst{\HOLTokenConj{}}
+   \HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{n} \HOLBoundVar{k}.
+     \HOLConst{RK_R} (\HOLConst{SUC} \HOLBoundVar{n}) \HOLBoundVar{k} \HOLSymConst{=}
+     (\HOLKeyword{let} \HOLBoundVar{c} = \HOLConst{RK_R} \HOLBoundVar{n} \HOLBoundVar{k}; \HOLBoundVar{r} = \HOLConst{EL} \HOLBoundVar{n} \HOLConst{R_data} \HOLKeyword{in} \HOLBoundVar{c} \HOLSymConst{\HOLTokenRol{}} \HOLBoundVar{r})
+\end{SaveVerbatim}
+\newcommand{\HOLdesXXpropDefinitionsroundkXXR}{\UseVerbatim{HOLdesXXpropDefinitionsroundkXXR}}
+\begin{SaveVerbatim}{HOLdesXXpropDefinitionsroundkXXsupp}
+\HOLTokenTurnstile{} \HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{n} \HOLBoundVar{k}. \HOLConst{RK} \HOLBoundVar{n} \HOLBoundVar{k} \HOLSymConst{=} (\HOLConst{RK_L} \HOLBoundVar{n} \HOLBoundVar{k}\HOLSymConst{,}\HOLConst{RK_R} \HOLBoundVar{n} \HOLBoundVar{k})
+\end{SaveVerbatim}
+\newcommand{\HOLdesXXpropDefinitionsroundkXXsupp}{\UseVerbatim{HOLdesXXpropDefinitionsroundkXXsupp}}
+\begin{SaveVerbatim}{HOLdesXXpropDefinitionsSXXdataXXdef}
+\HOLTokenTurnstile{} \HOLConst{S_data} \HOLSymConst{=}
+   [\HOLConst{S8_data}; \HOLConst{S7_data}; \HOLConst{S6_data}; \HOLConst{S5_data}; \HOLConst{S4_data}; \HOLConst{S3_data};
+    \HOLConst{S2_data}; \HOLConst{S1_data}]
+\end{SaveVerbatim}
+\newcommand{\HOLdesXXpropDefinitionsSXXdataXXdef}{\UseVerbatim{HOLdesXXpropDefinitionsSXXdataXXdef}}
+\begin{SaveVerbatim}{HOLdesXXpropDefinitionsSemiwkeyXXdef}
+\HOLTokenTurnstile{} \HOLConst{Semiwkey} \HOLSymConst{=}
+   [(0x1FE01FE01FE01FEw\HOLSymConst{,}0xFE01FE01FE01FE01w);
+    (0x1FE01FE00EF10EF1w\HOLSymConst{,}0xE01FE01FF10EF10Ew);
+    (0x1E001E001F101F1w\HOLSymConst{,}0xE001E001F101F101w);
+    (0x1FFE1FFE0EFE0EFEw\HOLSymConst{,}0xFE1FFE1FFE0EFE0Ew);
+    (0x11F011F010E010Ew\HOLSymConst{,}0x1F011F010E010E01w);
+    (0xE0FEE0FEF1FEF1FEw\HOLSymConst{,}0xFEE0FEE0FEF1FEF1w)]
+\end{SaveVerbatim}
+\newcommand{\HOLdesXXpropDefinitionsSemiwkeyXXdef}{\UseVerbatim{HOLdesXXpropDefinitionsSemiwkeyXXdef}}
+\begin{SaveVerbatim}{HOLdesXXpropDefinitionssplitXFXXdef}
+\HOLTokenTurnstile{} \HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{Xe}.
+     \HOLConst{splitXF} \HOLBoundVar{Xe} \HOLSymConst{=}
+     [(\HOLNumLit{5} \HOLSymConst{\HOLTokenExtract{}} \HOLNumLit{0}) \HOLBoundVar{Xe}; (\HOLNumLit{11} \HOLSymConst{\HOLTokenExtract{}} \HOLNumLit{6}) \HOLBoundVar{Xe}; (\HOLNumLit{17} \HOLSymConst{\HOLTokenExtract{}} \HOLNumLit{12}) \HOLBoundVar{Xe}; (\HOLNumLit{23} \HOLSymConst{\HOLTokenExtract{}} \HOLNumLit{18}) \HOLBoundVar{Xe};
+      (\HOLNumLit{29} \HOLSymConst{\HOLTokenExtract{}} \HOLNumLit{24}) \HOLBoundVar{Xe}; (\HOLNumLit{35} \HOLSymConst{\HOLTokenExtract{}} \HOLNumLit{30}) \HOLBoundVar{Xe}; (\HOLNumLit{41} \HOLSymConst{\HOLTokenExtract{}} \HOLNumLit{36}) \HOLBoundVar{Xe};
+      (\HOLNumLit{47} \HOLSymConst{\HOLTokenExtract{}} \HOLNumLit{42}) \HOLBoundVar{Xe}]
+\end{SaveVerbatim}
+\newcommand{\HOLdesXXpropDefinitionssplitXFXXdef}{\UseVerbatim{HOLdesXXpropDefinitionssplitXFXXdef}}
+\begin{SaveVerbatim}{HOLdesXXpropDefinitionssplitYFXXdef}
+\HOLTokenTurnstile{} \HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{Ye}.
+     \HOLConst{splitYF} \HOLBoundVar{Ye} \HOLSymConst{=}
+     [(\HOLNumLit{3} \HOLSymConst{\HOLTokenExtract{}} \HOLNumLit{0}) \HOLBoundVar{Ye}; (\HOLNumLit{7} \HOLSymConst{\HOLTokenExtract{}} \HOLNumLit{4}) \HOLBoundVar{Ye}; (\HOLNumLit{11} \HOLSymConst{\HOLTokenExtract{}} \HOLNumLit{8}) \HOLBoundVar{Ye}; (\HOLNumLit{15} \HOLSymConst{\HOLTokenExtract{}} \HOLNumLit{12}) \HOLBoundVar{Ye};
+      (\HOLNumLit{19} \HOLSymConst{\HOLTokenExtract{}} \HOLNumLit{16}) \HOLBoundVar{Ye}; (\HOLNumLit{23} \HOLSymConst{\HOLTokenExtract{}} \HOLNumLit{20}) \HOLBoundVar{Ye}; (\HOLNumLit{27} \HOLSymConst{\HOLTokenExtract{}} \HOLNumLit{24}) \HOLBoundVar{Ye};
+      (\HOLNumLit{31} \HOLSymConst{\HOLTokenExtract{}} \HOLNumLit{28}) \HOLBoundVar{Ye}]
+\end{SaveVerbatim}
+\newcommand{\HOLdesXXpropDefinitionssplitYFXXdef}{\UseVerbatim{HOLdesXXpropDefinitionssplitYFXXdef}}
+\begin{SaveVerbatim}{HOLdesXXpropDefinitionstransOneXXdef}
+\HOLTokenTurnstile{} \HOLSymConst{\HOLTokenForall{}}\ensuremath{\HOLBoundVar{x}\sb{\mathrm{1}}} \ensuremath{\HOLBoundVar{x}\sb{\mathrm{2}}}. \HOLConst{trans1} (\ensuremath{\HOLBoundVar{x}\sb{\mathrm{1}}}\HOLSymConst{,}\ensuremath{\HOLBoundVar{x}\sb{\mathrm{2}}}) \HOLSymConst{=} \ensuremath{\HOLBoundVar{x}\sb{\mathrm{1}}}
+\end{SaveVerbatim}
+\newcommand{\HOLdesXXpropDefinitionstransOneXXdef}{\UseVerbatim{HOLdesXXpropDefinitionstransOneXXdef}}
+\begin{SaveVerbatim}{HOLdesXXpropDefinitionstransTwoXXdef}
+\HOLTokenTurnstile{} \HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{x}. \HOLConst{trans2} \HOLBoundVar{x} \HOLSymConst{=} (\HOLBoundVar{x}\HOLSymConst{,}\HOLBoundVar{x})
+\end{SaveVerbatim}
+\newcommand{\HOLdesXXpropDefinitionstransTwoXXdef}{\UseVerbatim{HOLdesXXpropDefinitionstransTwoXXdef}}
+\begin{SaveVerbatim}{HOLdesXXpropDefinitionstransFOneXXdef}
+\HOLTokenTurnstile{} \HOLSymConst{\HOLTokenForall{}}\ensuremath{\HOLBoundVar{x}\sb{\mathrm{1}}} \ensuremath{\HOLBoundVar{x}\sb{\mathrm{2}}} \ensuremath{\HOLBoundVar{x}\sb{\mathrm{3}}} \ensuremath{\HOLBoundVar{x}\sb{\mathrm{4}}} \ensuremath{\HOLBoundVar{x}\sb{\mathrm{5}}} \ensuremath{\HOLBoundVar{x}\sb{\mathrm{6}}} \ensuremath{\HOLBoundVar{x}\sb{\mathrm{7}}} \ensuremath{\HOLBoundVar{x}\sb{\mathrm{8}}}.
+     \HOLConst{transF1} (\ensuremath{\HOLBoundVar{x}\sb{\mathrm{1}}}\HOLSymConst{,}\ensuremath{\HOLBoundVar{x}\sb{\mathrm{2}}}\HOLSymConst{,}\ensuremath{\HOLBoundVar{x}\sb{\mathrm{3}}}\HOLSymConst{,}\ensuremath{\HOLBoundVar{x}\sb{\mathrm{4}}}\HOLSymConst{,}\ensuremath{\HOLBoundVar{x}\sb{\mathrm{5}}}\HOLSymConst{,}\ensuremath{\HOLBoundVar{x}\sb{\mathrm{6}}}\HOLSymConst{,}\ensuremath{\HOLBoundVar{x}\sb{\mathrm{7}}}\HOLSymConst{,}\ensuremath{\HOLBoundVar{x}\sb{\mathrm{8}}}) \HOLSymConst{=}
+     \ensuremath{\HOLBoundVar{x}\sb{\mathrm{1}}} \HOLSymConst{@@} \ensuremath{\HOLBoundVar{x}\sb{\mathrm{2}}} \HOLSymConst{@@} \ensuremath{\HOLBoundVar{x}\sb{\mathrm{3}}} \HOLSymConst{@@} \ensuremath{\HOLBoundVar{x}\sb{\mathrm{4}}} \HOLSymConst{@@} \ensuremath{\HOLBoundVar{x}\sb{\mathrm{5}}} \HOLSymConst{@@} \ensuremath{\HOLBoundVar{x}\sb{\mathrm{6}}} \HOLSymConst{@@} \ensuremath{\HOLBoundVar{x}\sb{\mathrm{7}}} \HOLSymConst{@@} \ensuremath{\HOLBoundVar{x}\sb{\mathrm{8}}}
+\end{SaveVerbatim}
+\newcommand{\HOLdesXXpropDefinitionstransFOneXXdef}{\UseVerbatim{HOLdesXXpropDefinitionstransFOneXXdef}}
+\begin{SaveVerbatim}{HOLdesXXpropDefinitionstransFTwoXXdef}
+\HOLTokenTurnstile{} \HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{x}. \HOLConst{transF2} \HOLBoundVar{x} \HOLSymConst{=}
+       ((\HOLNumLit{47} \HOLSymConst{\HOLTokenExtract{}} \HOLNumLit{42}) \HOLBoundVar{x}\HOLSymConst{,}(\HOLNumLit{41} \HOLSymConst{\HOLTokenExtract{}} \HOLNumLit{36}) \HOLBoundVar{x}\HOLSymConst{,}(\HOLNumLit{35} \HOLSymConst{\HOLTokenExtract{}} \HOLNumLit{30}) \HOLBoundVar{x}\HOLSymConst{,}(\HOLNumLit{29} \HOLSymConst{\HOLTokenExtract{}} \HOLNumLit{24}) \HOLBoundVar{x}\HOLSymConst{,}
+        (\HOLNumLit{23} \HOLSymConst{\HOLTokenExtract{}} \HOLNumLit{18}) \HOLBoundVar{x}\HOLSymConst{,}(\HOLNumLit{17} \HOLSymConst{\HOLTokenExtract{}} \HOLNumLit{12}) \HOLBoundVar{x}\HOLSymConst{,}(\HOLNumLit{11} \HOLSymConst{\HOLTokenExtract{}} \HOLNumLit{6}) \HOLBoundVar{x}\HOLSymConst{,}(\HOLNumLit{5} \HOLSymConst{\HOLTokenExtract{}} \HOLNumLit{0}) \HOLBoundVar{x})
+\end{SaveVerbatim}
+\newcommand{\HOLdesXXpropDefinitionstransFTwoXXdef}{\UseVerbatim{HOLdesXXpropDefinitionstransFTwoXXdef}}
+\begin{SaveVerbatim}{HOLdesXXpropDefinitionstransktoxFXXdef}
+\HOLTokenTurnstile{} \HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{x} \HOLBoundVar{k}. \HOLConst{transktoxF} \HOLBoundVar{x} \HOLBoundVar{k} \HOLSymConst{=} \HOLBoundVar{k} \HOLSymConst{\HOLTokenEor{}} \HOLBoundVar{x}
+\end{SaveVerbatim}
+\newcommand{\HOLdesXXpropDefinitionstransktoxFXXdef}{\UseVerbatim{HOLdesXXpropDefinitionstransktoxFXXdef}}
+\begin{SaveVerbatim}{HOLdesXXpropDefinitionstransxtokFXXdef}
+\HOLTokenTurnstile{} \HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{x} \ensuremath{\HOLBoundVar{x}\sp{\prime{}}}. \HOLConst{transxtokF} \HOLBoundVar{x} \ensuremath{\HOLBoundVar{x}\sp{\prime{}}} \HOLSymConst{=} \HOLBoundVar{x} \HOLSymConst{\HOLTokenEor{}} \ensuremath{\HOLBoundVar{x}\sp{\prime{}}}
+\end{SaveVerbatim}
+\newcommand{\HOLdesXXpropDefinitionstransxtokFXXdef}{\UseVerbatim{HOLdesXXpropDefinitionstransxtokFXXdef}}
+\begin{SaveVerbatim}{HOLdesXXpropDefinitionswOnetransOneXXdef}
+\HOLTokenTurnstile{} \HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{x}. \HOLConst{w1trans1} \HOLBoundVar{x} \HOLSymConst{=} \HOLConst{FST} (\HOLConst{Split} (\HOLConst{IP} (\HOLConst{desCore} \HOLNumLit{8} (\HOLConst{KS} \HOLConst{Wkey1} \HOLNumLit{8}) \HOLBoundVar{x})))
+\end{SaveVerbatim}
+\newcommand{\HOLdesXXpropDefinitionswOnetransOneXXdef}{\UseVerbatim{HOLdesXXpropDefinitionswOnetransOneXXdef}}
+\begin{SaveVerbatim}{HOLdesXXpropDefinitionswOnetransTwoXXdef}
+\HOLTokenTurnstile{} \HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{x}. \HOLConst{w1trans2} \HOLBoundVar{x} \HOLSymConst{=} \HOLConst{desCore} \HOLNumLit{8} (\HOLConst{KS} \HOLConst{Wkey1} \HOLNumLit{8}) (\HOLConst{IIP} (\HOLConst{Join} (\HOLBoundVar{x}\HOLSymConst{,}\HOLBoundVar{x})))
+\end{SaveVerbatim}
+\newcommand{\HOLdesXXpropDefinitionswOnetransTwoXXdef}{\UseVerbatim{HOLdesXXpropDefinitionswOnetransTwoXXdef}}
+\begin{SaveVerbatim}{HOLdesXXpropDefinitionswTwotransOneXXdef}
+\HOLTokenTurnstile{} \HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{x}. \HOLConst{w2trans1} \HOLBoundVar{x} \HOLSymConst{=} \HOLConst{FST} (\HOLConst{Split} (\HOLConst{IP} (\HOLConst{desCore} \HOLNumLit{8} (\HOLConst{KS} \HOLConst{Wkey2} \HOLNumLit{8}) \HOLBoundVar{x})))
+\end{SaveVerbatim}
+\newcommand{\HOLdesXXpropDefinitionswTwotransOneXXdef}{\UseVerbatim{HOLdesXXpropDefinitionswTwotransOneXXdef}}
+\begin{SaveVerbatim}{HOLdesXXpropDefinitionswTwotransTwoXXdef}
+\HOLTokenTurnstile{} \HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{x}. \HOLConst{w2trans2} \HOLBoundVar{x} \HOLSymConst{=} \HOLConst{desCore} \HOLNumLit{8} (\HOLConst{KS} \HOLConst{Wkey2} \HOLNumLit{8}) (\HOLConst{IIP} (\HOLConst{Join} (\HOLBoundVar{x}\HOLSymConst{,}\HOLBoundVar{x})))
+\end{SaveVerbatim}
+\newcommand{\HOLdesXXpropDefinitionswTwotransTwoXXdef}{\UseVerbatim{HOLdesXXpropDefinitionswTwotransTwoXXdef}}
+\begin{SaveVerbatim}{HOLdesXXpropDefinitionswThreetransOneXXdef}
+\HOLTokenTurnstile{} \HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{x}. \HOLConst{w3trans1} \HOLBoundVar{x} \HOLSymConst{=} \HOLConst{FST} (\HOLConst{Split} (\HOLConst{IP} (\HOLConst{desCore} \HOLNumLit{8} (\HOLConst{KS} \HOLConst{Wkey3} \HOLNumLit{8}) \HOLBoundVar{x})))
+\end{SaveVerbatim}
+\newcommand{\HOLdesXXpropDefinitionswThreetransOneXXdef}{\UseVerbatim{HOLdesXXpropDefinitionswThreetransOneXXdef}}
+\begin{SaveVerbatim}{HOLdesXXpropDefinitionswThreetransTwoXXdef}
+\HOLTokenTurnstile{} \HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{x}. \HOLConst{w3trans2} \HOLBoundVar{x} \HOLSymConst{=} \HOLConst{desCore} \HOLNumLit{8} (\HOLConst{KS} \HOLConst{Wkey3} \HOLNumLit{8}) (\HOLConst{IIP} (\HOLConst{Join} (\HOLBoundVar{x}\HOLSymConst{,}\HOLBoundVar{x})))
+\end{SaveVerbatim}
+\newcommand{\HOLdesXXpropDefinitionswThreetransTwoXXdef}{\UseVerbatim{HOLdesXXpropDefinitionswThreetransTwoXXdef}}
+\begin{SaveVerbatim}{HOLdesXXpropDefinitionswFourtransOneXXdef}
+\HOLTokenTurnstile{} \HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{x}. \HOLConst{w4trans1} \HOLBoundVar{x} \HOLSymConst{=} \HOLConst{FST} (\HOLConst{Split} (\HOLConst{IP} (\HOLConst{desCore} \HOLNumLit{8} (\HOLConst{KS} \HOLConst{Wkey4} \HOLNumLit{8}) \HOLBoundVar{x})))
+\end{SaveVerbatim}
+\newcommand{\HOLdesXXpropDefinitionswFourtransOneXXdef}{\UseVerbatim{HOLdesXXpropDefinitionswFourtransOneXXdef}}
+\begin{SaveVerbatim}{HOLdesXXpropDefinitionswFourtransTwoXXdef}
+\HOLTokenTurnstile{} \HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{x}. \HOLConst{w4trans2} \HOLBoundVar{x} \HOLSymConst{=} \HOLConst{desCore} \HOLNumLit{8} (\HOLConst{KS} \HOLConst{Wkey4} \HOLNumLit{8}) (\HOLConst{IIP} (\HOLConst{Join} (\HOLBoundVar{x}\HOLSymConst{,}\HOLBoundVar{x})))
+\end{SaveVerbatim}
+\newcommand{\HOLdesXXpropDefinitionswFourtransTwoXXdef}{\UseVerbatim{HOLdesXXpropDefinitionswFourtransTwoXXdef}}
+\begin{SaveVerbatim}{HOLdesXXpropDefinitionsWkeyOneXXdef}
+\HOLTokenTurnstile{} \HOLConst{Wkey1} \HOLSymConst{=} 0x101010101010101w
+\end{SaveVerbatim}
+\newcommand{\HOLdesXXpropDefinitionsWkeyOneXXdef}{\UseVerbatim{HOLdesXXpropDefinitionsWkeyOneXXdef}}
+\begin{SaveVerbatim}{HOLdesXXpropDefinitionsWkeyTwoXXdef}
+\HOLTokenTurnstile{} \HOLConst{Wkey2} \HOLSymConst{=} 0xFEFEFEFEFEFEFEFEw
+\end{SaveVerbatim}
+\newcommand{\HOLdesXXpropDefinitionsWkeyTwoXXdef}{\UseVerbatim{HOLdesXXpropDefinitionsWkeyTwoXXdef}}
+\begin{SaveVerbatim}{HOLdesXXpropDefinitionsWkeyThreeXXdef}
+\HOLTokenTurnstile{} \HOLConst{Wkey3} \HOLSymConst{=} 0xE0E0E0E0F1F1F1F1w
+\end{SaveVerbatim}
+\newcommand{\HOLdesXXpropDefinitionsWkeyThreeXXdef}{\UseVerbatim{HOLdesXXpropDefinitionsWkeyThreeXXdef}}
+\begin{SaveVerbatim}{HOLdesXXpropDefinitionsWkeyFourXXdef}
+\HOLTokenTurnstile{} \HOLConst{Wkey4} \HOLSymConst{=} 0x1F1F1F1F0E0E0E0Ew
+\end{SaveVerbatim}
+\newcommand{\HOLdesXXpropDefinitionsWkeyFourXXdef}{\UseVerbatim{HOLdesXXpropDefinitionsWkeyFourXXdef}}
+\begin{SaveVerbatim}{HOLdesXXpropDefinitionsWkeyXXdef}
+\HOLTokenTurnstile{} \HOLConst{Wkey} \HOLSymConst{=}
+   [0x101010101010101w; 0xFEFEFEFEFEFEFEFEw;
+    0xE0E0E0E0F1F1F1F1w; 0x1F1F1F1F0E0E0E0Ew]
+\end{SaveVerbatim}
+\newcommand{\HOLdesXXpropDefinitionsWkeyXXdef}{\UseVerbatim{HOLdesXXpropDefinitionsWkeyXXdef}}
+\begin{SaveVerbatim}{HOLdesXXpropDefinitionswordThreeTwopXXdef}
+\HOLTokenTurnstile{} \HOLConst{word32p} \HOLSymConst{=}
+   (\ensuremath{{\cal{U}}}(:\HOLTyOp{word32})\HOLSymConst{,}\HOLConst{POW} \ensuremath{{\cal{U}}}(:\HOLTyOp{word32})\HOLSymConst{,}(\HOLTokenLambda{}\HOLBoundVar{s}. \HOLSymConst{\&}\HOLConst{CARD} \HOLBoundVar{s} \HOLSymConst{/} \HOLSymConst{\&}(\HOLNumLit{2} \HOLSymConst{\HOLTokenExp{}} \HOLNumLit{32})))
+\end{SaveVerbatim}
+\newcommand{\HOLdesXXpropDefinitionswordThreeTwopXXdef}{\UseVerbatim{HOLdesXXpropDefinitionswordThreeTwopXXdef}}
+\begin{SaveVerbatim}{HOLdesXXpropDefinitionswordFourEightpXXdef}
+\HOLTokenTurnstile{} \HOLConst{word48p} \HOLSymConst{=}
+   (\ensuremath{{\cal{U}}}(:\HOLTyOp{word48})\HOLSymConst{,}\HOLConst{POW} \ensuremath{{\cal{U}}}(:\HOLTyOp{word48})\HOLSymConst{,}(\HOLTokenLambda{}\HOLBoundVar{s}. \HOLSymConst{\&}\HOLConst{CARD} \HOLBoundVar{s} \HOLSymConst{/} \HOLSymConst{\&}(\HOLNumLit{2} \HOLSymConst{\HOLTokenExp{}} \HOLNumLit{48})))
+\end{SaveVerbatim}
+\newcommand{\HOLdesXXpropDefinitionswordFourEightpXXdef}{\UseVerbatim{HOLdesXXpropDefinitionswordFourEightpXXdef}}
+\begin{SaveVerbatim}{HOLdesXXpropDefinitionswordSixpXXdef}
+\HOLTokenTurnstile{} \HOLConst{word6p} \HOLSymConst{=} (\ensuremath{{\cal{U}}}(:\HOLTyOp{word6})\HOLSymConst{,}\HOLConst{POW} \ensuremath{{\cal{U}}}(:\HOLTyOp{word6})\HOLSymConst{,}(\HOLTokenLambda{}\HOLBoundVar{s}. \HOLSymConst{\&}\HOLConst{CARD} \HOLBoundVar{s} \HOLSymConst{/} \HOLSymConst{\&}(\HOLNumLit{2} \HOLSymConst{\HOLTokenExp{}} \HOLNumLit{6})))
+\end{SaveVerbatim}
+\newcommand{\HOLdesXXpropDefinitionswordSixpXXdef}{\UseVerbatim{HOLdesXXpropDefinitionswordSixpXXdef}}
+\begin{SaveVerbatim}{HOLdesXXpropDefinitionswordSixxSixXXdef}
+\HOLTokenTurnstile{} \HOLConst{word6x6} \HOLSymConst{=}
+   (\ensuremath{{\cal{U}}}(:\HOLTyOp{word6} \HOLTokenProd{} \HOLTyOp{word6})\HOLSymConst{,}\HOLConst{POW} \ensuremath{{\cal{U}}}(:\HOLTyOp{word6} \HOLTokenProd{} \HOLTyOp{word6})\HOLSymConst{,}
+    (\HOLTokenLambda{}\HOLBoundVar{s}. \HOLSymConst{\&}\HOLConst{CARD} \HOLBoundVar{s} \HOLSymConst{/} \HOLSymConst{\&}(\HOLNumLit{2} \HOLSymConst{\HOLTokenExp{}} \HOLNumLit{12})))
+\end{SaveVerbatim}
+\newcommand{\HOLdesXXpropDefinitionswordSixxSixXXdef}{\UseVerbatim{HOLdesXXpropDefinitionswordSixxSixXXdef}}
+\begin{SaveVerbatim}{HOLdesXXpropDefinitionsWtextXXdef}
+\HOLTokenTurnstile{} \HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{key}.
+     \HOLConst{Wtext} \HOLBoundVar{key} \HOLSymConst{=}
+     \HOLTokenLeftbrace{}\HOLBoundVar{x} \HOLTokenBar{} \HOLSymConst{\HOLTokenExists{}}\HOLBoundVar{w}. \HOLConst{Split} (\HOLConst{IP} (\HOLConst{desCore} \HOLNumLit{8} (\HOLConst{KS} \HOLBoundVar{key} \HOLNumLit{8}) \HOLBoundVar{x})) \HOLSymConst{=} (\HOLBoundVar{w}\HOLSymConst{,}\HOLBoundVar{w})\HOLTokenRightbrace{}
+\end{SaveVerbatim}
+\newcommand{\HOLdesXXpropDefinitionsWtextXXdef}{\UseVerbatim{HOLdesXXpropDefinitionsWtextXXdef}}
+\begin{SaveVerbatim}{HOLdesXXpropDefinitionsWtextlistXXdef}
+\HOLTokenTurnstile{} \HOLConst{Wtextlist} \HOLSymConst{=} [\HOLConst{Wtext1}; \HOLConst{Wtext2}; \HOLConst{Wtext3}; \HOLConst{Wtext4}]
+\end{SaveVerbatim}
+\newcommand{\HOLdesXXpropDefinitionsWtextlistXXdef}{\UseVerbatim{HOLdesXXpropDefinitionsWtextlistXXdef}}
+\begin{SaveVerbatim}{HOLdesXXpropDefinitionswtransOneXXdef}
+\HOLTokenTurnstile{} \HOLConst{wtrans1} \HOLSymConst{=} [\HOLConst{w1trans1}; \HOLConst{w2trans1}; \HOLConst{w3trans1}; \HOLConst{w4trans1}]
+\end{SaveVerbatim}
+\newcommand{\HOLdesXXpropDefinitionswtransOneXXdef}{\UseVerbatim{HOLdesXXpropDefinitionswtransOneXXdef}}
+\begin{SaveVerbatim}{HOLdesXXpropDefinitionsXcauseYXXdef}
+\HOLTokenTurnstile{} \HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{X} \HOLBoundVar{Y} \HOLBoundVar{Sb}.
+     \HOLConst{XcauseY} \HOLBoundVar{X} \HOLBoundVar{Y} \HOLBoundVar{Sb} \HOLSymConst{=} \HOLConst{prob} \HOLConst{word6p} \HOLTokenLeftbrace{}\HOLBoundVar{x} \HOLTokenBar{} \HOLBoundVar{Sb} \HOLBoundVar{x} \HOLSymConst{\HOLTokenEor{}} \HOLBoundVar{Sb} (\HOLBoundVar{x} \HOLSymConst{\HOLTokenEor{}} \HOLBoundVar{X}) \HOLSymConst{=} \HOLBoundVar{Y}\HOLTokenRightbrace{}
+\end{SaveVerbatim}
+\newcommand{\HOLdesXXpropDefinitionsXcauseYXXdef}{\UseVerbatim{HOLdesXXpropDefinitionsXcauseYXXdef}}
+\begin{SaveVerbatim}{HOLdesXXpropDefinitionsXcauseYFYYXXdef}
+\HOLTokenTurnstile{} \HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{X} \HOLBoundVar{Y}.
+     \HOLConst{XcauseYF'} \HOLBoundVar{X} \HOLBoundVar{Y} \HOLSymConst{=} \HOLConst{prob} \HOLConst{word48p} \HOLTokenLeftbrace{}\HOLBoundVar{x} \HOLTokenBar{} \HOLConst{S} \HOLBoundVar{x} \HOLSymConst{\HOLTokenEor{}} \HOLConst{S} (\HOLBoundVar{x} \HOLSymConst{\HOLTokenEor{}} \HOLConst{E} \HOLBoundVar{X}) \HOLSymConst{=} \HOLBoundVar{Y}\HOLTokenRightbrace{}
+\end{SaveVerbatim}
+\newcommand{\HOLdesXXpropDefinitionsXcauseYFYYXXdef}{\UseVerbatim{HOLdesXXpropDefinitionsXcauseYFYYXXdef}}
+\begin{SaveVerbatim}{HOLdesXXpropDefinitionsXcauseYFXXdef}
+\HOLTokenTurnstile{} \HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{X} \HOLBoundVar{Y}.
+     \HOLConst{XcauseYF} \HOLBoundVar{X} \HOLBoundVar{Y} \HOLSymConst{=}
+     \HOLConst{prob} \HOLConst{word32p}
+       \HOLTokenLeftbrace{}\HOLBoundVar{x} \HOLTokenBar{} (\HOLSymConst{\HOLTokenExists{}}\HOLBoundVar{k}. \HOLConst{S} (\HOLConst{E} \HOLBoundVar{x} \HOLSymConst{\HOLTokenEor{}} \HOLBoundVar{k}) \HOLSymConst{\HOLTokenEor{}} \HOLConst{S} (\HOLConst{E} \HOLBoundVar{x} \HOLSymConst{\HOLTokenEor{}} \HOLConst{E} \HOLBoundVar{X} \HOLSymConst{\HOLTokenEor{}} \HOLBoundVar{k}) \HOLSymConst{=} \HOLBoundVar{Y})\HOLTokenRightbrace{}
+\end{SaveVerbatim}
+\newcommand{\HOLdesXXpropDefinitionsXcauseYFXXdef}{\UseVerbatim{HOLdesXXpropDefinitionsXcauseYFXXdef}}
+\begin{SaveVerbatim}{HOLdesXXpropDefinitionsXcauseYFkeyXXdef}
+\HOLTokenTurnstile{} \HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{X} \HOLBoundVar{Y} \HOLBoundVar{x}.
+     \HOLConst{XcauseYFkey} \HOLBoundVar{X} \HOLBoundVar{Y} \HOLBoundVar{x} \HOLSymConst{=}
+     (\HOLKeyword{let}
+        \ensuremath{\HOLBoundVar{x}\sp{\prime{}}} = \HOLBoundVar{x} \HOLSymConst{\HOLTokenEor{}} \HOLConst{E} \HOLBoundVar{X}
+      \HOLKeyword{in}
+        \HOLConst{prob} \HOLConst{word48p} \HOLTokenLeftbrace{}\HOLBoundVar{k} \HOLTokenBar{} \HOLConst{S} (\HOLBoundVar{x} \HOLSymConst{\HOLTokenEor{}} \HOLBoundVar{k}) \HOLSymConst{\HOLTokenEor{}} \HOLConst{S} (\ensuremath{\HOLBoundVar{x}\sp{\prime{}}} \HOLSymConst{\HOLTokenEor{}} \HOLBoundVar{k}) \HOLSymConst{=} \HOLBoundVar{Y}\HOLTokenRightbrace{})
+\end{SaveVerbatim}
+\newcommand{\HOLdesXXpropDefinitionsXcauseYFkeyXXdef}{\UseVerbatim{HOLdesXXpropDefinitionsXcauseYFkeyXXdef}}
+\begin{SaveVerbatim}{HOLdesXXpropDefinitionsXcauseYFpXXdef}
+\HOLTokenTurnstile{} \HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{X} \HOLBoundVar{Y} \HOLBoundVar{p}.
+     \HOLConst{XcauseYFp} \HOLBoundVar{X} \HOLBoundVar{Y} \HOLBoundVar{p} \HOLSymConst{\HOLTokenEquiv{}}
+     \HOLConst{prob} \HOLConst{word32p}
+       \HOLTokenLeftbrace{}\HOLBoundVar{x} \HOLTokenBar{} (\HOLSymConst{\HOLTokenExists{}}\HOLBoundVar{k}. \HOLConst{S} (\HOLConst{E} \HOLBoundVar{x} \HOLSymConst{\HOLTokenEor{}} \HOLBoundVar{k}) \HOLSymConst{\HOLTokenEor{}} \HOLConst{S} (\HOLConst{E} \HOLBoundVar{x} \HOLSymConst{\HOLTokenEor{}} \HOLConst{E} \HOLBoundVar{X} \HOLSymConst{\HOLTokenEor{}} \HOLBoundVar{k}) \HOLSymConst{=} \HOLBoundVar{Y})\HOLTokenRightbrace{} \HOLSymConst{=}
+     \HOLBoundVar{p}
+\end{SaveVerbatim}
+\newcommand{\HOLdesXXpropDefinitionsXcauseYFpXXdef}{\UseVerbatim{HOLdesXXpropDefinitionsXcauseYFpXXdef}}
+\begin{SaveVerbatim}{HOLdesXXpropDefinitionsXcauseYpXXdef}
+\HOLTokenTurnstile{} \HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{X} \HOLBoundVar{Y} \HOLBoundVar{Sb} \HOLBoundVar{p}.
+     \HOLConst{XcauseYp} \HOLBoundVar{X} \HOLBoundVar{Y} \HOLBoundVar{Sb} \HOLBoundVar{p} \HOLSymConst{\HOLTokenEquiv{}}
+     \HOLConst{prob} \HOLConst{word6p} \HOLTokenLeftbrace{}\HOLBoundVar{x} \HOLTokenBar{} \HOLBoundVar{Sb} \HOLBoundVar{x} \HOLSymConst{\HOLTokenEor{}} \HOLBoundVar{Sb} (\HOLBoundVar{x} \HOLSymConst{\HOLTokenEor{}} \HOLBoundVar{X}) \HOLSymConst{=} \HOLBoundVar{Y}\HOLTokenRightbrace{} \HOLSymConst{=} \HOLBoundVar{p}
+\end{SaveVerbatim}
+\newcommand{\HOLdesXXpropDefinitionsXcauseYpXXdef}{\UseVerbatim{HOLdesXXpropDefinitionsXcauseYpXXdef}}
+\begin{SaveVerbatim}{HOLdesXXpropDefinitionsXpairFXXdef}
+\HOLTokenTurnstile{} \HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{X} \HOLBoundVar{Y}.
+     \HOLConst{XpairF} \HOLBoundVar{X} \HOLBoundVar{Y} \HOLSymConst{=}
+     \HOLTokenLeftbrace{}(\ensuremath{\HOLBoundVar{x}\sb{\mathrm{8}}}\HOLSymConst{,}\ensuremath{\HOLBoundVar{x}\sb{\mathrm{7}}}\HOLSymConst{,}\ensuremath{\HOLBoundVar{x}\sb{\mathrm{6}}}\HOLSymConst{,}\ensuremath{\HOLBoundVar{x}\sb{\mathrm{5}}}\HOLSymConst{,}\ensuremath{\HOLBoundVar{x}\sb{\mathrm{4}}}\HOLSymConst{,}\ensuremath{\HOLBoundVar{x}\sb{\mathrm{3}}}\HOLSymConst{,}\ensuremath{\HOLBoundVar{x}\sb{\mathrm{2}}}\HOLSymConst{,}\ensuremath{\HOLBoundVar{x}\sb{\mathrm{1}}}) \HOLTokenBar{}
+      \HOLConst{S8} \ensuremath{\HOLBoundVar{x}\sb{\mathrm{1}}} \HOLSymConst{\HOLTokenEor{}} \HOLConst{S8} (\ensuremath{\HOLBoundVar{x}\sb{\mathrm{1}}} \HOLSymConst{\HOLTokenEor{}} (\HOLNumLit{5} \HOLSymConst{\HOLTokenExtract{}} \HOLNumLit{0}) (\HOLConst{E} \HOLBoundVar{X})) \HOLSymConst{=} (\HOLNumLit{3} \HOLSymConst{\HOLTokenExtract{}} \HOLNumLit{0}) \HOLBoundVar{Y} \HOLSymConst{\HOLTokenConj{}}
+      \HOLConst{S7} \ensuremath{\HOLBoundVar{x}\sb{\mathrm{2}}} \HOLSymConst{\HOLTokenEor{}} \HOLConst{S7} (\ensuremath{\HOLBoundVar{x}\sb{\mathrm{2}}} \HOLSymConst{\HOLTokenEor{}} (\HOLNumLit{11} \HOLSymConst{\HOLTokenExtract{}} \HOLNumLit{6}) (\HOLConst{E} \HOLBoundVar{X})) \HOLSymConst{=} (\HOLNumLit{7} \HOLSymConst{\HOLTokenExtract{}} \HOLNumLit{4}) \HOLBoundVar{Y} \HOLSymConst{\HOLTokenConj{}}
+      \HOLConst{S6} \ensuremath{\HOLBoundVar{x}\sb{\mathrm{3}}} \HOLSymConst{\HOLTokenEor{}} \HOLConst{S6} (\ensuremath{\HOLBoundVar{x}\sb{\mathrm{3}}} \HOLSymConst{\HOLTokenEor{}} (\HOLNumLit{17} \HOLSymConst{\HOLTokenExtract{}} \HOLNumLit{12}) (\HOLConst{E} \HOLBoundVar{X})) \HOLSymConst{=} (\HOLNumLit{11} \HOLSymConst{\HOLTokenExtract{}} \HOLNumLit{8}) \HOLBoundVar{Y} \HOLSymConst{\HOLTokenConj{}}
+      \HOLConst{S5} \ensuremath{\HOLBoundVar{x}\sb{\mathrm{4}}} \HOLSymConst{\HOLTokenEor{}} \HOLConst{S5} (\ensuremath{\HOLBoundVar{x}\sb{\mathrm{4}}} \HOLSymConst{\HOLTokenEor{}} (\HOLNumLit{23} \HOLSymConst{\HOLTokenExtract{}} \HOLNumLit{18}) (\HOLConst{E} \HOLBoundVar{X})) \HOLSymConst{=} (\HOLNumLit{15} \HOLSymConst{\HOLTokenExtract{}} \HOLNumLit{12}) \HOLBoundVar{Y} \HOLSymConst{\HOLTokenConj{}}
+      \HOLConst{S4} \ensuremath{\HOLBoundVar{x}\sb{\mathrm{5}}} \HOLSymConst{\HOLTokenEor{}} \HOLConst{S4} (\ensuremath{\HOLBoundVar{x}\sb{\mathrm{5}}} \HOLSymConst{\HOLTokenEor{}} (\HOLNumLit{29} \HOLSymConst{\HOLTokenExtract{}} \HOLNumLit{24}) (\HOLConst{E} \HOLBoundVar{X})) \HOLSymConst{=} (\HOLNumLit{19} \HOLSymConst{\HOLTokenExtract{}} \HOLNumLit{16}) \HOLBoundVar{Y} \HOLSymConst{\HOLTokenConj{}}
+      \HOLConst{S3} \ensuremath{\HOLBoundVar{x}\sb{\mathrm{6}}} \HOLSymConst{\HOLTokenEor{}} \HOLConst{S3} (\ensuremath{\HOLBoundVar{x}\sb{\mathrm{6}}} \HOLSymConst{\HOLTokenEor{}} (\HOLNumLit{35} \HOLSymConst{\HOLTokenExtract{}} \HOLNumLit{30}) (\HOLConst{E} \HOLBoundVar{X})) \HOLSymConst{=} (\HOLNumLit{23} \HOLSymConst{\HOLTokenExtract{}} \HOLNumLit{20}) \HOLBoundVar{Y} \HOLSymConst{\HOLTokenConj{}}
+      \HOLConst{S2} \ensuremath{\HOLBoundVar{x}\sb{\mathrm{7}}} \HOLSymConst{\HOLTokenEor{}} \HOLConst{S2} (\ensuremath{\HOLBoundVar{x}\sb{\mathrm{7}}} \HOLSymConst{\HOLTokenEor{}} (\HOLNumLit{41} \HOLSymConst{\HOLTokenExtract{}} \HOLNumLit{36}) (\HOLConst{E} \HOLBoundVar{X})) \HOLSymConst{=} (\HOLNumLit{27} \HOLSymConst{\HOLTokenExtract{}} \HOLNumLit{24}) \HOLBoundVar{Y} \HOLSymConst{\HOLTokenConj{}}
+      \HOLConst{S1} \ensuremath{\HOLBoundVar{x}\sb{\mathrm{8}}} \HOLSymConst{\HOLTokenEor{}} \HOLConst{S1} (\ensuremath{\HOLBoundVar{x}\sb{\mathrm{8}}} \HOLSymConst{\HOLTokenEor{}} (\HOLNumLit{47} \HOLSymConst{\HOLTokenExtract{}} \HOLNumLit{42}) (\HOLConst{E} \HOLBoundVar{X})) \HOLSymConst{=} (\HOLNumLit{31} \HOLSymConst{\HOLTokenExtract{}} \HOLNumLit{28}) \HOLBoundVar{Y}\HOLTokenRightbrace{}
+\end{SaveVerbatim}
+\newcommand{\HOLdesXXpropDefinitionsXpairFXXdef}{\UseVerbatim{HOLdesXXpropDefinitionsXpairFXXdef}}
+\newcommand{\HOLdesXXpropDefinitions}{
+\HOLDfnTag{des_prop}{AllpairXor_def}\HOLdesXXpropDefinitionsAllpairXorXXdef
+\HOLDfnTag{des_prop}{characterDES_def}\HOLdesXXpropDefinitionscharacterDESXXdef
+\HOLDfnTag{des_prop}{non_weak_keys_def}\HOLdesXXpropDefinitionsnonXXweakXXkeysXXdef
+\HOLDfnTag{des_prop}{roundk_L}\HOLdesXXpropDefinitionsroundkXXL
+\HOLDfnTag{des_prop}{roundk_R}\HOLdesXXpropDefinitionsroundkXXR
+\HOLDfnTag{des_prop}{roundk_supp}\HOLdesXXpropDefinitionsroundkXXsupp
+\HOLDfnTag{des_prop}{S_data_def}\HOLdesXXpropDefinitionsSXXdataXXdef
+\HOLDfnTag{des_prop}{Semiwkey_def}\HOLdesXXpropDefinitionsSemiwkeyXXdef
+\HOLDfnTag{des_prop}{splitXF_def}\HOLdesXXpropDefinitionssplitXFXXdef
+\HOLDfnTag{des_prop}{splitYF_def}\HOLdesXXpropDefinitionssplitYFXXdef
+\HOLDfnTag{des_prop}{trans1_def}\HOLdesXXpropDefinitionstransOneXXdef
+\HOLDfnTag{des_prop}{trans2_def}\HOLdesXXpropDefinitionstransTwoXXdef
+\HOLDfnTag{des_prop}{transF1_def}\HOLdesXXpropDefinitionstransFOneXXdef
+\HOLDfnTag{des_prop}{transF2_def}\HOLdesXXpropDefinitionstransFTwoXXdef
+\HOLDfnTag{des_prop}{transktoxF_def}\HOLdesXXpropDefinitionstransktoxFXXdef
+\HOLDfnTag{des_prop}{transxtokF_def}\HOLdesXXpropDefinitionstransxtokFXXdef
+\HOLDfnTag{des_prop}{w1trans1_def}\HOLdesXXpropDefinitionswOnetransOneXXdef
+\HOLDfnTag{des_prop}{w1trans2_def}\HOLdesXXpropDefinitionswOnetransTwoXXdef
+\HOLDfnTag{des_prop}{w2trans1_def}\HOLdesXXpropDefinitionswTwotransOneXXdef
+\HOLDfnTag{des_prop}{w2trans2_def}\HOLdesXXpropDefinitionswTwotransTwoXXdef
+\HOLDfnTag{des_prop}{w3trans1_def}\HOLdesXXpropDefinitionswThreetransOneXXdef
+\HOLDfnTag{des_prop}{w3trans2_def}\HOLdesXXpropDefinitionswThreetransTwoXXdef
+\HOLDfnTag{des_prop}{w4trans1_def}\HOLdesXXpropDefinitionswFourtransOneXXdef
+\HOLDfnTag{des_prop}{w4trans2_def}\HOLdesXXpropDefinitionswFourtransTwoXXdef
+\HOLDfnTag{des_prop}{Wkey1_def}\HOLdesXXpropDefinitionsWkeyOneXXdef
+\HOLDfnTag{des_prop}{Wkey2_def}\HOLdesXXpropDefinitionsWkeyTwoXXdef
+\HOLDfnTag{des_prop}{Wkey3_def}\HOLdesXXpropDefinitionsWkeyThreeXXdef
+\HOLDfnTag{des_prop}{Wkey4_def}\HOLdesXXpropDefinitionsWkeyFourXXdef
+\HOLDfnTag{des_prop}{Wkey_def}\HOLdesXXpropDefinitionsWkeyXXdef
+\HOLDfnTag{des_prop}{word32p_def}\HOLdesXXpropDefinitionswordThreeTwopXXdef
+\HOLDfnTag{des_prop}{word48p_def}\HOLdesXXpropDefinitionswordFourEightpXXdef
+\HOLDfnTag{des_prop}{word6p_def}\HOLdesXXpropDefinitionswordSixpXXdef
+\HOLDfnTag{des_prop}{word6x6_def}\HOLdesXXpropDefinitionswordSixxSixXXdef
+\HOLDfnTag{des_prop}{Wtext_def}\HOLdesXXpropDefinitionsWtextXXdef
+\HOLDfnTag{des_prop}{Wtextlist_def}\HOLdesXXpropDefinitionsWtextlistXXdef
+\HOLDfnTag{des_prop}{wtrans1_def}\HOLdesXXpropDefinitionswtransOneXXdef
+\HOLDfnTag{des_prop}{XcauseY_def}\HOLdesXXpropDefinitionsXcauseYXXdef
+\HOLDfnTag{des_prop}{XcauseYF'_def}\HOLdesXXpropDefinitionsXcauseYFYYXXdef
+\HOLDfnTag{des_prop}{XcauseYF_def}\HOLdesXXpropDefinitionsXcauseYFXXdef
+\HOLDfnTag{des_prop}{XcauseYFkey_def}\HOLdesXXpropDefinitionsXcauseYFkeyXXdef
+\HOLDfnTag{des_prop}{XcauseYFp_def}\HOLdesXXpropDefinitionsXcauseYFpXXdef
+\HOLDfnTag{des_prop}{XcauseYp_def}\HOLdesXXpropDefinitionsXcauseYpXXdef
+\HOLDfnTag{des_prop}{XpairF_def}\HOLdesXXpropDefinitionsXpairFXXdef
+}
+\begin{SaveVerbatim}{HOLdesXXpropTheoremsAllpairXorXXcard}
+\HOLTokenTurnstile{} \HOLConst{CARD} (\HOLConst{AllpairXor} 0w) \HOLSymConst{=} \HOLNumLit{2} \HOLSymConst{\HOLTokenExp{}} \HOLNumLit{6}
+\end{SaveVerbatim}
+\newcommand{\HOLdesXXpropTheoremsAllpairXorXXcard}{\UseVerbatim{HOLdesXXpropTheoremsAllpairXorXXcard}}
+\begin{SaveVerbatim}{HOLdesXXpropTheoremsBIJXXF}
+\HOLTokenTurnstile{} \HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{X} \HOLBoundVar{Y}. \HOLConst{BIJ} \HOLConst{transF2} \HOLTokenLeftbrace{}\HOLBoundVar{x} \HOLTokenBar{} \HOLConst{S} \HOLBoundVar{x} \HOLSymConst{\HOLTokenEor{}} \HOLConst{S} (\HOLBoundVar{x} \HOLSymConst{\HOLTokenEor{}} \HOLConst{E} \HOLBoundVar{X}) \HOLSymConst{=} \HOLBoundVar{Y}\HOLTokenRightbrace{} (\HOLConst{XpairF} \HOLBoundVar{X} \HOLBoundVar{Y})
+\end{SaveVerbatim}
+\newcommand{\HOLdesXXpropTheoremsBIJXXF}{\UseVerbatim{HOLdesXXpropTheoremsBIJXXF}}
+\begin{SaveVerbatim}{HOLdesXXpropTheoremsBIJXXforXXweakXXkeys}
+\HOLTokenTurnstile{} \HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{x}. \HOLConst{MEM} \HOLBoundVar{x} \HOLConst{Wtextlist} \HOLSymConst{\HOLTokenImp{}} \HOLSymConst{\HOLTokenExists{}}\HOLBoundVar{f}. \HOLConst{BIJ} \HOLBoundVar{f} \HOLBoundVar{x} \ensuremath{{\cal{U}}}(:\HOLTyOp{word32})
+\end{SaveVerbatim}
+\newcommand{\HOLdesXXpropTheoremsBIJXXforXXweakXXkeys}{\UseVerbatim{HOLdesXXpropTheoremsBIJXXforXXweakXXkeys}}
+\begin{SaveVerbatim}{HOLdesXXpropTheoremsBIJXXforXXweakXXkeysXXexplicit}
+\HOLTokenTurnstile{} \HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{i}. \HOLBoundVar{i} \HOLSymConst{\HOLTokenLt{}} \HOLNumLit{4} \HOLSymConst{\HOLTokenImp{}} \HOLConst{BIJ} (\HOLConst{EL} \HOLBoundVar{i} \HOLConst{wtrans1}) (\HOLConst{EL} \HOLBoundVar{i} \HOLConst{Wtextlist}) \ensuremath{{\cal{U}}}(:\HOLTyOp{word32})
+\end{SaveVerbatim}
+\newcommand{\HOLdesXXpropTheoremsBIJXXforXXweakXXkeysXXexplicit}{\UseVerbatim{HOLdesXXpropTheoremsBIJXXforXXweakXXkeysXXexplicit}}
+\begin{SaveVerbatim}{HOLdesXXpropTheoremsBIJXXktox}
+\HOLTokenTurnstile{} \HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{X} \HOLBoundVar{Y} \HOLBoundVar{x}.
+     \HOLConst{BIJ} (\HOLConst{transktoxF} \HOLBoundVar{x}) \HOLTokenLeftbrace{}\HOLBoundVar{k} \HOLTokenBar{} \HOLConst{S} (\HOLBoundVar{k} \HOLSymConst{\HOLTokenEor{}} \HOLBoundVar{x}) \HOLSymConst{\HOLTokenEor{}} \HOLConst{S} (\HOLBoundVar{k} \HOLSymConst{\HOLTokenEor{}} \HOLBoundVar{x} \HOLSymConst{\HOLTokenEor{}} \HOLConst{E} \HOLBoundVar{X}) \HOLSymConst{=} \HOLBoundVar{Y}\HOLTokenRightbrace{}
+       \HOLTokenLeftbrace{}\HOLBoundVar{x} \HOLTokenBar{} \HOLConst{S} \HOLBoundVar{x} \HOLSymConst{\HOLTokenEor{}} \HOLConst{S} (\HOLBoundVar{x} \HOLSymConst{\HOLTokenEor{}} \HOLConst{E} \HOLBoundVar{X}) \HOLSymConst{=} \HOLBoundVar{Y}\HOLTokenRightbrace{}
+\end{SaveVerbatim}
+\newcommand{\HOLdesXXpropTheoremsBIJXXktox}{\UseVerbatim{HOLdesXXpropTheoremsBIJXXktox}}
+\begin{SaveVerbatim}{HOLdesXXpropTheoremsBIJXXwtextOne}
+\HOLTokenTurnstile{} \HOLConst{BIJ} \HOLConst{w1trans1} \HOLConst{Wtext1} \ensuremath{{\cal{U}}}(:\HOLTyOp{word32})
+\end{SaveVerbatim}
+\newcommand{\HOLdesXXpropTheoremsBIJXXwtextOne}{\UseVerbatim{HOLdesXXpropTheoremsBIJXXwtextOne}}
+\begin{SaveVerbatim}{HOLdesXXpropTheoremsBIJXXwtextTwo}
+\HOLTokenTurnstile{} \HOLConst{BIJ} \HOLConst{w2trans1} \HOLConst{Wtext2} \ensuremath{{\cal{U}}}(:\HOLTyOp{word32})
+\end{SaveVerbatim}
+\newcommand{\HOLdesXXpropTheoremsBIJXXwtextTwo}{\UseVerbatim{HOLdesXXpropTheoremsBIJXXwtextTwo}}
+\begin{SaveVerbatim}{HOLdesXXpropTheoremsBIJXXwtextThree}
+\HOLTokenTurnstile{} \HOLConst{BIJ} \HOLConst{w3trans1} \HOLConst{Wtext3} \ensuremath{{\cal{U}}}(:\HOLTyOp{word32})
+\end{SaveVerbatim}
+\newcommand{\HOLdesXXpropTheoremsBIJXXwtextThree}{\UseVerbatim{HOLdesXXpropTheoremsBIJXXwtextThree}}
+\begin{SaveVerbatim}{HOLdesXXpropTheoremsBIJXXwtextFour}
+\HOLTokenTurnstile{} \HOLConst{BIJ} \HOLConst{w4trans1} \HOLConst{Wtext4} \ensuremath{{\cal{U}}}(:\HOLTyOp{word32})
+\end{SaveVerbatim}
+\newcommand{\HOLdesXXpropTheoremsBIJXXwtextFour}{\UseVerbatim{HOLdesXXpropTheoremsBIJXXwtextFour}}
+\begin{SaveVerbatim}{HOLdesXXpropTheoremsBIJXXXORL}
+\HOLTokenTurnstile{} \HOLConst{BIJ} \HOLConst{trans2} \ensuremath{{\cal{U}}}(:\HOLTyOp{word6}) (\HOLConst{AllpairXor} 0w)
+\end{SaveVerbatim}
+\newcommand{\HOLdesXXpropTheoremsBIJXXXORL}{\UseVerbatim{HOLdesXXpropTheoremsBIJXXXORL}}
+\begin{SaveVerbatim}{HOLdesXXpropTheoremsCARDXXeqF}
+\HOLTokenTurnstile{} \HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{X} \HOLBoundVar{Y}. \HOLConst{CARD} \HOLTokenLeftbrace{}\HOLBoundVar{x} \HOLTokenBar{} \HOLConst{S} \HOLBoundVar{x} \HOLSymConst{\HOLTokenEor{}} \HOLConst{S} (\HOLBoundVar{x} \HOLSymConst{\HOLTokenEor{}} \HOLConst{E} \HOLBoundVar{X}) \HOLSymConst{=} \HOLBoundVar{Y}\HOLTokenRightbrace{} \HOLSymConst{=} \HOLConst{CARD} (\HOLConst{XpairF} \HOLBoundVar{X} \HOLBoundVar{Y})
+\end{SaveVerbatim}
+\newcommand{\HOLdesXXpropTheoremsCARDXXeqF}{\UseVerbatim{HOLdesXXpropTheoremsCARDXXeqF}}
+\begin{SaveVerbatim}{HOLdesXXpropTheoremsCARDXXkxeq}
+\HOLTokenTurnstile{} \HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{X} \HOLBoundVar{Y} \HOLBoundVar{x}.
+     \HOLConst{CARD} \HOLTokenLeftbrace{}\HOLBoundVar{k} \HOLTokenBar{} \HOLConst{S} (\HOLBoundVar{k} \HOLSymConst{\HOLTokenEor{}} \HOLBoundVar{x}) \HOLSymConst{\HOLTokenEor{}} \HOLConst{S} (\HOLBoundVar{k} \HOLSymConst{\HOLTokenEor{}} \HOLBoundVar{x} \HOLSymConst{\HOLTokenEor{}} \HOLConst{E} \HOLBoundVar{X}) \HOLSymConst{=} \HOLBoundVar{Y}\HOLTokenRightbrace{} \HOLSymConst{=}
+     \HOLConst{CARD} \HOLTokenLeftbrace{}\HOLBoundVar{x} \HOLTokenBar{} \HOLConst{S} \HOLBoundVar{x} \HOLSymConst{\HOLTokenEor{}} \HOLConst{S} (\HOLBoundVar{x} \HOLSymConst{\HOLTokenEor{}} \HOLConst{E} \HOLBoundVar{X}) \HOLSymConst{=} \HOLBoundVar{Y}\HOLTokenRightbrace{}
+\end{SaveVerbatim}
+\newcommand{\HOLdesXXpropTheoremsCARDXXkxeq}{\UseVerbatim{HOLdesXXpropTheoremsCARDXXkxeq}}
+\begin{SaveVerbatim}{HOLdesXXpropTheoremscharapairDESXXcompute}
+\HOLTokenTurnstile{} (\HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{Yl} \HOLBoundVar{X}. \HOLConst{charapairDES} \HOLBoundVar{X} \HOLBoundVar{Yl} \HOLNumLit{0} \HOLSymConst{=} ((\HOLNumLit{31} \HOLSymConst{\HOLTokenExtract{}} \HOLNumLit{0}) \HOLBoundVar{X}\HOLSymConst{,}\HOLConst{EL} \HOLNumLit{0} \HOLBoundVar{Yl})) \HOLSymConst{\HOLTokenConj{}}
+   (\HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{n} \HOLBoundVar{Yl} \HOLBoundVar{X}.
+      \HOLConst{charapairDES} \HOLBoundVar{X} \HOLBoundVar{Yl} <..num comp'n..> \HOLSymConst{=}
+      \HOLKeyword{if} <..num comp'n..> \HOLSymConst{=} \HOLNumLit{1} \HOLKeyword{then}
+        ((\HOLNumLit{63} \HOLSymConst{\HOLTokenExtract{}} \HOLNumLit{32}) \HOLBoundVar{X} \HOLSymConst{\HOLTokenEor{}} \HOLConst{EL} \HOLNumLit{0} \HOLBoundVar{Yl}\HOLSymConst{,}\HOLConst{EL} \HOLNumLit{1} \HOLBoundVar{Yl})
+      \HOLKeyword{else}
+        (\HOLKeyword{let}
+           (\HOLBoundVar{Xin}\HOLSymConst{,}\HOLBoundVar{Xout}) =
+             \HOLConst{charapairDES} \HOLBoundVar{X} \HOLBoundVar{Yl} (<..num comp'n..> \HOLSymConst{\ensuremath{-}} \HOLNumLit{1} \HOLSymConst{\ensuremath{-}} \HOLNumLit{1})
+         \HOLKeyword{in}
+           (\HOLBoundVar{Xin} \HOLSymConst{\HOLTokenEor{}} \HOLConst{EL} (<..num comp'n..> \HOLSymConst{\ensuremath{-}} \HOLNumLit{1}) \HOLBoundVar{Yl}\HOLSymConst{,}
+            \HOLConst{EL} <..num comp'n..> \HOLBoundVar{Yl}))) \HOLSymConst{\HOLTokenConj{}}
+   \HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{n} \HOLBoundVar{Yl} \HOLBoundVar{X}.
+     \HOLConst{charapairDES} \HOLBoundVar{X} \HOLBoundVar{Yl} <..num comp'n..> \HOLSymConst{=}
+     \HOLKeyword{if} <..num comp'n..> \HOLSymConst{=} \HOLNumLit{1} \HOLKeyword{then}
+       ((\HOLNumLit{63} \HOLSymConst{\HOLTokenExtract{}} \HOLNumLit{32}) \HOLBoundVar{X} \HOLSymConst{\HOLTokenEor{}} \HOLConst{EL} \HOLNumLit{0} \HOLBoundVar{Yl}\HOLSymConst{,}\HOLConst{EL} \HOLNumLit{1} \HOLBoundVar{Yl})
+     \HOLKeyword{else}
+       (\HOLKeyword{let}
+          (\HOLBoundVar{Xin}\HOLSymConst{,}\HOLBoundVar{Xout}) = \HOLConst{charapairDES} \HOLBoundVar{X} \HOLBoundVar{Yl} (<..num comp'n..> \HOLSymConst{\ensuremath{-}} \HOLNumLit{1})
+        \HOLKeyword{in}
+          (\HOLBoundVar{Xin} \HOLSymConst{\HOLTokenEor{}} \HOLConst{EL} <..num comp'n..> \HOLBoundVar{Yl}\HOLSymConst{,}\HOLConst{EL} <..num comp'n..> \HOLBoundVar{Yl}))
+\end{SaveVerbatim}
+\newcommand{\HOLdesXXpropTheoremscharapairDESXXcompute}{\UseVerbatim{HOLdesXXpropTheoremscharapairDESXXcompute}}
+\begin{SaveVerbatim}{HOLdesXXpropTheoremscharapairDESXXdef}
+\HOLTokenTurnstile{} (\HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{Yl} \HOLBoundVar{X}. \HOLConst{charapairDES} \HOLBoundVar{X} \HOLBoundVar{Yl} \HOLNumLit{0} \HOLSymConst{=} ((\HOLNumLit{31} \HOLSymConst{\HOLTokenExtract{}} \HOLNumLit{0}) \HOLBoundVar{X}\HOLSymConst{,}\HOLConst{EL} \HOLNumLit{0} \HOLBoundVar{Yl})) \HOLSymConst{\HOLTokenConj{}}
+   \HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{n} \HOLBoundVar{Yl} \HOLBoundVar{X}.
+     \HOLConst{charapairDES} \HOLBoundVar{X} \HOLBoundVar{Yl} (\HOLConst{SUC} \HOLBoundVar{n}) \HOLSymConst{=}
+     \HOLKeyword{if} \HOLConst{SUC} \HOLBoundVar{n} \HOLSymConst{=} \HOLNumLit{1} \HOLKeyword{then} ((\HOLNumLit{63} \HOLSymConst{\HOLTokenExtract{}} \HOLNumLit{32}) \HOLBoundVar{X} \HOLSymConst{\HOLTokenEor{}} \HOLConst{EL} \HOLNumLit{0} \HOLBoundVar{Yl}\HOLSymConst{,}\HOLConst{EL} \HOLNumLit{1} \HOLBoundVar{Yl})
+     \HOLKeyword{else}
+       (\HOLKeyword{let}
+          (\HOLBoundVar{Xin}\HOLSymConst{,}\HOLBoundVar{Xout}) = \HOLConst{charapairDES} \HOLBoundVar{X} \HOLBoundVar{Yl} (\HOLBoundVar{n} \HOLSymConst{\ensuremath{-}} \HOLNumLit{1})
+        \HOLKeyword{in}
+          (\HOLBoundVar{Xin} \HOLSymConst{\HOLTokenEor{}} \HOLConst{EL} \HOLBoundVar{n} \HOLBoundVar{Yl}\HOLSymConst{,}\HOLConst{EL} (\HOLConst{SUC} \HOLBoundVar{n}) \HOLBoundVar{Yl}))
+\end{SaveVerbatim}
+\newcommand{\HOLdesXXpropTheoremscharapairDESXXdef}{\UseVerbatim{HOLdesXXpropTheoremscharapairDESXXdef}}
+\begin{SaveVerbatim}{HOLdesXXpropTheoremscharapairDESXXind}
+\HOLTokenTurnstile{} \HOLSymConst{\HOLTokenForall{}}\ensuremath{\HOLBoundVar{P}\sp{\prime{}}}.
+     (\HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{X} \HOLBoundVar{Yl}. \ensuremath{\HOLBoundVar{P}\sp{\prime{}}} \HOLBoundVar{X} \HOLBoundVar{Yl} \HOLNumLit{0}) \HOLSymConst{\HOLTokenConj{}}
+     (\HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{X} \HOLBoundVar{Yl} \HOLBoundVar{n}. (\HOLConst{SUC} \HOLBoundVar{n} \HOLSymConst{\HOLTokenNotEqual{}} \HOLNumLit{1} \HOLSymConst{\HOLTokenImp{}} \ensuremath{\HOLBoundVar{P}\sp{\prime{}}} \HOLBoundVar{X} \HOLBoundVar{Yl} (\HOLBoundVar{n} \HOLSymConst{\ensuremath{-}} \HOLNumLit{1})) \HOLSymConst{\HOLTokenImp{}} \ensuremath{\HOLBoundVar{P}\sp{\prime{}}} \HOLBoundVar{X} \HOLBoundVar{Yl} (\HOLConst{SUC} \HOLBoundVar{n})) \HOLSymConst{\HOLTokenImp{}}
+     \HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{v} \ensuremath{\HOLBoundVar{v}\sb{\mathrm{1}}} \ensuremath{\HOLBoundVar{v}\sb{\mathrm{2}}}. \ensuremath{\HOLBoundVar{P}\sp{\prime{}}} \HOLBoundVar{v} \ensuremath{\HOLBoundVar{v}\sb{\mathrm{1}}} \ensuremath{\HOLBoundVar{v}\sb{\mathrm{2}}}
+\end{SaveVerbatim}
+\newcommand{\HOLdesXXpropTheoremscharapairDESXXind}{\UseVerbatim{HOLdesXXpropTheoremscharapairDESXXind}}
+\begin{SaveVerbatim}{HOLdesXXpropTheoremscomplXXE}
+\HOLTokenTurnstile{} \HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{m}. \HOLConst{E} (\HOLSymConst{\HOLTokenNeg{}}\HOLBoundVar{m}) \HOLSymConst{=} \HOLSymConst{\HOLTokenNeg{}}\HOLConst{E} \HOLBoundVar{m}
+\end{SaveVerbatim}
+\newcommand{\HOLdesXXpropTheoremscomplXXE}{\UseVerbatim{HOLdesXXpropTheoremscomplXXE}}
+\begin{SaveVerbatim}{HOLdesXXpropTheoremscomplXXextractXXOne}
+\HOLTokenTurnstile{} \HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{m}. (\HOLNumLit{63} \HOLSymConst{\HOLTokenExtract{}} \HOLNumLit{32}) (\HOLSymConst{\HOLTokenNeg{}}\HOLBoundVar{m}) \HOLSymConst{=} \HOLSymConst{\HOLTokenNeg{}}(\HOLNumLit{63} \HOLSymConst{\HOLTokenExtract{}} \HOLNumLit{32}) \HOLBoundVar{m}
+\end{SaveVerbatim}
+\newcommand{\HOLdesXXpropTheoremscomplXXextractXXOne}{\UseVerbatim{HOLdesXXpropTheoremscomplXXextractXXOne}}
+\begin{SaveVerbatim}{HOLdesXXpropTheoremscomplXXextractXXTwo}
+\HOLTokenTurnstile{} \HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{m}. (\HOLNumLit{31} \HOLSymConst{\HOLTokenExtract{}} \HOLNumLit{0}) (\HOLSymConst{\HOLTokenNeg{}}\HOLBoundVar{m}) \HOLSymConst{=} \HOLSymConst{\HOLTokenNeg{}}(\HOLNumLit{31} \HOLSymConst{\HOLTokenExtract{}} \HOLNumLit{0}) \HOLBoundVar{m}
+\end{SaveVerbatim}
+\newcommand{\HOLdesXXpropTheoremscomplXXextractXXTwo}{\UseVerbatim{HOLdesXXpropTheoremscomplXXextractXXTwo}}
+\begin{SaveVerbatim}{HOLdesXXpropTheoremscomplXXIIP}
+\HOLTokenTurnstile{} \HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{m}. \HOLConst{IIP} (\HOLSymConst{\HOLTokenNeg{}}\HOLBoundVar{m}) \HOLSymConst{=} \HOLSymConst{\HOLTokenNeg{}}\HOLConst{IIP} \HOLBoundVar{m}
+\end{SaveVerbatim}
+\newcommand{\HOLdesXXpropTheoremscomplXXIIP}{\UseVerbatim{HOLdesXXpropTheoremscomplXXIIP}}
+\begin{SaveVerbatim}{HOLdesXXpropTheoremscomplXXIP}
+\HOLTokenTurnstile{} \HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{m}. \HOLConst{IP} (\HOLSymConst{\HOLTokenNeg{}}\HOLBoundVar{m}) \HOLSymConst{=} \HOLSymConst{\HOLTokenNeg{}}\HOLConst{IP} \HOLBoundVar{m}
+\end{SaveVerbatim}
+\newcommand{\HOLdesXXpropTheoremscomplXXIP}{\UseVerbatim{HOLdesXXpropTheoremscomplXXIP}}
+\begin{SaveVerbatim}{HOLdesXXpropTheoremscomplXXjoin}
+\HOLTokenTurnstile{} \HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{m} \HOLBoundVar{n}. \HOLConst{Join} (\HOLSymConst{\HOLTokenNeg{}}\HOLBoundVar{m}\HOLSymConst{,}\HOLSymConst{\HOLTokenNeg{}}\HOLBoundVar{n}) \HOLSymConst{=} \HOLSymConst{\HOLTokenNeg{}}\HOLConst{Join} (\HOLBoundVar{m}\HOLSymConst{,}\HOLBoundVar{n})
+\end{SaveVerbatim}
+\newcommand{\HOLdesXXpropTheoremscomplXXjoin}{\UseVerbatim{HOLdesXXpropTheoremscomplXXjoin}}
+\begin{SaveVerbatim}{HOLdesXXpropTheoremscomplXXRKXXL}
+\HOLTokenTurnstile{} \HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{n} \HOLBoundVar{k}. \HOLNumLit{17} \HOLSymConst{\HOLTokenGt{}} \HOLBoundVar{n} \HOLSymConst{\HOLTokenImp{}} \HOLConst{RK_L} \HOLBoundVar{n} (\HOLSymConst{\HOLTokenNeg{}}\HOLBoundVar{k}) \HOLSymConst{=} \HOLSymConst{\HOLTokenNeg{}}\HOLConst{RK_L} \HOLBoundVar{n} \HOLBoundVar{k}
+\end{SaveVerbatim}
+\newcommand{\HOLdesXXpropTheoremscomplXXRKXXL}{\UseVerbatim{HOLdesXXpropTheoremscomplXXRKXXL}}
+\begin{SaveVerbatim}{HOLdesXXpropTheoremscomplXXRKXXR}
+\HOLTokenTurnstile{} \HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{n} \HOLBoundVar{k}. \HOLNumLit{17} \HOLSymConst{\HOLTokenGt{}} \HOLBoundVar{n} \HOLSymConst{\HOLTokenImp{}} \HOLConst{RK_R} \HOLBoundVar{n} (\HOLSymConst{\HOLTokenNeg{}}\HOLBoundVar{k}) \HOLSymConst{=} \HOLSymConst{\HOLTokenNeg{}}\HOLConst{RK_R} \HOLBoundVar{n} \HOLBoundVar{k}
+\end{SaveVerbatim}
+\newcommand{\HOLdesXXpropTheoremscomplXXRKXXR}{\UseVerbatim{HOLdesXXpropTheoremscomplXXRKXXR}}
+\begin{SaveVerbatim}{HOLdesXXpropTheoremscompleXXPCTwo}
+\HOLTokenTurnstile{} \HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{a} \HOLBoundVar{b}. \HOLConst{PC2} (\HOLSymConst{\HOLTokenNeg{}}\HOLBoundVar{a}\HOLSymConst{,}\HOLSymConst{\HOLTokenNeg{}}\HOLBoundVar{b}) \HOLSymConst{=} \HOLSymConst{\HOLTokenNeg{}}\HOLConst{PC2} (\HOLBoundVar{a}\HOLSymConst{,}\HOLBoundVar{b})
+\end{SaveVerbatim}
+\newcommand{\HOLdesXXpropTheoremscompleXXPCTwo}{\UseVerbatim{HOLdesXXpropTheoremscompleXXPCTwo}}
+\begin{SaveVerbatim}{HOLdesXXpropTheoremscompleXXproperty}
+\HOLTokenTurnstile{} \HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{k} \HOLBoundVar{m} \HOLBoundVar{n}.
+     \HOLNumLit{0} \HOLSymConst{\HOLTokenLt{}} \HOLBoundVar{n} \HOLSymConst{\HOLTokenConj{}} \HOLBoundVar{n} \HOLSymConst{\HOLTokenLt{}} \HOLNumLit{17} \HOLSymConst{\HOLTokenConj{}} \HOLConst{DES} \HOLBoundVar{n} \HOLBoundVar{k} \HOLSymConst{=} (\HOLFreeVar{encrypt}\HOLSymConst{,}\HOLFreeVar{decrypt}) \HOLSymConst{\HOLTokenConj{}}
+     \HOLConst{DES} \HOLBoundVar{n} (\HOLSymConst{\HOLTokenNeg{}}\HOLBoundVar{k}) \HOLSymConst{=} (\ensuremath{\HOLFreeVar{encrypt}\sp{\prime{}}}\HOLSymConst{,}\ensuremath{\HOLFreeVar{decrypt}\sp{\prime{}}}) \HOLSymConst{\HOLTokenImp{}}
+     \HOLSymConst{\HOLTokenNeg{}}\HOLFreeVar{encrypt} \HOLBoundVar{m} \HOLSymConst{=} \ensuremath{\HOLFreeVar{encrypt}\sp{\prime{}}} (\HOLSymConst{\HOLTokenNeg{}}\HOLBoundVar{m})
+\end{SaveVerbatim}
+\newcommand{\HOLdesXXpropTheoremscompleXXproperty}{\UseVerbatim{HOLdesXXpropTheoremscompleXXproperty}}
+\begin{SaveVerbatim}{HOLdesXXpropTheoremsconvertXXRK}
+\HOLTokenTurnstile{} \HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{k} \HOLBoundVar{n}. \HOLConst{RoundKey} \HOLBoundVar{n} \HOLBoundVar{k} \HOLSymConst{=} \HOLConst{REVERSE} (\HOLConst{GENLIST} (\HOLTokenLambda{}\HOLBoundVar{i}. \HOLConst{RK} \HOLBoundVar{i} \HOLBoundVar{k}) (\HOLConst{SUC} \HOLBoundVar{n}))
+\end{SaveVerbatim}
+\newcommand{\HOLdesXXpropTheoremsconvertXXRK}{\UseVerbatim{HOLdesXXpropTheoremsconvertXXRK}}
+\begin{SaveVerbatim}{HOLdesXXpropTheoremsDESXXfpXXnonXXweakXXkeys}
+\HOLTokenTurnstile{} \HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{i}. \HOLBoundVar{i} \HOLSymConst{\HOLTokenLt{}} \HOLConst{LENGTH} \HOLConst{non_weak_keys} \HOLSymConst{\HOLTokenImp{}}
+       (\HOLKeyword{let}
+          (\HOLBoundVar{key}\HOLSymConst{,}\HOLBoundVar{plaintext}) = \HOLConst{EL} \HOLBoundVar{i} \HOLConst{non_weak_keys};
+          (\HOLBoundVar{encrypt}\HOLSymConst{,}\HOLBoundVar{decrypt}) = \HOLConst{FullDES} \HOLBoundVar{key}
+        \HOLKeyword{in}
+          \HOLBoundVar{encrypt} \HOLBoundVar{plaintext} \HOLSymConst{=} \HOLBoundVar{plaintext})
+\end{SaveVerbatim}
+\newcommand{\HOLdesXXpropTheoremsDESXXfpXXnonXXweakXXkeys}{\UseVerbatim{HOLdesXXpropTheoremsDESXXfpXXnonXXweakXXkeys}}
+\begin{SaveVerbatim}{HOLdesXXpropTheoremsDESXXweakXXfpXXcard}
+\HOLTokenTurnstile{} \HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{x}. \HOLConst{MEM} \HOLBoundVar{x} \HOLConst{Wtextlist} \HOLSymConst{\HOLTokenImp{}} \HOLConst{CARD} \HOLBoundVar{x} \HOLSymConst{=} \HOLNumLit{2} \HOLSymConst{\HOLTokenExp{}} \HOLNumLit{32}
+\end{SaveVerbatim}
+\newcommand{\HOLdesXXpropTheoremsDESXXweakXXfpXXcard}{\UseVerbatim{HOLdesXXpropTheoremsDESXXweakXXfpXXcard}}
+\begin{SaveVerbatim}{HOLdesXXpropTheoremsFXXconvert}
+\HOLTokenTurnstile{} \HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{X} \HOLBoundVar{Y}.
+     \HOLConst{XpairF} \HOLBoundVar{X} \HOLBoundVar{Y} \HOLSymConst{=}
+     \HOLTokenLeftbrace{}\HOLBoundVar{x} \HOLTokenBar{} \HOLConst{S1} \HOLBoundVar{x} \HOLSymConst{\HOLTokenEor{}} \HOLConst{S1} (\HOLBoundVar{x} \HOLSymConst{\HOLTokenEor{}} (\HOLNumLit{47} \HOLSymConst{\HOLTokenExtract{}} \HOLNumLit{42}) (\HOLConst{E} \HOLBoundVar{X})) \HOLSymConst{=} (\HOLNumLit{31} \HOLSymConst{\HOLTokenExtract{}} \HOLNumLit{28}) \HOLBoundVar{Y}\HOLTokenRightbrace{} \HOLConst{\ensuremath{\times}}
+     \HOLTokenLeftbrace{}\HOLBoundVar{x} \HOLTokenBar{} \HOLConst{S2} \HOLBoundVar{x} \HOLSymConst{\HOLTokenEor{}} \HOLConst{S2} (\HOLBoundVar{x} \HOLSymConst{\HOLTokenEor{}} (\HOLNumLit{41} \HOLSymConst{\HOLTokenExtract{}} \HOLNumLit{36}) (\HOLConst{E} \HOLBoundVar{X})) \HOLSymConst{=} (\HOLNumLit{27} \HOLSymConst{\HOLTokenExtract{}} \HOLNumLit{24}) \HOLBoundVar{Y}\HOLTokenRightbrace{} \HOLConst{\ensuremath{\times}}
+     \HOLTokenLeftbrace{}\HOLBoundVar{x} \HOLTokenBar{} \HOLConst{S3} \HOLBoundVar{x} \HOLSymConst{\HOLTokenEor{}} \HOLConst{S3} (\HOLBoundVar{x} \HOLSymConst{\HOLTokenEor{}} (\HOLNumLit{35} \HOLSymConst{\HOLTokenExtract{}} \HOLNumLit{30}) (\HOLConst{E} \HOLBoundVar{X})) \HOLSymConst{=} (\HOLNumLit{23} \HOLSymConst{\HOLTokenExtract{}} \HOLNumLit{20}) \HOLBoundVar{Y}\HOLTokenRightbrace{} \HOLConst{\ensuremath{\times}}
+     \HOLTokenLeftbrace{}\HOLBoundVar{x} \HOLTokenBar{} \HOLConst{S4} \HOLBoundVar{x} \HOLSymConst{\HOLTokenEor{}} \HOLConst{S4} (\HOLBoundVar{x} \HOLSymConst{\HOLTokenEor{}} (\HOLNumLit{29} \HOLSymConst{\HOLTokenExtract{}} \HOLNumLit{24}) (\HOLConst{E} \HOLBoundVar{X})) \HOLSymConst{=} (\HOLNumLit{19} \HOLSymConst{\HOLTokenExtract{}} \HOLNumLit{16}) \HOLBoundVar{Y}\HOLTokenRightbrace{} \HOLConst{\ensuremath{\times}}
+     \HOLTokenLeftbrace{}\HOLBoundVar{x} \HOLTokenBar{} \HOLConst{S5} \HOLBoundVar{x} \HOLSymConst{\HOLTokenEor{}} \HOLConst{S5} (\HOLBoundVar{x} \HOLSymConst{\HOLTokenEor{}} (\HOLNumLit{23} \HOLSymConst{\HOLTokenExtract{}} \HOLNumLit{18}) (\HOLConst{E} \HOLBoundVar{X})) \HOLSymConst{=} (\HOLNumLit{15} \HOLSymConst{\HOLTokenExtract{}} \HOLNumLit{12}) \HOLBoundVar{Y}\HOLTokenRightbrace{} \HOLConst{\ensuremath{\times}}
+     \HOLTokenLeftbrace{}\HOLBoundVar{x} \HOLTokenBar{} \HOLConst{S6} \HOLBoundVar{x} \HOLSymConst{\HOLTokenEor{}} \HOLConst{S6} (\HOLBoundVar{x} \HOLSymConst{\HOLTokenEor{}} (\HOLNumLit{17} \HOLSymConst{\HOLTokenExtract{}} \HOLNumLit{12}) (\HOLConst{E} \HOLBoundVar{X})) \HOLSymConst{=} (\HOLNumLit{11} \HOLSymConst{\HOLTokenExtract{}} \HOLNumLit{8}) \HOLBoundVar{Y}\HOLTokenRightbrace{} \HOLConst{\ensuremath{\times}}
+     \HOLTokenLeftbrace{}\HOLBoundVar{x} \HOLTokenBar{} \HOLConst{S7} \HOLBoundVar{x} \HOLSymConst{\HOLTokenEor{}} \HOLConst{S7} (\HOLBoundVar{x} \HOLSymConst{\HOLTokenEor{}} (\HOLNumLit{11} \HOLSymConst{\HOLTokenExtract{}} \HOLNumLit{6}) (\HOLConst{E} \HOLBoundVar{X})) \HOLSymConst{=} (\HOLNumLit{7} \HOLSymConst{\HOLTokenExtract{}} \HOLNumLit{4}) \HOLBoundVar{Y}\HOLTokenRightbrace{} \HOLConst{\ensuremath{\times}}
+     \HOLTokenLeftbrace{}\HOLBoundVar{x} \HOLTokenBar{} \HOLConst{S8} \HOLBoundVar{x} \HOLSymConst{\HOLTokenEor{}} \HOLConst{S8} (\HOLBoundVar{x} \HOLSymConst{\HOLTokenEor{}} (\HOLNumLit{5} \HOLSymConst{\HOLTokenExtract{}} \HOLNumLit{0}) (\HOLConst{E} \HOLBoundVar{X})) \HOLSymConst{=} (\HOLNumLit{3} \HOLSymConst{\HOLTokenExtract{}} \HOLNumLit{0}) \HOLBoundVar{Y}\HOLTokenRightbrace{}
+\end{SaveVerbatim}
+\newcommand{\HOLdesXXpropTheoremsFXXconvert}{\UseVerbatim{HOLdesXXpropTheoremsFXXconvert}}
+\begin{SaveVerbatim}{HOLdesXXpropTheoremsprobXXspaceXXwordThreeTwop}
+\HOLTokenTurnstile{} \HOLConst{prob_space} \HOLConst{word32p}
+\end{SaveVerbatim}
+\newcommand{\HOLdesXXpropTheoremsprobXXspaceXXwordThreeTwop}{\UseVerbatim{HOLdesXXpropTheoremsprobXXspaceXXwordThreeTwop}}
+\begin{SaveVerbatim}{HOLdesXXpropTheoremsprobXXspaceXXwordFourEightp}
+\HOLTokenTurnstile{} \HOLConst{prob_space} \HOLConst{word48p}
+\end{SaveVerbatim}
+\newcommand{\HOLdesXXpropTheoremsprobXXspaceXXwordFourEightp}{\UseVerbatim{HOLdesXXpropTheoremsprobXXspaceXXwordFourEightp}}
+\begin{SaveVerbatim}{HOLdesXXpropTheoremsprobXXspaceXXwordSixp}
+\HOLTokenTurnstile{} \HOLConst{prob_space} \HOLConst{word6p}
+\end{SaveVerbatim}
+\newcommand{\HOLdesXXpropTheoremsprobXXspaceXXwordSixp}{\UseVerbatim{HOLdesXXpropTheoremsprobXXspaceXXwordSixp}}
+\begin{SaveVerbatim}{HOLdesXXpropTheoremsprobXXspaceXXwordSixxSix}
+\HOLTokenTurnstile{} \HOLConst{prob_space} \HOLConst{word6x6}
+\end{SaveVerbatim}
+\newcommand{\HOLdesXXpropTheoremsprobXXspaceXXwordSixxSix}{\UseVerbatim{HOLdesXXpropTheoremsprobXXspaceXXwordSixxSix}}
+\begin{SaveVerbatim}{HOLdesXXpropTheoremsprobXXuniformXXonXXfiniteXXset}
+\HOLTokenTurnstile{} \HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{p}. \HOLConst{FINITE} (\HOLConst{p_space} \HOLBoundVar{p}) \HOLSymConst{\HOLTokenConj{}} \HOLConst{p_space} \HOLBoundVar{p} \HOLSymConst{\HOLTokenNotEqual{}} \HOLTokenLeftbrace{}\HOLTokenRightbrace{} \HOLSymConst{\HOLTokenConj{}}
+       \HOLConst{events} \HOLBoundVar{p} \HOLSymConst{=} \HOLConst{POW} (\HOLConst{p_space} \HOLBoundVar{p}) \HOLSymConst{\HOLTokenConj{}}
+       (\HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{s}. \HOLBoundVar{s} \HOLConst{\HOLTokenIn{}} \HOLConst{events} \HOLBoundVar{p} \HOLSymConst{\HOLTokenImp{}}
+            \HOLConst{prob} \HOLBoundVar{p} \HOLBoundVar{s} \HOLSymConst{=} \HOLSymConst{\&}\HOLConst{CARD} \HOLBoundVar{s} \HOLSymConst{/} \HOLSymConst{\&}\HOLConst{CARD} (\HOLConst{p_space} \HOLBoundVar{p})) \HOLSymConst{\HOLTokenImp{}}
+       \HOLConst{prob_space} \HOLBoundVar{p}
+\end{SaveVerbatim}
+\newcommand{\HOLdesXXpropTheoremsprobXXuniformXXonXXfiniteXXset}{\UseVerbatim{HOLdesXXpropTheoremsprobXXuniformXXonXXfiniteXXset}}
+\begin{SaveVerbatim}{HOLdesXXpropTheoremsroundkXXLXXcompute}
+\HOLTokenTurnstile{} (\HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{k}. \HOLConst{RK_L} \HOLNumLit{0} \HOLBoundVar{k} \HOLSymConst{=} \HOLConst{FST} (\HOLConst{PC1} \HOLBoundVar{k})) \HOLSymConst{\HOLTokenConj{}}
+   (\HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{n} \HOLBoundVar{k}.
+      \HOLConst{RK_L} <..num comp'n..> \HOLBoundVar{k} \HOLSymConst{=}
+      (\HOLKeyword{let}
+         \HOLBoundVar{c} = \HOLConst{RK_L} (<..num comp'n..> \HOLSymConst{\ensuremath{-}} \HOLNumLit{1}) \HOLBoundVar{k};
+         \HOLBoundVar{r} = \HOLConst{EL} (<..num comp'n..> \HOLSymConst{\ensuremath{-}} \HOLNumLit{1}) \HOLConst{R_data}
+       \HOLKeyword{in}
+         \HOLBoundVar{c} \HOLSymConst{\HOLTokenRol{}} \HOLBoundVar{r})) \HOLSymConst{\HOLTokenConj{}}
+   \HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{n} \HOLBoundVar{k}.
+     \HOLConst{RK_L} <..num comp'n..> \HOLBoundVar{k} \HOLSymConst{=}
+     (\HOLKeyword{let}
+        \HOLBoundVar{c} = \HOLConst{RK_L} <..num comp'n..> \HOLBoundVar{k};
+        \HOLBoundVar{r} = \HOLConst{EL} <..num comp'n..> \HOLConst{R_data}
+      \HOLKeyword{in}
+        \HOLBoundVar{c} \HOLSymConst{\HOLTokenRol{}} \HOLBoundVar{r})
+\end{SaveVerbatim}
+\newcommand{\HOLdesXXpropTheoremsroundkXXLXXcompute}{\UseVerbatim{HOLdesXXpropTheoremsroundkXXLXXcompute}}
+\begin{SaveVerbatim}{HOLdesXXpropTheoremsroundkXXRXXcompute}
+\HOLTokenTurnstile{} (\HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{k}. \HOLConst{RK_R} \HOLNumLit{0} \HOLBoundVar{k} \HOLSymConst{=} \HOLConst{SND} (\HOLConst{PC1} \HOLBoundVar{k})) \HOLSymConst{\HOLTokenConj{}}
+   (\HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{n} \HOLBoundVar{k}.
+      \HOLConst{RK_R} <..num comp'n..> \HOLBoundVar{k} \HOLSymConst{=}
+      (\HOLKeyword{let}
+         \HOLBoundVar{c} = \HOLConst{RK_R} (<..num comp'n..> \HOLSymConst{\ensuremath{-}} \HOLNumLit{1}) \HOLBoundVar{k};
+         \HOLBoundVar{r} = \HOLConst{EL} (<..num comp'n..> \HOLSymConst{\ensuremath{-}} \HOLNumLit{1}) \HOLConst{R_data}
+       \HOLKeyword{in}
+         \HOLBoundVar{c} \HOLSymConst{\HOLTokenRol{}} \HOLBoundVar{r})) \HOLSymConst{\HOLTokenConj{}}
+   \HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{n} \HOLBoundVar{k}.
+     \HOLConst{RK_R} <..num comp'n..> \HOLBoundVar{k} \HOLSymConst{=}
+     (\HOLKeyword{let}
+        \HOLBoundVar{c} = \HOLConst{RK_R} <..num comp'n..> \HOLBoundVar{k};
+        \HOLBoundVar{r} = \HOLConst{EL} <..num comp'n..> \HOLConst{R_data}
+      \HOLKeyword{in}
+        \HOLBoundVar{c} \HOLSymConst{\HOLTokenRol{}} \HOLBoundVar{r})
+\end{SaveVerbatim}
+\newcommand{\HOLdesXXpropTheoremsroundkXXRXXcompute}{\UseVerbatim{HOLdesXXpropTheoremsroundkXXRXXcompute}}
+\begin{SaveVerbatim}{HOLdesXXpropTheoremssemiKXXproperOne}
+\HOLTokenTurnstile{} \HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{plaintext} \HOLBoundVar{pair}.
+     \HOLConst{MEM} \HOLBoundVar{pair} \HOLConst{Semiwkey} \HOLSymConst{\HOLTokenConj{}} \HOLBoundVar{pair} \HOLSymConst{=} (\ensuremath{\HOLFreeVar{s}\sb{\mathrm{1}}}\HOLSymConst{,}\ensuremath{\HOLFreeVar{s}\sb{\mathrm{2}}}) \HOLSymConst{\HOLTokenConj{}}
+     \HOLConst{FullDES} \ensuremath{\HOLFreeVar{s}\sb{\mathrm{1}}} \HOLSymConst{=} (\HOLFreeVar{encrypt}\HOLSymConst{,}\HOLFreeVar{decrypt}) \HOLSymConst{\HOLTokenConj{}}
+     \HOLConst{FullDES} \ensuremath{\HOLFreeVar{s}\sb{\mathrm{2}}} \HOLSymConst{=} (\ensuremath{\HOLFreeVar{encrypt}\sp{\prime{}}}\HOLSymConst{,}\ensuremath{\HOLFreeVar{decrypt}\sp{\prime{}}}) \HOLSymConst{\HOLTokenImp{}}
+     \HOLFreeVar{encrypt} (\ensuremath{\HOLFreeVar{encrypt}\sp{\prime{}}} \HOLBoundVar{plaintext}) \HOLSymConst{=} \HOLBoundVar{plaintext}
+\end{SaveVerbatim}
+\newcommand{\HOLdesXXpropTheoremssemiKXXproperOne}{\UseVerbatim{HOLdesXXpropTheoremssemiKXXproperOne}}
+\begin{SaveVerbatim}{HOLdesXXpropTheoremssemiKXXproperTwo}
+\HOLTokenTurnstile{} \HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{plaintext} \HOLBoundVar{pair}.
+     \HOLConst{MEM} \HOLBoundVar{pair} \HOLConst{Semiwkey} \HOLSymConst{\HOLTokenConj{}} \HOLBoundVar{pair} \HOLSymConst{=} (\ensuremath{\HOLFreeVar{s}\sb{\mathrm{1}}}\HOLSymConst{,}\ensuremath{\HOLFreeVar{s}\sb{\mathrm{2}}}) \HOLSymConst{\HOLTokenConj{}}
+     \HOLConst{FullDES} \ensuremath{\HOLFreeVar{s}\sb{\mathrm{1}}} \HOLSymConst{=} (\HOLFreeVar{encrypt}\HOLSymConst{,}\HOLFreeVar{decrypt}) \HOLSymConst{\HOLTokenConj{}}
+     \HOLConst{FullDES} \ensuremath{\HOLFreeVar{s}\sb{\mathrm{2}}} \HOLSymConst{=} (\ensuremath{\HOLFreeVar{encrypt}\sp{\prime{}}}\HOLSymConst{,}\ensuremath{\HOLFreeVar{decrypt}\sp{\prime{}}}) \HOLSymConst{\HOLTokenImp{}}
+     \ensuremath{\HOLFreeVar{encrypt}\sp{\prime{}}} (\HOLFreeVar{encrypt} \HOLBoundVar{plaintext}) \HOLSymConst{=} \HOLBoundVar{plaintext}
+\end{SaveVerbatim}
+\newcommand{\HOLdesXXpropTheoremssemiKXXproperTwo}{\UseVerbatim{HOLdesXXpropTheoremssemiKXXproperTwo}}
+\begin{SaveVerbatim}{HOLdesXXpropTheoremstextXXnum}
+\HOLTokenTurnstile{} \HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{x}. \HOLConst{MEM} \HOLBoundVar{x} \HOLConst{Wtextlist} \HOLSymConst{\HOLTokenImp{}} \HOLConst{CARD} \HOLBoundVar{x} \HOLSymConst{=} \HOLConst{CARD} \ensuremath{{\cal{U}}}(:\HOLTyOp{word32})
+\end{SaveVerbatim}
+\newcommand{\HOLdesXXpropTheoremstextXXnum}{\UseVerbatim{HOLdesXXpropTheoremstextXXnum}}
+\begin{SaveVerbatim}{HOLdesXXpropTheoremsweakKOneXXproperTwo}
+\HOLTokenTurnstile{} \HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{x}. \HOLBoundVar{x} \HOLConst{\HOLTokenIn{}} \HOLConst{Wtext1} \HOLSymConst{\HOLTokenConj{}} \HOLConst{FullDES} \HOLConst{Wkey1} \HOLSymConst{=} (\HOLFreeVar{encrypt}\HOLSymConst{,}\HOLFreeVar{decrypt}) \HOLSymConst{\HOLTokenImp{}}
+       \HOLFreeVar{encrypt} \HOLBoundVar{x} \HOLSymConst{=} \HOLBoundVar{x}
+\end{SaveVerbatim}
+\newcommand{\HOLdesXXpropTheoremsweakKOneXXproperTwo}{\UseVerbatim{HOLdesXXpropTheoremsweakKOneXXproperTwo}}
+\begin{SaveVerbatim}{HOLdesXXpropTheoremsweakKTwoXXproperTwo}
+\HOLTokenTurnstile{} \HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{x}. \HOLBoundVar{x} \HOLConst{\HOLTokenIn{}} \HOLConst{Wtext2} \HOLSymConst{\HOLTokenConj{}} \HOLConst{FullDES} \HOLConst{Wkey2} \HOLSymConst{=} (\HOLFreeVar{encrypt}\HOLSymConst{,}\HOLFreeVar{decrypt}) \HOLSymConst{\HOLTokenImp{}}
+       \HOLFreeVar{encrypt} \HOLBoundVar{x} \HOLSymConst{=} \HOLBoundVar{x}
+\end{SaveVerbatim}
+\newcommand{\HOLdesXXpropTheoremsweakKTwoXXproperTwo}{\UseVerbatim{HOLdesXXpropTheoremsweakKTwoXXproperTwo}}
+\begin{SaveVerbatim}{HOLdesXXpropTheoremsweakKThreeXXproperTwo}
+\HOLTokenTurnstile{} \HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{x}. \HOLBoundVar{x} \HOLConst{\HOLTokenIn{}} \HOLConst{Wtext3} \HOLSymConst{\HOLTokenConj{}} \HOLConst{FullDES} \HOLConst{Wkey3} \HOLSymConst{=} (\HOLFreeVar{encrypt}\HOLSymConst{,}\HOLFreeVar{decrypt}) \HOLSymConst{\HOLTokenImp{}}
+       \HOLFreeVar{encrypt} \HOLBoundVar{x} \HOLSymConst{=} \HOLBoundVar{x}
+\end{SaveVerbatim}
+\newcommand{\HOLdesXXpropTheoremsweakKThreeXXproperTwo}{\UseVerbatim{HOLdesXXpropTheoremsweakKThreeXXproperTwo}}
+\begin{SaveVerbatim}{HOLdesXXpropTheoremsweakKFourXXproperTwo}
+\HOLTokenTurnstile{} \HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{x}. \HOLBoundVar{x} \HOLConst{\HOLTokenIn{}} \HOLConst{Wtext4} \HOLSymConst{\HOLTokenConj{}} \HOLConst{FullDES} \HOLConst{Wkey4} \HOLSymConst{=} (\HOLFreeVar{encrypt}\HOLSymConst{,}\HOLFreeVar{decrypt}) \HOLSymConst{\HOLTokenImp{}}
+       \HOLFreeVar{encrypt} \HOLBoundVar{x} \HOLSymConst{=} \HOLBoundVar{x}
+\end{SaveVerbatim}
+\newcommand{\HOLdesXXpropTheoremsweakKFourXXproperTwo}{\UseVerbatim{HOLdesXXpropTheoremsweakKFourXXproperTwo}}
+\begin{SaveVerbatim}{HOLdesXXpropTheoremsweakKXXproper}
+\HOLTokenTurnstile{} \HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{k} \HOLBoundVar{plaintext}.
+     \HOLConst{MEM} \HOLBoundVar{k} \HOLConst{Wkey} \HOLSymConst{\HOLTokenConj{}} \HOLConst{FullDES} \HOLBoundVar{k} \HOLSymConst{=} (\HOLFreeVar{encrypt}\HOLSymConst{,}\HOLFreeVar{decrypt}) \HOLSymConst{\HOLTokenImp{}}
+     \HOLFreeVar{encrypt} (\HOLFreeVar{encrypt} \HOLBoundVar{plaintext}) \HOLSymConst{=} \HOLBoundVar{plaintext}
+\end{SaveVerbatim}
+\newcommand{\HOLdesXXpropTheoremsweakKXXproper}{\UseVerbatim{HOLdesXXpropTheoremsweakKXXproper}}
+\begin{SaveVerbatim}{HOLdesXXpropTheoremsweakKXXsup}
+\HOLTokenTurnstile{} \HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{n} \HOLBoundVar{k}.
+     \HOLConst{MEM} \HOLBoundVar{k} \HOLConst{Wkey} \HOLSymConst{\HOLTokenConj{}} \HOLNumLit{0} \HOLSymConst{\HOLTokenLeq{}} \HOLBoundVar{n} \HOLSymConst{\HOLTokenConj{}} \HOLBoundVar{n} \HOLSymConst{\HOLTokenLeq{}} \HOLNumLit{8} \HOLSymConst{\HOLTokenConj{}}
+     \HOLConst{Split} (\HOLConst{IP} (\HOLConst{desCore} \HOLNumLit{8} (\HOLConst{KS} \HOLBoundVar{k} \HOLNumLit{8}) \HOLFreeVar{x})) \HOLSymConst{=} (\HOLFreeVar{w}\HOLSymConst{,}\HOLFreeVar{w}) \HOLSymConst{\HOLTokenImp{}}
+     \HOLConst{Round} (\HOLNumLit{8} \HOLSymConst{\ensuremath{-}} \HOLBoundVar{n}) (\HOLConst{KS} \HOLBoundVar{k} \HOLNumLit{16}) (\HOLConst{Split} (\HOLConst{IP} \HOLFreeVar{x})) \HOLSymConst{=}
+     \HOLConst{Swap} (\HOLConst{Round} (\HOLNumLit{8} \HOLSymConst{\ensuremath{+}} \HOLBoundVar{n}) (\HOLConst{KS} \HOLBoundVar{k} \HOLNumLit{16}) (\HOLConst{Split} (\HOLConst{IP} \HOLFreeVar{x})))
+\end{SaveVerbatim}
+\newcommand{\HOLdesXXpropTheoremsweakKXXsup}{\UseVerbatim{HOLdesXXpropTheoremsweakKXXsup}}
+\begin{SaveVerbatim}{HOLdesXXpropTheoremswkeyOneXXequal}
+\HOLTokenTurnstile{} \HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{x} \HOLBoundVar{n} \HOLBoundVar{k}.
+     \HOLConst{MEM} \HOLBoundVar{k} \HOLConst{Wkey} \HOLSymConst{\HOLTokenConj{}} \HOLBoundVar{n} \HOLSymConst{\HOLTokenLeq{}} \HOLNumLit{8} \HOLSymConst{\HOLTokenImp{}}
+     \HOLConst{Round} \HOLBoundVar{n} (\HOLConst{KS} \HOLBoundVar{k} \HOLNumLit{8}) (\HOLConst{Split} \HOLBoundVar{x}) \HOLSymConst{=} \HOLConst{Round} \HOLBoundVar{n} (\HOLConst{KS} \HOLBoundVar{k} \HOLNumLit{16}) (\HOLConst{Split} \HOLBoundVar{x})
+\end{SaveVerbatim}
+\newcommand{\HOLdesXXpropTheoremswkeyOneXXequal}{\UseVerbatim{HOLdesXXpropTheoremswkeyOneXXequal}}
+\begin{SaveVerbatim}{HOLdesXXpropTheoremswordSixpXXconvert}
+\HOLTokenTurnstile{} \HOLTokenLeftbrace{}\HOLBoundVar{x} \HOLTokenBar{} \HOLConst{S1} \HOLBoundVar{x} \HOLSymConst{\HOLTokenEor{}} \HOLConst{S1} (\HOLBoundVar{x} \HOLSymConst{\HOLTokenEor{}} 52w) \HOLSymConst{=} 4w\HOLTokenRightbrace{} \HOLSymConst{=} \HOLTokenLeftbrace{}19w; 39w\HOLTokenRightbrace{}
+\end{SaveVerbatim}
+\newcommand{\HOLdesXXpropTheoremswordSixpXXconvert}{\UseVerbatim{HOLdesXXpropTheoremswordSixpXXconvert}}
+\begin{SaveVerbatim}{HOLdesXXpropTheoremsWtextOneXXdef}
+\HOLTokenTurnstile{} \HOLConst{Wtext1} \HOLSymConst{=}
+   \HOLTokenLeftbrace{}\HOLBoundVar{x} \HOLTokenBar{} \HOLSymConst{\HOLTokenExists{}}\HOLBoundVar{w}. \HOLConst{Split} (\HOLConst{IP} (\HOLConst{desCore} \HOLNumLit{8} (\HOLConst{KS} \HOLConst{Wkey1} \HOLNumLit{8}) \HOLBoundVar{x})) \HOLSymConst{=} (\HOLBoundVar{w}\HOLSymConst{,}\HOLBoundVar{w})\HOLTokenRightbrace{}
+\end{SaveVerbatim}
+\newcommand{\HOLdesXXpropTheoremsWtextOneXXdef}{\UseVerbatim{HOLdesXXpropTheoremsWtextOneXXdef}}
+\begin{SaveVerbatim}{HOLdesXXpropTheoremsWtextTwoXXdef}
+\HOLTokenTurnstile{} \HOLConst{Wtext2} \HOLSymConst{=}
+   \HOLTokenLeftbrace{}\HOLBoundVar{x} \HOLTokenBar{} \HOLSymConst{\HOLTokenExists{}}\HOLBoundVar{w}. \HOLConst{Split} (\HOLConst{IP} (\HOLConst{desCore} \HOLNumLit{8} (\HOLConst{KS} \HOLConst{Wkey2} \HOLNumLit{8}) \HOLBoundVar{x})) \HOLSymConst{=} (\HOLBoundVar{w}\HOLSymConst{,}\HOLBoundVar{w})\HOLTokenRightbrace{}
+\end{SaveVerbatim}
+\newcommand{\HOLdesXXpropTheoremsWtextTwoXXdef}{\UseVerbatim{HOLdesXXpropTheoremsWtextTwoXXdef}}
+\begin{SaveVerbatim}{HOLdesXXpropTheoremsWtextThreeXXdef}
+\HOLTokenTurnstile{} \HOLConst{Wtext3} \HOLSymConst{=}
+   \HOLTokenLeftbrace{}\HOLBoundVar{x} \HOLTokenBar{} \HOLSymConst{\HOLTokenExists{}}\HOLBoundVar{w}. \HOLConst{Split} (\HOLConst{IP} (\HOLConst{desCore} \HOLNumLit{8} (\HOLConst{KS} \HOLConst{Wkey3} \HOLNumLit{8}) \HOLBoundVar{x})) \HOLSymConst{=} (\HOLBoundVar{w}\HOLSymConst{,}\HOLBoundVar{w})\HOLTokenRightbrace{}
+\end{SaveVerbatim}
+\newcommand{\HOLdesXXpropTheoremsWtextThreeXXdef}{\UseVerbatim{HOLdesXXpropTheoremsWtextThreeXXdef}}
+\begin{SaveVerbatim}{HOLdesXXpropTheoremsWtextFourXXdef}
+\HOLTokenTurnstile{} \HOLConst{Wtext4} \HOLSymConst{=}
+   \HOLTokenLeftbrace{}\HOLBoundVar{x} \HOLTokenBar{} \HOLSymConst{\HOLTokenExists{}}\HOLBoundVar{w}. \HOLConst{Split} (\HOLConst{IP} (\HOLConst{desCore} \HOLNumLit{8} (\HOLConst{KS} \HOLConst{Wkey4} \HOLNumLit{8}) \HOLBoundVar{x})) \HOLSymConst{=} (\HOLBoundVar{w}\HOLSymConst{,}\HOLBoundVar{w})\HOLTokenRightbrace{}
+\end{SaveVerbatim}
+\newcommand{\HOLdesXXpropTheoremsWtextFourXXdef}{\UseVerbatim{HOLdesXXpropTheoremsWtextFourXXdef}}
+\begin{SaveVerbatim}{HOLdesXXpropTheoremsXcauseYFXXconvert}
+\HOLTokenTurnstile{} \HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{X} \HOLBoundVar{Y} \HOLBoundVar{x}. \HOLConst{XcauseYFkey} \HOLBoundVar{X} \HOLBoundVar{Y} \HOLBoundVar{x} \HOLSymConst{=} \HOLConst{XcauseYF'} \HOLBoundVar{X} \HOLBoundVar{Y}
+\end{SaveVerbatim}
+\newcommand{\HOLdesXXpropTheoremsXcauseYFXXconvert}{\UseVerbatim{HOLdesXXpropTheoremsXcauseYFXXconvert}}
+\begin{SaveVerbatim}{HOLdesXXpropTheoremsXcauseYFpXXeq}
+\HOLTokenTurnstile{} \HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{X} \HOLBoundVar{Y}.
+     \HOLFreeVar{Xe} \HOLSymConst{=} \HOLConst{E} \HOLBoundVar{X} \HOLSymConst{\HOLTokenConj{}} \HOLFreeVar{Xl} \HOLSymConst{=} \HOLConst{splitXF} \HOLFreeVar{Xe} \HOLSymConst{\HOLTokenConj{}} \HOLFreeVar{Yl} \HOLSymConst{=} \HOLConst{splitYF} \HOLBoundVar{Y} \HOLSymConst{\HOLTokenImp{}}
+     \HOLConst{XcauseYF'} \HOLBoundVar{X} \HOLBoundVar{Y} \HOLSymConst{=}
+     \HOLConst{\HOLTokenPI{}} (\HOLTokenLambda{}\HOLBoundVar{i}. \HOLConst{XcauseY} (\HOLConst{EL} \HOLBoundVar{i} \HOLFreeVar{Xl}) (\HOLConst{EL} \HOLBoundVar{i} \HOLFreeVar{Yl}) (\HOLConst{SBox} (\HOLConst{EL} \HOLBoundVar{i} \HOLConst{S_data})))
+       (\HOLConst{count} \HOLNumLit{8})
+\end{SaveVerbatim}
+\newcommand{\HOLdesXXpropTheoremsXcauseYFpXXeq}{\UseVerbatim{HOLdesXXpropTheoremsXcauseYFpXXeq}}
+\begin{SaveVerbatim}{HOLdesXXpropTheoremsXcauseYFpXXeqYY}
+\HOLTokenTurnstile{} \HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{X} \HOLBoundVar{Y}.
+     \HOLFreeVar{Xe} \HOLSymConst{=} \HOLConst{E} \HOLBoundVar{X} \HOLSymConst{\HOLTokenConj{}} \ensuremath{\HOLFreeVar{x}\sb{\mathrm{1}}} \HOLSymConst{=} (\HOLNumLit{5} \HOLSymConst{\HOLTokenExtract{}} \HOLNumLit{0}) \HOLFreeVar{Xe} \HOLSymConst{\HOLTokenConj{}} \ensuremath{\HOLFreeVar{x}\sb{\mathrm{2}}} \HOLSymConst{=} (\HOLNumLit{11} \HOLSymConst{\HOLTokenExtract{}} \HOLNumLit{6}) \HOLFreeVar{Xe} \HOLSymConst{\HOLTokenConj{}}
+     \ensuremath{\HOLFreeVar{x}\sb{\mathrm{3}}} \HOLSymConst{=} (\HOLNumLit{17} \HOLSymConst{\HOLTokenExtract{}} \HOLNumLit{12}) \HOLFreeVar{Xe} \HOLSymConst{\HOLTokenConj{}} \ensuremath{\HOLFreeVar{x}\sb{\mathrm{4}}} \HOLSymConst{=} (\HOLNumLit{23} \HOLSymConst{\HOLTokenExtract{}} \HOLNumLit{18}) \HOLFreeVar{Xe} \HOLSymConst{\HOLTokenConj{}}
+     \ensuremath{\HOLFreeVar{x}\sb{\mathrm{5}}} \HOLSymConst{=} (\HOLNumLit{29} \HOLSymConst{\HOLTokenExtract{}} \HOLNumLit{24}) \HOLFreeVar{Xe} \HOLSymConst{\HOLTokenConj{}} \ensuremath{\HOLFreeVar{x}\sb{\mathrm{6}}} \HOLSymConst{=} (\HOLNumLit{35} \HOLSymConst{\HOLTokenExtract{}} \HOLNumLit{30}) \HOLFreeVar{Xe} \HOLSymConst{\HOLTokenConj{}}
+     \ensuremath{\HOLFreeVar{x}\sb{\mathrm{7}}} \HOLSymConst{=} (\HOLNumLit{41} \HOLSymConst{\HOLTokenExtract{}} \HOLNumLit{36}) \HOLFreeVar{Xe} \HOLSymConst{\HOLTokenConj{}} \ensuremath{\HOLFreeVar{x}\sb{\mathrm{8}}} \HOLSymConst{=} (\HOLNumLit{47} \HOLSymConst{\HOLTokenExtract{}} \HOLNumLit{42}) \HOLFreeVar{Xe} \HOLSymConst{\HOLTokenConj{}} \ensuremath{\HOLFreeVar{y}\sb{\mathrm{1}}} \HOLSymConst{=} (\HOLNumLit{3} \HOLSymConst{\HOLTokenExtract{}} \HOLNumLit{0}) \HOLBoundVar{Y} \HOLSymConst{\HOLTokenConj{}}
+     \ensuremath{\HOLFreeVar{y}\sb{\mathrm{2}}} \HOLSymConst{=} (\HOLNumLit{7} \HOLSymConst{\HOLTokenExtract{}} \HOLNumLit{4}) \HOLBoundVar{Y} \HOLSymConst{\HOLTokenConj{}} \ensuremath{\HOLFreeVar{y}\sb{\mathrm{3}}} \HOLSymConst{=} (\HOLNumLit{11} \HOLSymConst{\HOLTokenExtract{}} \HOLNumLit{8}) \HOLBoundVar{Y} \HOLSymConst{\HOLTokenConj{}} \ensuremath{\HOLFreeVar{y}\sb{\mathrm{4}}} \HOLSymConst{=} (\HOLNumLit{15} \HOLSymConst{\HOLTokenExtract{}} \HOLNumLit{12}) \HOLBoundVar{Y} \HOLSymConst{\HOLTokenConj{}}
+     \ensuremath{\HOLFreeVar{y}\sb{\mathrm{5}}} \HOLSymConst{=} (\HOLNumLit{19} \HOLSymConst{\HOLTokenExtract{}} \HOLNumLit{16}) \HOLBoundVar{Y} \HOLSymConst{\HOLTokenConj{}} \ensuremath{\HOLFreeVar{y}\sb{\mathrm{6}}} \HOLSymConst{=} (\HOLNumLit{23} \HOLSymConst{\HOLTokenExtract{}} \HOLNumLit{20}) \HOLBoundVar{Y} \HOLSymConst{\HOLTokenConj{}} \ensuremath{\HOLFreeVar{y}\sb{\mathrm{7}}} \HOLSymConst{=} (\HOLNumLit{27} \HOLSymConst{\HOLTokenExtract{}} \HOLNumLit{24}) \HOLBoundVar{Y} \HOLSymConst{\HOLTokenConj{}}
+     \ensuremath{\HOLFreeVar{y}\sb{\mathrm{8}}} \HOLSymConst{=} (\HOLNumLit{31} \HOLSymConst{\HOLTokenExtract{}} \HOLNumLit{28}) \HOLBoundVar{Y} \HOLSymConst{\HOLTokenImp{}}
+     \HOLConst{XcauseYF'} \HOLBoundVar{X} \HOLBoundVar{Y} \HOLSymConst{=}
+     \HOLConst{XcauseY} \ensuremath{\HOLFreeVar{x}\sb{\mathrm{8}}} \ensuremath{\HOLFreeVar{y}\sb{\mathrm{8}}} \HOLConst{S1} \HOLSymConst{\HOLTokenProd{}} \HOLConst{XcauseY} \ensuremath{\HOLFreeVar{x}\sb{\mathrm{7}}} \ensuremath{\HOLFreeVar{y}\sb{\mathrm{7}}} \HOLConst{S2} \HOLSymConst{\HOLTokenProd{}} \HOLConst{XcauseY} \ensuremath{\HOLFreeVar{x}\sb{\mathrm{6}}} \ensuremath{\HOLFreeVar{y}\sb{\mathrm{6}}} \HOLConst{S3} \HOLSymConst{\HOLTokenProd{}}
+     \HOLConst{XcauseY} \ensuremath{\HOLFreeVar{x}\sb{\mathrm{5}}} \ensuremath{\HOLFreeVar{y}\sb{\mathrm{5}}} \HOLConst{S4} \HOLSymConst{\HOLTokenProd{}} \HOLConst{XcauseY} \ensuremath{\HOLFreeVar{x}\sb{\mathrm{4}}} \ensuremath{\HOLFreeVar{y}\sb{\mathrm{4}}} \HOLConst{S5} \HOLSymConst{\HOLTokenProd{}} \HOLConst{XcauseY} \ensuremath{\HOLFreeVar{x}\sb{\mathrm{3}}} \ensuremath{\HOLFreeVar{y}\sb{\mathrm{3}}} \HOLConst{S6} \HOLSymConst{\HOLTokenProd{}}
+     \HOLConst{XcauseY} \ensuremath{\HOLFreeVar{x}\sb{\mathrm{2}}} \ensuremath{\HOLFreeVar{y}\sb{\mathrm{2}}} \HOLConst{S7} \HOLSymConst{\HOLTokenProd{}} \HOLConst{XcauseY} \ensuremath{\HOLFreeVar{x}\sb{\mathrm{1}}} \ensuremath{\HOLFreeVar{y}\sb{\mathrm{1}}} \HOLConst{S8}
+\end{SaveVerbatim}
+\newcommand{\HOLdesXXpropTheoremsXcauseYFpXXeqYY}{\UseVerbatim{HOLdesXXpropTheoremsXcauseYFpXXeqYY}}
+\begin{SaveVerbatim}{HOLdesXXpropTheoremsXcauseYpXXtest}
+\HOLTokenTurnstile{} \HOLConst{XcauseYp} 52w 4w \HOLConst{S1} (\HOLNumLit{2} \HOLSymConst{/} \HOLNumLit{64})
+\end{SaveVerbatim}
+\newcommand{\HOLdesXXpropTheoremsXcauseYpXXtest}{\UseVerbatim{HOLdesXXpropTheoremsXcauseYpXXtest}}
+\begin{SaveVerbatim}{HOLdesXXpropTheoremsxorXXE}
+\HOLTokenTurnstile{} \HOLSymConst{\HOLTokenForall{}}\ensuremath{\HOLBoundVar{x}\sb{\mathrm{1}}} \ensuremath{\HOLBoundVar{x}\sb{\mathrm{2}}}. \HOLConst{E} \ensuremath{\HOLBoundVar{x}\sb{\mathrm{1}}} \HOLSymConst{\HOLTokenEor{}} \HOLConst{E} \ensuremath{\HOLBoundVar{x}\sb{\mathrm{2}}} \HOLSymConst{=} \HOLConst{E} (\ensuremath{\HOLBoundVar{x}\sb{\mathrm{1}}} \HOLSymConst{\HOLTokenEor{}} \ensuremath{\HOLBoundVar{x}\sb{\mathrm{2}}})
+\end{SaveVerbatim}
+\newcommand{\HOLdesXXpropTheoremsxorXXE}{\UseVerbatim{HOLdesXXpropTheoremsxorXXE}}
+\begin{SaveVerbatim}{HOLdesXXpropTheoremsxorXXP}
+\HOLTokenTurnstile{} \HOLSymConst{\HOLTokenForall{}}\ensuremath{\HOLBoundVar{x}\sb{\mathrm{1}}} \ensuremath{\HOLBoundVar{x}\sb{\mathrm{2}}}. \HOLConst{P} \ensuremath{\HOLBoundVar{x}\sb{\mathrm{1}}} \HOLSymConst{\HOLTokenEor{}} \HOLConst{P} \ensuremath{\HOLBoundVar{x}\sb{\mathrm{2}}} \HOLSymConst{=} \HOLConst{P} (\ensuremath{\HOLBoundVar{x}\sb{\mathrm{1}}} \HOLSymConst{\HOLTokenEor{}} \ensuremath{\HOLBoundVar{x}\sb{\mathrm{2}}})
+\end{SaveVerbatim}
+\newcommand{\HOLdesXXpropTheoremsxorXXP}{\UseVerbatim{HOLdesXXpropTheoremsxorXXP}}
+\begin{SaveVerbatim}{HOLdesXXpropTheoremsxorXXSOne}
+\HOLTokenTurnstile{} \HOLSymConst{\HOLTokenExists{}}\ensuremath{\HOLBoundVar{x}\sb{\mathrm{1}}} \ensuremath{\HOLBoundVar{x}\sb{\mathrm{2}}}. \HOLConst{S1} \ensuremath{\HOLBoundVar{x}\sb{\mathrm{1}}} \HOLSymConst{\HOLTokenEor{}} \HOLConst{S1} \ensuremath{\HOLBoundVar{x}\sb{\mathrm{2}}} \HOLSymConst{\HOLTokenNotEqual{}} \HOLConst{S1} (\ensuremath{\HOLBoundVar{x}\sb{\mathrm{1}}} \HOLSymConst{\HOLTokenEor{}} \ensuremath{\HOLBoundVar{x}\sb{\mathrm{2}}})
+\end{SaveVerbatim}
+\newcommand{\HOLdesXXpropTheoremsxorXXSOne}{\UseVerbatim{HOLdesXXpropTheoremsxorXXSOne}}
+\newcommand{\HOLdesXXpropTheorems}{
+\HOLThmTag{des_prop}{AllpairXor_card}\HOLdesXXpropTheoremsAllpairXorXXcard
+\HOLThmTag{des_prop}{BIJ_F}\HOLdesXXpropTheoremsBIJXXF
+\HOLThmTag{des_prop}{BIJ_for_weak_keys}\HOLdesXXpropTheoremsBIJXXforXXweakXXkeys
+\HOLThmTag{des_prop}{BIJ_for_weak_keys_explicit}\HOLdesXXpropTheoremsBIJXXforXXweakXXkeysXXexplicit
+\HOLThmTag{des_prop}{BIJ_ktox}\HOLdesXXpropTheoremsBIJXXktox
+\HOLThmTag{des_prop}{BIJ_wtext1}\HOLdesXXpropTheoremsBIJXXwtextOne
+\HOLThmTag{des_prop}{BIJ_wtext2}\HOLdesXXpropTheoremsBIJXXwtextTwo
+\HOLThmTag{des_prop}{BIJ_wtext3}\HOLdesXXpropTheoremsBIJXXwtextThree
+\HOLThmTag{des_prop}{BIJ_wtext4}\HOLdesXXpropTheoremsBIJXXwtextFour
+\HOLThmTag{des_prop}{BIJ_XORL}\HOLdesXXpropTheoremsBIJXXXORL
+\HOLThmTag{des_prop}{CARD_eqF}\HOLdesXXpropTheoremsCARDXXeqF
+\HOLThmTag{des_prop}{CARD_kxeq}\HOLdesXXpropTheoremsCARDXXkxeq
+\HOLThmTag{des_prop}{charapairDES_compute}\HOLdesXXpropTheoremscharapairDESXXcompute
+\HOLThmTag{des_prop}{charapairDES_def}\HOLdesXXpropTheoremscharapairDESXXdef
+\HOLThmTag{des_prop}{charapairDES_ind}\HOLdesXXpropTheoremscharapairDESXXind
+\HOLThmTag{des_prop}{compl_E}\HOLdesXXpropTheoremscomplXXE
+\HOLThmTag{des_prop}{compl_extract_1}\HOLdesXXpropTheoremscomplXXextractXXOne
+\HOLThmTag{des_prop}{compl_extract_2}\HOLdesXXpropTheoremscomplXXextractXXTwo
+\HOLThmTag{des_prop}{compl_IIP}\HOLdesXXpropTheoremscomplXXIIP
+\HOLThmTag{des_prop}{compl_IP}\HOLdesXXpropTheoremscomplXXIP
+\HOLThmTag{des_prop}{compl_join}\HOLdesXXpropTheoremscomplXXjoin
+\HOLThmTag{des_prop}{compl_RK_L}\HOLdesXXpropTheoremscomplXXRKXXL
+\HOLThmTag{des_prop}{compl_RK_R}\HOLdesXXpropTheoremscomplXXRKXXR
+\HOLThmTag{des_prop}{comple_PC2}\HOLdesXXpropTheoremscompleXXPCTwo
+\HOLThmTag{des_prop}{comple_property}\HOLdesXXpropTheoremscompleXXproperty
+\HOLThmTag{des_prop}{convert_RK}\HOLdesXXpropTheoremsconvertXXRK
+\HOLThmTag{des_prop}{DES_fp_non_weak_keys}\HOLdesXXpropTheoremsDESXXfpXXnonXXweakXXkeys
+\HOLThmTag{des_prop}{DES_weak_fp_card}\HOLdesXXpropTheoremsDESXXweakXXfpXXcard
+\HOLThmTag{des_prop}{F_convert}\HOLdesXXpropTheoremsFXXconvert
+\HOLThmTag{des_prop}{prob_space_word32p}\HOLdesXXpropTheoremsprobXXspaceXXwordThreeTwop
+\HOLThmTag{des_prop}{prob_space_word48p}\HOLdesXXpropTheoremsprobXXspaceXXwordFourEightp
+\HOLThmTag{des_prop}{prob_space_word6p}\HOLdesXXpropTheoremsprobXXspaceXXwordSixp
+\HOLThmTag{des_prop}{prob_space_word6x6}\HOLdesXXpropTheoremsprobXXspaceXXwordSixxSix
+\HOLThmTag{des_prop}{prob_uniform_on_finite_set}\HOLdesXXpropTheoremsprobXXuniformXXonXXfiniteXXset
+\HOLThmTag{des_prop}{roundk_L_compute}\HOLdesXXpropTheoremsroundkXXLXXcompute
+\HOLThmTag{des_prop}{roundk_R_compute}\HOLdesXXpropTheoremsroundkXXRXXcompute
+\HOLThmTag{des_prop}{semiK_proper1}\HOLdesXXpropTheoremssemiKXXproperOne
+\HOLThmTag{des_prop}{semiK_proper2}\HOLdesXXpropTheoremssemiKXXproperTwo
+\HOLThmTag{des_prop}{text_num}\HOLdesXXpropTheoremstextXXnum
+\HOLThmTag{des_prop}{weakK1_proper2}\HOLdesXXpropTheoremsweakKOneXXproperTwo
+\HOLThmTag{des_prop}{weakK2_proper2}\HOLdesXXpropTheoremsweakKTwoXXproperTwo
+\HOLThmTag{des_prop}{weakK3_proper2}\HOLdesXXpropTheoremsweakKThreeXXproperTwo
+\HOLThmTag{des_prop}{weakK4_proper2}\HOLdesXXpropTheoremsweakKFourXXproperTwo
+\HOLThmTag{des_prop}{weakK_proper}\HOLdesXXpropTheoremsweakKXXproper
+\HOLThmTag{des_prop}{weakK_sup}\HOLdesXXpropTheoremsweakKXXsup
+\HOLThmTag{des_prop}{wkey1_equal}\HOLdesXXpropTheoremswkeyOneXXequal
+\HOLThmTag{des_prop}{word6p_convert}\HOLdesXXpropTheoremswordSixpXXconvert
+\HOLThmTag{des_prop}{Wtext1_def}\HOLdesXXpropTheoremsWtextOneXXdef
+\HOLThmTag{des_prop}{Wtext2_def}\HOLdesXXpropTheoremsWtextTwoXXdef
+\HOLThmTag{des_prop}{Wtext3_def}\HOLdesXXpropTheoremsWtextThreeXXdef
+\HOLThmTag{des_prop}{Wtext4_def}\HOLdesXXpropTheoremsWtextFourXXdef
+\HOLThmTag{des_prop}{XcauseYF_convert}\HOLdesXXpropTheoremsXcauseYFXXconvert
+\HOLThmTag{des_prop}{XcauseYFp_eq}\HOLdesXXpropTheoremsXcauseYFpXXeq
+\HOLThmTag{des_prop}{XcauseYFp_eq'}\HOLdesXXpropTheoremsXcauseYFpXXeqYY
+\HOLThmTag{des_prop}{XcauseYp_test}\HOLdesXXpropTheoremsXcauseYpXXtest
+\HOLThmTag{des_prop}{xor_E}\HOLdesXXpropTheoremsxorXXE
+\HOLThmTag{des_prop}{xor_P}\HOLdesXXpropTheoremsxorXXP
+\HOLThmTag{des_prop}{xor_S1}\HOLdesXXpropTheoremsxorXXSOne
+}
