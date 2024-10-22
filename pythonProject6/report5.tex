@@ -56,8 +56,8 @@ fundamentals of block cipher construction which allow future research and verifi
 \subsection{HOL4}
 HOL4 theorem proving system is a proof assistant with built-in decision procedures, tactics and theorems to
 be convenient to prove harder theorems for users. It is composed with HOL types, terms, rules of inference
-and theories. The types in HOL4 contains the basic atomic types like "int", "bool" or the "word n" type which
-is commonly used in proving cryptography aspect. It also contains the compound types such as "set" and "list"
+and theories. The types in HOL4 contains the basic atomic types like $int$, $bool$ or the $word n$ type which
+is commonly used in proving cryptography aspect. It also contains the compound types such as $set$ and $list$
 , and also the function types which are types of function from one type to another.
 
 In HOL4. each term should
@@ -77,47 +77,47 @@ Q.ABBREV_TAC Abbr
 Suff Know Rewr'
 
 \subsection{Word theory in HOL4}
-In this paper, "wordsTheory" in HOL4 are mainly used to prove the properties of DES, Differential Crypatanalysis
-and the implementation of RC5. It is built upon some basic theories and "fcpTheory" which are also common used in
+In this paper, $wordsTheory$ in HOL4 are mainly used to prove the properties of DES, Differential Crypatanalysis
+and the implementation of RC5. It is built upon some basic theories and $fcpTheory$ which are also common used in
 this paper. The terms used in the verifications are mainly in type of wordn which means a word with length n.
-"wordsTheory" contains many definitions and theorems about the words' operations, analysis and properties.
+$wordsTheory$ contains many definitions and theorems about the words' operations, analysis and properties.
 
-There are some operations that are frequently applied. The "word_concat_def" defines the operator "@@", it takes two
-inputs v and w of type word n and word m, join them into a word of length n+m, the first m bits are the same as w,
-and the left n bits are the same as v.
+There are some operations that are frequently applied. The $word\_concat\_def$ defines the operator $@@$, it takes two
+inputs v and w of type word $n$ and word $m$, join them into a word of length $(n+m)$, the first $m$ bits are the same as $w$,
+and the left $n$ bits are the same as $v$.
 \begin{alltt}
    \HOLTokenTurnstile{} \HOLFreeVar{v} \HOLSymConst{@@} \HOLFreeVar{w} \HOLSymConst{=} \HOLConst{w2w} (\HOLConst{word_join} \HOLFreeVar{v} \HOLFreeVar{w})
 \end{alltt}
 
-Then the "word_extract_def" defines the "><" operator, it uses two number inputs h and l where h>l, and is applied
-to a word. It extracts from the lth bits to the hth bits of the word, result a word of length (h-l+1)
+Then the $word_extract_def$ defines the $><$ operator, it uses two number inputs $h$ and $l$ where $(h>l)$, and is applied
+to a word. It extracts from the lth bits to the hth bits of the word, result a word of length $(h-l+1)$
 \begin{alltt}
    \HOLTokenTurnstile{} (\HOLFreeVar{h} \HOLSymConst{\HOLTokenExtract{}} \HOLFreeVar{l}) \HOLSymConst{=} \HOLConst{w2w} \HOLSymConst{\HOLTokenCompose} (\HOLFreeVar{h} \HOLSymConst{--} \HOLFreeVar{l})
 \end{alltt}
 
-The "??" operator defined by "word_xor_def" also takes two words of same length as inputs,
+The $??$ operator defined by $word\_xor\_def$ also takes two words of same length as inputs,
 each corresponding bit of the two words are applied with the xor (Exclusive-OR) operation
 and result a words of that length.
 \begin{alltt}
    \HOLTokenTurnstile{} \HOLFreeVar{v} \HOLSymConst{\HOLTokenEor{}} \HOLFreeVar{w} \HOLSymConst{=} \HOLConst{FCP} \HOLBoundVar{i}. \HOLFreeVar{v} \HOLConst{'} \HOLBoundVar{i} \HOLSymConst{\HOLTokenNotEquiv{}} \HOLFreeVar{w} \HOLConst{'} \HOLBoundVar{i}
 \end{alltt}
 
-At last, one common operator used in proving the property of complementation is "~", it takes a word as input, and converts
+At last, one common operator used in proving the property of complementation is $~$, it takes a word as input, and converts
 each bit to the inverse (1 to 0 and 0 to 1 for binary form), produce the bitwise complement of word as result.
 
 \begin{alltt}
    \HOLTokenTurnstile{} \HOLSymConst{\HOLTokenNeg{}}\HOLFreeVar{w} \HOLSymConst{=} \HOLConst{FCP} \HOLBoundVar{i}. \HOLSymConst{\HOLTokenNeg{}}\HOLFreeVar{w} \HOLConst{'} \HOLBoundVar{i}
 \end{alltt}
 
-The "wordsTheory" is built with the support of "fcpTheory", "fcpTheory" build the foundation that enables the bit-level operations.
+The $wordsTheory$ is built with the support of $fcpTheory$, $fcpTheory$ build the foundation that enables the bit-level operations.
 Consequently, we can do the operations mentioned above as they need to analyze bits of a word.
 
 \subsection{Measure and Probability theory in HOL4}
 
-The "measureTheory" and "probabilityTheory" build the definitions of algebra (X,A), \( \sigma \)-algebra, thus the measure space (X,A,u) and probability
-space. The \( \sigma \)-algebra is algebra that the union of all subsets of A also belongs to A. Probability space is a measure space satisfy the
-property that u(X)=1, and are often represented as (\( \Omega \), F, P). The theories also includes the complementary definitions and
-theorems related to the properties of these definitions. The theories are built upon the "extrealTheory", "extrealTheory"
+The $measureTheory$ and $probabilityTheory$ build the definitions of algebra $(X\;,\;A)$, $\( \sigma \)-algebra$, thus the measure space (X,A,u) and probability
+space. The $\( \sigma \)-algebra$ is algebra that the union of all subsets of A also belongs to A. Probability space is a measure space satisfy the
+property that $u(X)\;=\;1$, and are often represented as $(\( \Omega \)\;,\; F\;,\; P)$. The theories also includes the complementary definitions and
+theorems related to the properties of these definitions. The theories are built upon the $extrealTheory$, $extrealTheory$
 extends the range of standard real number, adds the positive infinite and negative infinity. It is because algebra is a set which
 include not only finite algebra but also infinite algebra.
 
@@ -127,7 +127,7 @@ include not only finite algebra but also infinite algebra.
    \HOLConst{countably_additive} \HOLFreeVar{m}
 \end{alltt}
 
-The "measureTheory" and "probabilityTheory" are used in the implementation of Differential Crypatanalysis as the need of working with
+The $measureTheory$ and $probabilityTheory$ are used in the implementation of Differential Crypatanalysis as the need of working with
 sets. It requires to get the probabilities of subsets out of a universal set. In the cases of Differential Crypatanalysis attack against
 DES, the overall sets are usually the universal sets of words or word pairs of a specific length, the target sets are DES
 inputs of that length and satisfy particular properties.
