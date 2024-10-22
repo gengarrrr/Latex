@@ -1,0 +1,11 @@
+INCLUDES = $(HOLDIR)/examples/Crypto/DES
+OPTIONS = QUIT_ON_FAILURE
+MUNGE = ./munge.exe
+MUNGE_DEPS = paperTheory
+EXTRA_CLEANS = $(MUNGE)
+all: $(MUNGE) report.tex
+$(MUNGE): $(patsubst %,%.uo,$(MUNGE_DEPS))
+	$(HOLDIR)/bin/mkmunge.exe $(MUNGE_DEPS)
+report.tex: $(MUNGE) report.htex
+	$(MUNGE) < report.htex > report.tex
+.PHONY: all
