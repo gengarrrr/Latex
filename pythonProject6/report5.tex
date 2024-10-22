@@ -181,10 +181,10 @@ $2^{55}$ to $2^{54}$.
 
 Weak keys are four special keys follow the property that DES encrypts a message twice with the same weak keys will return
 the same message shown in Figure~\ref{fig:form2}. It is because the weak keys cause round keys equal to  the reverse of
-the round keys, thus the DES encryption and decryption are the same. Weak keys also have the property that each weak key
+the round keys, cause the DES encryption and decryption to be the same. Weak keys also have the property that each weak key
 has corresponding $2^{32}$ messages that encrypt these messages with that weak key will result message unchanged. These messages
-possess the property that their halves are the same after encryption process in the 8th rounds. By combining this with the weak keys' reverse
-order round keys property, it ensures the halves in the (8-n)th and (8+n)th round are the same, result the original message (0th round) the same
+have the property that their input halves are the same in the encryption process of the 8th rounds. By combining this with the weak keys' reverse
+order round keys property, it ensures the input halves in the (8-n)th and (8+n)th round are the same, result the original message (0th round) the same
 as the ciphertext (16th round).
 
 \begin{figure}
@@ -220,9 +220,9 @@ in this file are definitions to build the round keys from the input key. As the 
 join and split functions to initially split the plaintext and form the result ciphertext. Theorems are also constructed to
 verify some basic properties and help ensure the correctness of implementations.
 
-It then actually build the Feistel network, round function. Moreover, it applies the above operations, along with the
+It then actually build the XOR operation, round function and swap operation in each round. Moreover, it combines the above operations, along with the
 round keys to form the actual process for each round and ultimately construct the complete DES process over a total of16 rounds.
-It also implements a help function that can return the halves in each round as a pair in the form of (M a, M b). It is beneficial
+It also implements a help function that can return the input halves in each round as a pair in the form of (M a, M b). It is beneficial
 for any future analysis of DES, including the verification of the proper DES implementation in "desScript" and my additional DES
 properties proving. At last, it proved that as a Feistel network, the implemented encryption of DES using the round
 keys, followed by a second encryption using the reversed round keys will return the original plaintext.
@@ -232,14 +232,14 @@ but also confirms the correctness of DES implementation in HOL4 by proving that 
 will return the original message.
 
 \section{DES property in HOL4}
-In my "des_propScript" file in HOL4, there are some basic settings. It loads all the relevant theories and libraries which contains
-necessary definitions and theorems I need to use including the "desScript". I set the "guessing_word_lengths" to true so that
+In my $des_propScript$ file in HOL4, there are some basic settings. It loads all the relevant theories and libraries which contains
+necessary definitions and theorems I need to use including the $desScript$. I set the $guessing\_word\_lengths$ to true so that
 I do not need to set the length for each word, they will be assigned to a length based on the conditions. Additionally, I also define a simpleset
-"fcp_ss", it is a simplification set that combines "std_ss", the basic simplification set, with "FCP_ss", the simpset fragment
+$fcp\_ss$, it is a simplification set that combines $std\_ss$, the basic simplification set, with $FCP\_ss$, the simpset fragment
 specifically simplifies finite Cartesian product expressions.
 
 \subsection{Complementation property}
-First of all, I proved the complementation property, it is implemented as the theorem "comple_property".
+First of all, I proved the complementation property, it is implemented as the theorem $comple\_property$.
 
 \begin{alltt}
 \HOLTokenTurnstile{} \HOLNumLit{0} \HOLSymConst{\HOLTokenLt{}} \HOLFreeVar{n} \HOLSymConst{\HOLTokenConj{}} \HOLFreeVar{n} \HOLSymConst{\HOLTokenLt{}} \HOLNumLit{17} \HOLSymConst{\HOLTokenConj{}} \HOLConst{DES} \HOLFreeVar{n} \HOLFreeVar{k} \HOLSymConst{=} (\HOLFreeVar{encrypt}\HOLSymConst{,}\HOLFreeVar{decrypt}) \HOLSymConst{\HOLTokenConj{}}
@@ -250,7 +250,7 @@ First of all, I proved the complementation property, it is implemented as the th
 It means for any key k, message m and number of rounds n, the complementation of encryption using m and k is the
 same as the encryption using the complementation of m and k.
 
-I initially convert the "encrypt" function to more detailed components functions including inverse of initial permutation,
+I initially convert the $encrypt$ function to more detailed components functions including inverse of initial permutation,
 join, swap, round, split and initial permutation functions. This allows the use of rewriting rules on separated
 functions. This includes some theorems proving the complementation property of each individual function mentioned above.
 The below theorem is an example for join function.
@@ -259,7 +259,7 @@ The below theorem is an example for join function.
    \HOLTokenTurnstile{} \HOLConst{Join} (\HOLSymConst{\HOLTokenNeg{}}\HOLFreeVar{m}\HOLSymConst{,}\HOLSymConst{\HOLTokenNeg{}}\HOLFreeVar{n}) \HOLSymConst{=} \HOLSymConst{\HOLTokenNeg{}}\HOLConst{Join} (\HOLFreeVar{m}\HOLSymConst{,}\HOLFreeVar{n})
 \end{alltt}
 
-I then convert the "Round" function to the $(M \,a,\; M \,b)$ by the "half_message" help function, so that I can research on each 32-bit
+I then convert the $Round$ function to the $(M \,a,\; M \,b)$ by the $half\_message$ help function, so that I can research on each 32-bit
 half of the block and use the relation between halves in the same and different rounds. Moreover, I simplify the proving goals by rewriting it with the theorems about the complementation
 property of each individual function, leave only solving the complementation property of a pair of M function.
 \begin{multline}
@@ -267,25 +267,25 @@ property of each individual function, leave only solving the complementation pro
 = (\sim M \; (u, v) \; keys \; n, \; \sim M \; (u, v) \; keys \; (SUC \, n))
 \end{multline}
 
-I decide to use the Mathematical induction method using "Induct_on" in HOL4. I replace the variable n to x, define x to be $<=$ n, and then
+I decide to use the Mathematical induction method using $Induct\_on$ in HOL4. I replace the variable n to x, define x to be $<=$ n, and then
 perform induction on variable x. It is to avoid the failure of proving the induction step. As the prerequisite of using
 given case is $n>0$ , but in the step case, only $(SUC n) > 0$ (SUC means successor) is given. From $n+1 > 0$, it is not possible to
 derive the requirement of $n > 0$, thus given case cannot be used, verification cannot be pushed further. By converting to x,
 the prerequisites can be easily meet, and facilitating the proof process.
 
-To prove the base case, we only need to convert back to the form of "Round" function and use the base case of the "Round" function.
-It is because only "Round" function is built using the relationships between its values based on inductively given inputs, and
+To prove the base case, we only need to convert back to the form of $Round$ function and use the base case of the $Round$ function.
+It is because only $Round$ function is built using the relationships between its values based on inductively given inputs, and
 it has the base case for $x=0$. To complete the
 base case verification, I also prove $(u,\;v)= (u',\;v')$ by extract the abbreviation of them back into their original forms, and apply the complementation rule of
-IP function. The abbreviation can be viewed below~\ref{fig:form5}.
+IP function. The abbreviation can be viewed below~\ref{fig:form4}.
 
 \begin{figure}
 \centering
 \includegraphics[width=0.25\linewidth]{abbr1}
-\caption{\label{fig:form5} The abbreviation}
+\caption{\label{fig:form4} The abbreviation}
 \end{figure}
 
-It is important to note that $(M \,a,\;M \,b)$ can be converted from the "Round" function. It is defined as a pair of two
+It is important to note that $(M \,a,\;M \,b)$ can be converted from the $Round$ function. It is defined as a pair of two
 halves taking $n$th round as one of the inputs,
 which are the two halves in the n-th round during the DES encryption process. According to the workflow of encryption, the right
 half of round $n$ equals to the left half of round $n+1$ by the swap operation at the end of each round. Depend on this and the workflow,
@@ -295,6 +295,7 @@ each half of $(M \,a,\;M \,b)$ in round $n+1$ can be expressed by the halves in 
 the step case which contains $(M \,a,\;M \,b)$ in round $SUC \,n$ can be expressed into formulas using $(M \,a,\;M \,b)$ in round
 $n$ which are contained in the base case. As a result, I can use the assumptions provided in the base case to push forward my
 verification.
+
 \begin{multline}
 Assumption: \quad (M \; (u', v') \; keys' \; x, \; M \; (u', v') \; keys' \; (SUC \, x)) \\
 = (\sim M \; (u, v) \; keys \; x, \; \sim M \; (u, v) \; keys \; (SUC \, x))
@@ -391,7 +392,8 @@ I first define the four weak keys into HOL4 in hexadecimal form. Then I want to 
 the weak keys, applying the encryption twice to any message will result the message nochange.
 
 \begin{alltt}
-   \HOLthm{des_prop.weakK_proper}
+   \HOLTokenTurnstile{} \HOLConst{MEM} \HOLFreeVar{k} \HOLConst{Wkey} \HOLSymConst{\HOLTokenConj{}} \HOLConst{FullDES} \HOLFreeVar{k} \HOLSymConst{=} (\HOLFreeVar{encrypt}\HOLSymConst{,}\HOLFreeVar{decrypt}) \HOLSymConst{\HOLTokenImp{}}
+   \HOLFreeVar{encrypt} (\HOLFreeVar{encrypt} \HOLFreeVar{plaintext}) \HOLSymConst{=} \HOLFreeVar{plaintext}
 \end{alltt}
 
 It can be proven easily using the existing theorem $desCore\_CORRECT$ in $desTheory$. DES has the property that
@@ -401,15 +403,20 @@ returns the original message. It successfully proves that encryption to a messag
 once using the normal round keys, once using the round keys in reverse order remains message unchanged.
 
 \begin{alltt}
-   \HOLthm{des.desCore_CORRECT}
+   \HOLTokenTurnstile{} \HOLConst{LENGTH} \HOLFreeVar{keys} \HOLSymConst{=} \HOLFreeVar{r} \HOLSymConst{\HOLTokenImp{}}
+   \HOLConst{desCore} \HOLFreeVar{r} (\HOLConst{REVERSE} \HOLFreeVar{keys}) (\HOLConst{desCore} \HOLFreeVar{r} \HOLFreeVar{keys} \HOLFreeVar{plaintext}) \HOLSymConst{=}
+   \HOLFreeVar{plaintext}
 \end{alltt}
 
 By applying this to the goal, I am left with only the proofing of the prerequisite of $desCore\_CORRECT$ and the
 proof of round keys list generated by weak key remains the same after being reversed, that is:
 
-\begin{multline}
- REVERSE \; (KS \; k \; 16)= KS \; k \; 16
-\end{multline}
+\begin{equation}
+\begin{split}
+   REVERSE \; (KS \; k \; 16) &= KS \; k \; 16
+\end{split}
+\end{equation}
+
 
 The rest part is easy to prove, the length of the list of round keys is equal to the number of rounds by the $LENGTH\_KS$
 theorem. The equivalent proof about the round keys can be done by substituting each weak key's value into the goal,
@@ -417,7 +424,7 @@ use the $EVAL\_TAC$ that applies the values of keys to the goal and evaluate on 
 the successful equation calculation on each value.
 
 \begin{alltt}
-   \HOLthm{des.LENGTH_KS}
+   \HOLTokenTurnstile{} \HOLConst{LENGTH} (\HOLConst{KS} \HOLFreeVar{k} \HOLFreeVar{n}) \HOLSymConst{=} \HOLFreeVar{n}
 \end{alltt}
 
 The semi-weak keys' property and its corresponding verification are similar to weak keys'. I define them as pairs in a list,
@@ -425,11 +432,17 @@ set the goal to be: encrypting a message with one key in a pair and encrypting t
 in that pair make the ciphertext back to the original message.
 
 \begin{alltt}
-   \HOLthm{des_prop.semiK_proper1}
+   \HOLTokenTurnstile{} \HOLConst{MEM} \HOLFreeVar{pair} \HOLConst{Semiwkey} \HOLSymConst{\HOLTokenConj{}} \HOLFreeVar{pair} \HOLSymConst{=} (\ensuremath{\HOLFreeVar{s}\sb{\mathrm{1}}}\HOLSymConst{,}\ensuremath{\HOLFreeVar{s}\sb{\mathrm{2}}}) \HOLSymConst{\HOLTokenConj{}}
+   \HOLConst{FullDES} \ensuremath{\HOLFreeVar{s}\sb{\mathrm{1}}} \HOLSymConst{=} (\HOLFreeVar{encrypt}\HOLSymConst{,}\HOLFreeVar{decrypt}) \HOLSymConst{\HOLTokenConj{}}
+   \HOLConst{FullDES} \ensuremath{\HOLFreeVar{s}\sb{\mathrm{2}}} \HOLSymConst{=} (\ensuremath{\HOLFreeVar{encrypt}\sp{\prime{}}}\HOLSymConst{,}\ensuremath{\HOLFreeVar{decrypt}\sp{\prime{}}}) \HOLSymConst{\HOLTokenImp{}}
+   \HOLFreeVar{encrypt} (\ensuremath{\HOLFreeVar{encrypt}\sp{\prime{}}} \HOLFreeVar{plaintext}) \HOLSymConst{=} \HOLFreeVar{plaintext}
 \end{alltt}
 
 \begin{alltt}
-   \HOLthm{des_prop.semiK_proper2}
+   \HOLTokenTurnstile{} \HOLConst{MEM} \HOLFreeVar{pair} \HOLConst{Semiwkey} \HOLSymConst{\HOLTokenConj{}} \HOLFreeVar{pair} \HOLSymConst{=} (\ensuremath{\HOLFreeVar{s}\sb{\mathrm{1}}}\HOLSymConst{,}\ensuremath{\HOLFreeVar{s}\sb{\mathrm{2}}}) \HOLSymConst{\HOLTokenConj{}}
+   \HOLConst{FullDES} \ensuremath{\HOLFreeVar{s}\sb{\mathrm{1}}} \HOLSymConst{=} (\HOLFreeVar{encrypt}\HOLSymConst{,}\HOLFreeVar{decrypt}) \HOLSymConst{\HOLTokenConj{}}
+   \HOLConst{FullDES} \ensuremath{\HOLFreeVar{s}\sb{\mathrm{2}}} \HOLSymConst{=} (\ensuremath{\HOLFreeVar{encrypt}\sp{\prime{}}}\HOLSymConst{,}\ensuremath{\HOLFreeVar{decrypt}\sp{\prime{}}}) \HOLSymConst{\HOLTokenImp{}}
+   \ensuremath{\HOLFreeVar{encrypt}\sp{\prime{}}} (\HOLFreeVar{encrypt} \HOLFreeVar{plaintext}) \HOLSymConst{=} \HOLFreeVar{plaintext}
 \end{alltt}
 
 The way to achieve this goal only change the part about the equivalent proof of round keys and reversed round keys.
@@ -437,69 +450,81 @@ It is now to verify that the round keys generated by one of the semi-weak keys a
 keys generated by the other key. The method of verification is still use $EVAL\_TAC$ to evaluate on the values of semi-weak
 keys. The proof is then done.
 
-\begin{multline}
+\begin{equation}
+\begin{split}
  REVERSE \; (KS \; k1 \; 16)= KS \; k2 \; 16
-\end{multline}
+\end{split}
+\end{equation}
 
+\subsection{Fixed points for DES weak keys}
 I can now prove each weak key has $2^{32}$ messages that encrypting these messages with the corresponding weak key remain
 the messages unchanged. As mentioned in earlier section, these messages have this property based on their property that
 the input halves are the same in round 8 during the DES encryption using the corresponding weak key. Based on this, I define
-four lists for four weak keys that each list obtains messages with the above property. I can then prove separately that
-all messages in the list meet the property that encryption does not change the message, and each list has cardinality
+four sets for four weak keys that each list obtains messages with the above property. I can then prove separately that
+all messages in the set meet the property that encryption does not change the message, and each set has cardinality
 of $2^{32}$.
 
 \begin{alltt}
-   \HOLthm{des_prop.weakK1_proper2}
+   \HOLTokenTurnstile{} \HOLFreeVar{x} \HOLSymConst{\HOLTokenIn{}} \HOLConst{Wtext1} \HOLSymConst{\HOLTokenConj{}} \HOLConst{FullDES} \HOLConst{Wkey1} \HOLSymConst{=} (\HOLFreeVar{encrypt}\HOLSymConst{,}\HOLFreeVar{decrypt}) \HOLSymConst{\HOLTokenImp{}}
+   \HOLFreeVar{encrypt} \HOLFreeVar{x} \HOLSymConst{=} \HOLFreeVar{x}
 \end{alltt}
 
 \begin{alltt}
-   \HOLthm{des_prop.weakK2_proper2}
+   \HOLTokenTurnstile{} \HOLFreeVar{x} \HOLSymConst{\HOLTokenIn{}} \HOLConst{Wtext2} \HOLSymConst{\HOLTokenConj{}} \HOLConst{FullDES} \HOLConst{Wkey2} \HOLSymConst{=} (\HOLFreeVar{encrypt}\HOLSymConst{,}\HOLFreeVar{decrypt}) \HOLSymConst{\HOLTokenImp{}}
+   \HOLFreeVar{encrypt} \HOLFreeVar{x} \HOLSymConst{=} \HOLFreeVar{x}
 \end{alltt}
 
 \begin{alltt}
-   \HOLthm{des_prop.weakK3_proper2}
+   \HOLTokenTurnstile{} \HOLFreeVar{x} \HOLSymConst{\HOLTokenIn{}} \HOLConst{Wtext3} \HOLSymConst{\HOLTokenConj{}} \HOLConst{FullDES} \HOLConst{Wkey3} \HOLSymConst{=} (\HOLFreeVar{encrypt}\HOLSymConst{,}\HOLFreeVar{decrypt}) \HOLSymConst{\HOLTokenImp{}}
+   \HOLFreeVar{encrypt} \HOLFreeVar{x} \HOLSymConst{=} \HOLFreeVar{x}
 \end{alltt}
 
 \begin{alltt}
-   \HOLthm{des_prop.weakK4_proper2}
+   \HOLTokenTurnstile{} \HOLFreeVar{x} \HOLSymConst{\HOLTokenIn{}} \HOLConst{Wtext4} \HOLSymConst{\HOLTokenConj{}} \HOLConst{FullDES} \HOLConst{Wkey4} \HOLSymConst{=} (\HOLFreeVar{encrypt}\HOLSymConst{,}\HOLFreeVar{decrypt}) \HOLSymConst{\HOLTokenImp{}}
+   \HOLFreeVar{encrypt} \HOLFreeVar{x} \HOLSymConst{=} \HOLFreeVar{x}
 \end{alltt}
 
-First, to prove DES encryption with messages in the list remains message unchanged, I expand the goal to more detailed operations
+First, to prove DES encryption with messages in the set remains message unchanged, I expand the goal to more detailed operations
 during the DES encryption process. I find that only
 if I proved that the reverse of the halves in round 16 during the encryption process are equal to the halves in round 0,
 the rest of the proof is
 quite simple. I can use the halves in round 0 which do not process any round function, but only the inital IP permutation
 and splitting to simplify the goal to:
 
-\begin{multline}
+\begin{equation}
+\begin{split}
  IIP \; (Join \; (Split \; (IP \; x))) \; = \; x
-\end{multline}
+\end{split}
+\end{equation}
 
 These operations can be easily cancelled out by each other using theorem $IIP\_IP\_Inverse$ nad $Join\_Split\_Inverse$.
 
 \begin{alltt}
-   \HOLthm{des.IIP_IP_Inverse}
+   \HOLTokenTurnstile{} \HOLConst{IIP} (\HOLConst{IP} \HOLFreeVar{w}) \HOLSymConst{=} \HOLFreeVar{w}
 \end{alltt}
 
 \begin{alltt}
-   \HOLthm{des.Join_Split_Inverse}
+   \HOLTokenTurnstile{} \HOLConst{Join} (\HOLConst{Split} \HOLFreeVar{w}) \HOLSymConst{=} \HOLFreeVar{w}
 \end{alltt}
 
-I am now left to prove the support theorem $weakK\_sup$ given the property of each list. It is hard to compare two pairs of
+I am now left to prove the support theorem $weakK\_sup$ given the property of each set. It is hard to compare two pairs of
 halves that differ by sixteen rounds of operations directly. To achieve the goal in HOL4, I build the support theorem
 $weakK\_sup$ by setting the goal to show that for be each pair of halves in (8-n) round is equal to the reversed pair
 in round (8+n). I can then use proof by induction on $n$ to complete the proof.
 
 \begin{alltt}
-   \HOLthm{des_prop.weakK_sup}
+   \HOLTokenTurnstile{} \HOLConst{MEM} \HOLFreeVar{k} \HOLConst{Wkey} \HOLSymConst{\HOLTokenConj{}} \HOLNumLit{0} \HOLSymConst{\HOLTokenLeq{}} \HOLFreeVar{n} \HOLSymConst{\HOLTokenConj{}} \HOLFreeVar{n} \HOLSymConst{\HOLTokenLeq{}} \HOLNumLit{8} \HOLSymConst{\HOLTokenConj{}}
+   \HOLConst{Split} (\HOLConst{IP} (\HOLConst{desCore} \HOLNumLit{8} (\HOLConst{KS} \HOLFreeVar{k} \HOLNumLit{8}) \HOLFreeVar{x})) \HOLSymConst{=} (\HOLFreeVar{w}\HOLSymConst{,}\HOLFreeVar{w}) \HOLSymConst{\HOLTokenImp{}}
+   \HOLConst{Round} (\HOLNumLit{8} \HOLSymConst{\ensuremath{-}} \HOLFreeVar{n}) (\HOLConst{KS} \HOLFreeVar{k} \HOLNumLit{16}) (\HOLConst{Split} (\HOLConst{IP} \HOLFreeVar{x})) \HOLSymConst{=}
+   \HOLConst{Swap} (\HOLConst{Round} (\HOLNumLit{8} \HOLSymConst{\ensuremath{+}} \HOLFreeVar{n}) (\HOLConst{KS} \HOLFreeVar{k} \HOLNumLit{16}) (\HOLConst{Split} (\HOLConst{IP} \HOLFreeVar{x})))
 \end{alltt}
 
-As I define the message lists using round keys list contains only up to the $8th$ round to facilitate future verification,
+As I define the message sets using round keys list contains only up to the $8th$ round to facilitate future verification,
 I first prove that doing the encryption with only 8 round keys is the same as encrypt with all 16 round keys
 when just encrypting for 8 rounds by another support theorem. By using it, I convert the prerequisite to mathch the
 round keys list with the goal.
 
-Then I start the induction on n and ask me to prove the two equal input halves $(w\;,\;w)$ at round n is the same after
+Then I start the induction on n and the base case is to prove the two equal input halves $(w\;,\;w)$ at round n is the same after
 swapping. It is straightforward, and I only need to expand the $Round$ function to pair form and apply the $Swap$ definition.
 
 For the induction step, I know the base case shows that the reversed halves in round $a$ $(Ra\;,\; La)$ are equal to
@@ -511,16 +536,18 @@ these halves between rounds. As $Ra\;= \; Lb$ by the base case, I can get $R(b-1
 Then because the encryption and decryption process of DES are the same, I can get $L(b-1)$ back from halves in round $b$ through
 the round function $f(b-1)$ by using the swap operation, round function and XOR operation
 
-\begin{multline}
-$ L(b-1) \; = \; (Rb \; \oplus \; f(b-1)\,(\;Lb\;) $.
-\end{multline}
-
+\begin{equation}
+\begin{split}
+   L(b-1) \; = \; (Rb \; \oplus \; f(b-1)\,(\;Lb\;)
+\end{split}
+\end{equation}
 $R(a+1)$ can also be represented by $Ra$ and $La$ in normal encryption manner through the round function $f(a+1)$
 
-\begin{multline}
-$ R(a+1) \; = \; La \; \oplus \; f(a+1)\,(\;Ra\;) $.
-\end{multline}
-
+\begin{equation}
+\begin{split}
+   R(a+1) \; = \; La \; \oplus \; f(a+1)\,(\;Ra\;)
+\end{split}
+\end{equation}
 According to the proof
 done above that round keys list generated by a weak key remains the same after being reversed, I can conclude that the list
 is  symmetric, and thus the $(b-1)$th and $(a+1)$th round keys are the same in the round keys list of length 16.
@@ -528,15 +555,134 @@ The round function $f(b-1)$ and $f(a+1)$ are then the same as round key is the o
 rounds. By combining this with $Rb\;= \; La$ and $Lb\;= \; Ra$, $L(b-1)$ and $R(a+1)$ are the same, and we can prove the step
 case is also right given the base case.
 
-Using the above way in HOL4, I convert the goal to halves using the $(M\;a\;,\;M\;b)$ function and then
+Using the above way in HOL4, I convert the goal to halves using $(M\;a\;,\;M\;b)$ function and then
 express the step case' halves using the base cases' halves. The only goal left is the proof of the elements in
 symmetric positions are the same. I need to put each weak key's value into the goal, calculate the generated
 round keys list for each key, ensure the step case's index do not exceed the length of list. At last, I need to
 do the method of exhaustion, examine each possible value of n from 0 to 15 to check if they meet the goal because of
 the lack of theorems in HOL4 on this aspect. The support theorem is proved.
 
-Switch to the last support theorem
+\begin{equation}
+\begin{split}
+ EL \; (7-n) \; (KS \; k \; 16) = EL \; (n+8) \; (KS \; k \; 16)
+\end{split}
+\end{equation}
+Switch to the last support theorem $wkey1\_equal$ mentioned above. It is also proved by induction, the base case can
+be directly proved by the base case of $Round$. The indcution step is proved in the same way as above by transforming
+the $Round$ function to $(M\;a\;,\;M\;b)$ form first and then express the step case' halves using the base cases' halves.
+The last part of verification is also examine each possible value of n to the goal, use the method of exhaustion to
+test all situations meet the goal and the theorem is proved.
 
+\begin{alltt}
+   \HOLTokenTurnstile{} \HOLConst{MEM} \HOLFreeVar{k} \HOLConst{Wkey} \HOLSymConst{\HOLTokenConj{}} \HOLFreeVar{n} \HOLSymConst{\HOLTokenLeq{}} \HOLNumLit{8} \HOLSymConst{\HOLTokenImp{}}
+   \HOLConst{Round} \HOLFreeVar{n} (\HOLConst{KS} \HOLFreeVar{k} \HOLNumLit{8}) (\HOLConst{Split} \HOLFreeVar{x}) \HOLSymConst{=} \HOLConst{Round} \HOLFreeVar{n} (\HOLConst{KS} \HOLFreeVar{k} \HOLNumLit{16}) (\HOLConst{Split} \HOLFreeVar{x})
+\end{alltt}
+
+It is time to prove that the cardinality of the sets of these messages is $2^{32}$. I show these sets form bijection with
+the universal set of 32-bit words first. To achieve these, I define two functions for each set, one of the two can map the messages
+set to the universal set and the other can map reversely.
+
+\begin{alltt}
+   \HOLTokenTurnstile{} \HOLConst{BIJ} \HOLConst{w1trans1} \HOLConst{Wtext1} \ensuremath{{\cal{U}}}(:\HOLTyOp{word32})
+\end{alltt}
+
+\begin{alltt}
+   \HOLTokenTurnstile{} \HOLConst{BIJ} \HOLConst{w2trans1} \HOLConst{Wtext2} \ensuremath{{\cal{U}}}(:\HOLTyOp{word32})
+\end{alltt}
+
+\begin{alltt}
+   \HOLTokenTurnstile{} \HOLConst{BIJ} \HOLConst{w3trans1} \HOLConst{Wtext3} \ensuremath{{\cal{U}}}(:\HOLTyOp{word32})
+\end{alltt}
+
+\begin{alltt}
+   \HOLTokenTurnstile{} \HOLConst{BIJ} \HOLConst{w4trans1} \HOLConst{Wtext4} \ensuremath{{\cal{U}}}(:\HOLTyOp{word32})
+\end{alltt}
+
+To prove the bijection relation between the two sets, $BIJ\_IFF\_INV$ theorem can be used to convert the $BIJ$ function into
+four sub-goals. It includes proving that all elements in messages set belongs to the other universal set of word32 after mapping,
+and vice versa. Moreover, the other two goals are applying the two functions together to the sets will keep the elements unchanged.
+
+\begin{alltt}
+   \HOLTokenTurnstile{} \HOLConst{BIJ} \HOLFreeVar{f} \HOLFreeVar{s} \HOLFreeVar{t} \HOLSymConst{\HOLTokenEquiv{}}
+   (\HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{x}. \HOLBoundVar{x} \HOLSymConst{\HOLTokenIn{}} \HOLFreeVar{s} \HOLSymConst{\HOLTokenImp{}} \HOLFreeVar{f} \HOLBoundVar{x} \HOLSymConst{\HOLTokenIn{}} \HOLFreeVar{t}) \HOLSymConst{\HOLTokenConj{}}
+   \HOLSymConst{\HOLTokenExists{}}\HOLBoundVar{g}. (\HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{x}. \HOLBoundVar{x} \HOLSymConst{\HOLTokenIn{}} \HOLFreeVar{t} \HOLSymConst{\HOLTokenImp{}} \HOLBoundVar{g} \HOLBoundVar{x} \HOLSymConst{\HOLTokenIn{}} \HOLFreeVar{s}) \HOLSymConst{\HOLTokenConj{}} (\HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{x}. \HOLBoundVar{x} \HOLSymConst{\HOLTokenIn{}} \HOLFreeVar{s} \HOLSymConst{\HOLTokenImp{}} \HOLBoundVar{g} (\HOLFreeVar{f} \HOLBoundVar{x}) \HOLSymConst{=} \HOLBoundVar{x}) \HOLSymConst{\HOLTokenConj{}}
+       \HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{x}. \HOLBoundVar{x} \HOLSymConst{\HOLTokenIn{}} \HOLFreeVar{t} \HOLSymConst{\HOLTokenImp{}} \HOLFreeVar{f} (\HOLBoundVar{g} \HOLBoundVar{x}) \HOLSymConst{=} \HOLBoundVar{x}
+\end{alltt}
+
+Taking the example for proving the first weak key, and the other weak keys are all proved in the same way. Their corresponding
+sets and functions just change the weak key used.
+The first sub-goal that all elements in messages set belongs to the other universal set of word32 after function $w1trans1$ is
+proved directly. It takes the 64-bit messages as inputs and outputs only the first reversed halves of message encrypted by 8
+rounds. As the outputs are 32 bits, they surely belong to the universal set of word32.
+
+\begin{alltt}
+   \HOLTokenTurnstile{} \HOLConst{w1trans1} \HOLFreeVar{x} \HOLSymConst{=} \HOLConst{FST} (\HOLConst{Split} (\HOLConst{IP} (\HOLConst{desCore} \HOLNumLit{8} (\HOLConst{KS} \HOLConst{Wkey1} \HOLNumLit{8}) \HOLFreeVar{x})))
+\end{alltt}
+
+The second sub-goal can be converted using definition of function $w1trans2$ and set $Wtext1$. All 32-bit messages
+(in universal set of word32) are formed as a pair of equal halves, applied with $Join$ and $IIP$ operation, encrypted
+for 8 rounds twice, and applied with $IP$ and $Split$ operation. And to prove the result halves are still the same.
+
+\begin{alltt}
+   \HOLTokenTurnstile{} \HOLConst{w1trans2} \HOLFreeVar{x} \HOLSymConst{=} \HOLConst{desCore} \HOLNumLit{8} (\HOLConst{KS} \HOLConst{Wkey1} \HOLNumLit{8}) (\HOLConst{IIP} (\HOLConst{Join} (\HOLFreeVar{x}\HOLSymConst{,}\HOLFreeVar{x})))
+\end{alltt}
+
+\begin{alltt}
+   \HOLTokenTurnstile{} \HOLConst{Wtext1} \HOLSymConst{=}
+   \HOLTokenLeftbrace{}\HOLBoundVar{x} \HOLTokenBar{} \HOLSymConst{\HOLTokenExists{}}\HOLBoundVar{w}. \HOLConst{Split} (\HOLConst{IP} (\HOLConst{desCore} \HOLNumLit{8} (\HOLConst{KS} \HOLConst{Wkey1} \HOLNumLit{8}) \HOLBoundVar{x})) \HOLSymConst{=} (\HOLBoundVar{w}\HOLSymConst{,}\HOLBoundVar{w})\HOLTokenRightbrace{}
+\end{alltt}
+
+I can also use the previous method to help the proof, the two encryptions of 8 rounds with the weak key cancel each other out
+as one of the encryption can be treated as decryption. The $Split$ and $Join$ operations can be cancelled out, and also the
+$IP$ and $IIP$ operations, results the initial pair of haves unchanged, so the two halves must remain the same with no change.
+The second sub-goal is then proved.
+
+The third sub-goal is to prove for an element in the messages' set with the described property, when they are converted
+tp the 32-bit half through $w1trans1$, formed as a pair of equal halves and map with the $w1trans2$, the result messages
+remain the same~\ref{fig:form5}. It proves with the same way as sub-goal 2, but begins to cancell out the $Join$ and $Split$ operation first, then
+the $IIP$ and $IP$ operations and at last the two encryption processes with weak key. It also cancells each other out,
+but in a different order.
+
+\begin{figure}
+\centering
+\includegraphics[width=0.25\linewidth]{BIJ}
+\caption{\label{fig:form5} Apply two functions to elements in Wtext1}
+\end{figure}
+
+The elements are initially in the universal set, change to pairs equal halves, and apply the $w1trans2$ function followed
+by the $w1trans1$ function in the last sub-goal. It can also be verified by cancelling each operations in another order.
+The bijection relation between two sets is finally proved.
+
+The bijection proofs for the other three keys are exactly the same, so one proof $BIJ\_for\_weak\_keys\_explicit$ with the lists of sets, functions and
+weak keys as inputs can be done using the existing seperate BIJ theorems.
+
+\begin{alltt}
+   \HOLTokenTurnstile{} \HOLFreeVar{i} \HOLSymConst{\HOLTokenLt{}} \HOLNumLit{4} \HOLSymConst{\HOLTokenImp{}} \HOLConst{BIJ} (\HOLConst{EL} \HOLFreeVar{i} \HOLConst{wtrans1}) (\HOLConst{EL} \HOLFreeVar{i} \HOLConst{Wtextlist}) \ensuremath{{\cal{U}}}(:\HOLTyOp{word32})
+\end{alltt}
+
+The universal set of word32 has the cardinality of $2^{32}$ by the theorem \\
+$card\_word32$. As a result, by proving that
+these sets have the same cardinality as the universal set of word32, I can then prove the cardinality of each message set
+is $2^{32}$. I can meet the prerequisites that the universal set of word32 is finite directly and use the above
+bijection relation, then theorem $FINITE\_BIJ\_CARD$ can be used to prove the equivalence of cardinality.
+
+\begin{alltt}
+   \HOLTokenTurnstile{} \HOLConst{CARD} \ensuremath{{\cal{U}}}(:\HOLTyOp{word32}) \HOLSymConst{=} \HOLNumLit{2} \HOLSymConst{\HOLTokenExp{}} \HOLNumLit{32}
+\end{alltt}
+
+\begin{alltt}
+   \HOLTokenTurnstile{} \HOLConst{FINITE} \HOLFreeVar{s} \HOLSymConst{\HOLTokenConj{}} \HOLConst{BIJ} \HOLFreeVar{f} \HOLFreeVar{s} \HOLFreeVar{t} \HOLSymConst{\HOLTokenImp{}} \HOLConst{CARD} \HOLFreeVar{s} \HOLSymConst{=} \HOLConst{CARD} \HOLFreeVar{t}
+\end{alltt}
+
+As a result, each message set is proved with cardinality of $2^{32}$ and the theorem is stored as
+$DES\_weak\_fp\_card$ in $des\_propTheory$.
+
+\begin{alltt}
+   \HOLTokenTurnstile{} \HOLConst{MEM} \HOLFreeVar{x} \HOLConst{Wtextlist} \HOLSymConst{\HOLTokenImp{}} \HOLConst{CARD} \HOLFreeVar{x} \HOLSymConst{=} \HOLNumLit{2} \HOLSymConst{\HOLTokenExp{}} \HOLNumLit{32}
+\end{alltt}
+
+
+   a
 \end{document}
 
 
