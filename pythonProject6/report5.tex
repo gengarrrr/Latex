@@ -207,7 +207,7 @@ These properties cannot reduce the complexity for exhaustive key search especial
 of $2^{56}$ keys. However, their existence can be vital when DES is used within some construction[3].
 
 \subsection{DES in HOL4}
-DES algorithm has been built in the "desScript" file in HOL4, and my paper build the verifications based on the DES implemented
+DES algorithm has been built in the $desScript$ file in HOL4, and my paper build the verifications based on the DES implemented
 in this file.
 
 In the file, it first defines some specific types used in
@@ -215,7 +215,7 @@ the Data Encryption Standard implementation. It includes the halves of word/plai
 keys in each round as pair of word28 and a function type of S-Box that take word6 as inputs and return
 word4. It also includes the data tables to help facilitate the IP, inverse IP permutations, E expansion, P, PC1 and PC2
 permutations, round-dependent rotation values and the permutation values for the S-boxes. Then there are
-some functions and definitions that perform the expansion, permutations, reversion and the S-Boxes' processing. The "Key Scheduling" section
+some functions and definitions that perform the expansion, permutations, reversion and the S-Boxes' processing. The \("\)Key Scheduling\("\) section
 in this file are definitions to build the round keys from the input key. As the last part of preparing, there are
 join and split functions to initially split the plaintext and form the result ciphertext. Theorems are also constructed to
 verify some basic properties and help ensure the correctness of implementations.
@@ -223,7 +223,7 @@ verify some basic properties and help ensure the correctness of implementations.
 It then actually build the XOR operation, round function and swap operation in each round. Moreover, it combines the above operations, along with the
 round keys to form the actual process for each round and ultimately construct the complete DES process over a total of16 rounds.
 It also implements a help function that can return the input halves in each round as a pair in the form of (M a, M b). It is beneficial
-for any future analysis of DES, including the verification of the proper DES implementation in "desScript" and my additional DES
+for any future analysis of DES, including the verification of the proper DES implementation in $desScript$ and my additional DES
 properties proving. At last, it proved that as a Feistel network, the implemented encryption of DES using the round
 keys, followed by a second encryption using the reversed round keys will return the original plaintext.
 
