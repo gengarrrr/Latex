@@ -8,12 +8,17 @@
 \usepackage{graphicx}
 \usepackage{amsmath}
 
-\title{Formal verification of properties of block ciphers }
+% Set page size and margins
+\usepackage[letterpaper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+
+\title{Formal Verification of Block Ciphers in HOL Theorem Prover}
 \author{Ruofan Yang}
+\date{\today}
 
 \begin{document}
 
 \maketitle
+
 \begin{abstract}
    Interactive Proving combines the strengths of manual and automated proofs. It is used to prove the correctness of
    intended algorithms in a more rigorous and formal manner,
