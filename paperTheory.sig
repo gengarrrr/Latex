@@ -6,6 +6,8 @@ sig
 (*
    [des_prop] Parent theory of "paper"
    
+   [rc5] Parent theory of "paper"
+   
    
 *)
 end

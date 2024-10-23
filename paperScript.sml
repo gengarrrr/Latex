@@ -4,7 +4,7 @@ open arithmeticTheory numLib pairTheory fcpTheory fcpLib wordsTheory wordsLib li
 
 open measureTheory probabilityTheory extreal_baseTheory;
 
-open des_propTheory;
+open des_propTheory rc5Theory;
 
 open EmitTeX;
 
@@ -16,10 +16,10 @@ val _ = export_theory ();
 val _ = let in
 	OS.FileSys.remove "HOLdes.tex" handle e => {};
 	OS.FileSys.remove "HOLdesXXprop.tex" handle e => {};
+	OS.FileSys.remove "HOLrcFive.tex" handle e => {};
 	OS.FileSys.remove "references.tex" handle e => {};
 
 	EmitTeX.print_theories_as_tex_doc
-	    ["des",
-             "des_prop"]
+	    ["des", "des_prop", "rc5"]
 	    "references" (* references.tex includes all other generated TeX files *)
     end;

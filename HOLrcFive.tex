@@ -1,0 +1,614 @@
+\newcommand{\HOLrcFiveDate}{24 October 2024}
+\newcommand{\HOLrcFiveTime}{01:12}
+\begin{SaveVerbatim}{HOLrcFiveDefinitionsJoinSixFourYYXXdef}
+\HOLTokenTurnstile{} \HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{b}. \HOLConst{Join64'} \HOLBoundVar{b} \HOLSymConst{=} (\HOLKeyword{let} (\HOLBoundVar{u}\HOLSymConst{,}\HOLBoundVar{v}) = \HOLBoundVar{b} \HOLKeyword{in} \HOLBoundVar{u} \HOLSymConst{@@} \HOLBoundVar{v})
+\end{SaveVerbatim}
+\newcommand{\HOLrcFiveDefinitionsJoinSixFourYYXXdef}{\UseVerbatim{HOLrcFiveDefinitionsJoinSixFourYYXXdef}}
+\begin{SaveVerbatim}{HOLrcFiveDefinitionsJoinSixFourXXdef}
+\HOLTokenTurnstile{} \HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{u} \HOLBoundVar{v}. \HOLConst{Join64} (\HOLBoundVar{u}\HOLSymConst{,}\HOLBoundVar{v}) \HOLSymConst{=} \HOLBoundVar{u} \HOLSymConst{@@} \HOLBoundVar{v}
+\end{SaveVerbatim}
+\newcommand{\HOLrcFiveDefinitionsJoinSixFourXXdef}{\UseVerbatim{HOLrcFiveDefinitionsJoinSixFourXXdef}}
+\begin{SaveVerbatim}{HOLrcFiveDefinitionskeysXXdef}
+\HOLTokenTurnstile{} (\HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{r} \HOLBoundVar{k}.
+      \HOLConst{keys} \HOLNumLit{0} \HOLBoundVar{r} \HOLBoundVar{k} \HOLSymConst{=}
+      (\HOLKeyword{let}
+         \HOLBoundVar{Lk} = \HOLConst{Lkeys} \HOLBoundVar{k};
+         \HOLBoundVar{Sk} = \HOLConst{Skeys} \HOLBoundVar{r};
+         \HOLBoundVar{A} = \HOLConst{EL} \HOLNumLit{0} \HOLBoundVar{Sk};
+         \HOLBoundVar{B} = \HOLConst{EL} \HOLNumLit{0} \HOLBoundVar{Lk}
+       \HOLKeyword{in}
+         (\HOLBoundVar{A}\HOLSymConst{,}\HOLBoundVar{B}\HOLSymConst{,}\HOLBoundVar{Lk}\HOLSymConst{,}\HOLBoundVar{Sk}\HOLSymConst{,}\HOLNumLit{0}\HOLSymConst{,}\HOLNumLit{0}))) \HOLSymConst{\HOLTokenConj{}}
+   \HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{n} \HOLBoundVar{r} \HOLBoundVar{k}.
+     \HOLConst{keys} (\HOLConst{SUC} \HOLBoundVar{n}) \HOLBoundVar{r} \HOLBoundVar{k} \HOLSymConst{=}
+     (\HOLKeyword{let}
+        (\HOLBoundVar{A}\HOLSymConst{,}\HOLBoundVar{B}\HOLSymConst{,}\HOLBoundVar{Lk}\HOLSymConst{,}\HOLBoundVar{Sk}\HOLSymConst{,}\HOLBoundVar{i}\HOLSymConst{,}\HOLBoundVar{j}) = \HOLConst{keys} \HOLBoundVar{n} \HOLBoundVar{r} \HOLBoundVar{k};
+        \HOLBoundVar{Anew} = (\HOLConst{EL} \HOLBoundVar{i} \HOLBoundVar{Sk} \HOLSymConst{\ensuremath{+}} \HOLBoundVar{A} \HOLSymConst{\ensuremath{+}} \HOLBoundVar{B}) \HOLSymConst{\HOLTokenRol{}} \HOLNumLit{3};
+        \HOLBoundVar{Bnew} = (\HOLConst{EL} \HOLBoundVar{i} \HOLBoundVar{Lk} \HOLSymConst{\ensuremath{+}} \HOLBoundVar{Anew} \HOLSymConst{\ensuremath{+}} \HOLBoundVar{B}) \HOLSymConst{\HOLTokenRol{}} \HOLConst{w2n} (\HOLBoundVar{Anew} \HOLSymConst{\ensuremath{+}} \HOLBoundVar{B});
+        \HOLBoundVar{Sknew} =
+          \HOLConst{GENLIST}
+            (\HOLTokenLambda{}\HOLBoundVar{m}.
+                 \HOLKeyword{if} \HOLBoundVar{m} \HOLSymConst{=} \HOLBoundVar{i} \HOLKeyword{then} (\HOLConst{EL} \HOLBoundVar{i} \HOLBoundVar{Sk} \HOLSymConst{\ensuremath{+}} \HOLBoundVar{A} \HOLSymConst{\ensuremath{+}} \HOLBoundVar{B}) \HOLSymConst{\HOLTokenRol{}} \HOLNumLit{3}
+                 \HOLKeyword{else} \HOLConst{EL} \HOLBoundVar{m} \HOLBoundVar{Sk}) (\HOLNumLit{2} \HOLSymConst{\HOLTokenProd{}} (\HOLBoundVar{r} \HOLSymConst{\ensuremath{+}} \HOLNumLit{1}));
+        \HOLBoundVar{Lknew} =
+          \HOLConst{GENLIST}
+            (\HOLTokenLambda{}\HOLBoundVar{m}.
+                 \HOLKeyword{if} \HOLBoundVar{m} \HOLSymConst{=} \HOLBoundVar{j} \HOLKeyword{then}
+                   (\HOLConst{EL} \HOLBoundVar{j} \HOLBoundVar{Lk} \HOLSymConst{\ensuremath{+}} \HOLBoundVar{Anew} \HOLSymConst{\ensuremath{+}} \HOLBoundVar{B}) \HOLSymConst{\HOLTokenRol{}} \HOLConst{w2n} (\HOLBoundVar{Anew} \HOLSymConst{\ensuremath{+}} \HOLBoundVar{B})
+                 \HOLKeyword{else} \HOLConst{EL} \HOLBoundVar{m} \HOLBoundVar{Lk}) \HOLNumLit{2};
+        \HOLBoundVar{inew} = (\HOLBoundVar{i} \HOLSymConst{\ensuremath{+}} \HOLNumLit{1}) \HOLConst{MOD} (\HOLNumLit{2} \HOLSymConst{\HOLTokenProd{}} (\HOLBoundVar{r} \HOLSymConst{\ensuremath{+}} \HOLNumLit{1}));
+        \HOLBoundVar{jnew} = (\HOLBoundVar{j} \HOLSymConst{\ensuremath{+}} \HOLNumLit{1}) \HOLConst{MOD} \HOLNumLit{2}
+      \HOLKeyword{in}
+        (\HOLBoundVar{Anew}\HOLSymConst{,}\HOLBoundVar{Bnew}\HOLSymConst{,}\HOLBoundVar{Lknew}\HOLSymConst{,}\HOLBoundVar{Sknew}\HOLSymConst{,}\HOLBoundVar{inew}\HOLSymConst{,}\HOLBoundVar{jnew}))
+\end{SaveVerbatim}
+\newcommand{\HOLrcFiveDefinitionskeysXXdef}{\UseVerbatim{HOLrcFiveDefinitionskeysXXdef}}
+\begin{SaveVerbatim}{HOLrcFiveDefinitionskeysIniXXdef}
+\HOLTokenTurnstile{} \HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{k}. \HOLConst{keysIni} \HOLBoundVar{k} \HOLSymConst{=}
+       [(\HOLNumLit{7} \HOLSymConst{\HOLTokenExtract{}} \HOLNumLit{0}) \HOLBoundVar{k}; (\HOLNumLit{15} \HOLSymConst{\HOLTokenExtract{}} \HOLNumLit{8}) \HOLBoundVar{k}; (\HOLNumLit{23} \HOLSymConst{\HOLTokenExtract{}} \HOLNumLit{16}) \HOLBoundVar{k}; (\HOLNumLit{31} \HOLSymConst{\HOLTokenExtract{}} \HOLNumLit{24}) \HOLBoundVar{k};
+        (\HOLNumLit{39} \HOLSymConst{\HOLTokenExtract{}} \HOLNumLit{32}) \HOLBoundVar{k}; (\HOLNumLit{47} \HOLSymConst{\HOLTokenExtract{}} \HOLNumLit{40}) \HOLBoundVar{k}; (\HOLNumLit{55} \HOLSymConst{\HOLTokenExtract{}} \HOLNumLit{48}) \HOLBoundVar{k}; (\HOLNumLit{63} \HOLSymConst{\HOLTokenExtract{}} \HOLNumLit{56}) \HOLBoundVar{k}]
+\end{SaveVerbatim}
+\newcommand{\HOLrcFiveDefinitionskeysIniXXdef}{\UseVerbatim{HOLrcFiveDefinitionskeysIniXXdef}}
+\begin{SaveVerbatim}{HOLrcFiveDefinitionslenKeywXXdef}
+\HOLTokenTurnstile{} \HOLConst{lenKeyw} \HOLSymConst{=} \HOLNumLit{2}
+\end{SaveVerbatim}
+\newcommand{\HOLrcFiveDefinitionslenKeywXXdef}{\UseVerbatim{HOLrcFiveDefinitionslenKeywXXdef}}
+\begin{SaveVerbatim}{HOLrcFiveDefinitionslenKinbytXXdef}
+\HOLTokenTurnstile{} \HOLConst{lenKinbyt} \HOLSymConst{=} \HOLNumLit{8}
+\end{SaveVerbatim}
+\newcommand{\HOLrcFiveDefinitionslenKinbytXXdef}{\UseVerbatim{HOLrcFiveDefinitionslenKinbytXXdef}}
+\begin{SaveVerbatim}{HOLrcFiveDefinitionslenWinbytXXdef}
+\HOLTokenTurnstile{} \HOLConst{lenWinbyt} \HOLSymConst{=} \HOLNumLit{4}
+\end{SaveVerbatim}
+\newcommand{\HOLrcFiveDefinitionslenWinbytXXdef}{\UseVerbatim{HOLrcFiveDefinitionslenWinbytXXdef}}
+\begin{SaveVerbatim}{HOLrcFiveDefinitionsLkeysXXdef}
+\HOLTokenTurnstile{} \HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{k}. \HOLConst{Lkeys} \HOLBoundVar{k} \HOLSymConst{=} \HOLConst{LkeysSup} \HOLBoundVar{k} \HOLNumLit{7}
+\end{SaveVerbatim}
+\newcommand{\HOLrcFiveDefinitionsLkeysXXdef}{\UseVerbatim{HOLrcFiveDefinitionsLkeysXXdef}}
+\begin{SaveVerbatim}{HOLrcFiveDefinitionsLkeysIniXXdef}
+\HOLTokenTurnstile{} \HOLConst{LkeysIni} \HOLSymConst{=} [0w; 0w]
+\end{SaveVerbatim}
+\newcommand{\HOLrcFiveDefinitionsLkeysIniXXdef}{\UseVerbatim{HOLrcFiveDefinitionsLkeysIniXXdef}}
+\begin{SaveVerbatim}{HOLrcFiveDefinitionsLkeysSupXXdef}
+\HOLTokenTurnstile{} (\HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{k}. \HOLConst{LkeysSup} \HOLBoundVar{k} \HOLNumLit{0} \HOLSymConst{=}
+        (\HOLKeyword{let}
+           \HOLBoundVar{ks} = \HOLConst{LkeysIni};
+           \HOLBoundVar{keys} = \HOLConst{keysIni} \HOLBoundVar{k}
+         \HOLKeyword{in}
+           \HOLConst{GENLIST}
+             (\HOLTokenLambda{}\HOLBoundVar{m}.
+                  \HOLKeyword{if} \HOLBoundVar{m} \HOLSymConst{=} \HOLNumLit{7} \HOLConst{DIV} \HOLNumLit{4} \HOLKeyword{then} \HOLConst{EL} \HOLBoundVar{m} \HOLBoundVar{ks} \HOLSymConst{\HOLTokenRol{}} \HOLNumLit{8} \HOLSymConst{\ensuremath{+}} \HOLConst{EL} \HOLNumLit{7} \HOLBoundVar{keys}
+                  \HOLKeyword{else} \HOLConst{EL} \HOLBoundVar{m} \HOLBoundVar{ks}) \HOLNumLit{2})) \HOLSymConst{\HOLTokenConj{}}
+   \HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{k} \HOLBoundVar{r}.
+     \HOLConst{LkeysSup} \HOLBoundVar{k} (\HOLConst{SUC} \HOLBoundVar{r}) \HOLSymConst{=}
+     (\HOLKeyword{let}
+        \HOLBoundVar{ks} = \HOLConst{LkeysSup} \HOLBoundVar{k} \HOLBoundVar{r};
+        \HOLBoundVar{keys} = \HOLConst{keysIni} \HOLBoundVar{k};
+        \HOLBoundVar{i} = \HOLNumLit{7} \HOLSymConst{\ensuremath{-}} \HOLConst{SUC} \HOLBoundVar{r}
+      \HOLKeyword{in}
+        \HOLConst{GENLIST}
+          (\HOLTokenLambda{}\HOLBoundVar{m}.
+               \HOLKeyword{if} \HOLBoundVar{m} \HOLSymConst{=} \HOLBoundVar{i} \HOLConst{DIV} \HOLNumLit{4} \HOLKeyword{then} \HOLConst{EL} \HOLBoundVar{m} \HOLBoundVar{ks} \HOLSymConst{\HOLTokenRol{}} \HOLNumLit{8} \HOLSymConst{\ensuremath{+}} \HOLConst{EL} \HOLBoundVar{i} \HOLBoundVar{keys}
+               \HOLKeyword{else} \HOLConst{EL} \HOLBoundVar{m} \HOLBoundVar{ks}) \HOLNumLit{2})
+\end{SaveVerbatim}
+\newcommand{\HOLrcFiveDefinitionsLkeysSupXXdef}{\UseVerbatim{HOLrcFiveDefinitionsLkeysSupXXdef}}
+\begin{SaveVerbatim}{HOLrcFiveDefinitionsPThreeTwoXXdata}
+\HOLTokenTurnstile{} \HOLConst{P32_data} \HOLSymConst{=} 0xB7E15163w
+\end{SaveVerbatim}
+\newcommand{\HOLrcFiveDefinitionsPThreeTwoXXdata}{\UseVerbatim{HOLrcFiveDefinitionsPThreeTwoXXdata}}
+\begin{SaveVerbatim}{HOLrcFiveDefinitionsQThreeTwoXXdata}
+\HOLTokenTurnstile{} \HOLConst{Q32_data} \HOLSymConst{=} 0x9E3779B9w
+\end{SaveVerbatim}
+\newcommand{\HOLrcFiveDefinitionsQThreeTwoXXdata}{\UseVerbatim{HOLrcFiveDefinitionsQThreeTwoXXdata}}
+\begin{SaveVerbatim}{HOLrcFiveDefinitionsrcFivekeysXXdef}
+\HOLTokenTurnstile{} \HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{r} \HOLBoundVar{k}.
+     \HOLConst{rc5keys} \HOLBoundVar{r} \HOLBoundVar{k} \HOLSymConst{=}
+     (\HOLKeyword{let} \HOLBoundVar{n} = \HOLNumLit{3} \HOLSymConst{\HOLTokenProd{}} \HOLConst{MAX} (\HOLNumLit{2} \HOLSymConst{\HOLTokenProd{}} (\HOLBoundVar{r} \HOLSymConst{\ensuremath{+}} \HOLNumLit{1})) \HOLNumLit{2} \HOLKeyword{in} \HOLConst{keys} \HOLBoundVar{n} \HOLBoundVar{r} \HOLBoundVar{k})
+\end{SaveVerbatim}
+\newcommand{\HOLrcFiveDefinitionsrcFivekeysXXdef}{\UseVerbatim{HOLrcFiveDefinitionsrcFivekeysXXdef}}
+\begin{SaveVerbatim}{HOLrcFiveDefinitionsRoundDeYYXXdef}
+\HOLTokenTurnstile{} (\HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{ki} \ensuremath{\HOLBoundVar{ki}\sb{\mathrm{2}}} \HOLBoundVar{b}. \HOLConst{RoundDe'} \HOLNumLit{0} \HOLBoundVar{ki} \ensuremath{\HOLBoundVar{ki}\sb{\mathrm{2}}} \HOLBoundVar{b} \HOLSymConst{=} \HOLBoundVar{b}) \HOLSymConst{\HOLTokenConj{}}
+   \HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{n} \HOLBoundVar{ki} \ensuremath{\HOLBoundVar{ki}\sb{\mathrm{2}}} \HOLBoundVar{b}.
+     \HOLConst{RoundDe'} (\HOLConst{SUC} \HOLBoundVar{n}) \HOLBoundVar{ki} \ensuremath{\HOLBoundVar{ki}\sb{\mathrm{2}}} \HOLBoundVar{b} \HOLSymConst{=}
+     (\HOLKeyword{let} \ensuremath{\HOLBoundVar{b}\sp{\prime{}}} = \HOLConst{RoundDe'} \HOLBoundVar{n} \HOLBoundVar{ki} \ensuremath{\HOLBoundVar{ki}\sb{\mathrm{2}}} \HOLBoundVar{b} \HOLKeyword{in} \HOLConst{RoundDeSg} \ensuremath{\HOLBoundVar{b}\sp{\prime{}}} \HOLBoundVar{ki} \ensuremath{\HOLBoundVar{ki}\sb{\mathrm{2}}})
+\end{SaveVerbatim}
+\newcommand{\HOLrcFiveDefinitionsRoundDeYYXXdef}{\UseVerbatim{HOLrcFiveDefinitionsRoundDeYYXXdef}}
+\begin{SaveVerbatim}{HOLrcFiveDefinitionsRoundDeSixFourXXdef}
+\HOLTokenTurnstile{} \HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{n} \HOLBoundVar{w} \HOLBoundVar{k}.
+     \HOLConst{RoundDe64} \HOLBoundVar{n} \HOLBoundVar{w} \HOLBoundVar{k} \HOLSymConst{=}
+     (\HOLKeyword{let}
+        (\ensuremath{\HOLBoundVar{w}\sb{\mathrm{1}}}\HOLSymConst{,}\ensuremath{\HOLBoundVar{w}\sb{\mathrm{2}}}) = \HOLConst{Split64} \HOLBoundVar{w};
+        (\HOLBoundVar{A}\HOLSymConst{,}\HOLBoundVar{B}\HOLSymConst{,}\HOLBoundVar{Lk}\HOLSymConst{,}\HOLBoundVar{Sk}\HOLSymConst{,}\HOLBoundVar{i}\HOLSymConst{,}\HOLBoundVar{j}) = \HOLConst{rc5keys} \HOLBoundVar{n} \HOLBoundVar{k};
+        (\ensuremath{\HOLBoundVar{w}\sb{\mathrm{1}}\sp{\prime{}}}\HOLSymConst{,}\ensuremath{\HOLBoundVar{w}\sb{\mathrm{2}}\sp{\prime{}}}) = \HOLConst{RoundDe} \HOLBoundVar{n} \HOLBoundVar{Sk} (\ensuremath{\HOLBoundVar{w}\sb{\mathrm{1}}}\HOLSymConst{,}\ensuremath{\HOLBoundVar{w}\sb{\mathrm{2}}});
+        \ensuremath{\HOLBoundVar{k}\sb{\mathrm{0}}} = \HOLConst{EL} \HOLNumLit{0} \HOLBoundVar{Sk};
+        \ensuremath{\HOLBoundVar{k}\sb{\mathrm{1}}} = \HOLConst{EL} \HOLNumLit{1} \HOLBoundVar{Sk}
+      \HOLKeyword{in}
+        \HOLConst{Join64'} (\ensuremath{\HOLBoundVar{w}\sb{\mathrm{1}}\sp{\prime{}}} \HOLSymConst{\ensuremath{-}} \ensuremath{\HOLBoundVar{k}\sb{\mathrm{0}}}\HOLSymConst{,}\ensuremath{\HOLBoundVar{w}\sb{\mathrm{2}}\sp{\prime{}}} \HOLSymConst{\ensuremath{-}} \ensuremath{\HOLBoundVar{k}\sb{\mathrm{1}}}))
+\end{SaveVerbatim}
+\newcommand{\HOLrcFiveDefinitionsRoundDeSixFourXXdef}{\UseVerbatim{HOLrcFiveDefinitionsRoundDeSixFourXXdef}}
+\begin{SaveVerbatim}{HOLrcFiveDefinitionsRoundDeSgXXdef}
+\HOLTokenTurnstile{} \HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{b} \HOLBoundVar{ki} \ensuremath{\HOLBoundVar{ki}\sb{\mathrm{2}}}.
+     \HOLConst{RoundDeSg} \HOLBoundVar{b} \HOLBoundVar{ki} \ensuremath{\HOLBoundVar{ki}\sb{\mathrm{2}}} \HOLSymConst{=}
+     (\HOLKeyword{let}
+        (\ensuremath{\HOLBoundVar{w}\sb{\mathrm{1}}}\HOLSymConst{,}\ensuremath{\HOLBoundVar{w}\sb{\mathrm{2}}}) = \HOLBoundVar{b};
+        \HOLBoundVar{B} = (\ensuremath{\HOLBoundVar{w}\sb{\mathrm{2}}} \HOLSymConst{\ensuremath{-}} \ensuremath{\HOLBoundVar{ki}\sb{\mathrm{2}}}) \HOLSymConst{\HOLTokenRor{}} \HOLConst{w2n} \ensuremath{\HOLBoundVar{w}\sb{\mathrm{1}}} \HOLSymConst{\HOLTokenEor{}} \ensuremath{\HOLBoundVar{w}\sb{\mathrm{1}}};
+        \HOLBoundVar{A} = (\ensuremath{\HOLBoundVar{w}\sb{\mathrm{1}}} \HOLSymConst{\ensuremath{-}} \HOLBoundVar{ki}) \HOLSymConst{\HOLTokenRor{}} \HOLConst{w2n} \HOLBoundVar{B} \HOLSymConst{\HOLTokenEor{}} \HOLBoundVar{B}
+      \HOLKeyword{in}
+        (\HOLBoundVar{A}\HOLSymConst{,}\HOLBoundVar{B}))
+\end{SaveVerbatim}
+\newcommand{\HOLrcFiveDefinitionsRoundDeSgXXdef}{\UseVerbatim{HOLrcFiveDefinitionsRoundDeSgXXdef}}
+\begin{SaveVerbatim}{HOLrcFiveDefinitionsRoundEnYYXXdef}
+\HOLTokenTurnstile{} (\HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{ki} \ensuremath{\HOLBoundVar{ki}\sb{\mathrm{2}}} \HOLBoundVar{b}. \HOLConst{RoundEn'} \HOLNumLit{0} \HOLBoundVar{ki} \ensuremath{\HOLBoundVar{ki}\sb{\mathrm{2}}} \HOLBoundVar{b} \HOLSymConst{=} \HOLBoundVar{b}) \HOLSymConst{\HOLTokenConj{}}
+   \HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{n} \HOLBoundVar{ki} \ensuremath{\HOLBoundVar{ki}\sb{\mathrm{2}}} \HOLBoundVar{b}.
+     \HOLConst{RoundEn'} (\HOLConst{SUC} \HOLBoundVar{n}) \HOLBoundVar{ki} \ensuremath{\HOLBoundVar{ki}\sb{\mathrm{2}}} \HOLBoundVar{b} \HOLSymConst{=}
+     (\HOLKeyword{let} \ensuremath{\HOLBoundVar{b}\sp{\prime{}}} = \HOLConst{RoundEn'} \HOLBoundVar{n} \HOLBoundVar{ki} \ensuremath{\HOLBoundVar{ki}\sb{\mathrm{2}}} \HOLBoundVar{b} \HOLKeyword{in} \HOLConst{RoundEnSg} \ensuremath{\HOLBoundVar{b}\sp{\prime{}}} \HOLBoundVar{ki} \ensuremath{\HOLBoundVar{ki}\sb{\mathrm{2}}})
+\end{SaveVerbatim}
+\newcommand{\HOLrcFiveDefinitionsRoundEnYYXXdef}{\UseVerbatim{HOLrcFiveDefinitionsRoundEnYYXXdef}}
+\begin{SaveVerbatim}{HOLrcFiveDefinitionsRoundEnSixFourXXdef}
+\HOLTokenTurnstile{} \HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{n} \HOLBoundVar{w} \HOLBoundVar{k}.
+     \HOLConst{RoundEn64} \HOLBoundVar{n} \HOLBoundVar{w} \HOLBoundVar{k} \HOLSymConst{=}
+     (\HOLKeyword{let}
+        (\ensuremath{\HOLBoundVar{w}\sb{\mathrm{1}}}\HOLSymConst{,}\ensuremath{\HOLBoundVar{w}\sb{\mathrm{2}}}) = \HOLConst{Split64} \HOLBoundVar{w};
+        (\HOLBoundVar{A}\HOLSymConst{,}\HOLBoundVar{B}\HOLSymConst{,}\HOLBoundVar{Lk}\HOLSymConst{,}\HOLBoundVar{Sk}\HOLSymConst{,}\HOLBoundVar{i}\HOLSymConst{,}\HOLBoundVar{j}) = \HOLConst{rc5keys} \HOLBoundVar{n} \HOLBoundVar{k};
+        \ensuremath{\HOLBoundVar{k}\sb{\mathrm{0}}} = \HOLConst{EL} \HOLNumLit{0} \HOLBoundVar{Sk};
+        \ensuremath{\HOLBoundVar{k}\sb{\mathrm{1}}} = \HOLConst{EL} \HOLNumLit{1} \HOLBoundVar{Sk}
+      \HOLKeyword{in}
+        \HOLConst{Join64'} (\HOLConst{RoundEn} \HOLBoundVar{n} (\ensuremath{\HOLBoundVar{w}\sb{\mathrm{1}}} \HOLSymConst{\ensuremath{+}} \ensuremath{\HOLBoundVar{k}\sb{\mathrm{0}}}) (\ensuremath{\HOLBoundVar{w}\sb{\mathrm{2}}} \HOLSymConst{\ensuremath{+}} \ensuremath{\HOLBoundVar{k}\sb{\mathrm{1}}}) \HOLBoundVar{Sk}))
+\end{SaveVerbatim}
+\newcommand{\HOLrcFiveDefinitionsRoundEnSixFourXXdef}{\UseVerbatim{HOLrcFiveDefinitionsRoundEnSixFourXXdef}}
+\begin{SaveVerbatim}{HOLrcFiveDefinitionsRoundEnXXdef}
+\HOLTokenTurnstile{} (\HOLSymConst{\HOLTokenForall{}}\ensuremath{\HOLBoundVar{w}\sb{\mathrm{1}}} \ensuremath{\HOLBoundVar{w}\sb{\mathrm{2}}} \HOLBoundVar{ks}.
+      \HOLConst{RoundEn} \HOLNumLit{0} \ensuremath{\HOLBoundVar{w}\sb{\mathrm{1}}} \ensuremath{\HOLBoundVar{w}\sb{\mathrm{2}}} \HOLBoundVar{ks} \HOLSymConst{=}
+      (\HOLKeyword{let} \ensuremath{\HOLBoundVar{s}\sb{\mathrm{0}}} = \HOLConst{EL} \HOLNumLit{0} \HOLBoundVar{ks}; \ensuremath{\HOLBoundVar{s}\sb{\mathrm{1}}} = \HOLConst{EL} \HOLNumLit{1} \HOLBoundVar{ks} \HOLKeyword{in} (\ensuremath{\HOLBoundVar{w}\sb{\mathrm{1}}}\HOLSymConst{,}\ensuremath{\HOLBoundVar{w}\sb{\mathrm{2}}}))) \HOLSymConst{\HOLTokenConj{}}
+   \HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{n} \ensuremath{\HOLBoundVar{w}\sb{\mathrm{1}}} \ensuremath{\HOLBoundVar{w}\sb{\mathrm{2}}} \HOLBoundVar{ks}.
+     \HOLConst{RoundEn} (\HOLConst{SUC} \HOLBoundVar{n}) \ensuremath{\HOLBoundVar{w}\sb{\mathrm{1}}} \ensuremath{\HOLBoundVar{w}\sb{\mathrm{2}}} \HOLBoundVar{ks} \HOLSymConst{=}
+     (\HOLKeyword{let}
+        (\ensuremath{\HOLBoundVar{w}\sb{\mathrm{1}}\sp{\prime{}}}\HOLSymConst{,}\ensuremath{\HOLBoundVar{w}\sb{\mathrm{2}}\sp{\prime{}}}) = \HOLConst{RoundEn} \HOLBoundVar{n} \ensuremath{\HOLBoundVar{w}\sb{\mathrm{1}}} \ensuremath{\HOLBoundVar{w}\sb{\mathrm{2}}} \HOLBoundVar{ks};
+        \HOLBoundVar{ki} = \HOLConst{EL} (\HOLNumLit{2} \HOLSymConst{\HOLTokenProd{}} \HOLConst{SUC} \HOLBoundVar{n}) \HOLBoundVar{ks};
+        \ensuremath{\HOLBoundVar{ki}\sb{\mathrm{2}}} = \HOLConst{EL} (\HOLNumLit{2} \HOLSymConst{\HOLTokenProd{}} \HOLConst{SUC} \HOLBoundVar{n} \HOLSymConst{\ensuremath{+}} \HOLNumLit{1}) \HOLBoundVar{ks};
+        \HOLBoundVar{A} = (\ensuremath{\HOLBoundVar{w}\sb{\mathrm{1}}\sp{\prime{}}} \HOLSymConst{\HOLTokenEor{}} \ensuremath{\HOLBoundVar{w}\sb{\mathrm{2}}\sp{\prime{}}}) \HOLSymConst{\HOLTokenRol{}} \HOLConst{w2n} \ensuremath{\HOLBoundVar{w}\sb{\mathrm{2}}\sp{\prime{}}} \HOLSymConst{\ensuremath{+}} \HOLBoundVar{ki};
+        \HOLBoundVar{B} = (\ensuremath{\HOLBoundVar{w}\sb{\mathrm{2}}\sp{\prime{}}} \HOLSymConst{\HOLTokenEor{}} \HOLBoundVar{A}) \HOLSymConst{\HOLTokenRol{}} \HOLConst{w2n} \HOLBoundVar{A} \HOLSymConst{\ensuremath{+}} \ensuremath{\HOLBoundVar{ki}\sb{\mathrm{2}}}
+      \HOLKeyword{in}
+        (\HOLBoundVar{A}\HOLSymConst{,}\HOLBoundVar{B}))
+\end{SaveVerbatim}
+\newcommand{\HOLrcFiveDefinitionsRoundEnXXdef}{\UseVerbatim{HOLrcFiveDefinitionsRoundEnXXdef}}
+\begin{SaveVerbatim}{HOLrcFiveDefinitionsRoundEnSgXXdef}
+\HOLTokenTurnstile{} \HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{b} \HOLBoundVar{ki} \ensuremath{\HOLBoundVar{ki}\sb{\mathrm{2}}}.
+     \HOLConst{RoundEnSg} \HOLBoundVar{b} \HOLBoundVar{ki} \ensuremath{\HOLBoundVar{ki}\sb{\mathrm{2}}} \HOLSymConst{=}
+     (\HOLKeyword{let}
+        (\ensuremath{\HOLBoundVar{w}\sb{\mathrm{1}}}\HOLSymConst{,}\ensuremath{\HOLBoundVar{w}\sb{\mathrm{2}}}) = \HOLBoundVar{b};
+        \HOLBoundVar{A} = (\ensuremath{\HOLBoundVar{w}\sb{\mathrm{1}}} \HOLSymConst{\HOLTokenEor{}} \ensuremath{\HOLBoundVar{w}\sb{\mathrm{2}}}) \HOLSymConst{\HOLTokenRol{}} \HOLConst{w2n} \ensuremath{\HOLBoundVar{w}\sb{\mathrm{2}}} \HOLSymConst{\ensuremath{+}} \HOLBoundVar{ki};
+        \HOLBoundVar{B} = (\ensuremath{\HOLBoundVar{w}\sb{\mathrm{2}}} \HOLSymConst{\HOLTokenEor{}} \HOLBoundVar{A}) \HOLSymConst{\HOLTokenRol{}} \HOLConst{w2n} \HOLBoundVar{A} \HOLSymConst{\ensuremath{+}} \ensuremath{\HOLBoundVar{ki}\sb{\mathrm{2}}}
+      \HOLKeyword{in}
+        (\HOLBoundVar{A}\HOLSymConst{,}\HOLBoundVar{B}))
+\end{SaveVerbatim}
+\newcommand{\HOLrcFiveDefinitionsRoundEnSgXXdef}{\UseVerbatim{HOLrcFiveDefinitionsRoundEnSgXXdef}}
+\begin{SaveVerbatim}{HOLrcFiveDefinitionsSkeysXXdef}
+\HOLTokenTurnstile{} \HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{r}. \HOLConst{Skeys} \HOLBoundVar{r} \HOLSymConst{=} \HOLConst{REVERSE} (\HOLConst{SkeysT32} \HOLNumLit{32} (\HOLNumLit{2} \HOLSymConst{\HOLTokenProd{}} (\HOLBoundVar{r} \HOLSymConst{\ensuremath{+}} \HOLNumLit{1}) \HOLSymConst{\ensuremath{-}} \HOLNumLit{1}))
+\end{SaveVerbatim}
+\newcommand{\HOLrcFiveDefinitionsSkeysXXdef}{\UseVerbatim{HOLrcFiveDefinitionsSkeysXXdef}}
+\begin{SaveVerbatim}{HOLrcFiveDefinitionsSkeysTThreeTwoXXdef}
+\HOLTokenTurnstile{} (\HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{l}. \HOLConst{SkeysT32} \HOLBoundVar{l} \HOLNumLit{0} \HOLSymConst{=} [\HOLConst{P32_data}]) \HOLSymConst{\HOLTokenConj{}}
+   \HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{l} \HOLBoundVar{t}.
+     \HOLConst{SkeysT32} \HOLBoundVar{l} (\HOLConst{SUC} \HOLBoundVar{t}) \HOLSymConst{=}
+     (\HOLKeyword{let} \HOLBoundVar{ks} = \HOLConst{SkeysT32} \HOLBoundVar{l} \HOLBoundVar{t}; \HOLBoundVar{key} = \HOLConst{HD} \HOLBoundVar{ks} \HOLKeyword{in} \HOLBoundVar{key} \HOLSymConst{\ensuremath{+}} \HOLConst{Q32_data}\HOLSymConst{::}\HOLBoundVar{ks})
+\end{SaveVerbatim}
+\newcommand{\HOLrcFiveDefinitionsSkeysTThreeTwoXXdef}{\UseVerbatim{HOLrcFiveDefinitionsSkeysTThreeTwoXXdef}}
+\begin{SaveVerbatim}{HOLrcFiveDefinitionsSplitSixFourXXdef}
+\HOLTokenTurnstile{} \HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{w}. \HOLConst{Split64} \HOLBoundVar{w} \HOLSymConst{=} ((\HOLNumLit{63} \HOLSymConst{\HOLTokenExtract{}} \HOLNumLit{32}) \HOLBoundVar{w}\HOLSymConst{,}(\HOLNumLit{31} \HOLSymConst{\HOLTokenExtract{}} \HOLNumLit{0}) \HOLBoundVar{w})
+\end{SaveVerbatim}
+\newcommand{\HOLrcFiveDefinitionsSplitSixFourXXdef}{\UseVerbatim{HOLrcFiveDefinitionsSplitSixFourXXdef}}
+\newcommand{\HOLrcFiveDefinitions}{
+\HOLDfnTag{rc5}{Join64'_def}\HOLrcFiveDefinitionsJoinSixFourYYXXdef
+\HOLDfnTag{rc5}{Join64_def}\HOLrcFiveDefinitionsJoinSixFourXXdef
+\HOLDfnTag{rc5}{keys_def}\HOLrcFiveDefinitionskeysXXdef
+\HOLDfnTag{rc5}{keysIni_def}\HOLrcFiveDefinitionskeysIniXXdef
+\HOLDfnTag{rc5}{lenKeyw_def}\HOLrcFiveDefinitionslenKeywXXdef
+\HOLDfnTag{rc5}{lenKinbyt_def}\HOLrcFiveDefinitionslenKinbytXXdef
+\HOLDfnTag{rc5}{lenWinbyt_def}\HOLrcFiveDefinitionslenWinbytXXdef
+\HOLDfnTag{rc5}{Lkeys_def}\HOLrcFiveDefinitionsLkeysXXdef
+\HOLDfnTag{rc5}{LkeysIni_def}\HOLrcFiveDefinitionsLkeysIniXXdef
+\HOLDfnTag{rc5}{LkeysSup_def}\HOLrcFiveDefinitionsLkeysSupXXdef
+\HOLDfnTag{rc5}{P32_data}\HOLrcFiveDefinitionsPThreeTwoXXdata
+\HOLDfnTag{rc5}{Q32_data}\HOLrcFiveDefinitionsQThreeTwoXXdata
+\HOLDfnTag{rc5}{rc5keys_def}\HOLrcFiveDefinitionsrcFivekeysXXdef
+\HOLDfnTag{rc5}{RoundDe'_def}\HOLrcFiveDefinitionsRoundDeYYXXdef
+\HOLDfnTag{rc5}{RoundDe64_def}\HOLrcFiveDefinitionsRoundDeSixFourXXdef
+\HOLDfnTag{rc5}{RoundDeSg_def}\HOLrcFiveDefinitionsRoundDeSgXXdef
+\HOLDfnTag{rc5}{RoundEn'_def}\HOLrcFiveDefinitionsRoundEnYYXXdef
+\HOLDfnTag{rc5}{RoundEn64_def}\HOLrcFiveDefinitionsRoundEnSixFourXXdef
+\HOLDfnTag{rc5}{RoundEn_def}\HOLrcFiveDefinitionsRoundEnXXdef
+\HOLDfnTag{rc5}{RoundEnSg_def}\HOLrcFiveDefinitionsRoundEnSgXXdef
+\HOLDfnTag{rc5}{Skeys_def}\HOLrcFiveDefinitionsSkeysXXdef
+\HOLDfnTag{rc5}{SkeysT32_def}\HOLrcFiveDefinitionsSkeysTThreeTwoXXdef
+\HOLDfnTag{rc5}{Split64_def}\HOLrcFiveDefinitionsSplitSixFourXXdef
+}
+\begin{SaveVerbatim}{HOLrcFiveTheoremshalfXXmessageDeXXdef}
+\HOLTokenTurnstile{} \HOLSymConst{\HOLTokenForall{}}\ensuremath{\HOLBoundVar{w}\sb{\mathrm{2}}} \ensuremath{\HOLBoundVar{w}\sb{\mathrm{1}}} \HOLBoundVar{n} \HOLBoundVar{ks}.
+     \HOLConst{half_messageDe} \ensuremath{\HOLBoundVar{w}\sb{\mathrm{1}}} \ensuremath{\HOLBoundVar{w}\sb{\mathrm{2}}} \HOLBoundVar{ks} \HOLBoundVar{n} \HOLSymConst{=}
+     (\HOLKeyword{let}
+        \HOLBoundVar{ki} = \HOLConst{EL} (\HOLBoundVar{n} \HOLSymConst{\ensuremath{-}} \HOLNumLit{2}) (\HOLConst{REVERSE} \HOLBoundVar{ks});
+        \ensuremath{\HOLBoundVar{ki}\sb{\mathrm{2}}} = \HOLConst{EL} (\HOLBoundVar{n} \HOLSymConst{\ensuremath{-}} \HOLNumLit{2}) (\HOLConst{REVERSE} \HOLBoundVar{ks})
+      \HOLKeyword{in}
+        \HOLKeyword{if} \HOLBoundVar{n} \HOLSymConst{=} \HOLNumLit{0} \HOLKeyword{then} \ensuremath{\HOLBoundVar{w}\sb{\mathrm{2}}}
+        \HOLKeyword{else} \HOLKeyword{if} \HOLBoundVar{n} \HOLSymConst{=} \HOLNumLit{1} \HOLKeyword{then} \ensuremath{\HOLBoundVar{w}\sb{\mathrm{1}}}
+        \HOLKeyword{else}
+          (\HOLConst{half_messageDe} \ensuremath{\HOLBoundVar{w}\sb{\mathrm{1}}} \ensuremath{\HOLBoundVar{w}\sb{\mathrm{2}}} \HOLBoundVar{ks} (\HOLBoundVar{n} \HOLSymConst{\ensuremath{-}} \HOLNumLit{2}) \HOLSymConst{\ensuremath{-}} \HOLBoundVar{ki}) \HOLSymConst{\HOLTokenRor{}}
+          \HOLConst{w2n} (\HOLConst{half_messageDe} \ensuremath{\HOLBoundVar{w}\sb{\mathrm{1}}} \ensuremath{\HOLBoundVar{w}\sb{\mathrm{2}}} \HOLBoundVar{ks} (\HOLBoundVar{n} \HOLSymConst{\ensuremath{-}} \HOLNumLit{1})) \HOLSymConst{\HOLTokenEor{}}
+          \HOLConst{half_messageDe} \ensuremath{\HOLBoundVar{w}\sb{\mathrm{1}}} \ensuremath{\HOLBoundVar{w}\sb{\mathrm{2}}} \HOLBoundVar{ks} (\HOLBoundVar{n} \HOLSymConst{\ensuremath{-}} \HOLNumLit{1}))
+\end{SaveVerbatim}
+\newcommand{\HOLrcFiveTheoremshalfXXmessageDeXXdef}{\UseVerbatim{HOLrcFiveTheoremshalfXXmessageDeXXdef}}
+\begin{SaveVerbatim}{HOLrcFiveTheoremshalfXXmessageDeXXind}
+\HOLTokenTurnstile{} \HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{P}. (\HOLSymConst{\HOLTokenForall{}}\ensuremath{\HOLBoundVar{w}\sb{\mathrm{1}}} \ensuremath{\HOLBoundVar{w}\sb{\mathrm{2}}} \HOLBoundVar{ks} \HOLBoundVar{n}.
+          (\HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{ki} \ensuremath{\HOLBoundVar{ki}\sb{\mathrm{2}}}.
+             \HOLBoundVar{ki} \HOLSymConst{=} \HOLConst{EL} (\HOLBoundVar{n} \HOLSymConst{\ensuremath{-}} \HOLNumLit{2}) (\HOLConst{REVERSE} \HOLBoundVar{ks}) \HOLSymConst{\HOLTokenConj{}}
+             \ensuremath{\HOLBoundVar{ki}\sb{\mathrm{2}}} \HOLSymConst{=} \HOLConst{EL} (\HOLBoundVar{n} \HOLSymConst{\ensuremath{-}} \HOLNumLit{2}) (\HOLConst{REVERSE} \HOLBoundVar{ks}) \HOLSymConst{\HOLTokenConj{}} \HOLBoundVar{n} \HOLSymConst{\HOLTokenNotEqual{}} \HOLNumLit{0} \HOLSymConst{\HOLTokenConj{}} \HOLBoundVar{n} \HOLSymConst{\HOLTokenNotEqual{}} \HOLNumLit{1} \HOLSymConst{\HOLTokenImp{}}
+             \HOLBoundVar{P} \ensuremath{\HOLBoundVar{w}\sb{\mathrm{1}}} \ensuremath{\HOLBoundVar{w}\sb{\mathrm{2}}} \HOLBoundVar{ks} (\HOLBoundVar{n} \HOLSymConst{\ensuremath{-}} \HOLNumLit{1})) \HOLSymConst{\HOLTokenConj{}}
+          (\HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{ki} \ensuremath{\HOLBoundVar{ki}\sb{\mathrm{2}}}.
+             \HOLBoundVar{ki} \HOLSymConst{=} \HOLConst{EL} (\HOLBoundVar{n} \HOLSymConst{\ensuremath{-}} \HOLNumLit{2}) (\HOLConst{REVERSE} \HOLBoundVar{ks}) \HOLSymConst{\HOLTokenConj{}}
+             \ensuremath{\HOLBoundVar{ki}\sb{\mathrm{2}}} \HOLSymConst{=} \HOLConst{EL} (\HOLBoundVar{n} \HOLSymConst{\ensuremath{-}} \HOLNumLit{2}) (\HOLConst{REVERSE} \HOLBoundVar{ks}) \HOLSymConst{\HOLTokenConj{}} \HOLBoundVar{n} \HOLSymConst{\HOLTokenNotEqual{}} \HOLNumLit{0} \HOLSymConst{\HOLTokenConj{}} \HOLBoundVar{n} \HOLSymConst{\HOLTokenNotEqual{}} \HOLNumLit{1} \HOLSymConst{\HOLTokenImp{}}
+             \HOLBoundVar{P} \ensuremath{\HOLBoundVar{w}\sb{\mathrm{1}}} \ensuremath{\HOLBoundVar{w}\sb{\mathrm{2}}} \HOLBoundVar{ks} (\HOLBoundVar{n} \HOLSymConst{\ensuremath{-}} \HOLNumLit{2})) \HOLSymConst{\HOLTokenImp{}}
+          \HOLBoundVar{P} \ensuremath{\HOLBoundVar{w}\sb{\mathrm{1}}} \ensuremath{\HOLBoundVar{w}\sb{\mathrm{2}}} \HOLBoundVar{ks} \HOLBoundVar{n}) \HOLSymConst{\HOLTokenImp{}}
+       \HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{v} \ensuremath{\HOLBoundVar{v}\sb{\mathrm{1}}} \ensuremath{\HOLBoundVar{v}\sb{\mathrm{2}}} \ensuremath{\HOLBoundVar{v}\sb{\mathrm{3}}}. \HOLBoundVar{P} \HOLBoundVar{v} \ensuremath{\HOLBoundVar{v}\sb{\mathrm{1}}} \ensuremath{\HOLBoundVar{v}\sb{\mathrm{2}}} \ensuremath{\HOLBoundVar{v}\sb{\mathrm{3}}}
+\end{SaveVerbatim}
+\newcommand{\HOLrcFiveTheoremshalfXXmessageDeXXind}{\UseVerbatim{HOLrcFiveTheoremshalfXXmessageDeXXind}}
+\begin{SaveVerbatim}{HOLrcFiveTheoremshalfXXmessageEnXXdef}
+\HOLTokenTurnstile{} \HOLSymConst{\HOLTokenForall{}}\ensuremath{\HOLBoundVar{w}\sb{\mathrm{2}}} \ensuremath{\HOLBoundVar{w}\sb{\mathrm{1}}} \HOLBoundVar{n} \HOLBoundVar{ks}.
+     \HOLConst{half_messageEn} \ensuremath{\HOLBoundVar{w}\sb{\mathrm{1}}} \ensuremath{\HOLBoundVar{w}\sb{\mathrm{2}}} \HOLBoundVar{ks} \HOLBoundVar{n} \HOLSymConst{=}
+     (\HOLKeyword{let}
+        \HOLBoundVar{ki} = \HOLConst{EL} \HOLBoundVar{n} \HOLBoundVar{ks};
+        \ensuremath{\HOLBoundVar{ki}\sb{\mathrm{2}}} = \HOLConst{EL} (\HOLBoundVar{n} \HOLSymConst{\ensuremath{-}} \HOLNumLit{1}) \HOLBoundVar{ks}
+      \HOLKeyword{in}
+        \HOLKeyword{if} \HOLBoundVar{n} \HOLSymConst{=} \HOLNumLit{0} \HOLKeyword{then} \ensuremath{\HOLBoundVar{w}\sb{\mathrm{1}}}
+        \HOLKeyword{else} \HOLKeyword{if} \HOLBoundVar{n} \HOLSymConst{=} \HOLNumLit{1} \HOLKeyword{then} \ensuremath{\HOLBoundVar{w}\sb{\mathrm{2}}}
+        \HOLKeyword{else}
+          (\HOLConst{half_messageEn} \ensuremath{\HOLBoundVar{w}\sb{\mathrm{1}}} \ensuremath{\HOLBoundVar{w}\sb{\mathrm{2}}} \HOLBoundVar{ks} (\HOLBoundVar{n} \HOLSymConst{\ensuremath{-}} \HOLNumLit{2}) \HOLSymConst{\HOLTokenEor{}}
+           \HOLConst{half_messageEn} \ensuremath{\HOLBoundVar{w}\sb{\mathrm{1}}} \ensuremath{\HOLBoundVar{w}\sb{\mathrm{2}}} \HOLBoundVar{ks} (\HOLBoundVar{n} \HOLSymConst{\ensuremath{-}} \HOLNumLit{1})) \HOLSymConst{\HOLTokenRol{}}
+          \HOLConst{w2n} (\HOLConst{half_messageEn} \ensuremath{\HOLBoundVar{w}\sb{\mathrm{1}}} \ensuremath{\HOLBoundVar{w}\sb{\mathrm{2}}} \HOLBoundVar{ks} (\HOLBoundVar{n} \HOLSymConst{\ensuremath{-}} \HOLNumLit{1})) \HOLSymConst{\ensuremath{+}} \HOLBoundVar{ki})
+\end{SaveVerbatim}
+\newcommand{\HOLrcFiveTheoremshalfXXmessageEnXXdef}{\UseVerbatim{HOLrcFiveTheoremshalfXXmessageEnXXdef}}
+\begin{SaveVerbatim}{HOLrcFiveTheoremshalfXXmessageEnXXind}
+\HOLTokenTurnstile{} \HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{P}. (\HOLSymConst{\HOLTokenForall{}}\ensuremath{\HOLBoundVar{w}\sb{\mathrm{1}}} \ensuremath{\HOLBoundVar{w}\sb{\mathrm{2}}} \HOLBoundVar{ks} \HOLBoundVar{n}.
+          (\HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{ki} \ensuremath{\HOLBoundVar{ki}\sb{\mathrm{2}}}.
+             \HOLBoundVar{ki} \HOLSymConst{=} \HOLConst{EL} \HOLBoundVar{n} \HOLBoundVar{ks} \HOLSymConst{\HOLTokenConj{}} \ensuremath{\HOLBoundVar{ki}\sb{\mathrm{2}}} \HOLSymConst{=} \HOLConst{EL} (\HOLBoundVar{n} \HOLSymConst{\ensuremath{-}} \HOLNumLit{1}) \HOLBoundVar{ks} \HOLSymConst{\HOLTokenConj{}} \HOLBoundVar{n} \HOLSymConst{\HOLTokenNotEqual{}} \HOLNumLit{0} \HOLSymConst{\HOLTokenConj{}} \HOLBoundVar{n} \HOLSymConst{\HOLTokenNotEqual{}} \HOLNumLit{1} \HOLSymConst{\HOLTokenImp{}}
+             \HOLBoundVar{P} \ensuremath{\HOLBoundVar{w}\sb{\mathrm{1}}} \ensuremath{\HOLBoundVar{w}\sb{\mathrm{2}}} \HOLBoundVar{ks} (\HOLBoundVar{n} \HOLSymConst{\ensuremath{-}} \HOLNumLit{1})) \HOLSymConst{\HOLTokenConj{}}
+          (\HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{ki} \ensuremath{\HOLBoundVar{ki}\sb{\mathrm{2}}}.
+             \HOLBoundVar{ki} \HOLSymConst{=} \HOLConst{EL} \HOLBoundVar{n} \HOLBoundVar{ks} \HOLSymConst{\HOLTokenConj{}} \ensuremath{\HOLBoundVar{ki}\sb{\mathrm{2}}} \HOLSymConst{=} \HOLConst{EL} (\HOLBoundVar{n} \HOLSymConst{\ensuremath{-}} \HOLNumLit{1}) \HOLBoundVar{ks} \HOLSymConst{\HOLTokenConj{}} \HOLBoundVar{n} \HOLSymConst{\HOLTokenNotEqual{}} \HOLNumLit{0} \HOLSymConst{\HOLTokenConj{}} \HOLBoundVar{n} \HOLSymConst{\HOLTokenNotEqual{}} \HOLNumLit{1} \HOLSymConst{\HOLTokenImp{}}
+             \HOLBoundVar{P} \ensuremath{\HOLBoundVar{w}\sb{\mathrm{1}}} \ensuremath{\HOLBoundVar{w}\sb{\mathrm{2}}} \HOLBoundVar{ks} (\HOLBoundVar{n} \HOLSymConst{\ensuremath{-}} \HOLNumLit{2})) \HOLSymConst{\HOLTokenImp{}}
+          \HOLBoundVar{P} \ensuremath{\HOLBoundVar{w}\sb{\mathrm{1}}} \ensuremath{\HOLBoundVar{w}\sb{\mathrm{2}}} \HOLBoundVar{ks} \HOLBoundVar{n}) \HOLSymConst{\HOLTokenImp{}}
+       \HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{v} \ensuremath{\HOLBoundVar{v}\sb{\mathrm{1}}} \ensuremath{\HOLBoundVar{v}\sb{\mathrm{2}}} \ensuremath{\HOLBoundVar{v}\sb{\mathrm{3}}}. \HOLBoundVar{P} \HOLBoundVar{v} \ensuremath{\HOLBoundVar{v}\sb{\mathrm{1}}} \ensuremath{\HOLBoundVar{v}\sb{\mathrm{2}}} \ensuremath{\HOLBoundVar{v}\sb{\mathrm{3}}}
+\end{SaveVerbatim}
+\newcommand{\HOLrcFiveTheoremshalfXXmessageEnXXind}{\UseVerbatim{HOLrcFiveTheoremshalfXXmessageEnXXind}}
+\begin{SaveVerbatim}{HOLrcFiveTheoremsJoinSixFourYYXXSplitSixFour}
+\HOLTokenTurnstile{} \HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{w}. \HOLConst{Join64'} (\HOLConst{Split64} \HOLBoundVar{w}) \HOLSymConst{=} \HOLBoundVar{w}
+\end{SaveVerbatim}
+\newcommand{\HOLrcFiveTheoremsJoinSixFourYYXXSplitSixFour}{\UseVerbatim{HOLrcFiveTheoremsJoinSixFourYYXXSplitSixFour}}
+\begin{SaveVerbatim}{HOLrcFiveTheoremsJoinSixFourXXSplitSixFour}
+\HOLTokenTurnstile{} \HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{w}. \HOLConst{Join64} (\HOLConst{Split64} \HOLBoundVar{w}) \HOLSymConst{=} \HOLBoundVar{w}
+\end{SaveVerbatim}
+\newcommand{\HOLrcFiveTheoremsJoinSixFourXXSplitSixFour}{\UseVerbatim{HOLrcFiveTheoremsJoinSixFourXXSplitSixFour}}
+\begin{SaveVerbatim}{HOLrcFiveTheoremskeysXXcompute}
+\HOLTokenTurnstile{} (\HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{r} \HOLBoundVar{k}.
+      \HOLConst{keys} \HOLNumLit{0} \HOLBoundVar{r} \HOLBoundVar{k} \HOLSymConst{=}
+      (\HOLKeyword{let}
+         \HOLBoundVar{Lk} = \HOLConst{Lkeys} \HOLBoundVar{k};
+         \HOLBoundVar{Sk} = \HOLConst{Skeys} \HOLBoundVar{r};
+         \HOLBoundVar{A} = \HOLConst{EL} \HOLNumLit{0} \HOLBoundVar{Sk};
+         \HOLBoundVar{B} = \HOLConst{EL} \HOLNumLit{0} \HOLBoundVar{Lk}
+       \HOLKeyword{in}
+         (\HOLBoundVar{A}\HOLSymConst{,}\HOLBoundVar{B}\HOLSymConst{,}\HOLBoundVar{Lk}\HOLSymConst{,}\HOLBoundVar{Sk}\HOLSymConst{,}\HOLNumLit{0}\HOLSymConst{,}\HOLNumLit{0}))) \HOLSymConst{\HOLTokenConj{}}
+   (\HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{n} \HOLBoundVar{r} \HOLBoundVar{k}.
+      \HOLConst{keys} <..num comp'n..> \HOLBoundVar{r} \HOLBoundVar{k} \HOLSymConst{=}
+      (\HOLKeyword{let}
+         (\HOLBoundVar{A}\HOLSymConst{,}\HOLBoundVar{B}\HOLSymConst{,}\HOLBoundVar{Lk}\HOLSymConst{,}\HOLBoundVar{Sk}\HOLSymConst{,}\HOLBoundVar{i}\HOLSymConst{,}\HOLBoundVar{j}) = \HOLConst{keys} (<..num comp'n..> \HOLSymConst{\ensuremath{-}} \HOLNumLit{1}) \HOLBoundVar{r} \HOLBoundVar{k};
+         \HOLBoundVar{Anew} = (\HOLConst{EL} \HOLBoundVar{i} \HOLBoundVar{Sk} \HOLSymConst{\ensuremath{+}} \HOLBoundVar{A} \HOLSymConst{\ensuremath{+}} \HOLBoundVar{B}) \HOLSymConst{\HOLTokenRol{}} \HOLNumLit{3};
+         \HOLBoundVar{Bnew} = (\HOLConst{EL} \HOLBoundVar{i} \HOLBoundVar{Lk} \HOLSymConst{\ensuremath{+}} \HOLBoundVar{Anew} \HOLSymConst{\ensuremath{+}} \HOLBoundVar{B}) \HOLSymConst{\HOLTokenRol{}} \HOLConst{w2n} (\HOLBoundVar{Anew} \HOLSymConst{\ensuremath{+}} \HOLBoundVar{B});
+         \HOLBoundVar{Sknew} =
+           \HOLConst{GENLIST}
+             (\HOLTokenLambda{}\HOLBoundVar{m}.
+                  \HOLKeyword{if} \HOLBoundVar{m} \HOLSymConst{=} \HOLBoundVar{i} \HOLKeyword{then} (\HOLConst{EL} \HOLBoundVar{i} \HOLBoundVar{Sk} \HOLSymConst{\ensuremath{+}} \HOLBoundVar{A} \HOLSymConst{\ensuremath{+}} \HOLBoundVar{B}) \HOLSymConst{\HOLTokenRol{}} \HOLNumLit{3}
+                  \HOLKeyword{else} \HOLConst{EL} \HOLBoundVar{m} \HOLBoundVar{Sk}) (\HOLNumLit{2} \HOLSymConst{\HOLTokenProd{}} (\HOLBoundVar{r} \HOLSymConst{\ensuremath{+}} \HOLNumLit{1}));
+         \HOLBoundVar{Lknew} =
+           \HOLConst{GENLIST}
+             (\HOLTokenLambda{}\HOLBoundVar{m}.
+                  \HOLKeyword{if} \HOLBoundVar{m} \HOLSymConst{=} \HOLBoundVar{j} \HOLKeyword{then}
+                    (\HOLConst{EL} \HOLBoundVar{j} \HOLBoundVar{Lk} \HOLSymConst{\ensuremath{+}} \HOLBoundVar{Anew} \HOLSymConst{\ensuremath{+}} \HOLBoundVar{B}) \HOLSymConst{\HOLTokenRol{}} \HOLConst{w2n} (\HOLBoundVar{Anew} \HOLSymConst{\ensuremath{+}} \HOLBoundVar{B})
+                  \HOLKeyword{else} \HOLConst{EL} \HOLBoundVar{m} \HOLBoundVar{Lk}) \HOLNumLit{2};
+         \HOLBoundVar{inew} = (\HOLBoundVar{i} \HOLSymConst{\ensuremath{+}} \HOLNumLit{1}) \HOLConst{MOD} (\HOLNumLit{2} \HOLSymConst{\HOLTokenProd{}} (\HOLBoundVar{r} \HOLSymConst{\ensuremath{+}} \HOLNumLit{1}));
+         \HOLBoundVar{jnew} = (\HOLBoundVar{j} \HOLSymConst{\ensuremath{+}} \HOLNumLit{1}) \HOLConst{MOD} \HOLNumLit{2}
+       \HOLKeyword{in}
+         (\HOLBoundVar{Anew}\HOLSymConst{,}\HOLBoundVar{Bnew}\HOLSymConst{,}\HOLBoundVar{Lknew}\HOLSymConst{,}\HOLBoundVar{Sknew}\HOLSymConst{,}\HOLBoundVar{inew}\HOLSymConst{,}\HOLBoundVar{jnew}))) \HOLSymConst{\HOLTokenConj{}}
+   \HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{n} \HOLBoundVar{r} \HOLBoundVar{k}.
+     \HOLConst{keys} <..num comp'n..> \HOLBoundVar{r} \HOLBoundVar{k} \HOLSymConst{=}
+     (\HOLKeyword{let}
+        (\HOLBoundVar{A}\HOLSymConst{,}\HOLBoundVar{B}\HOLSymConst{,}\HOLBoundVar{Lk}\HOLSymConst{,}\HOLBoundVar{Sk}\HOLSymConst{,}\HOLBoundVar{i}\HOLSymConst{,}\HOLBoundVar{j}) = \HOLConst{keys} <..num comp'n..> \HOLBoundVar{r} \HOLBoundVar{k};
+        \HOLBoundVar{Anew} = (\HOLConst{EL} \HOLBoundVar{i} \HOLBoundVar{Sk} \HOLSymConst{\ensuremath{+}} \HOLBoundVar{A} \HOLSymConst{\ensuremath{+}} \HOLBoundVar{B}) \HOLSymConst{\HOLTokenRol{}} \HOLNumLit{3};
+        \HOLBoundVar{Bnew} = (\HOLConst{EL} \HOLBoundVar{i} \HOLBoundVar{Lk} \HOLSymConst{\ensuremath{+}} \HOLBoundVar{Anew} \HOLSymConst{\ensuremath{+}} \HOLBoundVar{B}) \HOLSymConst{\HOLTokenRol{}} \HOLConst{w2n} (\HOLBoundVar{Anew} \HOLSymConst{\ensuremath{+}} \HOLBoundVar{B});
+        \HOLBoundVar{Sknew} =
+          \HOLConst{GENLIST}
+            (\HOLTokenLambda{}\HOLBoundVar{m}.
+                 \HOLKeyword{if} \HOLBoundVar{m} \HOLSymConst{=} \HOLBoundVar{i} \HOLKeyword{then} (\HOLConst{EL} \HOLBoundVar{i} \HOLBoundVar{Sk} \HOLSymConst{\ensuremath{+}} \HOLBoundVar{A} \HOLSymConst{\ensuremath{+}} \HOLBoundVar{B}) \HOLSymConst{\HOLTokenRol{}} \HOLNumLit{3}
+                 \HOLKeyword{else} \HOLConst{EL} \HOLBoundVar{m} \HOLBoundVar{Sk}) (\HOLNumLit{2} \HOLSymConst{\HOLTokenProd{}} (\HOLBoundVar{r} \HOLSymConst{\ensuremath{+}} \HOLNumLit{1}));
+        \HOLBoundVar{Lknew} =
+          \HOLConst{GENLIST}
+            (\HOLTokenLambda{}\HOLBoundVar{m}.
+                 \HOLKeyword{if} \HOLBoundVar{m} \HOLSymConst{=} \HOLBoundVar{j} \HOLKeyword{then}
+                   (\HOLConst{EL} \HOLBoundVar{j} \HOLBoundVar{Lk} \HOLSymConst{\ensuremath{+}} \HOLBoundVar{Anew} \HOLSymConst{\ensuremath{+}} \HOLBoundVar{B}) \HOLSymConst{\HOLTokenRol{}} \HOLConst{w2n} (\HOLBoundVar{Anew} \HOLSymConst{\ensuremath{+}} \HOLBoundVar{B})
+                 \HOLKeyword{else} \HOLConst{EL} \HOLBoundVar{m} \HOLBoundVar{Lk}) \HOLNumLit{2};
+        \HOLBoundVar{inew} = (\HOLBoundVar{i} \HOLSymConst{\ensuremath{+}} \HOLNumLit{1}) \HOLConst{MOD} (\HOLNumLit{2} \HOLSymConst{\HOLTokenProd{}} (\HOLBoundVar{r} \HOLSymConst{\ensuremath{+}} \HOLNumLit{1}));
+        \HOLBoundVar{jnew} = (\HOLBoundVar{j} \HOLSymConst{\ensuremath{+}} \HOLNumLit{1}) \HOLConst{MOD} \HOLNumLit{2}
+      \HOLKeyword{in}
+        (\HOLBoundVar{Anew}\HOLSymConst{,}\HOLBoundVar{Bnew}\HOLSymConst{,}\HOLBoundVar{Lknew}\HOLSymConst{,}\HOLBoundVar{Sknew}\HOLSymConst{,}\HOLBoundVar{inew}\HOLSymConst{,}\HOLBoundVar{jnew}))
+\end{SaveVerbatim}
+\newcommand{\HOLrcFiveTheoremskeysXXcompute}{\UseVerbatim{HOLrcFiveTheoremskeysXXcompute}}
+\begin{SaveVerbatim}{HOLrcFiveTheoremsLENGTHXXkeyXXLkeys}
+\HOLTokenTurnstile{} \HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{n} \HOLBoundVar{r} \HOLBoundVar{k}. (\HOLFreeVar{A}\HOLSymConst{,}\HOLFreeVar{B}\HOLSymConst{,}\HOLFreeVar{Lk}\HOLSymConst{,}\HOLFreeVar{Sk}\HOLSymConst{,}\HOLFreeVar{i}\HOLSymConst{,}\HOLFreeVar{j}) \HOLSymConst{=} \HOLConst{keys} \HOLBoundVar{n} \HOLBoundVar{r} \HOLBoundVar{k} \HOLSymConst{\HOLTokenImp{}} \HOLConst{LENGTH} \HOLFreeVar{Lk} \HOLSymConst{=} \HOLNumLit{2}
+\end{SaveVerbatim}
+\newcommand{\HOLrcFiveTheoremsLENGTHXXkeyXXLkeys}{\UseVerbatim{HOLrcFiveTheoremsLENGTHXXkeyXXLkeys}}
+\begin{SaveVerbatim}{HOLrcFiveTheoremsLENGTHXXkeyXXSkeys}
+\HOLTokenTurnstile{} \HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{n} \HOLBoundVar{r} \HOLBoundVar{k}.
+     (\HOLFreeVar{A}\HOLSymConst{,}\HOLFreeVar{B}\HOLSymConst{,}\HOLFreeVar{Lk}\HOLSymConst{,}\HOLFreeVar{Sk}\HOLSymConst{,}\HOLFreeVar{i}\HOLSymConst{,}\HOLFreeVar{j}) \HOLSymConst{=} \HOLConst{keys} \HOLBoundVar{n} \HOLBoundVar{r} \HOLBoundVar{k} \HOLSymConst{\HOLTokenImp{}} \HOLConst{LENGTH} \HOLFreeVar{Sk} \HOLSymConst{=} \HOLNumLit{2} \HOLSymConst{\HOLTokenProd{}} (\HOLBoundVar{r} \HOLSymConst{\ensuremath{+}} \HOLNumLit{1})
+\end{SaveVerbatim}
+\newcommand{\HOLrcFiveTheoremsLENGTHXXkeyXXSkeys}{\UseVerbatim{HOLrcFiveTheoremsLENGTHXXkeyXXSkeys}}
+\begin{SaveVerbatim}{HOLrcFiveTheoremsLENGTHXXLkeys}
+\HOLTokenTurnstile{} \HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{k}. \HOLConst{LENGTH} (\HOLConst{Lkeys} \HOLBoundVar{k}) \HOLSymConst{=} \HOLNumLit{2}
+\end{SaveVerbatim}
+\newcommand{\HOLrcFiveTheoremsLENGTHXXLkeys}{\UseVerbatim{HOLrcFiveTheoremsLENGTHXXLkeys}}
+\begin{SaveVerbatim}{HOLrcFiveTheoremsLENGTHXXLkeysSup}
+\HOLTokenTurnstile{} \HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{k} \HOLBoundVar{r}. \HOLConst{LENGTH} (\HOLConst{LkeysSup} \HOLBoundVar{k} \HOLBoundVar{r}) \HOLSymConst{=} \HOLNumLit{2}
+\end{SaveVerbatim}
+\newcommand{\HOLrcFiveTheoremsLENGTHXXLkeysSup}{\UseVerbatim{HOLrcFiveTheoremsLENGTHXXLkeysSup}}
+\begin{SaveVerbatim}{HOLrcFiveTheoremsLENGTHXXSkeys}
+\HOLTokenTurnstile{} \HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{n}. \HOLConst{LENGTH} (\HOLConst{Skeys} \HOLBoundVar{n}) \HOLSymConst{=} \HOLNumLit{2} \HOLSymConst{\HOLTokenProd{}} (\HOLBoundVar{n} \HOLSymConst{\ensuremath{+}} \HOLNumLit{1})
+\end{SaveVerbatim}
+\newcommand{\HOLrcFiveTheoremsLENGTHXXSkeys}{\UseVerbatim{HOLrcFiveTheoremsLENGTHXXSkeys}}
+\begin{SaveVerbatim}{HOLrcFiveTheoremsLkeysSupXXcompute}
+\HOLTokenTurnstile{} (\HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{k}. \HOLConst{LkeysSup} \HOLBoundVar{k} \HOLNumLit{0} \HOLSymConst{=}
+        (\HOLKeyword{let}
+           \HOLBoundVar{ks} = \HOLConst{LkeysIni};
+           \HOLBoundVar{keys} = \HOLConst{keysIni} \HOLBoundVar{k}
+         \HOLKeyword{in}
+           \HOLConst{GENLIST}
+             (\HOLTokenLambda{}\HOLBoundVar{m}.
+                  \HOLKeyword{if} \HOLBoundVar{m} \HOLSymConst{=} \HOLNumLit{7} \HOLConst{DIV} \HOLNumLit{4} \HOLKeyword{then} \HOLConst{EL} \HOLBoundVar{m} \HOLBoundVar{ks} \HOLSymConst{\HOLTokenRol{}} \HOLNumLit{8} \HOLSymConst{\ensuremath{+}} \HOLConst{EL} \HOLNumLit{7} \HOLBoundVar{keys}
+                  \HOLKeyword{else} \HOLConst{EL} \HOLBoundVar{m} \HOLBoundVar{ks}) \HOLNumLit{2})) \HOLSymConst{\HOLTokenConj{}}
+   (\HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{k} \HOLBoundVar{r}.
+      \HOLConst{LkeysSup} \HOLBoundVar{k} <..num comp'n..> \HOLSymConst{=}
+      (\HOLKeyword{let}
+         \HOLBoundVar{ks} = \HOLConst{LkeysSup} \HOLBoundVar{k} (<..num comp'n..> \HOLSymConst{\ensuremath{-}} \HOLNumLit{1});
+         \HOLBoundVar{keys} = \HOLConst{keysIni} \HOLBoundVar{k};
+         \HOLBoundVar{i} = \HOLNumLit{7} \HOLSymConst{\ensuremath{-}} <..num comp'n..>
+       \HOLKeyword{in}
+         \HOLConst{GENLIST}
+           (\HOLTokenLambda{}\HOLBoundVar{m}.
+                \HOLKeyword{if} \HOLBoundVar{m} \HOLSymConst{=} \HOLBoundVar{i} \HOLConst{DIV} \HOLNumLit{4} \HOLKeyword{then} \HOLConst{EL} \HOLBoundVar{m} \HOLBoundVar{ks} \HOLSymConst{\HOLTokenRol{}} \HOLNumLit{8} \HOLSymConst{\ensuremath{+}} \HOLConst{EL} \HOLBoundVar{i} \HOLBoundVar{keys}
+                \HOLKeyword{else} \HOLConst{EL} \HOLBoundVar{m} \HOLBoundVar{ks}) \HOLNumLit{2})) \HOLSymConst{\HOLTokenConj{}}
+   \HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{k} \HOLBoundVar{r}.
+     \HOLConst{LkeysSup} \HOLBoundVar{k} <..num comp'n..> \HOLSymConst{=}
+     (\HOLKeyword{let}
+        \HOLBoundVar{ks} = \HOLConst{LkeysSup} \HOLBoundVar{k} <..num comp'n..> ;
+        \HOLBoundVar{keys} = \HOLConst{keysIni} \HOLBoundVar{k};
+        \HOLBoundVar{i} = \HOLNumLit{7} \HOLSymConst{\ensuremath{-}} <..num comp'n..>
+      \HOLKeyword{in}
+        \HOLConst{GENLIST}
+          (\HOLTokenLambda{}\HOLBoundVar{m}.
+               \HOLKeyword{if} \HOLBoundVar{m} \HOLSymConst{=} \HOLBoundVar{i} \HOLConst{DIV} \HOLNumLit{4} \HOLKeyword{then} \HOLConst{EL} \HOLBoundVar{m} \HOLBoundVar{ks} \HOLSymConst{\HOLTokenRol{}} \HOLNumLit{8} \HOLSymConst{\ensuremath{+}} \HOLConst{EL} \HOLBoundVar{i} \HOLBoundVar{keys}
+               \HOLKeyword{else} \HOLConst{EL} \HOLBoundVar{m} \HOLBoundVar{ks}) \HOLNumLit{2})
+\end{SaveVerbatim}
+\newcommand{\HOLrcFiveTheoremsLkeysSupXXcompute}{\UseVerbatim{HOLrcFiveTheoremsLkeysSupXXcompute}}
+\begin{SaveVerbatim}{HOLrcFiveTheoremsRoundDeYYXXcomm}
+\HOLTokenTurnstile{} \HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{n} \HOLBoundVar{b} \HOLBoundVar{ks} \HOLBoundVar{ki} \ensuremath{\HOLBoundVar{ki}\sb{\mathrm{2}}}.
+     \HOLConst{RoundDeSg} (\HOLConst{RoundDe'} \HOLBoundVar{n} \HOLBoundVar{ki} \ensuremath{\HOLBoundVar{ki}\sb{\mathrm{2}}} \HOLBoundVar{b}) \HOLBoundVar{ki} \ensuremath{\HOLBoundVar{ki}\sb{\mathrm{2}}} \HOLSymConst{=}
+     \HOLConst{RoundDe'} \HOLBoundVar{n} \HOLBoundVar{ki} \ensuremath{\HOLBoundVar{ki}\sb{\mathrm{2}}} (\HOLConst{RoundDeSg} \HOLBoundVar{b} \HOLBoundVar{ki} \ensuremath{\HOLBoundVar{ki}\sb{\mathrm{2}}})
+\end{SaveVerbatim}
+\newcommand{\HOLrcFiveTheoremsRoundDeYYXXcomm}{\UseVerbatim{HOLrcFiveTheoremsRoundDeYYXXcomm}}
+\begin{SaveVerbatim}{HOLrcFiveTheoremsRoundDeYYXXcompute}
+\HOLTokenTurnstile{} (\HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{ki} \ensuremath{\HOLBoundVar{ki}\sb{\mathrm{2}}} \HOLBoundVar{b}. \HOLConst{RoundDe'} \HOLNumLit{0} \HOLBoundVar{ki} \ensuremath{\HOLBoundVar{ki}\sb{\mathrm{2}}} \HOLBoundVar{b} \HOLSymConst{=} \HOLBoundVar{b}) \HOLSymConst{\HOLTokenConj{}}
+   (\HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{n} \HOLBoundVar{ki} \ensuremath{\HOLBoundVar{ki}\sb{\mathrm{2}}} \HOLBoundVar{b}.
+      \HOLConst{RoundDe'} <..num comp'n..> \HOLBoundVar{ki} \ensuremath{\HOLBoundVar{ki}\sb{\mathrm{2}}} \HOLBoundVar{b} \HOLSymConst{=}
+      (\HOLKeyword{let}
+         \ensuremath{\HOLBoundVar{b}\sp{\prime{}}} = \HOLConst{RoundDe'} (<..num comp'n..> \HOLSymConst{\ensuremath{-}} \HOLNumLit{1}) \HOLBoundVar{ki} \ensuremath{\HOLBoundVar{ki}\sb{\mathrm{2}}} \HOLBoundVar{b}
+       \HOLKeyword{in}
+         \HOLConst{RoundDeSg} \ensuremath{\HOLBoundVar{b}\sp{\prime{}}} \HOLBoundVar{ki} \ensuremath{\HOLBoundVar{ki}\sb{\mathrm{2}}})) \HOLSymConst{\HOLTokenConj{}}
+   \HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{n} \HOLBoundVar{ki} \ensuremath{\HOLBoundVar{ki}\sb{\mathrm{2}}} \HOLBoundVar{b}.
+     \HOLConst{RoundDe'} <..num comp'n..> \HOLBoundVar{ki} \ensuremath{\HOLBoundVar{ki}\sb{\mathrm{2}}} \HOLBoundVar{b} \HOLSymConst{=}
+     (\HOLKeyword{let}
+        \ensuremath{\HOLBoundVar{b}\sp{\prime{}}} = \HOLConst{RoundDe'} <..num comp'n..> \HOLBoundVar{ki} \ensuremath{\HOLBoundVar{ki}\sb{\mathrm{2}}} \HOLBoundVar{b}
+      \HOLKeyword{in}
+        \HOLConst{RoundDeSg} \ensuremath{\HOLBoundVar{b}\sp{\prime{}}} \HOLBoundVar{ki} \ensuremath{\HOLBoundVar{ki}\sb{\mathrm{2}}})
+\end{SaveVerbatim}
+\newcommand{\HOLrcFiveTheoremsRoundDeYYXXcompute}{\UseVerbatim{HOLrcFiveTheoremsRoundDeYYXXcompute}}
+\begin{SaveVerbatim}{HOLrcFiveTheoremsRoundDeSixFourXXaltXXhalfXXmessageDe}
+\HOLTokenTurnstile{} \HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{w} \HOLBoundVar{k} \HOLBoundVar{r}.
+     (\ensuremath{\HOLFreeVar{w}\sb{\mathrm{1}}}\HOLSymConst{,}\ensuremath{\HOLFreeVar{w}\sb{\mathrm{2}}}) \HOLSymConst{=} \HOLConst{Split64} \HOLBoundVar{w} \HOLSymConst{\HOLTokenConj{}} (\HOLFreeVar{A}\HOLSymConst{,}\HOLFreeVar{B}\HOLSymConst{,}\HOLFreeVar{Lk}\HOLSymConst{,}\HOLFreeVar{Sk}\HOLSymConst{,}\HOLFreeVar{i}\HOLSymConst{,}\HOLFreeVar{j}) \HOLSymConst{=} \HOLConst{rc5keys} \HOLBoundVar{r} \HOLBoundVar{k} \HOLSymConst{\HOLTokenConj{}}
+     \ensuremath{\HOLFreeVar{k}\sb{\mathrm{0}}} \HOLSymConst{=} \HOLConst{EL} \HOLNumLit{0} \HOLFreeVar{Sk} \HOLSymConst{\HOLTokenConj{}} \ensuremath{\HOLFreeVar{k}\sb{\mathrm{1}}} \HOLSymConst{=} \HOLConst{EL} \HOLNumLit{1} \HOLFreeVar{Sk} \HOLSymConst{\HOLTokenImp{}}
+     \HOLConst{RoundDe64} \HOLBoundVar{r} \HOLBoundVar{w} \HOLBoundVar{k} \HOLSymConst{=}
+     \HOLConst{Join64'}
+       (\HOLConst{half_messageDe} \ensuremath{\HOLFreeVar{w}\sb{\mathrm{1}}} \ensuremath{\HOLFreeVar{w}\sb{\mathrm{2}}} \HOLFreeVar{Sk} (\HOLNumLit{2} \HOLSymConst{\HOLTokenProd{}} \HOLBoundVar{r} \HOLSymConst{\ensuremath{+}} \HOLNumLit{1}) \HOLSymConst{\ensuremath{-}} \ensuremath{\HOLFreeVar{k}\sb{\mathrm{0}}}\HOLSymConst{,}
+        \HOLConst{half_messageDe} \ensuremath{\HOLFreeVar{w}\sb{\mathrm{1}}} \ensuremath{\HOLFreeVar{w}\sb{\mathrm{2}}} \HOLFreeVar{Sk} (\HOLNumLit{2} \HOLSymConst{\HOLTokenProd{}} \HOLBoundVar{r}) \HOLSymConst{\ensuremath{-}} \ensuremath{\HOLFreeVar{k}\sb{\mathrm{1}}})
+\end{SaveVerbatim}
+\newcommand{\HOLrcFiveTheoremsRoundDeSixFourXXaltXXhalfXXmessageDe}{\UseVerbatim{HOLrcFiveTheoremsRoundDeSixFourXXaltXXhalfXXmessageDe}}
+\begin{SaveVerbatim}{HOLrcFiveTheoremsRoundDeXXaltXXhalfXXmessageDe}
+\HOLTokenTurnstile{} \HOLSymConst{\HOLTokenForall{}}\ensuremath{\HOLBoundVar{w}\sb{\mathrm{1}}} \ensuremath{\HOLBoundVar{w}\sb{\mathrm{2}}} \HOLBoundVar{ks} \HOLBoundVar{n}.
+     \HOLConst{RoundDe} \HOLBoundVar{n} \HOLBoundVar{ks} (\ensuremath{\HOLBoundVar{w}\sb{\mathrm{1}}}\HOLSymConst{,}\ensuremath{\HOLBoundVar{w}\sb{\mathrm{2}}}) \HOLSymConst{=}
+     (\HOLConst{half_messageDe} \ensuremath{\HOLBoundVar{w}\sb{\mathrm{1}}} \ensuremath{\HOLBoundVar{w}\sb{\mathrm{2}}} \HOLBoundVar{ks} (\HOLNumLit{2} \HOLSymConst{\HOLTokenProd{}} \HOLBoundVar{n} \HOLSymConst{\ensuremath{+}} \HOLNumLit{1})\HOLSymConst{,}
+      \HOLConst{half_messageDe} \ensuremath{\HOLBoundVar{w}\sb{\mathrm{1}}} \ensuremath{\HOLBoundVar{w}\sb{\mathrm{2}}} \HOLBoundVar{ks} (\HOLNumLit{2} \HOLSymConst{\HOLTokenProd{}} \HOLBoundVar{n}))
+\end{SaveVerbatim}
+\newcommand{\HOLrcFiveTheoremsRoundDeXXaltXXhalfXXmessageDe}{\UseVerbatim{HOLrcFiveTheoremsRoundDeXXaltXXhalfXXmessageDe}}
+\begin{SaveVerbatim}{HOLrcFiveTheoremsRoundDeXXcompute}
+\HOLTokenTurnstile{} (\HOLSymConst{\HOLTokenForall{}}\ensuremath{\HOLBoundVar{w}\sb{\mathrm{2}}} \ensuremath{\HOLBoundVar{w}\sb{\mathrm{1}}} \HOLBoundVar{ks}.
+      \HOLConst{RoundDe} \HOLNumLit{0} \HOLBoundVar{ks} (\ensuremath{\HOLBoundVar{w}\sb{\mathrm{1}}}\HOLSymConst{,}\ensuremath{\HOLBoundVar{w}\sb{\mathrm{2}}}) \HOLSymConst{=}
+      (\HOLKeyword{let} \ensuremath{\HOLBoundVar{s}\sb{\mathrm{1}}} = \HOLConst{EL} \HOLNumLit{1} \HOLBoundVar{ks}; \ensuremath{\HOLBoundVar{s}\sb{\mathrm{0}}} = \HOLConst{EL} \HOLNumLit{0} \HOLBoundVar{ks} \HOLKeyword{in} (\ensuremath{\HOLBoundVar{w}\sb{\mathrm{1}}}\HOLSymConst{,}\ensuremath{\HOLBoundVar{w}\sb{\mathrm{2}}}))) \HOLSymConst{\HOLTokenConj{}}
+   (\HOLSymConst{\HOLTokenForall{}}\ensuremath{\HOLBoundVar{w}\sb{\mathrm{2}}} \ensuremath{\HOLBoundVar{w}\sb{\mathrm{1}}} \HOLBoundVar{n} \HOLBoundVar{ks}.
+      \HOLConst{RoundDe} <..num comp'n..> \HOLBoundVar{ks} (\ensuremath{\HOLBoundVar{w}\sb{\mathrm{1}}}\HOLSymConst{,}\ensuremath{\HOLBoundVar{w}\sb{\mathrm{2}}}) \HOLSymConst{=}
+      (\HOLKeyword{let}
+         (\ensuremath{\HOLBoundVar{w}\sb{\mathrm{1}}\sp{\prime{}}}\HOLSymConst{,}\ensuremath{\HOLBoundVar{w}\sb{\mathrm{2}}\sp{\prime{}}}) = \HOLConst{RoundDe} (<..num comp'n..> \HOLSymConst{\ensuremath{-}} \HOLNumLit{1}) \HOLBoundVar{ks} (\ensuremath{\HOLBoundVar{w}\sb{\mathrm{1}}}\HOLSymConst{,}\ensuremath{\HOLBoundVar{w}\sb{\mathrm{2}}});
+         \HOLBoundVar{ki} = \HOLConst{EL} (\HOLNumLit{2} \HOLSymConst{\HOLTokenProd{}} <..num comp'n..> \HOLSymConst{\ensuremath{-}} \HOLNumLit{2}) (\HOLConst{REVERSE} \HOLBoundVar{ks});
+         \ensuremath{\HOLBoundVar{ki}\sb{\mathrm{2}}} = \HOLConst{EL} (\HOLNumLit{2} \HOLSymConst{\HOLTokenProd{}} <..num comp'n..> \HOLSymConst{\ensuremath{-}} \HOLNumLit{1}) (\HOLConst{REVERSE} \HOLBoundVar{ks});
+         \HOLBoundVar{B} = (\ensuremath{\HOLBoundVar{w}\sb{\mathrm{2}}\sp{\prime{}}} \HOLSymConst{\ensuremath{-}} \HOLBoundVar{ki}) \HOLSymConst{\HOLTokenRor{}} \HOLConst{w2n} \ensuremath{\HOLBoundVar{w}\sb{\mathrm{1}}\sp{\prime{}}} \HOLSymConst{\HOLTokenEor{}} \ensuremath{\HOLBoundVar{w}\sb{\mathrm{1}}\sp{\prime{}}};
+         \HOLBoundVar{A} = (\ensuremath{\HOLBoundVar{w}\sb{\mathrm{1}}\sp{\prime{}}} \HOLSymConst{\ensuremath{-}} \ensuremath{\HOLBoundVar{ki}\sb{\mathrm{2}}}) \HOLSymConst{\HOLTokenRor{}} \HOLConst{w2n} \HOLBoundVar{B} \HOLSymConst{\HOLTokenEor{}} \HOLBoundVar{B}
+       \HOLKeyword{in}
+         (\HOLBoundVar{A}\HOLSymConst{,}\HOLBoundVar{B}))) \HOLSymConst{\HOLTokenConj{}}
+   \HOLSymConst{\HOLTokenForall{}}\ensuremath{\HOLBoundVar{w}\sb{\mathrm{2}}} \ensuremath{\HOLBoundVar{w}\sb{\mathrm{1}}} \HOLBoundVar{n} \HOLBoundVar{ks}.
+     \HOLConst{RoundDe} <..num comp'n..> \HOLBoundVar{ks} (\ensuremath{\HOLBoundVar{w}\sb{\mathrm{1}}}\HOLSymConst{,}\ensuremath{\HOLBoundVar{w}\sb{\mathrm{2}}}) \HOLSymConst{=}
+     (\HOLKeyword{let}
+        (\ensuremath{\HOLBoundVar{w}\sb{\mathrm{1}}\sp{\prime{}}}\HOLSymConst{,}\ensuremath{\HOLBoundVar{w}\sb{\mathrm{2}}\sp{\prime{}}}) = \HOLConst{RoundDe} <..num comp'n..> \HOLBoundVar{ks} (\ensuremath{\HOLBoundVar{w}\sb{\mathrm{1}}}\HOLSymConst{,}\ensuremath{\HOLBoundVar{w}\sb{\mathrm{2}}});
+        \HOLBoundVar{ki} = \HOLConst{EL} (\HOLNumLit{2} \HOLSymConst{\HOLTokenProd{}} <..num comp'n..> \HOLSymConst{\ensuremath{-}} \HOLNumLit{2}) (\HOLConst{REVERSE} \HOLBoundVar{ks});
+        \ensuremath{\HOLBoundVar{ki}\sb{\mathrm{2}}} = \HOLConst{EL} (\HOLNumLit{2} \HOLSymConst{\HOLTokenProd{}} <..num comp'n..> \HOLSymConst{\ensuremath{-}} \HOLNumLit{1}) (\HOLConst{REVERSE} \HOLBoundVar{ks});
+        \HOLBoundVar{B} = (\ensuremath{\HOLBoundVar{w}\sb{\mathrm{2}}\sp{\prime{}}} \HOLSymConst{\ensuremath{-}} \HOLBoundVar{ki}) \HOLSymConst{\HOLTokenRor{}} \HOLConst{w2n} \ensuremath{\HOLBoundVar{w}\sb{\mathrm{1}}\sp{\prime{}}} \HOLSymConst{\HOLTokenEor{}} \ensuremath{\HOLBoundVar{w}\sb{\mathrm{1}}\sp{\prime{}}};
+        \HOLBoundVar{A} = (\ensuremath{\HOLBoundVar{w}\sb{\mathrm{1}}\sp{\prime{}}} \HOLSymConst{\ensuremath{-}} \ensuremath{\HOLBoundVar{ki}\sb{\mathrm{2}}}) \HOLSymConst{\HOLTokenRor{}} \HOLConst{w2n} \HOLBoundVar{B} \HOLSymConst{\HOLTokenEor{}} \HOLBoundVar{B}
+      \HOLKeyword{in}
+        (\HOLBoundVar{A}\HOLSymConst{,}\HOLBoundVar{B}))
+\end{SaveVerbatim}
+\newcommand{\HOLrcFiveTheoremsRoundDeXXcompute}{\UseVerbatim{HOLrcFiveTheoremsRoundDeXXcompute}}
+\begin{SaveVerbatim}{HOLrcFiveTheoremsRoundDeXXdef}
+\HOLTokenTurnstile{} (\HOLSymConst{\HOLTokenForall{}}\ensuremath{\HOLBoundVar{w}\sb{\mathrm{2}}} \ensuremath{\HOLBoundVar{w}\sb{\mathrm{1}}} \HOLBoundVar{ks}.
+      \HOLConst{RoundDe} \HOLNumLit{0} \HOLBoundVar{ks} (\ensuremath{\HOLBoundVar{w}\sb{\mathrm{1}}}\HOLSymConst{,}\ensuremath{\HOLBoundVar{w}\sb{\mathrm{2}}}) \HOLSymConst{=}
+      (\HOLKeyword{let} \ensuremath{\HOLBoundVar{s}\sb{\mathrm{1}}} = \HOLConst{EL} \HOLNumLit{1} \HOLBoundVar{ks}; \ensuremath{\HOLBoundVar{s}\sb{\mathrm{0}}} = \HOLConst{EL} \HOLNumLit{0} \HOLBoundVar{ks} \HOLKeyword{in} (\ensuremath{\HOLBoundVar{w}\sb{\mathrm{1}}}\HOLSymConst{,}\ensuremath{\HOLBoundVar{w}\sb{\mathrm{2}}}))) \HOLSymConst{\HOLTokenConj{}}
+   \HOLSymConst{\HOLTokenForall{}}\ensuremath{\HOLBoundVar{w}\sb{\mathrm{2}}} \ensuremath{\HOLBoundVar{w}\sb{\mathrm{1}}} \HOLBoundVar{n} \HOLBoundVar{ks}.
+     \HOLConst{RoundDe} (\HOLConst{SUC} \HOLBoundVar{n}) \HOLBoundVar{ks} (\ensuremath{\HOLBoundVar{w}\sb{\mathrm{1}}}\HOLSymConst{,}\ensuremath{\HOLBoundVar{w}\sb{\mathrm{2}}}) \HOLSymConst{=}
+     (\HOLKeyword{let}
+        (\ensuremath{\HOLBoundVar{w}\sb{\mathrm{1}}\sp{\prime{}}}\HOLSymConst{,}\ensuremath{\HOLBoundVar{w}\sb{\mathrm{2}}\sp{\prime{}}}) = \HOLConst{RoundDe} \HOLBoundVar{n} \HOLBoundVar{ks} (\ensuremath{\HOLBoundVar{w}\sb{\mathrm{1}}}\HOLSymConst{,}\ensuremath{\HOLBoundVar{w}\sb{\mathrm{2}}});
+        \HOLBoundVar{ki} = \HOLConst{EL} (\HOLNumLit{2} \HOLSymConst{\HOLTokenProd{}} \HOLConst{SUC} \HOLBoundVar{n} \HOLSymConst{\ensuremath{-}} \HOLNumLit{2}) (\HOLConst{REVERSE} \HOLBoundVar{ks});
+        \ensuremath{\HOLBoundVar{ki}\sb{\mathrm{2}}} = \HOLConst{EL} (\HOLNumLit{2} \HOLSymConst{\HOLTokenProd{}} \HOLConst{SUC} \HOLBoundVar{n} \HOLSymConst{\ensuremath{-}} \HOLNumLit{1}) (\HOLConst{REVERSE} \HOLBoundVar{ks});
+        \HOLBoundVar{B} = (\ensuremath{\HOLBoundVar{w}\sb{\mathrm{2}}\sp{\prime{}}} \HOLSymConst{\ensuremath{-}} \HOLBoundVar{ki}) \HOLSymConst{\HOLTokenRor{}} \HOLConst{w2n} \ensuremath{\HOLBoundVar{w}\sb{\mathrm{1}}\sp{\prime{}}} \HOLSymConst{\HOLTokenEor{}} \ensuremath{\HOLBoundVar{w}\sb{\mathrm{1}}\sp{\prime{}}};
+        \HOLBoundVar{A} = (\ensuremath{\HOLBoundVar{w}\sb{\mathrm{1}}\sp{\prime{}}} \HOLSymConst{\ensuremath{-}} \ensuremath{\HOLBoundVar{ki}\sb{\mathrm{2}}}) \HOLSymConst{\HOLTokenRor{}} \HOLConst{w2n} \HOLBoundVar{B} \HOLSymConst{\HOLTokenEor{}} \HOLBoundVar{B}
+      \HOLKeyword{in}
+        (\HOLBoundVar{A}\HOLSymConst{,}\HOLBoundVar{B}))
+\end{SaveVerbatim}
+\newcommand{\HOLrcFiveTheoremsRoundDeXXdef}{\UseVerbatim{HOLrcFiveTheoremsRoundDeXXdef}}
+\begin{SaveVerbatim}{HOLrcFiveTheoremsRoundDeXXEnSg}
+\HOLTokenTurnstile{} \HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{b} \HOLBoundVar{ki} \ensuremath{\HOLBoundVar{ki}\sb{\mathrm{2}}}. \HOLConst{RoundDeSg} (\HOLConst{RoundEnSg} \HOLBoundVar{b} \HOLBoundVar{ki} \ensuremath{\HOLBoundVar{ki}\sb{\mathrm{2}}}) \HOLBoundVar{ki} \ensuremath{\HOLBoundVar{ki}\sb{\mathrm{2}}} \HOLSymConst{=} \HOLBoundVar{b}
+\end{SaveVerbatim}
+\newcommand{\HOLrcFiveTheoremsRoundDeXXEnSg}{\UseVerbatim{HOLrcFiveTheoremsRoundDeXXEnSg}}
+\begin{SaveVerbatim}{HOLrcFiveTheoremsRoundDeXXind}
+\HOLTokenTurnstile{} \HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{P}. (\HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{ks} \ensuremath{\HOLBoundVar{w}\sb{\mathrm{1}}} \ensuremath{\HOLBoundVar{w}\sb{\mathrm{2}}}. \HOLBoundVar{P} \HOLNumLit{0} \HOLBoundVar{ks} (\ensuremath{\HOLBoundVar{w}\sb{\mathrm{1}}}\HOLSymConst{,}\ensuremath{\HOLBoundVar{w}\sb{\mathrm{2}}})) \HOLSymConst{\HOLTokenConj{}}
+       (\HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{n} \HOLBoundVar{ks} \ensuremath{\HOLBoundVar{w}\sb{\mathrm{1}}} \ensuremath{\HOLBoundVar{w}\sb{\mathrm{2}}}. \HOLBoundVar{P} \HOLBoundVar{n} \HOLBoundVar{ks} (\ensuremath{\HOLBoundVar{w}\sb{\mathrm{1}}}\HOLSymConst{,}\ensuremath{\HOLBoundVar{w}\sb{\mathrm{2}}}) \HOLSymConst{\HOLTokenImp{}} \HOLBoundVar{P} (\HOLConst{SUC} \HOLBoundVar{n}) \HOLBoundVar{ks} (\ensuremath{\HOLBoundVar{w}\sb{\mathrm{1}}}\HOLSymConst{,}\ensuremath{\HOLBoundVar{w}\sb{\mathrm{2}}})) \HOLSymConst{\HOLTokenImp{}}
+       \HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{v} \ensuremath{\HOLBoundVar{v}\sb{\mathrm{1}}} \ensuremath{\HOLBoundVar{v}\sb{\mathrm{2}}} \ensuremath{\HOLBoundVar{v}\sb{\mathrm{3}}}. \HOLBoundVar{P} \HOLBoundVar{v} \ensuremath{\HOLBoundVar{v}\sb{\mathrm{1}}} (\ensuremath{\HOLBoundVar{v}\sb{\mathrm{2}}}\HOLSymConst{,}\ensuremath{\HOLBoundVar{v}\sb{\mathrm{3}}})
+\end{SaveVerbatim}
+\newcommand{\HOLrcFiveTheoremsRoundDeXXind}{\UseVerbatim{HOLrcFiveTheoremsRoundDeXXind}}
+\begin{SaveVerbatim}{HOLrcFiveTheoremsRoundEeYYXXDeYY}
+\HOLTokenTurnstile{} \HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{n} \HOLBoundVar{b} \HOLBoundVar{ki} \ensuremath{\HOLBoundVar{ki}\sb{\mathrm{2}}}. \HOLConst{RoundDe'} \HOLBoundVar{n} \HOLBoundVar{ki} \ensuremath{\HOLBoundVar{ki}\sb{\mathrm{2}}} (\HOLConst{RoundEn'} \HOLBoundVar{n} \HOLBoundVar{ki} \ensuremath{\HOLBoundVar{ki}\sb{\mathrm{2}}} \HOLBoundVar{b}) \HOLSymConst{=} \HOLBoundVar{b}
+\end{SaveVerbatim}
+\newcommand{\HOLrcFiveTheoremsRoundEeYYXXDeYY}{\UseVerbatim{HOLrcFiveTheoremsRoundEeYYXXDeYY}}
+\begin{SaveVerbatim}{HOLrcFiveTheoremsRoundEnYYXXcomm}
+\HOLTokenTurnstile{} \HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{n} \HOLBoundVar{b} \HOLBoundVar{ks} \HOLBoundVar{ki} \ensuremath{\HOLBoundVar{ki}\sb{\mathrm{2}}}.
+     \HOLConst{RoundEnSg} (\HOLConst{RoundEn'} \HOLBoundVar{n} \HOLBoundVar{ki} \ensuremath{\HOLBoundVar{ki}\sb{\mathrm{2}}} \HOLBoundVar{b}) \HOLBoundVar{ki} \ensuremath{\HOLBoundVar{ki}\sb{\mathrm{2}}} \HOLSymConst{=}
+     \HOLConst{RoundEn'} \HOLBoundVar{n} \HOLBoundVar{ki} \ensuremath{\HOLBoundVar{ki}\sb{\mathrm{2}}} (\HOLConst{RoundEnSg} \HOLBoundVar{b} \HOLBoundVar{ki} \ensuremath{\HOLBoundVar{ki}\sb{\mathrm{2}}})
+\end{SaveVerbatim}
+\newcommand{\HOLrcFiveTheoremsRoundEnYYXXcomm}{\UseVerbatim{HOLrcFiveTheoremsRoundEnYYXXcomm}}
+\begin{SaveVerbatim}{HOLrcFiveTheoremsRoundEnYYXXcompute}
+\HOLTokenTurnstile{} (\HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{ki} \ensuremath{\HOLBoundVar{ki}\sb{\mathrm{2}}} \HOLBoundVar{b}. \HOLConst{RoundEn'} \HOLNumLit{0} \HOLBoundVar{ki} \ensuremath{\HOLBoundVar{ki}\sb{\mathrm{2}}} \HOLBoundVar{b} \HOLSymConst{=} \HOLBoundVar{b}) \HOLSymConst{\HOLTokenConj{}}
+   (\HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{n} \HOLBoundVar{ki} \ensuremath{\HOLBoundVar{ki}\sb{\mathrm{2}}} \HOLBoundVar{b}.
+      \HOLConst{RoundEn'} <..num comp'n..> \HOLBoundVar{ki} \ensuremath{\HOLBoundVar{ki}\sb{\mathrm{2}}} \HOLBoundVar{b} \HOLSymConst{=}
+      (\HOLKeyword{let}
+         \ensuremath{\HOLBoundVar{b}\sp{\prime{}}} = \HOLConst{RoundEn'} (<..num comp'n..> \HOLSymConst{\ensuremath{-}} \HOLNumLit{1}) \HOLBoundVar{ki} \ensuremath{\HOLBoundVar{ki}\sb{\mathrm{2}}} \HOLBoundVar{b}
+       \HOLKeyword{in}
+         \HOLConst{RoundEnSg} \ensuremath{\HOLBoundVar{b}\sp{\prime{}}} \HOLBoundVar{ki} \ensuremath{\HOLBoundVar{ki}\sb{\mathrm{2}}})) \HOLSymConst{\HOLTokenConj{}}
+   \HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{n} \HOLBoundVar{ki} \ensuremath{\HOLBoundVar{ki}\sb{\mathrm{2}}} \HOLBoundVar{b}.
+     \HOLConst{RoundEn'} <..num comp'n..> \HOLBoundVar{ki} \ensuremath{\HOLBoundVar{ki}\sb{\mathrm{2}}} \HOLBoundVar{b} \HOLSymConst{=}
+     (\HOLKeyword{let}
+        \ensuremath{\HOLBoundVar{b}\sp{\prime{}}} = \HOLConst{RoundEn'} <..num comp'n..> \HOLBoundVar{ki} \ensuremath{\HOLBoundVar{ki}\sb{\mathrm{2}}} \HOLBoundVar{b}
+      \HOLKeyword{in}
+        \HOLConst{RoundEnSg} \ensuremath{\HOLBoundVar{b}\sp{\prime{}}} \HOLBoundVar{ki} \ensuremath{\HOLBoundVar{ki}\sb{\mathrm{2}}})
+\end{SaveVerbatim}
+\newcommand{\HOLrcFiveTheoremsRoundEnYYXXcompute}{\UseVerbatim{HOLrcFiveTheoremsRoundEnYYXXcompute}}
+\begin{SaveVerbatim}{HOLrcFiveTheoremsRoundEnSixFourXXaltXXhalfXXmessageEn}
+\HOLTokenTurnstile{} \HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{w} \HOLBoundVar{k} \HOLBoundVar{r}.
+     (\ensuremath{\HOLFreeVar{w}\sb{\mathrm{1}}}\HOLSymConst{,}\ensuremath{\HOLFreeVar{w}\sb{\mathrm{2}}}) \HOLSymConst{=} \HOLConst{Split64} \HOLBoundVar{w} \HOLSymConst{\HOLTokenConj{}} (\HOLFreeVar{A}\HOLSymConst{,}\HOLFreeVar{B}\HOLSymConst{,}\HOLFreeVar{Lk}\HOLSymConst{,}\HOLFreeVar{Sk}\HOLSymConst{,}\HOLFreeVar{i}\HOLSymConst{,}\HOLFreeVar{j}) \HOLSymConst{=} \HOLConst{rc5keys} \HOLBoundVar{r} \HOLBoundVar{k} \HOLSymConst{\HOLTokenConj{}}
+     \ensuremath{\HOLFreeVar{k}\sb{\mathrm{0}}} \HOLSymConst{=} \HOLConst{EL} \HOLNumLit{0} \HOLFreeVar{Sk} \HOLSymConst{\HOLTokenConj{}} \ensuremath{\HOLFreeVar{k}\sb{\mathrm{1}}} \HOLSymConst{=} \HOLConst{EL} \HOLNumLit{1} \HOLFreeVar{Sk} \HOLSymConst{\HOLTokenImp{}}
+     \HOLConst{RoundEn64} \HOLBoundVar{r} \HOLBoundVar{w} \HOLBoundVar{k} \HOLSymConst{=}
+     \HOLConst{Join64'}
+       (\HOLConst{half_messageEn} (\ensuremath{\HOLFreeVar{w}\sb{\mathrm{1}}} \HOLSymConst{\ensuremath{+}} \ensuremath{\HOLFreeVar{k}\sb{\mathrm{0}}}) (\ensuremath{\HOLFreeVar{w}\sb{\mathrm{2}}} \HOLSymConst{\ensuremath{+}} \ensuremath{\HOLFreeVar{k}\sb{\mathrm{1}}}) \HOLFreeVar{Sk} (\HOLNumLit{2} \HOLSymConst{\HOLTokenProd{}} \HOLBoundVar{r})\HOLSymConst{,}
+        \HOLConst{half_messageEn} (\ensuremath{\HOLFreeVar{w}\sb{\mathrm{1}}} \HOLSymConst{\ensuremath{+}} \ensuremath{\HOLFreeVar{k}\sb{\mathrm{0}}}) (\ensuremath{\HOLFreeVar{w}\sb{\mathrm{2}}} \HOLSymConst{\ensuremath{+}} \ensuremath{\HOLFreeVar{k}\sb{\mathrm{1}}}) \HOLFreeVar{Sk} (\HOLNumLit{2} \HOLSymConst{\HOLTokenProd{}} \HOLBoundVar{r} \HOLSymConst{\ensuremath{+}} \HOLNumLit{1}))
+\end{SaveVerbatim}
+\newcommand{\HOLrcFiveTheoremsRoundEnSixFourXXaltXXhalfXXmessageEn}{\UseVerbatim{HOLrcFiveTheoremsRoundEnSixFourXXaltXXhalfXXmessageEn}}
+\begin{SaveVerbatim}{HOLrcFiveTheoremsRoundEnXXaltXXhalfXXmessageEn}
+\HOLTokenTurnstile{} \HOLSymConst{\HOLTokenForall{}}\ensuremath{\HOLBoundVar{w}\sb{\mathrm{1}}} \ensuremath{\HOLBoundVar{w}\sb{\mathrm{2}}} \HOLBoundVar{ks} \HOLBoundVar{n}.
+     \HOLConst{RoundEn} \HOLBoundVar{n} \ensuremath{\HOLBoundVar{w}\sb{\mathrm{1}}} \ensuremath{\HOLBoundVar{w}\sb{\mathrm{2}}} \HOLBoundVar{ks} \HOLSymConst{=}
+     (\HOLConst{half_messageEn} \ensuremath{\HOLBoundVar{w}\sb{\mathrm{1}}} \ensuremath{\HOLBoundVar{w}\sb{\mathrm{2}}} \HOLBoundVar{ks} (\HOLNumLit{2} \HOLSymConst{\HOLTokenProd{}} \HOLBoundVar{n})\HOLSymConst{,}
+      \HOLConst{half_messageEn} \ensuremath{\HOLBoundVar{w}\sb{\mathrm{1}}} \ensuremath{\HOLBoundVar{w}\sb{\mathrm{2}}} \HOLBoundVar{ks} (\HOLNumLit{2} \HOLSymConst{\HOLTokenProd{}} \HOLBoundVar{n} \HOLSymConst{\ensuremath{+}} \HOLNumLit{1}))
+\end{SaveVerbatim}
+\newcommand{\HOLrcFiveTheoremsRoundEnXXaltXXhalfXXmessageEn}{\UseVerbatim{HOLrcFiveTheoremsRoundEnXXaltXXhalfXXmessageEn}}
+\begin{SaveVerbatim}{HOLrcFiveTheoremsRoundEnXXcompute}
+\HOLTokenTurnstile{} (\HOLSymConst{\HOLTokenForall{}}\ensuremath{\HOLBoundVar{w}\sb{\mathrm{1}}} \ensuremath{\HOLBoundVar{w}\sb{\mathrm{2}}} \HOLBoundVar{ks}.
+      \HOLConst{RoundEn} \HOLNumLit{0} \ensuremath{\HOLBoundVar{w}\sb{\mathrm{1}}} \ensuremath{\HOLBoundVar{w}\sb{\mathrm{2}}} \HOLBoundVar{ks} \HOLSymConst{=}
+      (\HOLKeyword{let} \ensuremath{\HOLBoundVar{s}\sb{\mathrm{0}}} = \HOLConst{EL} \HOLNumLit{0} \HOLBoundVar{ks}; \ensuremath{\HOLBoundVar{s}\sb{\mathrm{1}}} = \HOLConst{EL} \HOLNumLit{1} \HOLBoundVar{ks} \HOLKeyword{in} (\ensuremath{\HOLBoundVar{w}\sb{\mathrm{1}}}\HOLSymConst{,}\ensuremath{\HOLBoundVar{w}\sb{\mathrm{2}}}))) \HOLSymConst{\HOLTokenConj{}}
+   (\HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{n} \ensuremath{\HOLBoundVar{w}\sb{\mathrm{1}}} \ensuremath{\HOLBoundVar{w}\sb{\mathrm{2}}} \HOLBoundVar{ks}.
+      \HOLConst{RoundEn} <..num comp'n..> \ensuremath{\HOLBoundVar{w}\sb{\mathrm{1}}} \ensuremath{\HOLBoundVar{w}\sb{\mathrm{2}}} \HOLBoundVar{ks} \HOLSymConst{=}
+      (\HOLKeyword{let}
+         (\ensuremath{\HOLBoundVar{w}\sb{\mathrm{1}}\sp{\prime{}}}\HOLSymConst{,}\ensuremath{\HOLBoundVar{w}\sb{\mathrm{2}}\sp{\prime{}}}) = \HOLConst{RoundEn} (<..num comp'n..> \HOLSymConst{\ensuremath{-}} \HOLNumLit{1}) \ensuremath{\HOLBoundVar{w}\sb{\mathrm{1}}} \ensuremath{\HOLBoundVar{w}\sb{\mathrm{2}}} \HOLBoundVar{ks};
+         \HOLBoundVar{ki} = \HOLConst{EL} (\HOLNumLit{2} \HOLSymConst{\HOLTokenProd{}} <..num comp'n..> ) \HOLBoundVar{ks};
+         \ensuremath{\HOLBoundVar{ki}\sb{\mathrm{2}}} = \HOLConst{EL} (\HOLNumLit{2} \HOLSymConst{\HOLTokenProd{}} <..num comp'n..> \HOLSymConst{\ensuremath{+}} \HOLNumLit{1}) \HOLBoundVar{ks};
+         \HOLBoundVar{A} = (\ensuremath{\HOLBoundVar{w}\sb{\mathrm{1}}\sp{\prime{}}} \HOLSymConst{\HOLTokenEor{}} \ensuremath{\HOLBoundVar{w}\sb{\mathrm{2}}\sp{\prime{}}}) \HOLSymConst{\HOLTokenRol{}} \HOLConst{w2n} \ensuremath{\HOLBoundVar{w}\sb{\mathrm{2}}\sp{\prime{}}} \HOLSymConst{\ensuremath{+}} \HOLBoundVar{ki};
+         \HOLBoundVar{B} = (\ensuremath{\HOLBoundVar{w}\sb{\mathrm{2}}\sp{\prime{}}} \HOLSymConst{\HOLTokenEor{}} \HOLBoundVar{A}) \HOLSymConst{\HOLTokenRol{}} \HOLConst{w2n} \HOLBoundVar{A} \HOLSymConst{\ensuremath{+}} \ensuremath{\HOLBoundVar{ki}\sb{\mathrm{2}}}
+       \HOLKeyword{in}
+         (\HOLBoundVar{A}\HOLSymConst{,}\HOLBoundVar{B}))) \HOLSymConst{\HOLTokenConj{}}
+   \HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{n} \ensuremath{\HOLBoundVar{w}\sb{\mathrm{1}}} \ensuremath{\HOLBoundVar{w}\sb{\mathrm{2}}} \HOLBoundVar{ks}.
+     \HOLConst{RoundEn} <..num comp'n..> \ensuremath{\HOLBoundVar{w}\sb{\mathrm{1}}} \ensuremath{\HOLBoundVar{w}\sb{\mathrm{2}}} \HOLBoundVar{ks} \HOLSymConst{=}
+     (\HOLKeyword{let}
+        (\ensuremath{\HOLBoundVar{w}\sb{\mathrm{1}}\sp{\prime{}}}\HOLSymConst{,}\ensuremath{\HOLBoundVar{w}\sb{\mathrm{2}}\sp{\prime{}}}) = \HOLConst{RoundEn} <..num comp'n..> \ensuremath{\HOLBoundVar{w}\sb{\mathrm{1}}} \ensuremath{\HOLBoundVar{w}\sb{\mathrm{2}}} \HOLBoundVar{ks};
+        \HOLBoundVar{ki} = \HOLConst{EL} (\HOLNumLit{2} \HOLSymConst{\HOLTokenProd{}} <..num comp'n..> ) \HOLBoundVar{ks};
+        \ensuremath{\HOLBoundVar{ki}\sb{\mathrm{2}}} = \HOLConst{EL} (\HOLNumLit{2} \HOLSymConst{\HOLTokenProd{}} <..num comp'n..> \HOLSymConst{\ensuremath{+}} \HOLNumLit{1}) \HOLBoundVar{ks};
+        \HOLBoundVar{A} = (\ensuremath{\HOLBoundVar{w}\sb{\mathrm{1}}\sp{\prime{}}} \HOLSymConst{\HOLTokenEor{}} \ensuremath{\HOLBoundVar{w}\sb{\mathrm{2}}\sp{\prime{}}}) \HOLSymConst{\HOLTokenRol{}} \HOLConst{w2n} \ensuremath{\HOLBoundVar{w}\sb{\mathrm{2}}\sp{\prime{}}} \HOLSymConst{\ensuremath{+}} \HOLBoundVar{ki};
+        \HOLBoundVar{B} = (\ensuremath{\HOLBoundVar{w}\sb{\mathrm{2}}\sp{\prime{}}} \HOLSymConst{\HOLTokenEor{}} \HOLBoundVar{A}) \HOLSymConst{\HOLTokenRol{}} \HOLConst{w2n} \HOLBoundVar{A} \HOLSymConst{\ensuremath{+}} \ensuremath{\HOLBoundVar{ki}\sb{\mathrm{2}}}
+      \HOLKeyword{in}
+        (\HOLBoundVar{A}\HOLSymConst{,}\HOLBoundVar{B}))
+\end{SaveVerbatim}
+\newcommand{\HOLrcFiveTheoremsRoundEnXXcompute}{\UseVerbatim{HOLrcFiveTheoremsRoundEnXXcompute}}
+\begin{SaveVerbatim}{HOLrcFiveTheoremsSkeysTThreeTwoXXcompute}
+\HOLTokenTurnstile{} (\HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{l}. \HOLConst{SkeysT32} \HOLBoundVar{l} \HOLNumLit{0} \HOLSymConst{=} [\HOLConst{P32_data}]) \HOLSymConst{\HOLTokenConj{}}
+   (\HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{l} \HOLBoundVar{t}.
+      \HOLConst{SkeysT32} \HOLBoundVar{l} <..num comp'n..> \HOLSymConst{=}
+      (\HOLKeyword{let}
+         \HOLBoundVar{ks} = \HOLConst{SkeysT32} \HOLBoundVar{l} (<..num comp'n..> \HOLSymConst{\ensuremath{-}} \HOLNumLit{1});
+         \HOLBoundVar{key} = \HOLConst{HD} \HOLBoundVar{ks}
+       \HOLKeyword{in}
+         \HOLBoundVar{key} \HOLSymConst{\ensuremath{+}} \HOLConst{Q32_data}\HOLSymConst{::}\HOLBoundVar{ks})) \HOLSymConst{\HOLTokenConj{}}
+   \HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{l} \HOLBoundVar{t}.
+     \HOLConst{SkeysT32} \HOLBoundVar{l} <..num comp'n..> \HOLSymConst{=}
+     (\HOLKeyword{let}
+        \HOLBoundVar{ks} = \HOLConst{SkeysT32} \HOLBoundVar{l} <..num comp'n..> ;
+        \HOLBoundVar{key} = \HOLConst{HD} \HOLBoundVar{ks}
+      \HOLKeyword{in}
+        \HOLBoundVar{key} \HOLSymConst{\ensuremath{+}} \HOLConst{Q32_data}\HOLSymConst{::}\HOLBoundVar{ks})
+\end{SaveVerbatim}
+\newcommand{\HOLrcFiveTheoremsSkeysTThreeTwoXXcompute}{\UseVerbatim{HOLrcFiveTheoremsSkeysTThreeTwoXXcompute}}
+\begin{SaveVerbatim}{HOLrcFiveTheoremsSplitSixFourXXJoinSixFour}
+\HOLTokenTurnstile{} \HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{u} \HOLBoundVar{v}. \HOLConst{Split64} (\HOLConst{Join64} (\HOLBoundVar{u}\HOLSymConst{,}\HOLBoundVar{v})) \HOLSymConst{=} (\HOLBoundVar{u}\HOLSymConst{,}\HOLBoundVar{v})
+\end{SaveVerbatim}
+\newcommand{\HOLrcFiveTheoremsSplitSixFourXXJoinSixFour}{\UseVerbatim{HOLrcFiveTheoremsSplitSixFourXXJoinSixFour}}
+\begin{SaveVerbatim}{HOLrcFiveTheoremsSplitSixFourXXJoinSixFourYY}
+\HOLTokenTurnstile{} \HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{b}. \HOLConst{Split64} (\HOLConst{Join64'} \HOLBoundVar{b}) \HOLSymConst{=} \HOLBoundVar{b}
+\end{SaveVerbatim}
+\newcommand{\HOLrcFiveTheoremsSplitSixFourXXJoinSixFourYY}{\UseVerbatim{HOLrcFiveTheoremsSplitSixFourXXJoinSixFourYY}}
+\newcommand{\HOLrcFiveTheorems}{
+\HOLThmTag{rc5}{half_messageDe_def}\HOLrcFiveTheoremshalfXXmessageDeXXdef
+\HOLThmTag{rc5}{half_messageDe_ind}\HOLrcFiveTheoremshalfXXmessageDeXXind
+\HOLThmTag{rc5}{half_messageEn_def}\HOLrcFiveTheoremshalfXXmessageEnXXdef
+\HOLThmTag{rc5}{half_messageEn_ind}\HOLrcFiveTheoremshalfXXmessageEnXXind
+\HOLThmTag{rc5}{Join64'_Split64}\HOLrcFiveTheoremsJoinSixFourYYXXSplitSixFour
+\HOLThmTag{rc5}{Join64_Split64}\HOLrcFiveTheoremsJoinSixFourXXSplitSixFour
+\HOLThmTag{rc5}{keys_compute}\HOLrcFiveTheoremskeysXXcompute
+\HOLThmTag{rc5}{LENGTH_key_Lkeys}\HOLrcFiveTheoremsLENGTHXXkeyXXLkeys
+\HOLThmTag{rc5}{LENGTH_key_Skeys}\HOLrcFiveTheoremsLENGTHXXkeyXXSkeys
+\HOLThmTag{rc5}{LENGTH_Lkeys}\HOLrcFiveTheoremsLENGTHXXLkeys
+\HOLThmTag{rc5}{LENGTH_LkeysSup}\HOLrcFiveTheoremsLENGTHXXLkeysSup
+\HOLThmTag{rc5}{LENGTH_Skeys}\HOLrcFiveTheoremsLENGTHXXSkeys
+\HOLThmTag{rc5}{LkeysSup_compute}\HOLrcFiveTheoremsLkeysSupXXcompute
+\HOLThmTag{rc5}{RoundDe'_comm}\HOLrcFiveTheoremsRoundDeYYXXcomm
+\HOLThmTag{rc5}{RoundDe'_compute}\HOLrcFiveTheoremsRoundDeYYXXcompute
+\HOLThmTag{rc5}{RoundDe64_alt_half_messageDe}\HOLrcFiveTheoremsRoundDeSixFourXXaltXXhalfXXmessageDe
+\HOLThmTag{rc5}{RoundDe_alt_half_messageDe}\HOLrcFiveTheoremsRoundDeXXaltXXhalfXXmessageDe
+\HOLThmTag{rc5}{RoundDe_compute}\HOLrcFiveTheoremsRoundDeXXcompute
+\HOLThmTag{rc5}{RoundDe_def}\HOLrcFiveTheoremsRoundDeXXdef
+\HOLThmTag{rc5}{RoundDe_EnSg}\HOLrcFiveTheoremsRoundDeXXEnSg
+\HOLThmTag{rc5}{RoundDe_ind}\HOLrcFiveTheoremsRoundDeXXind
+\HOLThmTag{rc5}{RoundEe'_De'}\HOLrcFiveTheoremsRoundEeYYXXDeYY
+\HOLThmTag{rc5}{RoundEn'_comm}\HOLrcFiveTheoremsRoundEnYYXXcomm
+\HOLThmTag{rc5}{RoundEn'_compute}\HOLrcFiveTheoremsRoundEnYYXXcompute
+\HOLThmTag{rc5}{RoundEn64_alt_half_messageEn}\HOLrcFiveTheoremsRoundEnSixFourXXaltXXhalfXXmessageEn
+\HOLThmTag{rc5}{RoundEn_alt_half_messageEn}\HOLrcFiveTheoremsRoundEnXXaltXXhalfXXmessageEn
+\HOLThmTag{rc5}{RoundEn_compute}\HOLrcFiveTheoremsRoundEnXXcompute
+\HOLThmTag{rc5}{SkeysT32_compute}\HOLrcFiveTheoremsSkeysTThreeTwoXXcompute
+\HOLThmTag{rc5}{Split64_Join64}\HOLrcFiveTheoremsSplitSixFourXXJoinSixFour
+\HOLThmTag{rc5}{Split64_Join64'}\HOLrcFiveTheoremsSplitSixFourXXJoinSixFourYY
+}

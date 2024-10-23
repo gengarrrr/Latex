@@ -1,4 +1,4 @@
-INCLUDES = $(HOLDIR)/examples/Crypto/DES
+INCLUDES = $(HOLDIR)/examples/Crypto/DES $(HOLDIR)/examples/Crypto/RC5
 
 OPTIONS = QUIT_ON_FAILURE
 MUNGE = ./munge.exe
