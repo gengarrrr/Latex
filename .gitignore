@@ -1,0 +1,14 @@
+/pythonProject6/.DS_Store
+/.holobjs/
+/.hollogs/
+/.HOLMK/
+/heap
+*.exe
+*.aux
+*.idx
+*.log
+*.blg
+*.out
+*.bbl
+*.hix
+*.toc
