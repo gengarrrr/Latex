@@ -20,48 +20,63 @@
 \maketitle
 
 \begin{abstract}
-   Interactive Proving combines the strengths of manual and automated proofs. It is used to prove the correctness of
+   Interactive Theorem Proving (ITP) combines the strengths of manual and automated proofs. It is used to prove the correctness of
    intended algorithms in a more rigorous and formal manner,
-   ensure no logical errors. Data
-   Encryption Standard (DES) is a block cipher that player a
-   significant role in data security, and is one of the most
-   widely used cryptosystem. It contains many well known properties about complementation, weak and semi-weak keys
-   that are concluded and common used. This paper use the HOL4
+   ensuring that there's no logical errors in the algorithm. The Data
+   Encryption Standard (DES) is a block cipher which ever played a
+   significant role in cyber security, and is one of the most
+   widely used cryptosystem. DES has many well known properties such
+   as the complementation, weak and semi-weak keys, which are
+   common used in related work. This paper use the HOL4
    interactive theorem prover to define the properties based
-   on the built-in DES implementation and prove the properties.
-   The paper also includes the implementation of RC5 cryptosystem and initially implement the crypatanalytic attack
-   Differential Crypatanalysis towards DES and prove some theorems
-   of it. RC5 is a symmetric-key block cipher well known for
-   its variable block and key size. The Differential Crypatanalysis is to break DES into fewer rounds. The work ensures
+   on the built-in DES implementation and then prove these properties.
+   The paper also includes an implementation of the RC5 cryptosystem.
+   RC5 is a symmetric-key block cipher well known for
+   its variable block and key size.
+
+   Furthermore, there is an initial implementation of the crypatanalytic attack
+   method called \emph{Differential Cryptanalysis} against DES, and
+   we have proved some basic theorems about it.
+   The work on Differential Cryptanalysis here is to break DES
+   variants with fewer rounds. The work ensures
    the correctness and effectiveness of cryptosystem and attack
-   method, enable error-free, reliable operation in real-world
-   applications.
+   method, enabling error-free, reliable operations in real-world applications.
 \end{abstract}
 
 \section{Introduction}
-Cryptography has been widely used in the world since centuries ago, it constructs protocols to protect the
-data and secure the communication. Block cipher is a deterministic algorithm used in Cryptography, it uses
-fixed-length blocks that are composed with bits to encrypt and decrypt data. Data Encryption Standard (DES)
-and RC5 are both famous algorithms of block cipher. They are commonly used, studied, researched many times
-daily by uncountable people, but rare people query the correctness of description about them. It may cause
-significant vulnerabilities and insufficient security level of encrypting data, thus the cryptosystem built
-upon them may fail to secure important data and data breaches may occur.
+Cryptography has been widely used in the world since centuries ago. It
+is used for constructing protocols to protect the
+data and secure the communication. Block cipher is a deterministic algorithm. it uses
+fixed-length blocks that are composed with bits to encrypt and decrypt data.
+The Data Encryption Standard (DES)
+and RC5 are both famous block ciphers. They have been commonly used,
+studied, researched by
+many people, but people rarely question the correctness of some basic
+properties about them (instead, these properties are directly trusted
+and used). In rare cases (with a different newer cipher, e.g.), such unconditional trusts may cause
+significant vulnerabilities and insufficient security level of
+encrypting data, and thus the cryptosystem built
+upon them may fail to secure important data, where data breaches may occur.
 
-In this paper, I verify the properties
-of block cipher especially for DES and RC5 algorithm, ensure the correctness of the properties, thus provide
-direct evidence of the security and reliability of DES and RC5. This paper mainly include the proving of
-complementation property,
-weak key and semi-weak key property of DES, the implement of RC5 and the initial built of theorems and also related verification
-of Differential Crypatanalysis. Differential Crypatanalysis is a type of cryptanalytic attack used in DES-like
+In this paper, the author has verified some important properties
+of the block cipher DES and RC5, ensuring the correctness of these
+properties (thus provide
+direct evidence of the security and reliability of DES and RC5).
+This work mainly targets the correctness proofs of complementation property,
+weak key and semi-weak key property of DES, the implementation and
+encrypt-decrypt correctness of RC5, and an initial work as a set of
+theorems related to the verification
+of Differential Cryptanalysis. Differential Cryptanalysis is a type of cryptanalytic attack used in DES-like
 cryptosystems, it can break variant DES of up to 15 rounds. The initial built definitions and verifications of
-Differential Crypatanalysis ensures the correctness of basics, thus support the future construction. This paper
+Differential Cryptanalysis ensures the correctness of basics, thus support the future construction. This paper
 use the Interactive Theorem Prover HOL4 to do all the implementation and verifications, it provides solid and
 large bases of theorems, built-in decision procedures and tactics,so I can build the verification based on them
 straightly and expediently. As a result, the paper also enboard the theory base of HOL4, provide some
 fundamentals of block cipher construction which allow future research and verification efforts in HOL4.
 
 \section{Preliminary}
-\subsection{HOL4}
+
+\subsection{Types and terms in HOL4}
 HOL4 theorem proving system is a proof assistant with built-in decision procedures, tactics and theorems to
 be convenient to prove harder theorems for users. It is composed with HOL types, terms, rules of inference
 and theories. The types in HOL4 contains the basic atomic types like "int", "bool" or the "word n" type which
@@ -77,7 +92,7 @@ the parent theories that focusing on some more specific aspects from its parent 
 more details. It builds upon the concepts from the parent theories, and they are overall organized hierarchically
 to form a tree-like framework.
 
-\subsection{basic use of HOL4}
+\subsection{Basic use of HOL4}
 rw[] simp fs
 RW_TAC
 POP_ASSUME MP_TAC
@@ -85,7 +100,7 @@ Q.ABBREV_TAC Abbr
 Suff Know Rewr'
 
 \subsection{Word theory in HOL4}
-In this paper, "wordsTheory" in HOL4 are mainly used to prove the properties of DES, Differential Crypatanalysis
+In this paper, "wordsTheory" in HOL4 are mainly used to prove the properties of DES, Differential Cryptanalysis
 and the implementation of RC5. It is built upon some basic theories and "fcpTheory" which are also common used in
 this paper. The terms used in the verifications are mainly in type of wordn which means a word with length n.
 "wordsTheory" contains many definitions and theorems about the words' operations, analysis and properties.
@@ -135,8 +150,8 @@ include not only finite algebra but also infinite algebra.
    \HOLConst{countably_additive} \HOLFreeVar{m}
 \end{alltt}
 
-The "measureTheory" and "probabilityTheory" are used in the implementation of Differential Crypatanalysis as the need of working with
-sets. It requires to get the probabilities of subsets out of a universal set. In the cases of Differential Crypatanalysis attack against
+The "measureTheory" and "probabilityTheory" are used in the implementation of Differential Cryptanalysis as the need of working with
+sets. It requires to get the probabilities of subsets out of a universal set. In the cases of Differential Cryptanalysis attack against
 DES, the overall sets are usually the universal sets of words or word pairs of a specific length, the target sets are DES
 inputs of that length and satisfy particular properties.
 
