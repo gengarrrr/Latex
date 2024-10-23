@@ -139,17 +139,16 @@ Consequently, we can do the operations mentioned above as they need to analyze b
 
 \subsection{Measure and Probability theory in HOL4}
 
-The $measureTheory$ and $probabilityTheory$ build the definitions of algebra $(X\;,\;A)$, $\( \sigma \)-algebra$, thus the measure space (X,A,u) and probability
-space. The $\( \sigma \)-algebra$ is algebra that the union of all subsets of A also belongs to A. Probability space is a measure space satisfy the
-property that $u(X)\;=\;1$, and are often represented as $(\( \Omega \)\;,\; F\;,\; P)$. The theories also includes the complementary definitions and
+The $measureTheory$ and $probabilityTheory$ build the definitions of algebra $(X\;,\;A)$, $\sigma-algebra$, thus the measure space (X,A,u) and probability
+space. The $\sigma-algebra$ is algebra that the union of all subsets of A also belongs to A. Probability space is a measure space satisfy the
+property that $u(X)\;=\;1$, and are often represented as $(\Omega\;,\; F\;,\; P)$. The theories also includes the complementary definitions and
 theorems related to the properties of these definitions. The theories are built upon the $extrealTheory$, $extrealTheory$
 extends the range of standard real number, adds the positive infinite and negative infinity. It is because algebra is a set which
 include not only finite algebra but also infinite algebra.
 
 \begin{alltt}
-   \HOLTokenTurnstile{} \HOLConst{measure_space} \HOLFreeVar{m} \HOLSymConst{\HOLTokenEquiv{}}
-   \HOLConst{sigma_algebra} (\HOLConst{measurable_space} \HOLFreeVar{m}) \HOLSymConst{\HOLTokenConj{}} \HOLConst{positive} \HOLFreeVar{m} \HOLSymConst{\HOLTokenConj{}}
-   \HOLConst{countably_additive} \HOLFreeVar{m}
+[measure_space_def]
+\HOLthm{measure.measure_space_def}
 \end{alltt}
 
 The $measureTheory$ and $probabilityTheory$ are used in the implementation of Differential Crypatanalysis as the need of working with
@@ -963,6 +962,7 @@ the implementations to generate the probability once I proved that they are prob
 %% APPENDIX
 \input{HOLdes}
 \input{HOLdesXXprop}
+\input{HOLrcFive}
 
 % ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 \section{Appendix: des\_prop Theory}
@@ -982,5 +982,24 @@ the implementations to generate the probability once I proved that they are prob
 % .....................................
 
 \HOLdesXXpropTheorems
+
+% ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+\section{Appendix: rc5 Theory}
+\begin{flushleft}
+\textbf{Parent Theories:} words, sorting
+\end{flushleft}
+% ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+% No datatypes
+
+\subsection{Definitions}
+% .....................................
+
+\HOLrcFiveDefinitions
+
+\subsection{Theorems}
+% .....................................
+
+\HOLrcFiveTheorems
 
 \end{document}
