@@ -64,8 +64,8 @@ fundamentals of block cipher construction which allow future research and verifi
 \subsection{HOL4}
 HOL4 theorem proving system is a proof assistant with built-in decision procedures, tactics and theorems to
 be convenient to prove harder theorems for users. It is composed with HOL types, terms, rules of inference
-and theories. The types in HOL4 contains the basic atomic types like "int", "bool" or the "word n" type which
-is commonly used in proving cryptography aspect. It also contains the compound types such as "set" and "list"
+and theories. The types in HOL4 contains the basic atomic types like $int$, $bool$ or the $word n$ type which
+is commonly used in proving cryptography aspect. It also contains the compound types such as $set$ and $list$
 , and also the function types which are types of function from one type to another.
 
 In HOL4. each term should
@@ -85,47 +85,47 @@ Q.ABBREV_TAC Abbr
 Suff Know Rewr'
 
 \subsection{Word theory in HOL4}
-In this paper, "wordsTheory" in HOL4 are mainly used to prove the properties of DES, Differential Crypatanalysis
-and the implementation of RC5. It is built upon some basic theories and "fcpTheory" which are also common used in
+In this paper, $wordsTheory$ in HOL4 are mainly used to prove the properties of DES, Differential Crypatanalysis
+and the implementation of RC5. It is built upon some basic theories and $fcpTheory$ which are also common used in
 this paper. The terms used in the verifications are mainly in type of wordn which means a word with length n.
-"wordsTheory" contains many definitions and theorems about the words' operations, analysis and properties.
+$wordsTheory$ contains many definitions and theorems about the words' operations, analysis and properties.
 
-There are some operations that are frequently applied. The "word_concat_def" defines the operator "@@", it takes two
-inputs v and w of type word n and word m, join them into a word of length n+m, the first m bits are the same as w,
-and the left n bits are the same as v.
+There are some operations that are frequently applied. The $word\_concat\_def$ defines the operator $@@$, it takes two
+inputs v and w of type word $n$ and word $m$, join them into a word of length $(n+m)$, the first $m$ bits are the same as $w$,
+and the left $n$ bits are the same as $v$.
 \begin{alltt}
    \HOLTokenTurnstile{} \HOLFreeVar{v} \HOLSymConst{@@} \HOLFreeVar{w} \HOLSymConst{=} \HOLConst{w2w} (\HOLConst{word_join} \HOLFreeVar{v} \HOLFreeVar{w})
 \end{alltt}
 
-Then the "word_extract_def" defines the "><" operator, it uses two number inputs h and l where h>l, and is applied
-to a word. It extracts from the lth bits to the hth bits of the word, result a word of length (h-l+1)
+Then the $word_extract_def$ defines the $><$ operator, it uses two number inputs $h$ and $l$ where $(h>l)$, and is applied
+to a word. It extracts from the lth bits to the hth bits of the word, result a word of length $(h-l+1)$
 \begin{alltt}
    \HOLTokenTurnstile{} (\HOLFreeVar{h} \HOLSymConst{\HOLTokenExtract{}} \HOLFreeVar{l}) \HOLSymConst{=} \HOLConst{w2w} \HOLSymConst{\HOLTokenCompose} (\HOLFreeVar{h} \HOLSymConst{--} \HOLFreeVar{l})
 \end{alltt}
 
-The "??" operator defined by "word_xor_def" also takes two words of same length as inputs,
+The $??$ operator defined by $word\_xor\_def$ also takes two words of same length as inputs,
 each corresponding bit of the two words are applied with the xor (Exclusive-OR) operation
 and result a words of that length.
 \begin{alltt}
    \HOLTokenTurnstile{} \HOLFreeVar{v} \HOLSymConst{\HOLTokenEor{}} \HOLFreeVar{w} \HOLSymConst{=} \HOLConst{FCP} \HOLBoundVar{i}. \HOLFreeVar{v} \HOLConst{'} \HOLBoundVar{i} \HOLSymConst{\HOLTokenNotEquiv{}} \HOLFreeVar{w} \HOLConst{'} \HOLBoundVar{i}
 \end{alltt}
 
-At last, one common operator used in proving the property of complementation is "~", it takes a word as input, and converts
+At last, one common operator used in proving the property of complementation is $~$, it takes a word as input, and converts
 each bit to the inverse (1 to 0 and 0 to 1 for binary form), produce the bitwise complement of word as result.
 
 \begin{alltt}
    \HOLTokenTurnstile{} \HOLSymConst{\HOLTokenNeg{}}\HOLFreeVar{w} \HOLSymConst{=} \HOLConst{FCP} \HOLBoundVar{i}. \HOLSymConst{\HOLTokenNeg{}}\HOLFreeVar{w} \HOLConst{'} \HOLBoundVar{i}
 \end{alltt}
 
-The "wordsTheory" is built with the support of "fcpTheory", "fcpTheory" build the foundation that enables the bit-level operations.
+The $wordsTheory$ is built with the support of $fcpTheory$, $fcpTheory$ build the foundation that enables the bit-level operations.
 Consequently, we can do the operations mentioned above as they need to analyze bits of a word.
 
 \subsection{Measure and Probability theory in HOL4}
 
-The "measureTheory" and "probabilityTheory" build the definitions of algebra (X,A), \( \sigma \)-algebra, thus the measure space (X,A,u) and probability
-space. The \( \sigma \)-algebra is algebra that the union of all subsets of A also belongs to A. Probability space is a measure space satisfy the
-property that u(X)=1, and are often represented as (\( \Omega \), F, P). The theories also includes the complementary definitions and
-theorems related to the properties of these definitions. The theories are built upon the "extrealTheory", "extrealTheory"
+The $measureTheory$ and $probabilityTheory$ build the definitions of algebra $(X\;,\;A)$, $\( \sigma \)-algebra$, thus the measure space (X,A,u) and probability
+space. The $\( \sigma \)-algebra$ is algebra that the union of all subsets of A also belongs to A. Probability space is a measure space satisfy the
+property that $u(X)\;=\;1$, and are often represented as $(\( \Omega \)\;,\; F\;,\; P)$. The theories also includes the complementary definitions and
+theorems related to the properties of these definitions. The theories are built upon the $extrealTheory$, $extrealTheory$
 extends the range of standard real number, adds the positive infinite and negative infinity. It is because algebra is a set which
 include not only finite algebra but also infinite algebra.
 
@@ -135,7 +135,7 @@ include not only finite algebra but also infinite algebra.
    \HOLConst{countably_additive} \HOLFreeVar{m}
 \end{alltt}
 
-The "measureTheory" and "probabilityTheory" are used in the implementation of Differential Crypatanalysis as the need of working with
+The $measureTheory$ and $probabilityTheory$ are used in the implementation of Differential Crypatanalysis as the need of working with
 sets. It requires to get the probabilities of subsets out of a universal set. In the cases of Differential Crypatanalysis attack against
 DES, the overall sets are usually the universal sets of words or word pairs of a specific length, the target sets are DES
 inputs of that length and satisfy particular properties.
@@ -215,7 +215,7 @@ These properties cannot reduce the complexity for exhaustive key search especial
 of $2^{56}$ keys. However, their existence can be vital when DES is used within some construction[3].
 
 \subsection{DES in HOL4}
-DES algorithm has been built in the "desScript" file in HOL4, and my paper build the verifications based on the DES implemented
+DES algorithm has been built in the $desScript$ file in HOL4, and my paper build the verifications based on the DES implemented
 in this file.
 
 In the file, it first defines some specific types used in
@@ -223,7 +223,7 @@ the Data Encryption Standard implementation. It includes the halves of word/plai
 keys in each round as pair of word28 and a function type of S-Box that take word6 as inputs and return
 word4. It also includes the data tables to help facilitate the IP, inverse IP permutations, E expansion, P, PC1 and PC2
 permutations, round-dependent rotation values and the permutation values for the S-boxes. Then there are
-some functions and definitions that perform the expansion, permutations, reversion and the S-Boxes' processing. The "Key Scheduling" section
+some functions and definitions that perform the expansion, permutations, reversion and the S-Boxes' processing. The \("\)Key Scheduling\("\) section
 in this file are definitions to build the round keys from the input key. As the last part of preparing, there are
 join and split functions to initially split the plaintext and form the result ciphertext. Theorems are also constructed to
 verify some basic properties and help ensure the correctness of implementations.
@@ -231,7 +231,7 @@ verify some basic properties and help ensure the correctness of implementations.
 It then actually build the XOR operation, round function and swap operation in each round. Moreover, it combines the above operations, along with the
 round keys to form the actual process for each round and ultimately construct the complete DES process over a total of16 rounds.
 It also implements a help function that can return the input halves in each round as a pair in the form of (M a, M b). It is beneficial
-for any future analysis of DES, including the verification of the proper DES implementation in "desScript" and my additional DES
+for any future analysis of DES, including the verification of the proper DES implementation in $desScript$ and my additional DES
 properties proving. At last, it proved that as a Feistel network, the implemented encryption of DES using the round
 keys, followed by a second encryption using the reversed round keys will return the original plaintext.
 
@@ -400,7 +400,8 @@ I first define the four weak keys into HOL4 in hexadecimal form. Then I want to 
 the weak keys, applying the encryption twice to any message will result the message nochange.
 
 \begin{alltt}
-   \HOLthm{des_prop.weakK_proper}
+   \HOLTokenTurnstile{} \HOLConst{MEM} \HOLFreeVar{k} \HOLConst{Wkey} \HOLSymConst{\HOLTokenConj{}} \HOLConst{FullDES} \HOLFreeVar{k} \HOLSymConst{=} (\HOLFreeVar{encrypt}\HOLSymConst{,}\HOLFreeVar{decrypt}) \HOLSymConst{\HOLTokenImp{}}
+   \HOLFreeVar{encrypt} (\HOLFreeVar{encrypt} \HOLFreeVar{plaintext}) \HOLSymConst{=} \HOLFreeVar{plaintext}
 \end{alltt}
 
 It can be proven easily using the existing theorem $desCore\_CORRECT$ in $desTheory$. DES has the property that
@@ -410,15 +411,20 @@ returns the original message. It successfully proves that encryption to a messag
 once using the normal round keys, once using the round keys in reverse order remains message unchanged.
 
 \begin{alltt}
-   \HOLthm{des.desCore_CORRECT}
+   \HOLTokenTurnstile{} \HOLConst{LENGTH} \HOLFreeVar{keys} \HOLSymConst{=} \HOLFreeVar{r} \HOLSymConst{\HOLTokenImp{}}
+   \HOLConst{desCore} \HOLFreeVar{r} (\HOLConst{REVERSE} \HOLFreeVar{keys}) (\HOLConst{desCore} \HOLFreeVar{r} \HOLFreeVar{keys} \HOLFreeVar{plaintext}) \HOLSymConst{=}
+   \HOLFreeVar{plaintext}
 \end{alltt}
 
 By applying this to the goal, I am left with only the proofing of the prerequisite of $desCore\_CORRECT$ and the
 proof of round keys list generated by weak key remains the same after being reversed, that is:
 
-\begin{multline}
- REVERSE \; (KS \; k \; 16)= KS \; k \; 16
-\end{multline}
+\begin{equation}
+\begin{split}
+   REVERSE \; (KS \; k \; 16) &= KS \; k \; 16
+\end{split}
+\end{equation}
+
 
 The rest part is easy to prove, the length of the list of round keys is equal to the number of rounds by the $LENGTH\_KS$
 theorem. The equivalent proof about the round keys can be done by substituting each weak key's value into the goal,
@@ -426,7 +432,7 @@ use the $EVAL\_TAC$ that applies the values of keys to the goal and evaluate on 
 the successful equation calculation on each value.
 
 \begin{alltt}
-   \HOLthm{des.LENGTH_KS}
+   \HOLTokenTurnstile{} \HOLConst{LENGTH} (\HOLConst{KS} \HOLFreeVar{k} \HOLFreeVar{n}) \HOLSymConst{=} \HOLFreeVar{n}
 \end{alltt}
 
 The semi-weak keys' property and its corresponding verification are similar to weak keys'. I define them as pairs in a list,
@@ -434,11 +440,17 @@ set the goal to be: encrypting a message with one key in a pair and encrypting t
 in that pair make the ciphertext back to the original message.
 
 \begin{alltt}
-   \HOLthm{des_prop.semiK_proper1}
+   \HOLTokenTurnstile{} \HOLConst{MEM} \HOLFreeVar{pair} \HOLConst{Semiwkey} \HOLSymConst{\HOLTokenConj{}} \HOLFreeVar{pair} \HOLSymConst{=} (\ensuremath{\HOLFreeVar{s}\sb{\mathrm{1}}}\HOLSymConst{,}\ensuremath{\HOLFreeVar{s}\sb{\mathrm{2}}}) \HOLSymConst{\HOLTokenConj{}}
+   \HOLConst{FullDES} \ensuremath{\HOLFreeVar{s}\sb{\mathrm{1}}} \HOLSymConst{=} (\HOLFreeVar{encrypt}\HOLSymConst{,}\HOLFreeVar{decrypt}) \HOLSymConst{\HOLTokenConj{}}
+   \HOLConst{FullDES} \ensuremath{\HOLFreeVar{s}\sb{\mathrm{2}}} \HOLSymConst{=} (\ensuremath{\HOLFreeVar{encrypt}\sp{\prime{}}}\HOLSymConst{,}\ensuremath{\HOLFreeVar{decrypt}\sp{\prime{}}}) \HOLSymConst{\HOLTokenImp{}}
+   \HOLFreeVar{encrypt} (\ensuremath{\HOLFreeVar{encrypt}\sp{\prime{}}} \HOLFreeVar{plaintext}) \HOLSymConst{=} \HOLFreeVar{plaintext}
 \end{alltt}
 
 \begin{alltt}
-   \HOLthm{des_prop.semiK_proper2}
+   \HOLTokenTurnstile{} \HOLConst{MEM} \HOLFreeVar{pair} \HOLConst{Semiwkey} \HOLSymConst{\HOLTokenConj{}} \HOLFreeVar{pair} \HOLSymConst{=} (\ensuremath{\HOLFreeVar{s}\sb{\mathrm{1}}}\HOLSymConst{,}\ensuremath{\HOLFreeVar{s}\sb{\mathrm{2}}}) \HOLSymConst{\HOLTokenConj{}}
+   \HOLConst{FullDES} \ensuremath{\HOLFreeVar{s}\sb{\mathrm{1}}} \HOLSymConst{=} (\HOLFreeVar{encrypt}\HOLSymConst{,}\HOLFreeVar{decrypt}) \HOLSymConst{\HOLTokenConj{}}
+   \HOLConst{FullDES} \ensuremath{\HOLFreeVar{s}\sb{\mathrm{2}}} \HOLSymConst{=} (\ensuremath{\HOLFreeVar{encrypt}\sp{\prime{}}}\HOLSymConst{,}\ensuremath{\HOLFreeVar{decrypt}\sp{\prime{}}}) \HOLSymConst{\HOLTokenImp{}}
+   \ensuremath{\HOLFreeVar{encrypt}\sp{\prime{}}} (\HOLFreeVar{encrypt} \HOLFreeVar{plaintext}) \HOLSymConst{=} \HOLFreeVar{plaintext}
 \end{alltt}
 
 The way to achieve this goal only change the part about the equivalent proof of round keys and reversed round keys.
@@ -446,10 +458,13 @@ It is now to verify that the round keys generated by one of the semi-weak keys a
 keys generated by the other key. The method of verification is still use $EVAL\_TAC$ to evaluate on the values of semi-weak
 keys. The proof is then done.
 
-\begin{multline}
+\begin{equation}
+\begin{split}
  REVERSE \; (KS \; k1 \; 16)= KS \; k2 \; 16
-\end{multline}
+\end{split}
+\end{equation}
 
+\subsection{Fixed points for DES weak keys}
 I can now prove each weak key has $2^{32}$ messages that encrypting these messages with the corresponding weak key remain
 the messages unchanged. As mentioned in earlier section, these messages have this property based on their property that
 the input halves are the same in round 8 during the DES encryption using the corresponding weak key. Based on this, I define
@@ -458,19 +473,23 @@ all messages in the set meet the property that encryption does not change the me
 of $2^{32}$.
 
 \begin{alltt}
-   \HOLthm{des_prop.weakK1_proper2}
+   \HOLTokenTurnstile{} \HOLFreeVar{x} \HOLSymConst{\HOLTokenIn{}} \HOLConst{Wtext1} \HOLSymConst{\HOLTokenConj{}} \HOLConst{FullDES} \HOLConst{Wkey1} \HOLSymConst{=} (\HOLFreeVar{encrypt}\HOLSymConst{,}\HOLFreeVar{decrypt}) \HOLSymConst{\HOLTokenImp{}}
+   \HOLFreeVar{encrypt} \HOLFreeVar{x} \HOLSymConst{=} \HOLFreeVar{x}
 \end{alltt}
 
 \begin{alltt}
-   \HOLthm{des_prop.weakK2_proper2}
+   \HOLTokenTurnstile{} \HOLFreeVar{x} \HOLSymConst{\HOLTokenIn{}} \HOLConst{Wtext2} \HOLSymConst{\HOLTokenConj{}} \HOLConst{FullDES} \HOLConst{Wkey2} \HOLSymConst{=} (\HOLFreeVar{encrypt}\HOLSymConst{,}\HOLFreeVar{decrypt}) \HOLSymConst{\HOLTokenImp{}}
+   \HOLFreeVar{encrypt} \HOLFreeVar{x} \HOLSymConst{=} \HOLFreeVar{x}
 \end{alltt}
 
 \begin{alltt}
-   \HOLthm{des_prop.weakK3_proper2}
+   \HOLTokenTurnstile{} \HOLFreeVar{x} \HOLSymConst{\HOLTokenIn{}} \HOLConst{Wtext3} \HOLSymConst{\HOLTokenConj{}} \HOLConst{FullDES} \HOLConst{Wkey3} \HOLSymConst{=} (\HOLFreeVar{encrypt}\HOLSymConst{,}\HOLFreeVar{decrypt}) \HOLSymConst{\HOLTokenImp{}}
+   \HOLFreeVar{encrypt} \HOLFreeVar{x} \HOLSymConst{=} \HOLFreeVar{x}
 \end{alltt}
 
 \begin{alltt}
-   \HOLthm{des_prop.weakK4_proper2}
+   \HOLTokenTurnstile{} \HOLFreeVar{x} \HOLSymConst{\HOLTokenIn{}} \HOLConst{Wtext4} \HOLSymConst{\HOLTokenConj{}} \HOLConst{FullDES} \HOLConst{Wkey4} \HOLSymConst{=} (\HOLFreeVar{encrypt}\HOLSymConst{,}\HOLFreeVar{decrypt}) \HOLSymConst{\HOLTokenImp{}}
+   \HOLFreeVar{encrypt} \HOLFreeVar{x} \HOLSymConst{=} \HOLFreeVar{x}
 \end{alltt}
 
 First, to prove DES encryption with messages in the set remains message unchanged, I expand the goal to more detailed operations
@@ -480,18 +499,20 @@ the rest of the proof is
 quite simple. I can use the halves in round 0 which do not process any round function, but only the inital IP permutation
 and splitting to simplify the goal to:
 
-\begin{multline}
+\begin{equation}
+\begin{split}
  IIP \; (Join \; (Split \; (IP \; x))) \; = \; x
-\end{multline}
+\end{split}
+\end{equation}
 
 These operations can be easily cancelled out by each other using theorem $IIP\_IP\_Inverse$ nad $Join\_Split\_Inverse$.
 
 \begin{alltt}
-   \HOLthm{des.IIP_IP_Inverse}
+   \HOLTokenTurnstile{} \HOLConst{IIP} (\HOLConst{IP} \HOLFreeVar{w}) \HOLSymConst{=} \HOLFreeVar{w}
 \end{alltt}
 
 \begin{alltt}
-   \HOLthm{des.Join_Split_Inverse}
+   \HOLTokenTurnstile{} \HOLConst{Join} (\HOLConst{Split} \HOLFreeVar{w}) \HOLSymConst{=} \HOLFreeVar{w}
 \end{alltt}
 
 I am now left to prove the support theorem $weakK\_sup$ given the property of each set. It is hard to compare two pairs of
@@ -500,7 +521,10 @@ $weakK\_sup$ by setting the goal to show that for be each pair of halves in (8-n
 in round (8+n). I can then use proof by induction on $n$ to complete the proof.
 
 \begin{alltt}
-   \HOLthm{des_prop.weakK_sup}
+   \HOLTokenTurnstile{} \HOLConst{MEM} \HOLFreeVar{k} \HOLConst{Wkey} \HOLSymConst{\HOLTokenConj{}} \HOLNumLit{0} \HOLSymConst{\HOLTokenLeq{}} \HOLFreeVar{n} \HOLSymConst{\HOLTokenConj{}} \HOLFreeVar{n} \HOLSymConst{\HOLTokenLeq{}} \HOLNumLit{8} \HOLSymConst{\HOLTokenConj{}}
+   \HOLConst{Split} (\HOLConst{IP} (\HOLConst{desCore} \HOLNumLit{8} (\HOLConst{KS} \HOLFreeVar{k} \HOLNumLit{8}) \HOLFreeVar{x})) \HOLSymConst{=} (\HOLFreeVar{w}\HOLSymConst{,}\HOLFreeVar{w}) \HOLSymConst{\HOLTokenImp{}}
+   \HOLConst{Round} (\HOLNumLit{8} \HOLSymConst{\ensuremath{-}} \HOLFreeVar{n}) (\HOLConst{KS} \HOLFreeVar{k} \HOLNumLit{16}) (\HOLConst{Split} (\HOLConst{IP} \HOLFreeVar{x})) \HOLSymConst{=}
+   \HOLConst{Swap} (\HOLConst{Round} (\HOLNumLit{8} \HOLSymConst{\ensuremath{+}} \HOLFreeVar{n}) (\HOLConst{KS} \HOLFreeVar{k} \HOLNumLit{16}) (\HOLConst{Split} (\HOLConst{IP} \HOLFreeVar{x})))
 \end{alltt}
 
 As I define the message sets using round keys list contains only up to the $8th$ round to facilitate future verification,
@@ -520,16 +544,18 @@ these halves between rounds. As $Ra\;= \; Lb$ by the base case, I can get $R(b-1
 Then because the encryption and decryption process of DES are the same, I can get $L(b-1)$ back from halves in round $b$ through
 the round function $f(b-1)$ by using the swap operation, round function and XOR operation
 
-\begin{equation*}
-L(b-1) \; = \; (Rb \; \oplus \; f(b-1)\,(\;Lb\;)
-\end{equation*}
-
+\begin{equation}
+\begin{split}
+   L(b-1) \; = \; (Rb \; \oplus \; f(b-1)\,(\;Lb\;)
+\end{split}
+\end{equation}
 $R(a+1)$ can also be represented by $Ra$ and $La$ in normal encryption manner through the round function $f(a+1)$
 
-\begin{equation*}
-R(a+1) \; = \; La \; \oplus \; f(a+1)\,(\;Ra\;)
-\end{equation*}
-
+\begin{equation}
+\begin{split}
+   R(a+1) \; = \; La \; \oplus \; f(a+1)\,(\;Ra\;)
+\end{split}
+\end{equation}
 According to the proof
 done above that round keys list generated by a weak key remains the same after being reversed, I can conclude that the list
 is  symmetric, and thus the $(b-1)$th and $(a+1)$th round keys are the same in the round keys list of length 16.
@@ -537,17 +563,18 @@ The round function $f(b-1)$ and $f(a+1)$ are then the same as round key is the o
 rounds. By combining this with $Rb\;= \; La$ and $Lb\;= \; Ra$, $L(b-1)$ and $R(a+1)$ are the same, and we can prove the step
 case is also right given the base case.
 
-Using the above way in HOL4, I convert the goal to halves using the $(M\;a\;,\;M\;b)$ function and then
+Using the above way in HOL4, I convert the goal to halves using $(M\;a\;,\;M\;b)$ function and then
 express the step case' halves using the base cases' halves. The only goal left is the proof of the elements in
 symmetric positions are the same. I need to put each weak key's value into the goal, calculate the generated
 round keys list for each key, ensure the step case's index do not exceed the length of list. At last, I need to
 do the method of exhaustion, examine each possible value of n from 0 to 15 to check if they meet the goal because of
 the lack of theorems in HOL4 on this aspect. The support theorem is proved.
 
-\begin{equation*}
-EL \; (7-n) \; (KS \; k \; 16) = EL \; (n+8) \; (KS \; k \; 16)
-\end{equation*}
-
+\begin{equation}
+\begin{split}
+ EL \; (7-n) \; (KS \; k \; 16) = EL \; (n+8) \; (KS \; k \; 16)
+\end{split}
+\end{equation}
 Switch to the last support theorem $wkey1\_equal$ mentioned above. It is also proved by induction, the base case can
 be directly proved by the base case of $Round$. The indcution step is proved in the same way as above by transforming
 the $Round$ function to $(M\;a\;,\;M\;b)$ form first and then express the step case' halves using the base cases' halves.
@@ -555,7 +582,8 @@ The last part of verification is also examine each possible value of n to the go
 test all situations meet the goal and the theorem is proved.
 
 \begin{alltt}
-   \HOLthm{des_prop.wkey1_equal}
+   \HOLTokenTurnstile{} \HOLConst{MEM} \HOLFreeVar{k} \HOLConst{Wkey} \HOLSymConst{\HOLTokenConj{}} \HOLFreeVar{n} \HOLSymConst{\HOLTokenLeq{}} \HOLNumLit{8} \HOLSymConst{\HOLTokenImp{}}
+   \HOLConst{Round} \HOLFreeVar{n} (\HOLConst{KS} \HOLFreeVar{k} \HOLNumLit{8}) (\HOLConst{Split} \HOLFreeVar{x}) \HOLSymConst{=} \HOLConst{Round} \HOLFreeVar{n} (\HOLConst{KS} \HOLFreeVar{k} \HOLNumLit{16}) (\HOLConst{Split} \HOLFreeVar{x})
 \end{alltt}
 
 It is time to prove that the cardinality of the sets of these messages is $2^{32}$. I show these sets form bijection with
@@ -563,19 +591,19 @@ the universal set of 32-bit words first. To achieve these, I define two function
 set to the universal set and the other can map reversely.
 
 \begin{alltt}
-   \HOLthm{des_prop.BIJ_wtext1}
+   \HOLTokenTurnstile{} \HOLConst{BIJ} \HOLConst{w1trans1} \HOLConst{Wtext1} \ensuremath{{\cal{U}}}(:\HOLTyOp{word32})
 \end{alltt}
 
 \begin{alltt}
-   \HOLthm{des_prop.BIJ_wtext2}
+   \HOLTokenTurnstile{} \HOLConst{BIJ} \HOLConst{w2trans1} \HOLConst{Wtext2} \ensuremath{{\cal{U}}}(:\HOLTyOp{word32})
 \end{alltt}
 
 \begin{alltt}
-   \HOLthm{des_prop.BIJ_wtext3}
+   \HOLTokenTurnstile{} \HOLConst{BIJ} \HOLConst{w3trans1} \HOLConst{Wtext3} \ensuremath{{\cal{U}}}(:\HOLTyOp{word32})
 \end{alltt}
 
 \begin{alltt}
-   \HOLthm{des_prop.BIJ_wtext4}
+   \HOLTokenTurnstile{} \HOLConst{BIJ} \HOLConst{w4trans1} \HOLConst{Wtext4} \ensuremath{{\cal{U}}}(:\HOLTyOp{word32})
 \end{alltt}
 
 To prove the bijection relation between the two sets, $BIJ\_IFF\_INV$ theorem can be used to convert the $BIJ$ function into
@@ -583,7 +611,10 @@ four sub-goals. It includes proving that all elements in messages set belongs to
 and vice versa. Moreover, the other two goals are applying the two functions together to the sets will keep the elements unchanged.
 
 \begin{alltt}
-   \HOLthm{pred_set.BIJ_IFF_INV}
+   \HOLTokenTurnstile{} \HOLConst{BIJ} \HOLFreeVar{f} \HOLFreeVar{s} \HOLFreeVar{t} \HOLSymConst{\HOLTokenEquiv{}}
+   (\HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{x}. \HOLBoundVar{x} \HOLSymConst{\HOLTokenIn{}} \HOLFreeVar{s} \HOLSymConst{\HOLTokenImp{}} \HOLFreeVar{f} \HOLBoundVar{x} \HOLSymConst{\HOLTokenIn{}} \HOLFreeVar{t}) \HOLSymConst{\HOLTokenConj{}}
+   \HOLSymConst{\HOLTokenExists{}}\HOLBoundVar{g}. (\HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{x}. \HOLBoundVar{x} \HOLSymConst{\HOLTokenIn{}} \HOLFreeVar{t} \HOLSymConst{\HOLTokenImp{}} \HOLBoundVar{g} \HOLBoundVar{x} \HOLSymConst{\HOLTokenIn{}} \HOLFreeVar{s}) \HOLSymConst{\HOLTokenConj{}} (\HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{x}. \HOLBoundVar{x} \HOLSymConst{\HOLTokenIn{}} \HOLFreeVar{s} \HOLSymConst{\HOLTokenImp{}} \HOLBoundVar{g} (\HOLFreeVar{f} \HOLBoundVar{x}) \HOLSymConst{=} \HOLBoundVar{x}) \HOLSymConst{\HOLTokenConj{}}
+       \HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{x}. \HOLBoundVar{x} \HOLSymConst{\HOLTokenIn{}} \HOLFreeVar{t} \HOLSymConst{\HOLTokenImp{}} \HOLFreeVar{f} (\HOLBoundVar{g} \HOLBoundVar{x}) \HOLSymConst{=} \HOLBoundVar{x}
 \end{alltt}
 
 Taking the example for proving the first weak key, and the other weak keys are all proved in the same way. Their corresponding
@@ -593,7 +624,7 @@ proved directly. It takes the 64-bit messages as inputs and outputs only the fir
 rounds. As the outputs are 32 bits, they surely belong to the universal set of word32.
 
 \begin{alltt}
-   \HOLthm{des_prop.w1trans1_def}
+   \HOLTokenTurnstile{} \HOLConst{w1trans1} \HOLFreeVar{x} \HOLSymConst{=} \HOLConst{FST} (\HOLConst{Split} (\HOLConst{IP} (\HOLConst{desCore} \HOLNumLit{8} (\HOLConst{KS} \HOLConst{Wkey1} \HOLNumLit{8}) \HOLFreeVar{x})))
 \end{alltt}
 
 The second sub-goal can be converted using definition of function $w1trans2$ and set $Wtext1$. All 32-bit messages
@@ -601,11 +632,12 @@ The second sub-goal can be converted using definition of function $w1trans2$ and
 for 8 rounds twice, and applied with $IP$ and $Split$ operation. And to prove the result halves are still the same.
 
 \begin{alltt}
-   \HOLthm{des_prop.w1trans2_def}
+   \HOLTokenTurnstile{} \HOLConst{w1trans2} \HOLFreeVar{x} \HOLSymConst{=} \HOLConst{desCore} \HOLNumLit{8} (\HOLConst{KS} \HOLConst{Wkey1} \HOLNumLit{8}) (\HOLConst{IIP} (\HOLConst{Join} (\HOLFreeVar{x}\HOLSymConst{,}\HOLFreeVar{x})))
 \end{alltt}
 
 \begin{alltt}
-   \HOLthm{des_prop.Wtext1_def}
+   \HOLTokenTurnstile{} \HOLConst{Wtext1} \HOLSymConst{=}
+   \HOLTokenLeftbrace{}\HOLBoundVar{x} \HOLTokenBar{} \HOLSymConst{\HOLTokenExists{}}\HOLBoundVar{w}. \HOLConst{Split} (\HOLConst{IP} (\HOLConst{desCore} \HOLNumLit{8} (\HOLConst{KS} \HOLConst{Wkey1} \HOLNumLit{8}) \HOLBoundVar{x})) \HOLSymConst{=} (\HOLBoundVar{w}\HOLSymConst{,}\HOLBoundVar{w})\HOLTokenRightbrace{}
 \end{alltt}
 
 I can also use the previous method to help the proof, the two encryptions of 8 rounds with the weak key cancel each other out
@@ -633,30 +665,282 @@ The bijection proofs for the other three keys are exactly the same, so one proof
 weak keys as inputs can be done using the existing seperate BIJ theorems.
 
 \begin{alltt}
-   \HOLthm{des_prop.BIJ_for_weak_keys_explicit}
+   \HOLTokenTurnstile{} \HOLFreeVar{i} \HOLSymConst{\HOLTokenLt{}} \HOLNumLit{4} \HOLSymConst{\HOLTokenImp{}} \HOLConst{BIJ} (\HOLConst{EL} \HOLFreeVar{i} \HOLConst{wtrans1}) (\HOLConst{EL} \HOLFreeVar{i} \HOLConst{Wtextlist}) \ensuremath{{\cal{U}}}(:\HOLTyOp{word32})
 \end{alltt}
 
-The universal set of word32 has the cardinality of $2^{32}$ by the theorem $card\_word32$. As a result, by proving that
+The universal set of word32 has the cardinality of $2^{32}$ by the theorem \\
+$card\_word32$. As a result, by proving that
 these sets have the same cardinality as the universal set of word32, I can then prove the cardinality of each message set
 is $2^{32}$. I can meet the prerequisites that the universal set of word32 is finite directly and use the above
 bijection relation, then theorem $FINITE\_BIJ\_CARD$ can be used to prove the equivalence of cardinality.
 
 \begin{alltt}
-   \HOLthm{words.card_word32}
+   \HOLTokenTurnstile{} \HOLConst{CARD} \ensuremath{{\cal{U}}}(:\HOLTyOp{word32}) \HOLSymConst{=} \HOLNumLit{2} \HOLSymConst{\HOLTokenExp{}} \HOLNumLit{32}
 \end{alltt}
 
 \begin{alltt}
-   \HOLthm{pred_set.FINITE_BIJ_CARD}
+   \HOLTokenTurnstile{} \HOLConst{FINITE} \HOLFreeVar{s} \HOLSymConst{\HOLTokenConj{}} \HOLConst{BIJ} \HOLFreeVar{f} \HOLFreeVar{s} \HOLFreeVar{t} \HOLSymConst{\HOLTokenImp{}} \HOLConst{CARD} \HOLFreeVar{s} \HOLSymConst{=} \HOLConst{CARD} \HOLFreeVar{t}
 \end{alltt}
 
 As a result, each message set is proved with cardinality of $2^{32}$ and the theorem is stored as
 $DES\_weak\_fp\_card$ in $des\_propTheory$.
 
 \begin{alltt}
-   \HOLthm{des_prop.DES_weak_fp_card}
+   \HOLTokenTurnstile{} \HOLConst{MEM} \HOLFreeVar{x} \HOLConst{Wtextlist} \HOLSymConst{\HOLTokenImp{}} \HOLConst{CARD} \HOLFreeVar{x} \HOLSymConst{=} \HOLNumLit{2} \HOLSymConst{\HOLTokenExp{}} \HOLNumLit{32}
 \end{alltt}
 
+There are also some new tactics used here to help complete the goal. \\
+$Q.PAT\_X\_ASSUM \; (Assump)\;MP\_TAC $, it takes a
+assumption of current goal $Assump$ as input, find the first matching assumption, remove the assumption and take it
+as a prerequisite for the current goal. It has similar use as $POP\_ASSUM \; MP\_TAC$ but avoid the repeat usage
+of \\
+$POP\_ASSUM \; MP\_TAC$ when there are too many assumptions.
+
+The $Q.EXISTS\_TAC$ tactic can be applied to existentially quantified goal. It can substitute a specific term I decide $u$
+to the existentially quantified variable $?x$ in the goal. The proof is now changed on $u$.
+
+\section{Differential Cryptanalysis in HOL4}
+Differential crypatanalysis of DES-like cryptosystem is a type of cryptanalytic attack which can break reduced variant
+of DES up to 15 rounds.[4] Differential crypatanalysis is a chosen-plaintext attack, it can only be used when attackers
+are able to encrypt any plaintext using DES encryption and get the corresponding ciphertexts. It can break any variant DES
+by attempting the DES encryptions for at most $2^{56}$ time with at most $2^{56}$ plaintexts. The Differential cryptanalysis
+attack is developed by the differences in plaintext pairs and differences of ciphertext pairs.
+
+As my current research on differential cryptanalysis is just beginning, the following discussion will be limited within
+a single round of DES. The plaintext pairs are two 32-bit message inputs that are passed through the round function
+in a round. The ciphertext pairs are the outputs of two round functions using the plaintexts pair in that round.
+As S-boxes part is the only nonlinear components of the cipher in DES [3], for pairs of plaintext with fixed
+exclusive-or differences, the differences will only change to uncertain values through S-boxes. Other than S-boxes,
+the expansion operation and the bit-level permutation $P$ change the $XOR$ value to another fixed $values$. For the $XOR$ value
+of two messages after applying $XOR$ operation to them separately with the same round keys, the result value remains the same
+difference value. These properties are implemented and proved in HOL4.
+
+\begin{alltt}
+  \HOLthm{des_prop.xor_P}
+\end{alltt}
+
+\begin{alltt}
+  \HOLthm{des_prop.xor_E}
+\end{alltt}
+
+\begin{alltt}
+  \HOLthm{des_prop.xor_twice}
+\end{alltt}
+
+\begin{alltt}
+  \HOLthm{des_prop.xor_Sbox}
+\end{alltt}
+
+The way to prove them is similar to the proof of the complementation property of these operations. I want to prove for each
+bit of x1 and x2 after the permutation, each exclusive-or value of the bit pairs is equivalent to the bit value after the
+permutation for exclusive-or x1 and x2. The first thing needs to do is to check if the permuted bit indices
+are still less than the length of words. Then I expand the definitions of P and E operations, bring in the P and E permutation
+tables, and use the method of exhaustion to test on each bit from 0 to the length of output. Since the permuted indices are all
+less than the length in all cases, the verification is succeeded. At last, by using the definition of $XOR$ in HOL4 that
+state applying $XOR$ operation to two words means applying $XOR$ operation to each bit of two words and $FCP\_BETA$ that simplify
+the $FCP$ out, the proof is done.
+
+\begin{alltt}
+  \HOLthm{words.word_xor_def}
+\end{alltt}
+
+Proving $xor\_twice$ theorem uses the commutative property of $XOR$ and the property that applying $XOR$ operations
+to a value with itself will cancel out the value.
+
+\begin{alltt}
+  \HOLthm{words.WORD_XOR_ASSOC}
+\end{alltt}
+
+\begin{alltt}
+  \HOLthm{words.WORD_XOR_CLAUSES}
+\end{alltt}
+
+To prove the S-boxes are not linear is much simpler. I choose two words $0b0w$ and $0b0w$ to prove that there exist values
+showing S-boxes do not have additivity for $XOR$ operation.
+
+As the non-linearity of S-boxes, for pairs of plaintexts with the same $XOR$ difference, the output $XOR$ differences are
+different after the S-boxes if the pairs of plaintexts are different. I can then find a set of pairs of $XORed$ texts
+$(z\;, \;z')$ that
+the difference value between them and the difference value after the S-boxes are fixed $\alpha$ and $\beta$.
+As the additivity for $XOR$ operation in expansion function, I can directly use the $XOR$ difference value
+after expansion. It will not affect anything important, but only change the input difference value that
+I choose to another fixed value by expansion and change the corresponding set. Similar to the ouput difference values I
+choose, they are values before the permutation $P$. As the additivity for $XOR$ operation in it, only the inputs used to
+generate the sets are changed and the effect can be eliminated by changing the inputs. The inputs are chosen like that
+for facilitating the process and match with the table provided[4].~\ref{fig:form6}
+
+\begin{figure}
+\centering
+\includegraphics[width=0.25\linewidth]{Sboxdc}
+\caption{\label{fig:form6} Differential cryptanalysis for S-boxes}
+\end{figure}
+
+Using only two plaintexts with fixed difference value and two encryptions, I can get a fixed output difference value.
+With the above two difference values, I can get a set of possible pairs of $XORed$ texts, and then I can find all possible
+round keys according to the set of possible pairs of $XORed$ texts and the two input plaintexts. Because apply $XOR$
+operations to two plaintexts $x$ and $x1$ with two keys $k$ and $k2$ will result the $XORed$ texts, I can then get
+the possible keys using the $XOR$ operations between the plaintexts and $XORed$ texts by $xor\_trans$. By keeping
+trying new plaintexts and then generating corresponding $XORed$ texts set, I can keep narrowing down the range
+of possible keys.
+
+\begin{alltt}
+  \HOLthm{des_prop.xor_trans}
+\end{alltt}
+
+\subsetction{Differential Cryptanalysis implementation}
+However, each S-box has $2^6$ possible input $XORs$, $2^4$ possible output $XORs$ and there are $2^6$ pairs of plaintexts
+with each possible input $XOR$. For a total of 8 S-boxes, the tables that records the possible $XORed$ texts are too
+complex and the implementation of the real attack in HOL4 is not necessary for now. As a result, I implement the sets of $XORed$
+plaintexts for S-box one and for the overall round function in a round. I prove the basic correctness of the S-box one
+set, and verify properties related to them.
+
+First of all, I proved that a set of pairs of words of length 6 with fixed $XOR$ value is bijective to the set of
+words with length 6. They are also proved to have the same cardinality, it can verify the property of pairs XOR distribution
+table of
+the S-box. It states that each line in a pairs XOR distribution table contains 64 possible pairs, means each particular
+input $XOR$ has 64 possible pairs of word 6 inputs. I define
+sets of pairs of word 6 that one half has the fixed difference value of $X$ with the other half. As the set of
+the universal set of word 6 has the cardinality of $2^6\;=\;64$, I can then prove the pairs sets also has the cardinality
+of $2^6\;=\;64$.
+
+\begin{alltt}
+  \HOLthm{des_prop.ALLpairXor_def}
+\end{alltt}
+
+\begin{alltt}
+  \HOLthm{des_prop.BIJ_XORL}
+\end{alltt}
+
+\begin{alltt}
+  \HOLthm{des_prop.AllpairXor_card}
+\end{alltt}
+
+By defining two mapping functions, one just returns a half in pair given the pair, to map the universal set of word 6 to
+the pairs set. The other function take the $X$ difference value as input, and return a pair that one half is any word6 message,
+the other half is the word6 message that differs from the first by $X$. It maps the functions in another order. By using
+the $BIJ\_IFF\_INV$ theorem, I can convert the goal to four separate sub-goals about mapping elements between functions.
+All sub-goals can be proved directly by applying the definitions of sets and mapping functions to the goal.
+
+\begin{alltt}
+  \HOLthm{des_prop.trans1_def}
+\end{alltt}
+
+\begin{alltt}
+  \HOLthm{des_prop.trans2_def}
+\end{alltt}
+
+Next, I implement the definition of ``X may cause Y with probability p by an S-box''[4] in HOL4. It means for all
+pairs of $XORed$ texts that the input $XOR$ is $X$ and the output $XOR$ after going through a S-box is Y, the number
+of these pairs is p percentage out of all possible pairs of $XORed$ texts that the input $XOR$ is X.
+These $XORed$ texts are in word 6 as the inputs of S-box and the input $XOR$ is X means the pairs of
+texts is differ by X. The overall pairs of $XORed$ texts that the input $XOR$ is X can then be form as the set of pairs
+of words of length 6 with fixed $XOR$ value and the number of them is the cardinality of this set. As proved above,
+the set can then be converted to universal set of word 6 with the same functionality.
+
+Then for the implementation of sets of possible pairs of $XORed$ texts with both input $XOR$ X and output $XOR$ Y,
+I find it can also convert to sets of single 6-bit texts that takes the $X$, $Y$ and the $S-box$ as input that has the
+same functionality. It is also because one half can be expressed using the other half and $X$.
+
+\begin{alltt}
+  \HOLthm{des_prop.word6_set1_def}
+\end{alltt}
+
+\begin{alltt}
+  \HOLthm{des_prop.word6_set2_def}
+\end{alltt}
+
+The verifications are exactly the same, I define the two mapping functions, one maps a pair of words to only a half, the
+other one use a single 6-bit message to produce the other half by exclusive-or operation with input $XOR$. Then by rewriting
+with $BIJ\_IFF\_INV$, $FINITE\_BIJ\_CARD$ and applying the definitions to the goal, BIJ relation and same cardinality
+verifications are done.
+
+\begin{alltt}
+  \HOLthm{des_prop.BIJ_pairXcY}
+\end{alltt}
+
+\begin{alltt}
+  \HOLthm{des_prop.pairXcY_card}
+\end{alltt}
+
+\subsetction{Differential Cryptanalysis using Probability Space}
+The target set and the universal set is implemented, I can then implement probability space with the sample space,
+set of events and probability of event to help produce
+the probability. In HOL4, the theorem $prob\_uniform\_on\_finite\_set$ states the prerequisites for a measure space
+to become a probability space which is suited for my usage. A measure space needs to meet the prerequisites that the measure
+space is a finite set and is not empty, the measurable set is the
+power set of measure space . Moreover, for each set in the power set, the measure of each set needs to be equal to the
+cardinality of each set divided by the cardinality of sample space.
+The space, measurable sets, measure of measure space are exactly the same with the components of probability
+space - sample space, set of events and the probability of event once measure space is proved also to be a probability space.
+From the prerequisites, we can obviously see that, the universal set word 6 can be the sample space.
+The sets of single 6-bit texts with input $XOR$ X, output $XOR$ Y and chosen S-boxes are the events that belong to the
+pow set of the universal set.
+The required probability p of X may cause Y can then be generated as the probability of events in that probability space.
+
+\begin{alltt}
+  \HOLthm{des_prop.prob_uniform_on_finite_set}
+\end{alltt}
+
+To proving $prob\_uniform\_on\_finite\_set$ given the prerequisites, I first convert the sample space,
+set of events and probability of event back
+to the space, measurable sets and measure by their definitions to match with the input $p$ as a measure space. Then I
+verify that the measure space is not empty as it is finite.
+Then using the theorem $prob\_on\_finite\_set$, I can
+expand the goal to three sub-goals. Once I proved that a measure space $p$ is positive, additive and the probability
+for the space is 1, then $p$ is a probability space.
+
+\begin{alltt}
+  \HOLthm{probability.prob_on_finite_set}
+\end{alltt}
+
+The positivity of a measure space means the measure is 0 on empty set and greater than 0 for all other sets. By combining
+with the last prerequisite and definition of positivity, the sub-goal changes to prove the cardinality of empty set divided
+by the cardinality of space is 0 and the cardinality of all other sets divided by the cardinality of space is greater
+or equal to 0. This can be easily done by shown the cardinality of empty set is 0, all sets has cardinality $>=0$ and
+the space is not empty. However, as calculations in measure space are in type $extreal$ in HOL4, so built-in theorems
+in $extreal\_Theory$ are needed to help complete the proof. These theorems help do calculations, operations and
+comparisons for these numbers like the $extreal\_lt\_eq$ theorem
+
+\begin{alltt}
+  \HOLthm{extreal.extreal_lt_eq}
+\end{alltt}
+
+Then to show the probability for the space is 1, it is to show the cardinality of space out of the cardinality of itself
+is one. It is also quite obviously, but as the cardinality is in the type of $extreal$ which contains positive and
+negative infinite, I need to ensure the cardinality of the space is not 0, positive infinite and negative infinite. It
+can be directly proved by the assumptions that space is a finite and non-empty set. But $extreal$ definition is also needed
+to expand the operation $\&$ in the goal $extreal\_of\_num\_def$ to do the comparisons.
+
+\begin{alltt}
+  \HOLthm{extreal.extreal_of_num_def}
+\end{alltt}
+
+At last, I need to prove the additivity of the measure space. It means for any two disjoint sets, if both of them
+and their union belong to the power set of the space, the addition of the measures of the two sets is equivalent
+to the measure of their union set. By applying the assumption, I want to solve the following goal:
+
+\begin{multline}
+\frac{\text{\&CARD} \; (s \cup t)}{\text{\&CARD} \; (m\_space \, p)} = \frac{\text{\&CARD} \; s}{\text{\&CARD} \; (m\_space \, p)} + \frac{\text{\&CARD} \; t}{\text{\&CARD} \; (m\_space \, p)}
+\end{multline}
+
+I then want to show the cardinality of the union is equal to the sum of the two sets. By applying the tacitic
+$MATCH\_MP\_TAC$ introduced earlier, I need to show the two sets are finite and disjoint from each other. The disjoint
+goal is directly proved. Use the theorem that for sets belong to the power set of a finite set, these sets are the subsets
+of that set, I can then prove these subsets are also finite. After some simple conversions, and use the theorem $div\_add$
+with all the necessary prerequisites, the additivity is proved.
+
+\begin{alltt}
+  \HOLthm{pred_set.IN_POW}
+\end{alltt}
+
+\begin{alltt}
+  \HOLthm{pred_set.SUBSET_FINITE_I}
+\end{alltt}
+
+Overall, the measure space with the given prerequisites is also a probability space.
+
+Now, I can build my measure spaces about differential cryptanalysis and the sets containing $XORed$ texts. I can then use
+the implementations to generate the probability once I proved that they are probability spaces.
    a
+
 \end{document}
-
-
