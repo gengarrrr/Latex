@@ -5,6 +5,8 @@
 \usepackage{inputenc}
 \usepackage{alltt}
 \usepackage{holindex}
+\usepackage{fancyvrb}
+
 \usepackage{graphicx}
 \usepackage{amsmath}
 
@@ -671,7 +673,29 @@ $DES\_weak\_fp\_card$ in $des\_propTheory$.
    \HOLthm{des_prop.DES_weak_fp_card}
 \end{alltt}
 
-   a
+a
+
+%% APPENDIX
+\input{HOLdes}
+\input{HOLdesXXprop}
+
+% ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+\section{Appendix: des\_prop Theory}
+\begin{flushleft}
+\textbf{Parent Theories:} probability, des
+\end{flushleft}
+% ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+% No datatypes
+
+\subsection{Definitions}
+% .....................................
+
+\HOLdesXXpropDefinitions
+
+\subsection{Theorems}
+% .....................................
+
+\HOLdesXXpropTheorems
+
 \end{document}
-
-
