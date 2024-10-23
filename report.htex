@@ -820,7 +820,7 @@ the universal set of word 6 has the cardinality of $2^6\;=\;64$, I can then prov
 of $2^6\;=\;64$.
 
 \begin{alltt}
-  \HOLthm{des_prop.ALLpairXor_def}
+  \HOLthm{des_prop.AllpairXor_def}
 \end{alltt}
 
 \begin{alltt}
