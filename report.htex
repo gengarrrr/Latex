@@ -112,14 +112,14 @@ inputs v and w of type word $n$ and word $m$, join them into a word of length $(
 and the left $n$ bits are the same as $v$.
 
 \begin{alltt}
-\HOLthm[nosp,showtypes]{des.XcauseYp_test}
+\HOLthm[nosp,showtypes]{words.word_concat_def}
 \end{alltt}
 
 Then the \verb|word_extract_def| defines the \verb|><| operator, it uses two number inputs $h$ and $l$ where $(h>l)$, and is applied
 to a word. It extracts from the lth bits to the hth bits of the word, result a word of length $(h-l+1)$
 
 \begin{alltt}
-\HOLthm[nosp,showtypes]{des.word_extract_def}
+\HOLthm[nosp,showtypes]{words.word_extract_def}
 \end{alltt}
 
 The \verb|??| operator defined by \verb|word_xor_def| also takes two words of same length as inputs,
@@ -127,7 +127,7 @@ each corresponding bit of the two words are applied with the xor (Exclusive-OR) 
 and result a words of that length.
 
 \begin{alltt}
-\HOLthm[nosp,showtypes]{des.word_xor_def}
+\HOLthm[nosp,showtypes]{words.word_xor_def}
 \end{alltt}
 
 At last, one common operator used in proving the property of complementation is \verb|~|, it takes a word as input, and converts
@@ -701,7 +701,7 @@ is $2^{32}$. I can meet the prerequisites that the universal set of word32 is fi
 bijection relation, then theorem \verb|FINITE_BIJ_CARD| can be used to prove the equivalence of cardinality.
 
 \begin{alltt}
-\HOLthm[nosp,showtypes]{des_prop.card_word32}\hfill{[card_word32]}
+\HOLthm[nosp,showtypes]{words.card_word32}\hfill{[card_word32]}
 \end{alltt}
 
 \begin{alltt}
