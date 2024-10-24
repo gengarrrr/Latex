@@ -1050,7 +1050,8 @@ Moreover, I can implement the events and probabilities for ``X may cause Y with 
 differential cryptanalysis. It is almost the same for the earlier one, but change single S-box to the overall round
 function including the expansion operation, $XOR$ operation with round key, S-boxes operation and $P$ permutation. The
 input $X$ is the difference of two 32-bit plaintexts at the beginning of round and the output difference $Y$ should
-be the difference between ciphertexts after $P$ permutation. The transformed pair of texts go through the S-boxes
+be the difference between ciphertexts after $P$ permutation. The F function can be seen in Figure~\ref{fig:form7}
+The transformed pair of texts go through the S-boxes
 should be in the form of:
 
 \begin{equation*}
@@ -1058,6 +1059,12 @@ should be in the form of:
 (E(x1)\,\oplus\, k\;,\; E(x2)\,\oplus\, k)= (x1'\;,\;x2')
 \end{split}
 \end{equation*}
+
+\begin{figure}
+\centering
+\includegraphics[width=0.75\linewidth]{F function}
+\caption{\label{fig:form7} Round function of DES [4,p10]}
+\end{figure}
 
 The difference between x1 and x2 is the input $XOR$ $X$. After the above two halves going through the S-box, and applying the
 $P$ permutation, the difference between the results is output $XOR$ $Y$. The result halves are also differed by a fixed
