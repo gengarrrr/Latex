@@ -174,12 +174,12 @@ an initial permutation (IP) and then splits to two 32-bit halves. Then the halve
 is applied to the round function with round keys, undergoes XOR operation with the other half u. The result 32-bit word v1 is swapped with v,
 so v1 will be the input of the round function in the next round and XOR with v, the process will repeat for 15 times. However,
 in the last round, two output halves will not be swapped, they are joined, undergoes the inverse permutation $IP^{-1}$ to produce
-the final 64-bit output. The process is shown in Figure~\ref{fig:form1} [3, p16]
+the final 64-bit output. The process is shown in Figure~\ref{fig:form1} 
 
 \begin{figure}
 \centering
 \includegraphics[width=0.5\linewidth]{DES encryption}
-\caption{\label{fig:form1} DES encryption}
+\caption{\label{fig:form1} DES encryption [3, p16]}
 \end{figure}
 
 The round functions in each round is the same, they first expand the 32-bit half to 48 bits, then operate it with round key by
@@ -265,12 +265,12 @@ It also implements a help function that can return the input halves in each roun
 for any future analysis of DES, including the verification of the proper DES implementation in \verb|desScript| and my additional DES
 properties proving. At last, it proved that as a Feistel network, the implemented encryption of DES using the round
 keys, followed by a second encryption using the reversed round keys will return the original plaintext. A version of DES with components
-are shown in Figure~\ref{fig:form2}[3,p16]
+are shown in Figure~\ref{fig:form2}
 
 \begin{figure}
 \centering
 \includegraphics[width=0.5\linewidth]{DES hol4}
-\caption{\label{fig:form2} DES in HOL4}
+\caption{\label{fig:form2} DES in HOL4 [3, p16]}
 \end{figure}
 
 Consequently, it not only verifies that the decryption of DES is the same process of encryption but with reversed round keys,
@@ -799,12 +799,12 @@ The difference value $\alpha$ is the value after expansion. As the additivity fo
 a fixed difference value before expansion can produce this value. Similar to the ouput difference values $\beta$ I
 choose, they are values before the permutation $P$. As the additivity for $XOR$ operation in it, only the inputs used to
 generate the sets are changed and the effect can be eliminated by changing the inputs. The inputs are chosen like that
-for facilitating the process and match with the table provided Figure~\ref{fig:form5} in[4, p12]  .
+for facilitating the process and match with the table provided in Figure~\ref{fig:form5}.
 
 \begin{figure}
 \centering
 \includegraphics[width=0.75\linewidth]{Sbox-1 table}
-\caption{\label{fig:form5} S-box 1 table for $\alpha = \text{Input XOR}$, $\beta = \text{Output XOR}$}
+\caption{\label{fig:form5} S-box 1 table for $\alpha = \text{Input XOR}$, $\beta = \text{Output XOR}$ [3, p16]}
 \end{figure}
 
 Using only two plaintexts with fixed difference value and two encryptions, I can get a fixed output difference value.
