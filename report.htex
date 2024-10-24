@@ -736,8 +736,8 @@ a single round of DES. The plaintext pairs are two 32-bit message inputs that ar
 in a round. The ciphertext pairs are the outputs of two round functions using the plaintexts pair in that round.
 As S-boxes part is the only nonlinear components of the cipher in DES [3], for pairs of plaintext with fixed
 exclusive-or differences, the differences will only change to uncertain values through S-boxes. Other than S-boxes,
-the expansion operation and the bit-level permutation $P$ change the $XOR$ value to another fixed $values$. For the $XOR$ value
-of two messages after applying $XOR$ operation to them separately with the same round keys, the result value remains the same
+the expansion operation and the bit-level permutation $P$ change the \verb|XOR| value to another fixed $values$. For the \verb|XOR| value
+of two messages after applying \verb|XOR| operation to them separately with the same round keys, the result value remains the same
 difference value. These properties are implemented and proved in HOL4.
 
 \begin{alltt}
@@ -761,15 +761,15 @@ bit of x1 and x2 after the permutation, each exclusive-or value of the bit pairs
 permutation for exclusive-or x1 and x2. The first thing needs to do is to check if the permuted bit indices
 are still less than the length of words. Then I expand the definitions of P and E operations, bring in the P and E permutation
 tables, and use the method of exhaustion to test on each bit from 0 to the length of output. Since the permuted indices are all
-less than the length in all cases, the verification is succeeded. At last, by using the definition of $XOR$ in HOL4 that
-state applying $XOR$ operation to two words means applying $XOR$ operation to each bit of two words and \verb|FCP_BETA| that simplify
+less than the length in all cases, the verification is succeeded. At last, by using the definition of \verb|XOR| in HOL4 that
+state applying \verb|XOR| operation to two words means applying \verb|XOR| operation to each bit of two words and \verb|FCP_BETA| that simplify
 the $FCP$ out, the proof is done.
 
 \begin{alltt}
   \HOLthm[nosp,showtypes]{words.word_xor_def}\hfill{[word_xor_def]}
 \end{alltt}
 
-Proving \verb|xor_twice| theorem uses the commutative property of $XOR$ and the property that applying $XOR$ operations
+Proving \verb|xor_twice| theorem uses the commutative property of \verb|XOR| and the property that applying \verb|XOR| operations
 to a value with itself will cancel out the value.
 
 \begin{alltt}
@@ -781,10 +781,10 @@ to a value with itself will cancel out the value.
 \end{alltt}
 
 To prove the S-boxes are not linear is much simpler. I choose two words $0b0w$ and $0b0w$ to prove that there exist values
-showing S-boxes do not have additivity for $XOR$ operation.
+showing S-boxes do not have additivity for \verb|XOR| operation.
 
-As the non-linearity of S-boxes, for pairs of plaintexts with the same $XOR$ difference, the output $XOR$ differences are
-different after the S-boxes if the pairs of plaintexts are different. I can then find a set of pairs of $XORed$ texts
+As the non-linearity of S-boxes, for pairs of plaintexts with the same \verb|XOR| difference, the output \verb|XOR| differences are
+different after the S-boxes if the pairs of plaintexts are different. I can then find a set of pairs of \verb|XOR|$ed$ texts
 $(z\;, \;z')$ that
 the difference value between them and the difference value after the S-boxes are fixed $\alpha$ and $\beta$. Figure~\ref{fig:form6}
 shows the structure of it.
@@ -795,9 +795,9 @@ shows the structure of it.
 \caption{\label{fig:form6} Differential cryptanalysis for S-boxes}
 \end{figure}
 
-The difference value $\alpha$ is the value after expansion. As the additivity for $XOR$ operation in expansion function,
+The difference value $\alpha$ is the value after expansion. As the additivity for \verb|XOR| operation in expansion function,
 a fixed difference value before expansion can produce this value. Similar to the ouput difference values $\beta$ I
-choose, they are values before the permutation $P$. As the additivity for $XOR$ operation in it, only the inputs used to
+choose, they are values before the permutation $P$. As the additivity for \verb|XOR| operation in it, only the inputs used to
 generate the sets are changed and the effect can be eliminated by changing the inputs. The inputs are chosen like that
 for facilitating the process and match with the table provided in Figure~\ref{fig:form5}.
 
@@ -808,11 +808,11 @@ for facilitating the process and match with the table provided in Figure~\ref{fi
 \end{figure}
 
 Using only two plaintexts with fixed difference value and two encryptions, I can get a fixed output difference value.
-With the above two difference values, I can get a set of possible pairs of $XORed$ texts, and then I can find all possible
-round keys according to the set of possible pairs of $XORed$ texts and the two input plaintexts. Because apply $XOR$
-operations to two plaintexts $x$ and $x1$ with two keys $k$ and $k2$ will result the $XORed$ texts, I can then get
-the possible keys using the $XOR$ operations between the plaintexts and $XORed$ texts by \verb|xor_trans|. By keeping
-trying new plaintexts and then generating corresponding $XORed$ texts set, I can keep narrowing down the range
+With the above two difference values, I can get a set of possible pairs of \verb|XOR|$ed$ texts, and then I can find all possible
+round keys according to the set of possible pairs of \verb|XOR|$ed$ texts and the two input plaintexts. Because apply \verb|XOR|
+operations to two plaintexts $x$ and $x1$ with two keys $k$ and $k2$ will result the \verb|XOR|$ed$ texts, I can then get
+the possible keys using the \verb|XOR| operations between the plaintexts and \verb|XOR|$ed$ texts by \verb|xor_trans|. By keeping
+trying new plaintexts and then generating corresponding \verb|XOR|$ed$ texts set, I can keep narrowing down the range
 of possible keys.
 
 \begin{alltt}
@@ -821,16 +821,16 @@ of possible keys.
 
 \subsetction{Differential Cryptanalysis implementation}
 However, each S-box has $2^6$ possible input $XORs$, $2^4$ possible output $XORs$ and there are $2^6$ pairs of plaintexts
-with each possible input $XOR$. For a total of 8 S-boxes, the tables that records the possible $XORed$ texts are too
-complex and the implementation of the real attack in HOL4 is not necessary for now. As a result, I implement the sets of $XORed$
+with each possible input \verb|XOR|. For a total of 8 S-boxes, the tables that records the possible \verb|XOR|$ed$ texts are too
+complex and the implementation of the real attack in HOL4 is not necessary for now. As a result, I implement the sets of \verb|XOR|$ed$
 plaintexts for S-box one and for the overall round function in a round. I prove the basic correctness of the S-box one
 set, and verify properties related to them.
 
-First of all, I proved that a set of pairs of words of length 6 with fixed $XOR$ value is bijective to the set of
+First of all, I proved that a set of pairs of words of length 6 with fixed \verb|XOR| value is bijective to the set of
 words with length 6. They are also proved to have the same cardinality, it can verify the property of pairs XOR distribution
 table of
 the S-box. It states that each line in a pairs XOR distribution table contains 64 possible pairs, means each particular
-input $XOR$ has 64 possible pairs of word 6 inputs. I define
+input \verb|XOR| has 64 possible pairs of word 6 inputs. I define
 sets of pairs of word 6 that one half has the fixed difference value of $X$ with the other half. As the set of
 the universal set of word 6 has the cardinality of $2^6\;=\;64$, I can then prove the pairs sets also has the cardinality
 of $2^6\;=\;64$.
@@ -862,14 +862,14 @@ All sub-goals can be proved directly by applying the definitions of sets and map
 \end{alltt}
 
 Next, I implement the definition of ``X may cause Y with probability p by an S-box''[4] in HOL4. It means for all
-pairs of $XORed$ texts that the input $XOR$ is $X$ and the output $XOR$ after going through a S-box is Y, the number
-of these pairs is p percentage out of all possible pairs of $XORed$ texts that the input $XOR$ is X.
-These $XORed$ texts are in word 6 as the inputs of S-box and the input $XOR$ is X means the pairs of
-texts is differ by X. The overall pairs of $XORed$ texts that the input $XOR$ is X can then be form as the set of pairs
-of words of length 6 with fixed $XOR$ value and the number of them is the cardinality of this set. As proved above,
+pairs of \verb|XOR|$ed$ texts that the input \verb|XOR| is $X$ and the output \verb|XOR| after going through a S-box is Y, the number
+of these pairs is p percentage out of all possible pairs of \verb|XOR|$ed$ texts that the input \verb|XOR| is X.
+These \verb|XOR|$ed$ texts are in word 6 as the inputs of S-box and the input \verb|XOR| is X means the pairs of
+texts is differ by X. The overall pairs of \verb|XOR|$ed$ texts that the input \verb|XOR| is X can then be form as the set of pairs
+of words of length 6 with fixed \verb|XOR| value and the number of them is the cardinality of this set. As proved above,
 the set can then be converted to universal set of word 6 with the same functionality.
 
-Then for the implementation of sets of possible pairs of $XORed$ texts with both input $XOR$ X and output $XOR$ Y,
+Then for the implementation of sets of possible pairs of \verb|XOR|$ed$ texts with both input \verb|XOR| X and output \verb|XOR| Y,
 I find it can also convert to sets of single 6-bit texts that takes the $X$, $Y$ and the $S-box$ as input that has the
 same functionality. It is also because one half can be expressed using the other half and $X$.
 
@@ -882,7 +882,7 @@ same functionality. It is also because one half can be expressed using the other
 \end{alltt}
 
 The verifications are exactly the same, I define the two mapping functions, one maps a pair of words to only a half, the
-other one use a single 6-bit message to produce the other half by exclusive-or operation with input $XOR$. Then by rewriting
+other one use a single 6-bit message to produce the other half by exclusive-or operation with input \verb|XOR|. Then by rewriting
 with \verb|BIJ_IFF_INV|, \verb|FINITE_BIJ_CARD| and applying the definitions to the goal, BIJ relation and same cardinality
 verifications are done.
 
@@ -905,7 +905,7 @@ cardinality of each set divided by the cardinality of sample space.
 The space, measurable sets, measure of measure space are exactly the same with the components of probability
 space - sample space, set of events and the probability of event once measure space is proved also to be a probability space.
 From the prerequisites, we can obviously see that, the universal set word 6 can be the sample space.
-The sets of single 6-bit texts with input $XOR$ X, output $XOR$ Y and chosen S-boxes are the events that belong to the
+The sets of single 6-bit texts with input \verb|XOR| X, output \verb|XOR| Y and chosen S-boxes are the events that belong to the
 pow set of the universal set.
 The required probability p of X may cause Y can then be generated as the probability of events in that probability space.
 
@@ -971,7 +971,7 @@ with all the necessary prerequisites, the additivity is proved.
 
 Overall, the measure space with the given prerequisites is also a probability space.
 
-Now, I can build my measure spaces about differential cryptanalysis and the sets containing $XORed$ texts. I can then use
+Now, I can build my measure spaces about differential cryptanalysis and the sets containing \verb|XOR|$ed$ texts. I can then use
 the implementations to generate the probability once I proved that they are probability spaces. I need to create a measure space
 that the measurable sets contains the sets of single 6-bit texts that generated by input $X$, $Y$ and the selected $S-box$.
 The space of the measure space is defined as the universal set of word in length 6 which has probability of 1 ,
@@ -995,11 +995,11 @@ out of the space can also be proved by showing the space has the cardinality of 
 \end{alltt}
 
 I can then get the probability of my required set using the probability of event. I define a
-function \verb|XcauseY_def| to generate the event with input $XOR$, output $XOR$ and S-box as inputs, get the
+function \verb|XcauseY_def| to generate the event with input \verb|XOR|, output \verb|XOR| and S-box as inputs, get the
 probability of such events and return the probability. I do some tests on the generated envet
 and the probability, using the examples provided in [4]. If I choose the input difference of two texts through
-S-box 1 to be $0x34w$ and the corresponding output difference of S-box to be $0x4w$, the possible $XORed$ texts are
-$0x13w$ and $0x27w$. It also means sets of possible pairs of $XORed$ texts are
+S-box 1 to be $0x34w$ and the corresponding output difference of S-box to be $0x4w$, the possible \verb|XOR|$ed$ texts are
+$0x13w$ and $0x27w$. It also means sets of possible pairs of \verb|XOR|$ed$ texts are
 ${(0x13w\,,\, 0x27w)\;,\;(0x27w\,,\,0x13w)}$
 according to the conversion discussed earlier which also has the cardinality of 2.
 
@@ -1014,7 +1014,7 @@ according to the conversion discussed earlier which also has the cardinality of 
 To prove two sets are the same, I can prove all elements in one set are also in the other by \verb|EXTENSION|
 in HOL4. I can then convert the goal to the form with a function and a universally quantified input
 variable $x$. It means for a general variable x, I apply function S-box 1 $S1$ to x and to $x\,\oplus\, 0x34w$.
-The $XOR$ difference of the two outputs equals to $0x4w$ if and only if variable x is either $0x13w$ or $0x27w$.
+The \verb|XOR| difference of the two outputs equals to $0x4w$ if and only if variable x is either $0x13w$ or $0x27w$.
 
 \begin{alltt}
   \HOLthm{pred_set.EXTENSION}\hfill{[EXTENSION]}
@@ -1048,7 +1048,7 @@ is 2 using the above theorem, I can complete the verification with simple rewrit
 
 Moreover, I can implement the events and probabilities for ``X may cause Y with probability p by the F function''[4] in
 differential cryptanalysis. It is almost the same for the earlier one, but change single S-box to the overall round
-function including the expansion operation, $XOR$ operation with round key, S-boxes operation and $P$ permutation. The
+function including the expansion operation, \verb|XOR| operation with round key, S-boxes operation and $P$ permutation. The
 input $X$ is the difference of two 32-bit plaintexts at the beginning of round and the output difference $Y$ should
 be the difference between ciphertexts after $P$ permutation. The F function can be seen in Figure~\ref{fig:form7}
 The transformed pair of texts go through the S-boxes
@@ -1066,8 +1066,8 @@ should be in the form of:
 \caption{\label{fig:form7} Round function of DES [4,p10]}
 \end{figure}
 
-The difference between x1 and x2 is the input $XOR$ $X$. After the above two halves going through the S-box, and applying the
-$P$ permutation, the difference between the results is output $XOR$ $Y$. The result halves are also differed by a fixed
+The difference between x1 and x2 is the input \verb|XOR| $X$. After the above two halves going through the S-box, and applying the
+$P$ permutation, the difference between the results is output \verb|XOR| $Y$. The result halves are also differed by a fixed
 value. It is because x1 and x2 are differed by $X$, $E(x1)$ and $E(x2)$ are differed by $E(X)$ using
 the \verb|xor_E| theorem I proved. Then by the theorem \verb|xor_twice|, the difference between $x1'$ and $x2'$ is $E(X)$. As a
 result, $x2'$ can be represented by $x1'$ using their difference.
@@ -1086,9 +1086,9 @@ are different by a fix value, and they can produce at most $2^{32}$ expanded inp
 space is the subset of all possible the expanded inputs which has the cardinality of at most $2^{32}$. Then I need to encrypt these
 expanded inputs pairs with all possible subkey values with length 48, it will results $(2^{32})*(2^{48})$ pairs. It is hard to
 determine how many words in length 48 can be generated even known the pairs are differ by a fix value. Moreover, as I cannot ensure
-all possible word48 words can be generated by all word32 words after expansion and $XOR$ operation, I also cannot ensure the sample
+all possible word48 words can be generated by all word32 words after expansion and \verb|XOR| operation, I also cannot ensure the sample
 space for each S-box probability space contains all word6 words. As a result, I choose to generate the events for pairs of texts after
-the expansion and $XOR$ operation with round keys. It has not been proved to be the same as using inputs pairs of round function, but a
+the expansion and \verb|XOR| operation with round keys. It has not been proved to be the same as using inputs pairs of round function, but a
 simpler and variant version. Using the variant version, I can verify the properties about ``X may cause Y with probability p by the F function'',
 to ``X may cause Y with probability p by the S-boxes'' which the X and Y are still the original definitions.
 I then verify the correctness towards the variant definitions.
@@ -1138,7 +1138,7 @@ $x2'$ using $x1'$ with the exactly same proof steps for theorem \verb|BIJ_pairXc
 \end{alltt}
 
 The measure space can then be implemented and proved as a probability space with the simplified sample space and events.
-I can also implement the probability of all possible pairs going through S-boxes with input $XOR$ $X$ and output $XOR$ Y.
+I can also implement the probability of all possible pairs going through S-boxes with input \verb|XOR| $X$ and output \verb|XOR| Y.
 \begin{alltt}
 \HOLthm[nosp,showtypes]{des_prop.word48p_def}\hfill{[word48p_def]}
 \end{alltt}
@@ -1194,9 +1194,9 @@ for further analysis. I can use \verb|EXTREAL_PROD_IMAGE_COUNT_SUC| to keep sepa
 By converting them to normal product form, I use the definitions
 of both sides to expand them. The probabilities of events on both sides can now coverted in the form of the cardinality of event divide by
 the cardinality of sample space. The cardinality of sample space is directly number of $2^{48}$ and $2^{6}$.
-Now, it means that I need to prove the number of $XORed$ texts $x$ with inputs texts differ by $X$ and outputs text after going through whole
+Now, it means that I need to prove the number of \verb|XOR|$ed$ texts $x$ with inputs texts differ by $X$ and outputs text after going through whole
 S-boxes are differed by $Y$ is equal to
-the product of the number of $XORed$ texts $x_i$ with inputs texts differ by $X_i$ and outputs text differ by $Y_i$ after going through single
+the product of the number of \verb|XOR|$ed$ texts $x_i$ with inputs texts differ by $X_i$ and outputs text differ by $Y_i$ after going through single
 S-box $i$. There are a total of 8 $x_i$ from $(i=1)$ to $(i=8)$
 Then I use a support theorem
 \verb|CARD_eqF| to convert the cardinality of event for full S-boxes to the cardinality of another set \verb|(XpairF X Y)|, as they are proved
@@ -1233,8 +1233,8 @@ and convert all the divisions to multiplication by $(-1)$ using \verb|div_eq_mul
 \end{alltt}
 
 It is now time to prove the first support theorem \verb|F_convert|. \verb|(XpairF X Y)| set is implemented
-with the inputs are input $XOR$ and output $XOR$ of F function. It is a set of tuples of 8 with $x_i$ $(i \in \{1, \dots, 8\})$.
-Each $x_i$ can be considered as the $XORed$ text that has fixed difference with another text by $X_i$, apply to S-box $i$
+with the inputs are input \verb|XOR| and output \verb|XOR| of F function. It is a set of tuples of 8 with $x_i$ $(i \in \{1, \dots, 8\})$.
+Each $x_i$ can be considered as the \verb|XOR|$ed$ text that has fixed difference with another text by $X_i$, apply to S-box $i$
 and outputs texts have difference of $Y_i$. The $X_i$ and $Y_i$ are produced by the inputs $X$ and $Y$ as described above.
 
 \begin{alltt}
@@ -1264,7 +1264,7 @@ commutation property of $\land$ operations without finding the specific theorems
 \end{alltt}
 
 For the proof for the second support theorem \verb|CARD_eqF|, I prove \verb|(XpairF X Y)| sets' cardinality is
-equal to the cardinality of events with possible $XOR$ texts of 48-bit going through the whole S-boxes function. Once I
+equal to the cardinality of events with possible \verb|XOR| texts of 48-bit going through the whole S-boxes function. Once I
 proved these two sets are bijection to each other, I can get they have the same cardinality using \verb|FINITE_BIJ_CARD| and
 the same process introduced earlier.
 
@@ -1323,12 +1323,12 @@ As a result, all the support theorems mentioned are proved, and with the help of
 48-bit texts through S-boxes is equal to the product of probabilities of events through single S-box.
 
 For the last part about differential cryptanalysis, I implement a new events for the sample space of word48. It is the sets of round
-keys. For a pair of texts after the expansion operation, before $XOR$ with round keys(also variant version) and the same input $XOR$ value $X$,
-the round keys are $XOR$ with
-both halves. If the results can produce the output $XOR$ value that equals to $Y$, these round keys are in the set. The round keys' set
+keys. For a pair of texts after the expansion operation, before \verb|XOR| with round keys(also variant version) and the same input \verb|XOR| value $X$,
+the round keys are \verb|XOR| with
+both halves. If the results can produce the output \verb|XOR| value that equals to $Y$, these round keys are in the set. The round keys' set
 take $X$, $Y$ and a pair of $(x1,x2)$ as
 inputs. As the halves can be representeed by each other using $X$ as talked before ,the inputs can be simplified to $X$, $Y$ and $x$. This event has
-the property that it has equal probability for the event of $XORed$ texts $x$ list with the same $X$ and $Y$ [4].
+the property that it has equal probability for the event of \verb|XOR|$ed$ texts $x$ list with the same $X$ and $Y$ [4].
 
 \begin{alltt}
 \HOLthm[nosp,showtypes]{des_prop.XcauseYFkey_def}\hfill{[XcauseYFkey_def]}
@@ -1339,9 +1339,9 @@ the property that it has equal probability for the event of $XORed$ texts $x$ li
 \end{alltt}
 
 It can also be proved be proving the bijection relation between these two sets. The verification is much simpler.
-As round key and $XORed$ text are differed by the input text of F function after expansion. I can always convert between them using the
-$XOR$ operation by the input of the round keys' events-the input text of F function after expansion. Then the two mapping functions are just
-taking input of the round keys' as input, and convert to each other by $XOR$ operation. By using \verb|BIJ_IFF_INV|, and inserting the functions,
+As round key and \verb|XOR|$ed$ text are differed by the input text of F function after expansion. I can always convert between them using the
+\verb|XOR| operation by the input of the round keys' events-the input text of F function after expansion. Then the two mapping functions are just
+taking input of the round keys' as input, and convert to each other by \verb|XOR| operation. By using \verb|BIJ_IFF_INV|, and inserting the functions,
 bijection proof is done. Using \verb|FINITE_BIJ_CARD|, they are proved to have the same cardinality. Finally, they have the same probability as
 their sample spaces are also the same.
 
