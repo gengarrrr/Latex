@@ -94,13 +94,6 @@ the parent theories that focusing on some more specific aspects from its parent 
 more details. It builds upon the concepts from the parent theories, and they are overall organized hierarchically
 to form a tree-like framework.
 
-\subsection{Basic use of HOL4}
-rw[] simp fs
-RW_TAC
-POP_ASSUME MP_TAC
-Q.ABBREV_TAC Abbr
-Suff Know Rewr'
-
 \subsection{Word theory in HOL4}
 In this paper, \verb|wordsTheory| in HOL4 are mainly used to prove the properties of DES, Differential Crypatanalysis
 and the implementation of RC5. It is built upon some basic theories and \verb|fcpTheory| which are also common used in
@@ -1398,15 +1391,15 @@ and outputs texts have difference of $Y_i$. The $X_i$ and $Y_i$ are produced by 
 \begin{alltt}
 \HOLTokenTurnstile{} \HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{X} \HOLBoundVar{Y}.
      \HOLConst{XpairF} \HOLBoundVar{X} \HOLBoundVar{Y} \HOLSymConst{=}
-     \HOLTokenLeftbrace{}(\ensuremath{\HOLBoundVar{x}\sb{\mathrm{8}}}\HOLSymConst{,}\ensuremath{\HOLBoundVar{x}\sb{\mathrm{7}}}\HOLSymConst{,}\ensuremath{\HOLBoundVar{x}\sb{\mathrm{6}}}\HOLSymConst{,}\ensuremath{\HOLBoundVar{x}\sb{\mathrm{5}}}\HOLSymConst{,}\ensuremath{\HOLBoundVar{x}\sb{\mathrm{4}}}\HOLSymConst{,}\ensuremath{\HOLBoundVar{x}\sb{\mathrm{3}}}\HOLSymConst{,}\ensuremath{\HOLBoundVar{x}\sb{\mathrm{2}}}\HOLSymConst{,}\ensuremath{\HOLBoundVar{x}\sb{\mathrm{1}}}) \HOLTokenBar{}
-      \HOLConst{S8} \ensuremath{\HOLBoundVar{x}\sb{\mathrm{1}}} \HOLSymConst{\HOLTokenEor{}} \HOLConst{S8} (\ensuremath{\HOLBoundVar{x}\sb{\mathrm{1}}} \HOLSymConst{\HOLTokenEor{}} (\HOLNumLit{5} \HOLSymConst{\HOLTokenExtract{}} \HOLNumLit{0}) (\HOLConst{E} \HOLBoundVar{X})) \HOLSymConst{=} (\HOLNumLit{3} \HOLSymConst{\HOLTokenExtract{}} \HOLNumLit{0}) \HOLBoundVar{Y} \HOLSymConst{\HOLTokenConj{}}
-      \HOLConst{S7} \ensuremath{\HOLBoundVar{x}\sb{\mathrm{2}}} \HOLSymConst{\HOLTokenEor{}} \HOLConst{S7} (\ensuremath{\HOLBoundVar{x}\sb{\mathrm{2}}} \HOLSymConst{\HOLTokenEor{}} (\HOLNumLit{11} \HOLSymConst{\HOLTokenExtract{}} \HOLNumLit{6}) (\HOLConst{E} \HOLBoundVar{X})) \HOLSymConst{=} (\HOLNumLit{7} \HOLSymConst{\HOLTokenExtract{}} \HOLNumLit{4}) \HOLBoundVar{Y} \HOLSymConst{\HOLTokenConj{}}
-      \HOLConst{S6} \ensuremath{\HOLBoundVar{x}\sb{\mathrm{3}}} \HOLSymConst{\HOLTokenEor{}} \HOLConst{S6} (\ensuremath{\HOLBoundVar{x}\sb{\mathrm{3}}} \HOLSymConst{\HOLTokenEor{}} (\HOLNumLit{17} \HOLSymConst{\HOLTokenExtract{}} \HOLNumLit{12}) (\HOLConst{E} \HOLBoundVar{X})) \HOLSymConst{=} (\HOLNumLit{11} \HOLSymConst{\HOLTokenExtract{}} \HOLNumLit{8}) \HOLBoundVar{Y} \HOLSymConst{\HOLTokenConj{}}
-      \HOLConst{S5} \ensuremath{\HOLBoundVar{x}\sb{\mathrm{4}}} \HOLSymConst{\HOLTokenEor{}} \HOLConst{S5} (\ensuremath{\HOLBoundVar{x}\sb{\mathrm{4}}} \HOLSymConst{\HOLTokenEor{}} (\HOLNumLit{23} \HOLSymConst{\HOLTokenExtract{}} \HOLNumLit{18}) (\HOLConst{E} \HOLBoundVar{X})) \HOLSymConst{=} (\HOLNumLit{15} \HOLSymConst{\HOLTokenExtract{}} \HOLNumLit{12}) \HOLBoundVar{Y} \HOLSymConst{\HOLTokenConj{}}
-      \HOLConst{S4} \ensuremath{\HOLBoundVar{x}\sb{\mathrm{5}}} \HOLSymConst{\HOLTokenEor{}} \HOLConst{S4} (\ensuremath{\HOLBoundVar{x}\sb{\mathrm{5}}} \HOLSymConst{\HOLTokenEor{}} (\HOLNumLit{29} \HOLSymConst{\HOLTokenExtract{}} \HOLNumLit{24}) (\HOLConst{E} \HOLBoundVar{X})) \HOLSymConst{=} (\HOLNumLit{19} \HOLSymConst{\HOLTokenExtract{}} \HOLNumLit{16}) \HOLBoundVar{Y} \HOLSymConst{\HOLTokenConj{}}
-      \HOLConst{S3} \ensuremath{\HOLBoundVar{x}\sb{\mathrm{6}}} \HOLSymConst{\HOLTokenEor{}} \HOLConst{S3} (\ensuremath{\HOLBoundVar{x}\sb{\mathrm{6}}} \HOLSymConst{\HOLTokenEor{}} (\HOLNumLit{35} \HOLSymConst{\HOLTokenExtract{}} \HOLNumLit{30}) (\HOLConst{E} \HOLBoundVar{X})) \HOLSymConst{=} (\HOLNumLit{23} \HOLSymConst{\HOLTokenExtract{}} \HOLNumLit{20}) \HOLBoundVar{Y} \HOLSymConst{\HOLTokenConj{}}
-      \HOLConst{S2} \ensuremath{\HOLBoundVar{x}\sb{\mathrm{7}}} \HOLSymConst{\HOLTokenEor{}} \HOLConst{S2} (\ensuremath{\HOLBoundVar{x}\sb{\mathrm{7}}} \HOLSymConst{\HOLTokenEor{}} (\HOLNumLit{41} \HOLSymConst{\HOLTokenExtract{}} \HOLNumLit{36}) (\HOLConst{E} \HOLBoundVar{X})) \HOLSymConst{=} (\HOLNumLit{27} \HOLSymConst{\HOLTokenExtract{}} \HOLNumLit{24}) \HOLBoundVar{Y} \HOLSymConst{\HOLTokenConj{}}
-      \HOLConst{S1} \ensuremath{\HOLBoundVar{x}\sb{\mathrm{8}}} \HOLSymConst{\HOLTokenEor{}} \HOLConst{S1} (\ensuremath{\HOLBoundVar{x}\sb{\mathrm{8}}} \HOLSymConst{\HOLTokenEor{}} (\HOLNumLit{47} \HOLSymConst{\HOLTokenExtract{}} \HOLNumLit{42}) (\HOLConst{E} \HOLBoundVar{X})) \HOLSymConst{=} (\HOLNumLit{31} \HOLSymConst{\HOLTokenExtract{}} \HOLNumLit{28}) \HOLBoundVar{Y}\HOLTokenRightbrace{}\hfill{[XpairF_def]}
+     \HOLTokenLeftbrace{}(\ensuremath{\HOLBoundVar{x}\sb{\mathrm{1}}}\HOLSymConst{,}\ensuremath{\HOLBoundVar{x}\sb{\mathrm{2}}}\HOLSymConst{,}\ensuremath{\HOLBoundVar{x}\sb{\mathrm{3}}}\HOLSymConst{,}\ensuremath{\HOLBoundVar{x}\sb{\mathrm{4}}}\HOLSymConst{,}\ensuremath{\HOLBoundVar{x}\sb{\mathrm{5}}}\HOLSymConst{,}\ensuremath{\HOLBoundVar{x}\sb{\mathrm{6}}}\HOLSymConst{,}\ensuremath{\HOLBoundVar{x}\sb{\mathrm{7}}}\HOLSymConst{,}\ensuremath{\HOLBoundVar{x}\sb{\mathrm{8}}}) \HOLTokenBar{}
+      \HOLConst{S8} \ensuremath{\HOLBoundVar{x}\sb{\mathrm{8}}} \HOLSymConst{\HOLTokenEor{}} \HOLConst{S8} (\ensuremath{\HOLBoundVar{x}\sb{\mathrm{8}}} \HOLSymConst{\HOLTokenEor{}} (\HOLNumLit{5} \HOLSymConst{\HOLTokenExtract{}} \HOLNumLit{0}) (\HOLConst{E} \HOLBoundVar{X})) \HOLSymConst{=} (\HOLNumLit{3} \HOLSymConst{\HOLTokenExtract{}} \HOLNumLit{0}) \HOLBoundVar{Y} \HOLSymConst{\HOLTokenConj{}}
+      \HOLConst{S7} \ensuremath{\HOLBoundVar{x}\sb{\mathrm{7}}} \HOLSymConst{\HOLTokenEor{}} \HOLConst{S7} (\ensuremath{\HOLBoundVar{x}\sb{\mathrm{7}}} \HOLSymConst{\HOLTokenEor{}} (\HOLNumLit{11} \HOLSymConst{\HOLTokenExtract{}} \HOLNumLit{6}) (\HOLConst{E} \HOLBoundVar{X})) \HOLSymConst{=} (\HOLNumLit{7} \HOLSymConst{\HOLTokenExtract{}} \HOLNumLit{4}) \HOLBoundVar{Y} \HOLSymConst{\HOLTokenConj{}}
+      \HOLConst{S6} \ensuremath{\HOLBoundVar{x}\sb{\mathrm{6}}} \HOLSymConst{\HOLTokenEor{}} \HOLConst{S6} (\ensuremath{\HOLBoundVar{x}\sb{\mathrm{6}}} \HOLSymConst{\HOLTokenEor{}} (\HOLNumLit{17} \HOLSymConst{\HOLTokenExtract{}} \HOLNumLit{12}) (\HOLConst{E} \HOLBoundVar{X})) \HOLSymConst{=} (\HOLNumLit{11} \HOLSymConst{\HOLTokenExtract{}} \HOLNumLit{8}) \HOLBoundVar{Y} \HOLSymConst{\HOLTokenConj{}}
+      \HOLConst{S5} \ensuremath{\HOLBoundVar{x}\sb{\mathrm{5}}} \HOLSymConst{\HOLTokenEor{}} \HOLConst{S5} (\ensuremath{\HOLBoundVar{x}\sb{\mathrm{5}}} \HOLSymConst{\HOLTokenEor{}} (\HOLNumLit{23} \HOLSymConst{\HOLTokenExtract{}} \HOLNumLit{18}) (\HOLConst{E} \HOLBoundVar{X})) \HOLSymConst{=} (\HOLNumLit{15} \HOLSymConst{\HOLTokenExtract{}} \HOLNumLit{12}) \HOLBoundVar{Y} \HOLSymConst{\HOLTokenConj{}}
+      \HOLConst{S4} \ensuremath{\HOLBoundVar{x}\sb{\mathrm{4}}} \HOLSymConst{\HOLTokenEor{}} \HOLConst{S4} (\ensuremath{\HOLBoundVar{x}\sb{\mathrm{4}}} \HOLSymConst{\HOLTokenEor{}} (\HOLNumLit{29} \HOLSymConst{\HOLTokenExtract{}} \HOLNumLit{24}) (\HOLConst{E} \HOLBoundVar{X})) \HOLSymConst{=} (\HOLNumLit{19} \HOLSymConst{\HOLTokenExtract{}} \HOLNumLit{16}) \HOLBoundVar{Y} \HOLSymConst{\HOLTokenConj{}}
+      \HOLConst{S3} \ensuremath{\HOLBoundVar{x}\sb{\mathrm{3}}} \HOLSymConst{\HOLTokenEor{}} \HOLConst{S3} (\ensuremath{\HOLBoundVar{x}\sb{\mathrm{3}}} \HOLSymConst{\HOLTokenEor{}} (\HOLNumLit{35} \HOLSymConst{\HOLTokenExtract{}} \HOLNumLit{30}) (\HOLConst{E} \HOLBoundVar{X})) \HOLSymConst{=} (\HOLNumLit{23} \HOLSymConst{\HOLTokenExtract{}} \HOLNumLit{20}) \HOLBoundVar{Y} \HOLSymConst{\HOLTokenConj{}}
+      \HOLConst{S2} \ensuremath{\HOLBoundVar{x}\sb{\mathrm{2}}} \HOLSymConst{\HOLTokenEor{}} \HOLConst{S2} (\ensuremath{\HOLBoundVar{x}\sb{\mathrm{2}}} \HOLSymConst{\HOLTokenEor{}} (\HOLNumLit{41} \HOLSymConst{\HOLTokenExtract{}} \HOLNumLit{36}) (\HOLConst{E} \HOLBoundVar{X})) \HOLSymConst{=} (\HOLNumLit{27} \HOLSymConst{\HOLTokenExtract{}} \HOLNumLit{24}) \HOLBoundVar{Y} \HOLSymConst{\HOLTokenConj{}}
+      \HOLConst{S1} \ensuremath{\HOLBoundVar{x}\sb{\mathrm{1}}} \HOLSymConst{\HOLTokenEor{}} \HOLConst{S1} (\ensuremath{\HOLBoundVar{x}\sb{\mathrm{1}}} \HOLSymConst{\HOLTokenEor{}} (\HOLNumLit{47} \HOLSymConst{\HOLTokenExtract{}} \HOLNumLit{42}) (\HOLConst{E} \HOLBoundVar{X})) \HOLSymConst{=} (\HOLNumLit{31} \HOLSymConst{\HOLTokenExtract{}} \HOLNumLit{28}) \HOLBoundVar{Y}\HOLTokenRightbrace{}\hfill{[XpairF_def]}
 \end{alltt}
 
 Each element in the tuple can be treated as separated out to produce a set of $x_i$, and the cross product of the
@@ -1575,7 +1568,547 @@ their sample spaces are also the same.
 
 
 \section{RC5 in HOL4}
-a
+RC5 is also a common encryption algorithm, and it is also a symmetric block cipher like DES. It means RC5 use the same key
+to encrypt and decrypt a message. It contains exclusive-or \verb|XOR| like DES during the encrypt process, but not as much as
+DES. The encryption of RC5 relies heavily on the use of the data-dependent rotations. This feature makes the uniqueness of it
+and distinguishes it from to DES. Moreover, the security of RC5 is highly depend on its use of the data-dependent rotations[5].
+It is not a fully Feistel network, but Feistel-like network. It is because the decryption of it also use the reverse of generated
+keys, but the decryption process changes a bit compare to encryption. RC5 is also famous for its variable block size, key size and
+number of rounds where DES only has a variable number of rounds. However, in my implementation, I fix the block size and key size
+to simplify the process and avoid unnecessary repeat functions. Many functions need to be built multiple times with the same
+functionality because the length of words is changed. Moreover, in DES, we use a plaintext as input and split it to two words after
+the encryption starts. But in RC5, the plaintext input is directly two words of length $w$, so when talking about the word length $w$ later,
+it only refers to the length of a single word.
+
+\subsection{RC5 preparation}
+I create a new file in HOL4, called \verb|rc5Theory|. I start with loading the necessary theories in HOL4, such as \verb|fcpTheory|,
+\verb|wordsTheory| and \verb|pred_setTheory|. These theories are frequently used in HOL4, and are all very important when dealing with
+block cipher. Following the similar setting like turning \verb|guessing_word_lengths| to true and define a block type of $(word32,word32)$.
+Specially, the word length is set to be 32, the key length is 64 and the number of rounds is variable.
+
+The keys generated is a bit complex. It first uses two magic constants $P_w$ and $Q_w$ to generate the key array $S$. The values of
+the magic constants depend on the length of plaintext in bits which is the n of \verb|wordn| type in HOL4 \verb|wordsTheory|. They
+can be represented like below[5].
+
+\begin{equation*}
+P_w = \text{Odd}((e - 2) \times 2^w)
+\end{equation*}
+
+\begin{equation*}
+Q_w = \text{Odd}((\phi - 1) \times 2^w)
+\end{equation*}
+
+In the equations, $e$ means the base of the natural logarithm, $\phi$ means the golden raio, and $w$ is the word length.
+As I assume the word is in \verb|word32|, I can use the values of them provided directly[5], the values of them are stored
+in the definitions \verb|P32_data| and \verb|Q32_data|.
+
+\begin{alltt}
+\HOLTokenTurnstile{} (\HOLConst{P32_data} :\ensuremath{\alpha} \HOLTyOp{word}) \HOLSymConst{=} (0xB7E15163w :α word)\hfill{[P32_data]}
+\end{alltt}
+
+\begin{alltt}
+\HOLTokenTurnstile{} (\HOLConst{Q32_data} :\ensuremath{\alpha} \HOLTyOp{word}) \HOLSymConst{=} (0x9E3779B9w :α word)\hfill{[Q32_data]}
+\end{alltt}
+
+I then build the help functions \verb|Split64_def| and \verb|Join64'_def| to split a word of length 64 to the two words of 32 that
+we required, and to join the block of two words back to a whole word. It can facilitate the user to input only one variable.
+
+\begin{alltt}
+\HOLTokenTurnstile{} \HOLSymConst{\HOLTokenForall{}}(\HOLBoundVar{w} :\HOLTyOp{word64}).
+     \HOLConst{Split64} \HOLBoundVar{w} \HOLSymConst{=}
+     ((((\HOLNumLit{63} :\HOLTyOp{num}) \HOLSymConst{\HOLTokenExtract{}} (\HOLNumLit{32} :\HOLTyOp{num})) \HOLBoundVar{w} :\HOLTyOp{word32})\HOLSymConst{,}
+      (((\HOLNumLit{31} :\HOLTyOp{num}) \HOLSymConst{\HOLTokenExtract{}} (\HOLNumLit{0} :\HOLTyOp{num})) \HOLBoundVar{w} :\HOLTyOp{word32}))\hfill{[Split64_def]}
+\end{alltt}
+
+\begin{alltt}
+\HOLTokenTurnstile{} \HOLSymConst{\HOLTokenForall{}}(\HOLBoundVar{b} :\HOLTyOp{block}).
+     \HOLConst{Join64'} \HOLBoundVar{b} \HOLSymConst{=}
+     (\HOLKeyword{let} ((\HOLBoundVar{u} :\HOLTyOp{word32})\HOLSymConst{,}(\HOLBoundVar{v} :\HOLTyOp{word32})) = \HOLBoundVar{b} \HOLKeyword{in} ((\HOLBoundVar{u} \HOLSymConst{@@} \HOLBoundVar{v}) :\HOLTyOp{word64}))\hfill{[Join64'_def]}
+\end{alltt}
+
+There are also two theorems to cancel out the above two functions by each other. By applying the above functions
+together, it will keep the inputs unchanged, it is important for the process of decrypting the ciphertext back.
+The ways to prove them are quite simple now, expanding the goal by definitions and finishing the proof by using
+\verb|WORD_DECIDE_TAC|.
+
+\begin{alltt}
+\HOLTokenTurnstile{} \HOLSymConst{\HOLTokenForall{}}(\HOLBoundVar{b} :\HOLTyOp{block}). \HOLConst{Split64} (\HOLConst{Join64'} \HOLBoundVar{b}) \HOLSymConst{=} \HOLBoundVar{b}\hfill{[Split64_Join64']}
+\end{alltt}
+
+\begin{alltt}
+\HOLTokenTurnstile{} \HOLSymConst{\HOLTokenForall{}}(\HOLBoundVar{w} :\HOLTyOp{word64}). \HOLConst{Join64'} (\HOLConst{Split64} \HOLBoundVar{w}) \HOLSymConst{=} \HOLBoundVar{w}\hfill{[Join64'_Split64]}
+\end{alltt}
+
+\subsection{Key Expansion of RC5 }
+I can now actually start the building of the keys in RC5. The keys are generated first with the initiation of two arrays
+$S$ and $L$. Array $S$ takes the number of rounds $r$ as input and use the magic constants to help the generation. I use two
+definitions to build the array $S$. As there is no array in HOL4, the type of list works the same for array $S$. By definition, the array
+is started with one element $P_{32}$ at index 0. Then it will keep adding elements into array $S$ from index 1 until adding for
+$2*(r+1)-1$ times. The first function \verb|SkeysT32_def| is written in \verb|Induction| with input $t$ which is equal to $(2*(r+1))$.
+It includes a base case which initiates
+an array with the magic constant in it. Then for the induction step, the array which is in the next case will be built based on the
+given case. It means the array will prepend an element to the list based on the given array. The element prepended is calculated using
+the last appended element and add with the magic constant $Q_{32}$.
+
+\begin{alltt}
+\HOLTokenTurnstile{} (\HOLSymConst{\HOLTokenForall{}}(\HOLBoundVar{l} :\HOLTyOp{num}). \HOLConst{SkeysT32} \HOLBoundVar{l} (\HOLNumLit{0} :\HOLTyOp{num}) \HOLSymConst{=} [(\HOLConst{P32_data} :\HOLTyOp{word32})]) \HOLSymConst{\HOLTokenConj{}}
+   \HOLSymConst{\HOLTokenForall{}}(\HOLBoundVar{l} :\HOLTyOp{num}) (\HOLBoundVar{t} :\HOLTyOp{num}).
+     \HOLConst{SkeysT32} \HOLBoundVar{l} (\HOLConst{SUC} \HOLBoundVar{t}) \HOLSymConst{=}
+     (\HOLKeyword{let}
+        (\HOLBoundVar{ks} :\HOLTyOp{word32} \HOLTyOp{list}) = \HOLConst{SkeysT32} \HOLBoundVar{l} \HOLBoundVar{t};
+        (\HOLBoundVar{key} :\HOLTyOp{word32}) = \HOLConst{HD} \HOLBoundVar{ks}
+      \HOLKeyword{in}
+        \HOLBoundVar{key} \HOLSymConst{\ensuremath{+}} (\HOLConst{Q32_data} :\HOLTyOp{word32})\HOLSymConst{::}\HOLBoundVar{ks})\hfill{[SkeysT32_def]}
+\end{alltt}
+
+As the fact that for number of rounds increase by one, the array
+$S$ should add two elements. As a result, I use the second function \verb|Skeys_def| with $r$ as the input, that allows the input of \verb|SkeysT32_def|
+increase by 2 for $(r+1)$. I also reverse the array generated by \verb|SkeysT32_def|, as it use prepending to facilitate the process,
+but what required is appending the elements. As a result, array $S$ is built.
+
+\begin{alltt}
+\HOLTokenTurnstile{} \HOLSymConst{\HOLTokenForall{}}(\HOLBoundVar{r} :\HOLTyOp{num}).
+     \HOLConst{Skeys} \HOLBoundVar{r} \HOLSymConst{=}
+     \HOLConst{REVERSE}
+       (\HOLConst{SkeysT32} (\HOLNumLit{32} :\HOLTyOp{num})
+          ((((\HOLNumLit{2} :\HOLTyOp{num}) \HOLSymConst{\HOLTokenProd{}} (\HOLBoundVar{r} \HOLSymConst{\ensuremath{+}} (\HOLNumLit{1} :\HOLTyOp{num}))) :\HOLTyOp{num}) \HOLSymConst{\ensuremath{-}} (\HOLNumLit{1} :\HOLTyOp{num})))\hfill{[Skeys_def]}
+\end{alltt}
+
+Then I proved the length of the generated array $S$ is corrected according to the number of rounds $r$. It should have $2*(n+1)$ elements
+in it. In theorem \verb|LENGTH_Skeys|, the proof is done using the proof by induction. The base case here is when $r=0$, which means $t=1$.
+It can be proved by the definition of \verb|SkeysT32_def|, for $t=1$, the array is one element prepending to the array when $t=0$. I now
+convert the goal to show array $S$ with $t=0$ is 1 as one element prepending means length of 1 already. Then by the base case of \verb|SkeysT32_def|,
+base case is proved. Similarly to the induction step, the next case for $(r+1)$ means $t+2$ in \verb|SkeysT32_def| comparing to the
+given case. I can represent the next case in the goal by the base case in the assumption by using the induction step part
+in \verb|SkeysT32_def| twice. The proof can be done easily with the definitions.
+
+\begin{alltt}
+\HOLTokenTurnstile{} \HOLSymConst{\HOLTokenForall{}}(\HOLBoundVar{n} :\HOLTyOp{num}).
+     \HOLConst{LENGTH} (\HOLConst{Skeys} \HOLBoundVar{n}) \HOLSymConst{=} (((\HOLNumLit{2} :\HOLTyOp{num}) \HOLSymConst{\HOLTokenProd{}} (\HOLBoundVar{n} \HOLSymConst{\ensuremath{+}} (\HOLNumLit{1} :\HOLTyOp{num}))) :\HOLTyOp{num})\hfill{[LENGTH_Skeys]}
+\end{alltt}
+
+It is now time to implement the array $L$, it uses many variables based on the length of word and key. However, as I have fixed
+the length of them, the corresponding variables are all fixed now. $b$ represents the length of key in bytes which is length in bits
+divided by 8, so $64/8=8$. $u$ is the length of word in bytes which is $32/8=4$. $c$ is the length of key in words, so in my case, it
+is $64/32=2$. Array $L$ is an array of length $c$, so I initiate a list of length 2 filling \verb|0x0w| elements in
+\verb|LkeysIni_def|. Array $L$ needs to operate with an array $K$, so I define array $K$ first in \verb|keysIni_def|. It is
+the array that each element is a byte of key starting from the first byte as index 0. I can then use $><$, the extract operation
+to extract 8 bits out for a total of 8 times, result an array $K$ with length 8.
+
+\begin{alltt}
+\HOLTokenTurnstile{} \HOLConst{LkeysIni} \HOLSymConst{=} [(0w :word32); (0w :word32)]\hfill{[LkeysIni_def]}
+\end{alltt}
+
+\begin{alltt}
+\HOLTokenTurnstile{} \HOLSymConst{\HOLTokenForall{}}(\HOLBoundVar{k} :\ensuremath{\alpha} \HOLTyOp{word}).
+     \HOLConst{keysIni} \HOLBoundVar{k} \HOLSymConst{=}
+     [(((\HOLNumLit{7} :\HOLTyOp{num}) \HOLSymConst{\HOLTokenExtract{}} (\HOLNumLit{0} :\HOLTyOp{num})) \HOLBoundVar{k} :\HOLTyOp{word32});
+      (((\HOLNumLit{15} :\HOLTyOp{num}) \HOLSymConst{\HOLTokenExtract{}} (\HOLNumLit{8} :\HOLTyOp{num})) \HOLBoundVar{k} :\HOLTyOp{word32});
+      (((\HOLNumLit{23} :\HOLTyOp{num}) \HOLSymConst{\HOLTokenExtract{}} (\HOLNumLit{16} :\HOLTyOp{num})) \HOLBoundVar{k} :\HOLTyOp{word32});
+      (((\HOLNumLit{31} :\HOLTyOp{num}) \HOLSymConst{\HOLTokenExtract{}} (\HOLNumLit{24} :\HOLTyOp{num})) \HOLBoundVar{k} :\HOLTyOp{word32});
+      (((\HOLNumLit{39} :\HOLTyOp{num}) \HOLSymConst{\HOLTokenExtract{}} (\HOLNumLit{32} :\HOLTyOp{num})) \HOLBoundVar{k} :\HOLTyOp{word32});
+      (((\HOLNumLit{47} :\HOLTyOp{num}) \HOLSymConst{\HOLTokenExtract{}} (\HOLNumLit{40} :\HOLTyOp{num})) \HOLBoundVar{k} :\HOLTyOp{word32});
+      (((\HOLNumLit{55} :\HOLTyOp{num}) \HOLSymConst{\HOLTokenExtract{}} (\HOLNumLit{48} :\HOLTyOp{num})) \HOLBoundVar{k} :\HOLTyOp{word32});
+      (((\HOLNumLit{63} :\HOLTyOp{num}) \HOLSymConst{\HOLTokenExtract{}} (\HOLNumLit{56} :\HOLTyOp{num})) \HOLBoundVar{k} :\HOLTyOp{word32})]\hfill{[keysIni_def]}
+\end{alltt}
+
+I can then actually built array $L$, as all variables are fixed, the only inputs should be the key and a $r$ to do the induction.
+It starts the loop with $i=b-1$ which is 7, it will change the $(i/4)$th element in the previous $L$ as I define it in induction
+way. It left shifts the $(i/4)$th element itself and add by the $i$th element in $K$ for $i$ from 7 to 0. As a result,
+\verb|LkeysSup_def| starts the base case that change the $(7/4)$th element and update the list $L$. And for each successor case,
+7 is decreased by one, and it changes the corresponding elements based on the adjusted list. In the next \verb|Lkeys_def|, I limit
+$(i=7)$, so it will do the operations for 8 times as expected for $(b=8)$
+
+\begin{alltt}
+\HOLTokenTurnstile{} (\HOLSymConst{\HOLTokenForall{}}(\HOLBoundVar{k} :\ensuremath{\alpha} \HOLTyOp{word}).
+      \HOLConst{LkeysSup} \HOLBoundVar{k} (\HOLNumLit{0} :\HOLTyOp{num}) \HOLSymConst{=}
+      (\HOLKeyword{let}
+         (\HOLBoundVar{ks} :\HOLTyOp{word32} \HOLTyOp{list}) = \HOLConst{LkeysIni};
+         (\HOLBoundVar{keys} :\HOLTyOp{word32} \HOLTyOp{list}) = \HOLConst{keysIni} \HOLBoundVar{k}
+       \HOLKeyword{in}
+         \HOLConst{GENLIST}
+           (\HOLTokenLambda{}(\HOLBoundVar{m} :\HOLTyOp{num}).
+                \HOLKeyword{if} \HOLBoundVar{m} \HOLSymConst{=} (\HOLNumLit{7} :\HOLTyOp{num}) \HOLConst{DIV} (\HOLNumLit{4} :\HOLTyOp{num}) \HOLKeyword{then}
+                  \HOLConst{EL} \HOLBoundVar{m} \HOLBoundVar{ks} \HOLSymConst{\HOLTokenRol{}} (\HOLNumLit{8} :\HOLTyOp{num}) \HOLSymConst{\ensuremath{+}} \HOLConst{EL} (\HOLNumLit{7} :\HOLTyOp{num}) \HOLBoundVar{keys}
+                \HOLKeyword{else} \HOLConst{EL} \HOLBoundVar{m} \HOLBoundVar{ks}) (\HOLNumLit{2} :\HOLTyOp{num}))) \HOLSymConst{\HOLTokenConj{}}
+   \HOLSymConst{\HOLTokenForall{}}(\HOLBoundVar{k} :\ensuremath{\alpha} \HOLTyOp{word}) (\HOLBoundVar{r} :\HOLTyOp{num}).
+     \HOLConst{LkeysSup} \HOLBoundVar{k} (\HOLConst{SUC} \HOLBoundVar{r}) \HOLSymConst{=}
+     (\HOLKeyword{let}
+        (\HOLBoundVar{ks} :\HOLTyOp{word32} \HOLTyOp{list}) = \HOLConst{LkeysSup} \HOLBoundVar{k} \HOLBoundVar{r};
+        (\HOLBoundVar{keys} :\HOLTyOp{word32} \HOLTyOp{list}) = \HOLConst{keysIni} \HOLBoundVar{k};
+        (\HOLBoundVar{i} :\HOLTyOp{num}) = (\HOLNumLit{7} :\HOLTyOp{num}) \HOLSymConst{\ensuremath{-}} \HOLConst{SUC} \HOLBoundVar{r}
+      \HOLKeyword{in}
+        \HOLConst{GENLIST}
+          (\HOLTokenLambda{}(\HOLBoundVar{m} :\HOLTyOp{num}).
+               \HOLKeyword{if} \HOLBoundVar{m} \HOLSymConst{=} \HOLBoundVar{i} \HOLConst{DIV} (\HOLNumLit{4} :\HOLTyOp{num}) \HOLKeyword{then}
+                 \HOLConst{EL} \HOLBoundVar{m} \HOLBoundVar{ks} \HOLSymConst{\HOLTokenRol{}} (\HOLNumLit{8} :\HOLTyOp{num}) \HOLSymConst{\ensuremath{+}} \HOLConst{EL} \HOLBoundVar{i} \HOLBoundVar{keys}
+               \HOLKeyword{else} \HOLConst{EL} \HOLBoundVar{m} \HOLBoundVar{ks}) (\HOLNumLit{2} :\HOLTyOp{num}))\hfill{[LkeysSup_def]}
+\end{alltt}
+
+\begin{alltt}
+\HOLTokenTurnstile{} \HOLSymConst{\HOLTokenForall{}}(\HOLBoundVar{k} :\HOLTyOp{word64}). \HOLConst{Lkeys} \HOLBoundVar{k} \HOLSymConst{=} \HOLConst{LkeysSup} \HOLBoundVar{k} (\HOLNumLit{7} :\HOLTyOp{num})\hfill{[Lkeys_def]}
+\end{alltt}
+
+I can then prove the length of array $L$ is 2 which is quite straightforward by using the definitions but it is done to ensure the correctness.
+
+\begin{alltt}
+\HOLTokenTurnstile{} \HOLSymConst{\HOLTokenForall{}}(\HOLBoundVar{k} :\HOLTyOp{word64}). \HOLConst{LENGTH} (\HOLConst{Lkeys} \HOLBoundVar{k}) \HOLSymConst{=} (\HOLNumLit{2} :\HOLTyOp{num})\hfill{[LENGTH_Lkeys]}
+\end{alltt}
+
+I can then mix the two generated array $S$ and $L$ to produce the final key arrays. It is done in \verb|keys_def|,
+and also defined as induction. For the base case, array $S$ and $L$ are set by the input $r$ and $k$ without any
+modification. The variable $A$, $B$, $i$ and $j$ are inited with value 0. Then by doing the operation for $n$ times,
+It updates the $i$th element of array $S$ by $S[i]+\;A+\;B$ and then left shifts by 3. $A$ is also updated to the
+value of the $i$th element of array $S$. Within the same round of operation, the $j$th element of array $L$ by $L[j]+\;A+\;B$
+and then right shifts by $w2n(A+B)$. The $A$ here has been updated, amd $B$ is also updated
+with the same the value of the $j$th element of array $L$. $i$ and $j$ are also updated. The fully operations are shown
+below.
+
+\begin{alltt}
+\HOLTokenTurnstile{} (\HOLSymConst{\HOLTokenForall{}}(\HOLBoundVar{r} :\HOLTyOp{num}) (\HOLBoundVar{k} :\HOLTyOp{word64}).
+      \HOLConst{keys} (\HOLNumLit{0} :\HOLTyOp{num}) \HOLBoundVar{r} \HOLBoundVar{k} \HOLSymConst{=}
+      (\HOLKeyword{let}
+         (\HOLBoundVar{Lk} :\HOLTyOp{word32} \HOLTyOp{list}) = \HOLConst{Lkeys} \HOLBoundVar{k};
+         (\HOLBoundVar{Sk} :\HOLTyOp{word32} \HOLTyOp{list}) = \HOLConst{Skeys} \HOLBoundVar{r};
+         (\HOLBoundVar{A} :\HOLTyOp{word32}) = (0w :word32);
+         (\HOLBoundVar{B} :\HOLTyOp{word32}) = (0w :word32)
+       \HOLKeyword{in}
+         (\HOLBoundVar{A}\HOLSymConst{,}\HOLBoundVar{B}\HOLSymConst{,}\HOLBoundVar{Lk}\HOLSymConst{,}\HOLBoundVar{Sk}\HOLSymConst{,}(\HOLNumLit{0} :\HOLTyOp{num})\HOLSymConst{,}(\HOLNumLit{0} :\HOLTyOp{num})))) \HOLSymConst{\HOLTokenConj{}}
+   \HOLSymConst{\HOLTokenForall{}}(\HOLBoundVar{n} :\HOLTyOp{num}) (\HOLBoundVar{r} :\HOLTyOp{num}) (\HOLBoundVar{k} :\HOLTyOp{word64}).
+     \HOLConst{keys} (\HOLConst{SUC} \HOLBoundVar{n}) \HOLBoundVar{r} \HOLBoundVar{k} \HOLSymConst{=}
+     (\HOLKeyword{let}
+        ((\HOLBoundVar{A} :\HOLTyOp{word32})\HOLSymConst{,}(\HOLBoundVar{B} :\HOLTyOp{word32})\HOLSymConst{,}(\HOLBoundVar{Lk} :\HOLTyOp{word32} \HOLTyOp{list})\HOLSymConst{,}
+           (\HOLBoundVar{Sk} :\HOLTyOp{word32} \HOLTyOp{list})\HOLSymConst{,}(\HOLBoundVar{i} :\HOLTyOp{num})\HOLSymConst{,}(\HOLBoundVar{j} :\HOLTyOp{num})) = \HOLConst{keys} \HOLBoundVar{n} \HOLBoundVar{r} \HOLBoundVar{k};
+        (\HOLBoundVar{Anew} :\HOLTyOp{word32}) = (\HOLConst{EL} \HOLBoundVar{i} \HOLBoundVar{Sk} \HOLSymConst{\ensuremath{+}} \HOLBoundVar{A} \HOLSymConst{\ensuremath{+}} \HOLBoundVar{B}) \HOLSymConst{\HOLTokenRol{}} (\HOLNumLit{3} :\HOLTyOp{num});
+        (\HOLBoundVar{Bnew} :\HOLTyOp{word32}) = (\HOLConst{EL} \HOLBoundVar{i} \HOLBoundVar{Lk} \HOLSymConst{\ensuremath{+}} \HOLBoundVar{Anew} \HOLSymConst{\ensuremath{+}} \HOLBoundVar{B}) \HOLSymConst{\HOLTokenRol{}} \HOLConst{w2n} (\HOLBoundVar{Anew} \HOLSymConst{\ensuremath{+}} \HOLBoundVar{B});
+        (\HOLBoundVar{Sknew} :\HOLTyOp{word32} \HOLTyOp{list}) =
+          \HOLConst{GENLIST}
+            (\HOLTokenLambda{}(\HOLBoundVar{m} :\HOLTyOp{num}).
+                 \HOLKeyword{if} \HOLBoundVar{m} \HOLSymConst{=} \HOLBoundVar{i} \HOLKeyword{then} (\HOLConst{EL} \HOLBoundVar{i} \HOLBoundVar{Sk} \HOLSymConst{\ensuremath{+}} \HOLBoundVar{A} \HOLSymConst{\ensuremath{+}} \HOLBoundVar{B}) \HOLSymConst{\HOLTokenRol{}} (\HOLNumLit{3} :\HOLTyOp{num})
+                 \HOLKeyword{else} \HOLConst{EL} \HOLBoundVar{m} \HOLBoundVar{Sk})
+            (((\HOLNumLit{2} :\HOLTyOp{num}) \HOLSymConst{\HOLTokenProd{}} (\HOLBoundVar{r} \HOLSymConst{\ensuremath{+}} (\HOLNumLit{1} :\HOLTyOp{num}))) :\HOLTyOp{num});
+        (\HOLBoundVar{Lknew} :\HOLTyOp{word32} \HOLTyOp{list}) =
+          \HOLConst{GENLIST}
+            (\HOLTokenLambda{}(\HOLBoundVar{m} :\HOLTyOp{num}).
+                 \HOLKeyword{if} \HOLBoundVar{m} \HOLSymConst{=} \HOLBoundVar{j} \HOLKeyword{then}
+                   (\HOLConst{EL} \HOLBoundVar{j} \HOLBoundVar{Lk} \HOLSymConst{\ensuremath{+}} \HOLBoundVar{Anew} \HOLSymConst{\ensuremath{+}} \HOLBoundVar{B}) \HOLSymConst{\HOLTokenRol{}} \HOLConst{w2n} (\HOLBoundVar{Anew} \HOLSymConst{\ensuremath{+}} \HOLBoundVar{B})
+                 \HOLKeyword{else} \HOLConst{EL} \HOLBoundVar{m} \HOLBoundVar{Lk}) (\HOLNumLit{2} :\HOLTyOp{num});
+        (\HOLBoundVar{inew} :\HOLTyOp{num}) =
+          (\HOLBoundVar{i} \HOLSymConst{\ensuremath{+}} (\HOLNumLit{1} :\HOLTyOp{num})) \HOLConst{MOD} (((\HOLNumLit{2} :\HOLTyOp{num}) \HOLSymConst{\HOLTokenProd{}} (\HOLBoundVar{r} \HOLSymConst{\ensuremath{+}} (\HOLNumLit{1} :\HOLTyOp{num}))) :\HOLTyOp{num});
+        (\HOLBoundVar{jnew} :\HOLTyOp{num}) = (\HOLBoundVar{j} \HOLSymConst{\ensuremath{+}} (\HOLNumLit{1} :\HOLTyOp{num})) \HOLConst{MOD} (\HOLNumLit{2} :\HOLTyOp{num})
+      \HOLKeyword{in}
+        (\HOLBoundVar{Anew}\HOLSymConst{,}\HOLBoundVar{Bnew}\HOLSymConst{,}\HOLBoundVar{Lknew}\HOLSymConst{,}\HOLBoundVar{Sknew}\HOLSymConst{,}\HOLBoundVar{inew}\HOLSymConst{,}\HOLBoundVar{jnew}))\hfill{[keys_def]}
+\end{alltt}
+
+I also proved that the array $S$ and $L$ still keep the same length after the operations. It can also easily proved by induction,
+as it only change the elements of the lists.
+
+\begin{alltt}
+\HOLTokenTurnstile{} \HOLSymConst{\HOLTokenForall{}}(\HOLBoundVar{n} :\HOLTyOp{num}) (\HOLBoundVar{r} :\HOLTyOp{num}) (\HOLBoundVar{k} :\HOLTyOp{word64}).
+     ((\HOLFreeVar{A} :\HOLTyOp{word32})\HOLSymConst{,}(\HOLFreeVar{B} :\HOLTyOp{word32})\HOLSymConst{,}(\HOLFreeVar{Lk} :\HOLTyOp{word32} \HOLTyOp{list})\HOLSymConst{,}
+      (\HOLFreeVar{Sk} :\HOLTyOp{word32} \HOLTyOp{list})\HOLSymConst{,}(\HOLFreeVar{i} :\HOLTyOp{num})\HOLSymConst{,}(\HOLFreeVar{j} :\HOLTyOp{num})) \HOLSymConst{=}
+     \HOLConst{keys} \HOLBoundVar{n} \HOLBoundVar{r} \HOLBoundVar{k} \HOLSymConst{\HOLTokenImp{}}
+     \HOLConst{LENGTH} \HOLFreeVar{Sk} \HOLSymConst{=} (((\HOLNumLit{2} :\HOLTyOp{num}) \HOLSymConst{\HOLTokenProd{}} (\HOLBoundVar{r} \HOLSymConst{\ensuremath{+}} (\HOLNumLit{1} :\HOLTyOp{num}))) :\HOLTyOp{num})\hfill{[LENGTH_key_Skeys]}
+\end{alltt}
+
+\begin{alltt}
+\HOLTokenTurnstile{} \HOLSymConst{\HOLTokenForall{}}(\HOLBoundVar{n} :\HOLTyOp{num}) (\HOLBoundVar{r} :\HOLTyOp{num}) (\HOLBoundVar{k} :\HOLTyOp{word64}).
+     ((\HOLFreeVar{A} :\HOLTyOp{word32})\HOLSymConst{,}(\HOLFreeVar{B} :\HOLTyOp{word32})\HOLSymConst{,}(\HOLFreeVar{Lk} :\HOLTyOp{word32} \HOLTyOp{list})\HOLSymConst{,}
+      (\HOLFreeVar{Sk} :\HOLTyOp{word32} \HOLTyOp{list})\HOLSymConst{,}(\HOLFreeVar{i} :\HOLTyOp{num})\HOLSymConst{,}(\HOLFreeVar{j} :\HOLTyOp{num})) \HOLSymConst{=}
+     \HOLConst{keys} \HOLBoundVar{n} \HOLBoundVar{r} \HOLBoundVar{k} \HOLSymConst{\HOLTokenImp{}}
+     \HOLConst{LENGTH} \HOLFreeVar{Lk} \HOLSymConst{=} (\HOLNumLit{2} :\HOLTyOp{num})\hfill{[LENGTH_key_Lkeys]}
+\end{alltt}
+
+At last, the times of operations to generate the final jey arrays is determined by the maximum of $2*(r+1)$ and
+$c$ which is 2.
+
+\begin{alltt}
+\HOLTokenTurnstile{} \HOLSymConst{\HOLTokenForall{}}(\HOLBoundVar{r} :\HOLTyOp{num}) (\HOLBoundVar{k} :\HOLTyOp{word64}).
+     \HOLConst{rc5keys} \HOLBoundVar{r} \HOLBoundVar{k} \HOLSymConst{=}
+     (\HOLKeyword{let}
+        (\HOLBoundVar{n} :\HOLTyOp{num}) =
+          (((\HOLNumLit{3} :\HOLTyOp{num}) \HOLSymConst{\HOLTokenProd{}}
+            \HOLConst{MAX} (((\HOLNumLit{2} :\HOLTyOp{num}) \HOLSymConst{\HOLTokenProd{}} (\HOLBoundVar{r} \HOLSymConst{\ensuremath{+}} (\HOLNumLit{1} :\HOLTyOp{num}))) :\HOLTyOp{num}) (\HOLNumLit{2} :\HOLTyOp{num}))
+             :\HOLTyOp{num})
+      \HOLKeyword{in}
+        \HOLConst{keys} \HOLBoundVar{n} \HOLBoundVar{r} \HOLBoundVar{k})\hfill{[rc5keys_def]}
+\end{alltt}
+
+\subsection{Encryption and Decryption}
+The encryption is also built using induction. As RC5 also has encrypt in rounds, the encryption in the current round is
+based on the two text in last round. The encryption of RC5 contain initial encryption and encrypt in rounds for $r$ times.
+In \verb|RoundEn_def| function, it only contains the round encryption. For each $i$th round, one half $A$ is \verb|XOR| with
+the other half $B$ first, the result word is then left shifts by $w2n(B)$ and is added by the $(2*i)$th element of the
+operated array $S$. $A$ is then updated. $B$ then update by \verb|XOR| with the updated $A$, left shifts by $A$ and add with
+the $(2*i)+1$th element of $S$. The following rounds will keep the same operation with $A$ and $B$ updated in each round. Diagram
+can be seen in Figure~\ref{fig:form9}
+
+\begin{alltt}
+\HOLTokenTurnstile{} (\HOLSymConst{\HOLTokenForall{}}(\ensuremath{\HOLBoundVar{w}\sb{\mathrm{1}}} :\HOLTyOp{word32}) (\ensuremath{\HOLBoundVar{w}\sb{\mathrm{2}}} :\HOLTyOp{word32}) (\HOLBoundVar{ks} :\HOLTyOp{word32} \HOLTyOp{list}).
+      \HOLConst{RoundEn} (\HOLNumLit{0} :\HOLTyOp{num}) \ensuremath{\HOLBoundVar{w}\sb{\mathrm{1}}} \ensuremath{\HOLBoundVar{w}\sb{\mathrm{2}}} \HOLBoundVar{ks} \HOLSymConst{=}
+      (\HOLKeyword{let}
+         (\ensuremath{\HOLBoundVar{s}\sb{\mathrm{0}}} :\HOLTyOp{word32}) = \HOLConst{EL} (\HOLNumLit{0} :\HOLTyOp{num}) \HOLBoundVar{ks};
+         (\ensuremath{\HOLBoundVar{s}\sb{\mathrm{1}}} :\HOLTyOp{word32}) = \HOLConst{EL} (\HOLNumLit{1} :\HOLTyOp{num}) \HOLBoundVar{ks}
+       \HOLKeyword{in}
+         (\ensuremath{\HOLBoundVar{w}\sb{\mathrm{1}}}\HOLSymConst{,}\ensuremath{\HOLBoundVar{w}\sb{\mathrm{2}}}))) \HOLSymConst{\HOLTokenConj{}}
+   \HOLSymConst{\HOLTokenForall{}}(\HOLBoundVar{n} :\HOLTyOp{num}) (\ensuremath{\HOLBoundVar{w}\sb{\mathrm{1}}} :\HOLTyOp{word32}) (\ensuremath{\HOLBoundVar{w}\sb{\mathrm{2}}} :\HOLTyOp{word32}) (\HOLBoundVar{ks} :\HOLTyOp{word32} \HOLTyOp{list}).
+     \HOLConst{RoundEn} (\HOLConst{SUC} \HOLBoundVar{n}) \ensuremath{\HOLBoundVar{w}\sb{\mathrm{1}}} \ensuremath{\HOLBoundVar{w}\sb{\mathrm{2}}} \HOLBoundVar{ks} \HOLSymConst{=}
+     (\HOLKeyword{let}
+        ((\ensuremath{\HOLBoundVar{w}\sb{\mathrm{1}}\sp{\prime{}}} :\HOLTyOp{word32})\HOLSymConst{,}(\ensuremath{\HOLBoundVar{w}\sb{\mathrm{2}}\sp{\prime{}}} :\HOLTyOp{word32})) = \HOLConst{RoundEn} \HOLBoundVar{n} \ensuremath{\HOLBoundVar{w}\sb{\mathrm{1}}} \ensuremath{\HOLBoundVar{w}\sb{\mathrm{2}}} \HOLBoundVar{ks};
+        (\HOLBoundVar{ki} :\HOLTyOp{word32}) = \HOLConst{EL} (((\HOLNumLit{2} :\HOLTyOp{num}) \HOLSymConst{\HOLTokenProd{}} \HOLConst{SUC} \HOLBoundVar{n}) :\HOLTyOp{num}) \HOLBoundVar{ks};
+        (\ensuremath{\HOLBoundVar{ki}\sb{\mathrm{2}}} :\HOLTyOp{word32}) =
+          \HOLConst{EL} ((((\HOLNumLit{2} :\HOLTyOp{num}) \HOLSymConst{\HOLTokenProd{}} \HOLConst{SUC} \HOLBoundVar{n}) :\HOLTyOp{num}) \HOLSymConst{\ensuremath{+}} (\HOLNumLit{1} :\HOLTyOp{num})) \HOLBoundVar{ks};
+        (\HOLBoundVar{A} :\HOLTyOp{word32}) = (\ensuremath{\HOLBoundVar{w}\sb{\mathrm{1}}\sp{\prime{}}} \HOLSymConst{\HOLTokenEor{}} \ensuremath{\HOLBoundVar{w}\sb{\mathrm{2}}\sp{\prime{}}}) \HOLSymConst{\HOLTokenRol{}} \HOLConst{w2n} \ensuremath{\HOLBoundVar{w}\sb{\mathrm{2}}\sp{\prime{}}} \HOLSymConst{\ensuremath{+}} \HOLBoundVar{ki};
+        (\HOLBoundVar{B} :\HOLTyOp{word32}) = (\ensuremath{\HOLBoundVar{w}\sb{\mathrm{2}}\sp{\prime{}}} \HOLSymConst{\HOLTokenEor{}} \HOLBoundVar{A}) \HOLSymConst{\HOLTokenRol{}} \HOLConst{w2n} \HOLBoundVar{A} \HOLSymConst{\ensuremath{+}} \ensuremath{\HOLBoundVar{ki}\sb{\mathrm{2}}}
+      \HOLKeyword{in}
+        (\HOLBoundVar{A}\HOLSymConst{,}\HOLBoundVar{B}))\hfill{[RoundEn_def]}
+\end{alltt}
+
+\begin{figure}
+\centering
+\includegraphics[width=0.75\linewidth]{rc5}
+\caption{\label{fig:form9} RC5 Encryption}
+\end{figure}
+
+Then the full encryption can be represented using \verb|RoundEn_def|, by adding the initial two element in $S$ to the initial
+$A$ and $B$, and put the added results as the input to \verb|RoundEn_def|
+
+\begin{alltt}
+\HOLTokenTurnstile{} \HOLSymConst{\HOLTokenForall{}}(\HOLBoundVar{n} :\HOLTyOp{num}) (\HOLBoundVar{w} :\HOLTyOp{word64}) (\HOLBoundVar{k} :\HOLTyOp{word64}).
+     \HOLConst{RoundEn64} \HOLBoundVar{n} \HOLBoundVar{w} \HOLBoundVar{k} \HOLSymConst{=}
+     (\HOLKeyword{let}
+        ((\ensuremath{\HOLBoundVar{w}\sb{\mathrm{1}}} :\HOLTyOp{word32})\HOLSymConst{,}(\ensuremath{\HOLBoundVar{w}\sb{\mathrm{2}}} :\HOLTyOp{word32})) = \HOLConst{Split64} \HOLBoundVar{w};
+        ((\HOLBoundVar{A} :\HOLTyOp{word32})\HOLSymConst{,}(\HOLBoundVar{B} :\HOLTyOp{word32})\HOLSymConst{,}(\HOLBoundVar{Lk} :\HOLTyOp{word32} \HOLTyOp{list})\HOLSymConst{,}
+           (\HOLBoundVar{Sk} :\HOLTyOp{word32} \HOLTyOp{list})\HOLSymConst{,}(\HOLBoundVar{i} :\HOLTyOp{num})\HOLSymConst{,}(\HOLBoundVar{j} :\HOLTyOp{num})) = \HOLConst{rc5keys} \HOLBoundVar{n} \HOLBoundVar{k};
+        (\ensuremath{\HOLBoundVar{k}\sb{\mathrm{0}}} :\HOLTyOp{word32}) = \HOLConst{EL} (\HOLNumLit{0} :\HOLTyOp{num}) \HOLBoundVar{Sk};
+        (\ensuremath{\HOLBoundVar{k}\sb{\mathrm{1}}} :\HOLTyOp{word32}) = \HOLConst{EL} (\HOLNumLit{1} :\HOLTyOp{num}) \HOLBoundVar{Sk}
+      \HOLKeyword{in}
+        \HOLConst{Join64'} (\HOLConst{RoundEn} \HOLBoundVar{n} (\ensuremath{\HOLBoundVar{w}\sb{\mathrm{1}}} \HOLSymConst{\ensuremath{+}} \ensuremath{\HOLBoundVar{k}\sb{\mathrm{0}}}) (\ensuremath{\HOLBoundVar{w}\sb{\mathrm{2}}} \HOLSymConst{\ensuremath{+}} \ensuremath{\HOLBoundVar{k}\sb{\mathrm{1}}}) \HOLBoundVar{Sk}))\hfill{[RoundEn64_def]}
+\end{alltt}
+
+This function return the pair of $A$ and $B$, but it can also be converted by encrypt only a single word each time and return
+only one word.  By looking at the operation process of $A$ and $B$, the operations are exactly the same. By treating $B$
+as the next word of $A$ in the same round, and $B$ in the last round is the last word of
+$A$. The same situation for $B$, $A$ in the next round is the next word of $B$. I can then treat each round as two rounds,
+and each word can be represented by the previous two words. For example, $A$ in the current round is represented by $A$ amd
+$B$ in the last round, $B$ in the current round is  represented by $B$ in the last round and $A$ in the current round. My
+statement is true for both $A$ and $B$. The function is defined in \verb|half_messageEn_def|
+
+\begin{alltt}
+\HOLTokenTurnstile{} \HOLSymConst{\HOLTokenForall{}}(\ensuremath{\HOLBoundVar{w}\sb{\mathrm{2}}} :\HOLTyOp{word32}) (\ensuremath{\HOLBoundVar{w}\sb{\mathrm{1}}} :\HOLTyOp{word32}) (\HOLBoundVar{n} :\HOLTyOp{num}) (\HOLBoundVar{ks} :\HOLTyOp{word32} \HOLTyOp{list}).
+     \HOLConst{half_messageEn} \ensuremath{\HOLBoundVar{w}\sb{\mathrm{1}}} \ensuremath{\HOLBoundVar{w}\sb{\mathrm{2}}} \HOLBoundVar{ks} \HOLBoundVar{n} \HOLSymConst{=}
+     (\HOLKeyword{let}
+        (\HOLBoundVar{ki} :\HOLTyOp{word32}) = \HOLConst{EL} \HOLBoundVar{n} \HOLBoundVar{ks};
+        (\ensuremath{\HOLBoundVar{ki}\sb{\mathrm{2}}} :\HOLTyOp{word32}) = \HOLConst{EL} (\HOLBoundVar{n} \HOLSymConst{\ensuremath{-}} (\HOLNumLit{1} :\HOLTyOp{num})) \HOLBoundVar{ks}
+      \HOLKeyword{in}
+        \HOLKeyword{if} \HOLBoundVar{n} \HOLSymConst{=} (\HOLNumLit{0} :\HOLTyOp{num}) \HOLKeyword{then} \ensuremath{\HOLBoundVar{w}\sb{\mathrm{1}}}
+        \HOLKeyword{else} \HOLKeyword{if} \HOLBoundVar{n} \HOLSymConst{=} (\HOLNumLit{1} :\HOLTyOp{num}) \HOLKeyword{then} \ensuremath{\HOLBoundVar{w}\sb{\mathrm{2}}}
+        \HOLKeyword{else}
+          (\HOLConst{half_messageEn} \ensuremath{\HOLBoundVar{w}\sb{\mathrm{1}}} \ensuremath{\HOLBoundVar{w}\sb{\mathrm{2}}} \HOLBoundVar{ks} (\HOLBoundVar{n} \HOLSymConst{\ensuremath{-}} (\HOLNumLit{2} :\HOLTyOp{num})) \HOLSymConst{\HOLTokenEor{}}
+           \HOLConst{half_messageEn} \ensuremath{\HOLBoundVar{w}\sb{\mathrm{1}}} \ensuremath{\HOLBoundVar{w}\sb{\mathrm{2}}} \HOLBoundVar{ks} (\HOLBoundVar{n} \HOLSymConst{\ensuremath{-}} (\HOLNumLit{1} :\HOLTyOp{num}))) \HOLSymConst{\HOLTokenRol{}}
+          \HOLConst{w2n} (\HOLConst{half_messageEn} \ensuremath{\HOLBoundVar{w}\sb{\mathrm{1}}} \ensuremath{\HOLBoundVar{w}\sb{\mathrm{2}}} \HOLBoundVar{ks} (\HOLBoundVar{n} \HOLSymConst{\ensuremath{-}} (\HOLNumLit{1} :\HOLTyOp{num}))) \HOLSymConst{\ensuremath{+}} \HOLBoundVar{ki})\hfill{[half_messageEn_def]}
+\end{alltt}
+
+To prove the correctness of the definition, I can implement a conversion between the definitions \verb|RoundEn_alt_half_messageEn|.
+The proof is done in the similar way of proving induction. The base case is done by rewriting with definitions. The induction step is
+done by representing the step case using the assumption of given case. It can always be done as both functions here are defined by
+induction. By finding the correct conversions that can link to the given equation, the proof can be completed.
+The \verb|half_messageEn_def| can also be converted to \verb|RoundEn64_def|, by using the same adjusted inputs to \verb|half_messageEn_def|
+as \verb|RoundEn64_def|. The conversion can be done as \verb|RoundEn64_def| is built upon \verb|RoundEn64_def|.
+
+\begin{alltt}
+\HOLTokenTurnstile{} \HOLConst{RoundEn} \HOLFreeVar{n} \ensuremath{\HOLFreeVar{w}\sb{\mathrm{1}}} \ensuremath{\HOLFreeVar{w}\sb{\mathrm{2}}} \HOLFreeVar{ks} \HOLSymConst{=}
+   (\HOLConst{half_messageEn} \ensuremath{\HOLFreeVar{w}\sb{\mathrm{1}}} \ensuremath{\HOLFreeVar{w}\sb{\mathrm{2}}} \HOLFreeVar{ks} (\HOLNumLit{2} \HOLSymConst{\HOLTokenProd{}} \HOLFreeVar{n})\HOLSymConst{,}
+    \HOLConst{half_messageEn} \ensuremath{\HOLFreeVar{w}\sb{\mathrm{1}}} \ensuremath{\HOLFreeVar{w}\sb{\mathrm{2}}} \HOLFreeVar{ks} (\HOLNumLit{2} \HOLSymConst{\HOLTokenProd{}} \HOLFreeVar{n} \HOLSymConst{\ensuremath{+}} \HOLNumLit{1}))\hfill{[RoundEn_alt_half_messageEn]}
+\end{alltt}
+
+\begin{alltt}
+\HOLTokenTurnstile{} (\ensuremath{\HOLFreeVar{w}\sb{\mathrm{1}}}\HOLSymConst{,}\ensuremath{\HOLFreeVar{w}\sb{\mathrm{2}}}) \HOLSymConst{=} \HOLConst{Split64} \HOLFreeVar{w} \HOLSymConst{\HOLTokenConj{}} (\HOLFreeVar{A}\HOLSymConst{,}\HOLFreeVar{B}\HOLSymConst{,}\HOLFreeVar{Lk}\HOLSymConst{,}\HOLFreeVar{Sk}\HOLSymConst{,}\HOLFreeVar{i}\HOLSymConst{,}\HOLFreeVar{j}) \HOLSymConst{=} \HOLConst{rc5keys} \HOLFreeVar{r} \HOLFreeVar{k} \HOLSymConst{\HOLTokenConj{}}
+   \ensuremath{\HOLFreeVar{k}\sb{\mathrm{0}}} \HOLSymConst{=} \HOLConst{EL} \HOLNumLit{0} \HOLFreeVar{Sk} \HOLSymConst{\HOLTokenConj{}} \ensuremath{\HOLFreeVar{k}\sb{\mathrm{1}}} \HOLSymConst{=} \HOLConst{EL} \HOLNumLit{1} \HOLFreeVar{Sk} \HOLSymConst{\HOLTokenImp{}}
+   \HOLConst{RoundEn64} \HOLFreeVar{r} \HOLFreeVar{w} \HOLFreeVar{k} \HOLSymConst{=}
+   \HOLConst{Join64'}
+     (\HOLConst{half_messageEn} (\ensuremath{\HOLFreeVar{w}\sb{\mathrm{1}}} \HOLSymConst{\ensuremath{+}} \ensuremath{\HOLFreeVar{k}\sb{\mathrm{0}}}) (\ensuremath{\HOLFreeVar{w}\sb{\mathrm{2}}} \HOLSymConst{\ensuremath{+}} \ensuremath{\HOLFreeVar{k}\sb{\mathrm{1}}}) \HOLFreeVar{Sk} (\HOLNumLit{2} \HOLSymConst{\HOLTokenProd{}} \HOLFreeVar{r})\HOLSymConst{,}
+      \HOLConst{half_messageEn} (\ensuremath{\HOLFreeVar{w}\sb{\mathrm{1}}} \HOLSymConst{\ensuremath{+}} \ensuremath{\HOLFreeVar{k}\sb{\mathrm{0}}}) (\ensuremath{\HOLFreeVar{w}\sb{\mathrm{2}}} \HOLSymConst{\ensuremath{+}} \ensuremath{\HOLFreeVar{k}\sb{\mathrm{1}}}) \HOLFreeVar{Sk} (\HOLNumLit{2} \HOLSymConst{\HOLTokenProd{}} \HOLFreeVar{r} \HOLSymConst{\ensuremath{+}} \HOLNumLit{1}))\hfill{[RoundEn64_alt_half_messageEn]}
+\end{alltt}
+
+The decryption process is almost the same. The difference is it do encryption on $B$ first and then $A$. It takes away
+the $(2*i)+1$th element in array $S$ first, right shifts by $w2n(A)$ and also \verb|XOR| by $A$ for $B$, $B$ is updated first in
+a round. And $A$ operates with exactly the same as $B$, but use the updated $B$ to do the operations.
+
+\begin{alltt}
+\HOLTokenTurnstile{} (\HOLSymConst{\HOLTokenForall{}}(\ensuremath{\HOLBoundVar{w}\sb{\mathrm{2}}} :\HOLTyOp{word32}) (\ensuremath{\HOLBoundVar{w}\sb{\mathrm{1}}} :\HOLTyOp{word32}) (\HOLBoundVar{ks} :\HOLTyOp{word32} \HOLTyOp{list}).
+      \HOLConst{RoundDe} (\HOLNumLit{0} :\HOLTyOp{num}) \HOLBoundVar{ks} (\ensuremath{\HOLBoundVar{w}\sb{\mathrm{1}}}\HOLSymConst{,}\ensuremath{\HOLBoundVar{w}\sb{\mathrm{2}}}) \HOLSymConst{=}
+      (\HOLKeyword{let}
+         (\ensuremath{\HOLBoundVar{s}\sb{\mathrm{1}}} :\HOLTyOp{word32}) = \HOLConst{EL} (\HOLNumLit{1} :\HOLTyOp{num}) \HOLBoundVar{ks};
+         (\ensuremath{\HOLBoundVar{s}\sb{\mathrm{0}}} :\HOLTyOp{word32}) = \HOLConst{EL} (\HOLNumLit{0} :\HOLTyOp{num}) \HOLBoundVar{ks}
+       \HOLKeyword{in}
+         (\ensuremath{\HOLBoundVar{w}\sb{\mathrm{1}}}\HOLSymConst{,}\ensuremath{\HOLBoundVar{w}\sb{\mathrm{2}}}))) \HOLSymConst{\HOLTokenConj{}}
+   \HOLSymConst{\HOLTokenForall{}}(\ensuremath{\HOLBoundVar{w}\sb{\mathrm{2}}} :\HOLTyOp{word32}) (\ensuremath{\HOLBoundVar{w}\sb{\mathrm{1}}} :\HOLTyOp{word32}) (\HOLBoundVar{n} :\HOLTyOp{num}) (\HOLBoundVar{ks} :\HOLTyOp{word32} \HOLTyOp{list}).
+     \HOLConst{RoundDe} (\HOLConst{SUC} \HOLBoundVar{n}) \HOLBoundVar{ks} (\ensuremath{\HOLBoundVar{w}\sb{\mathrm{1}}}\HOLSymConst{,}\ensuremath{\HOLBoundVar{w}\sb{\mathrm{2}}}) \HOLSymConst{=}
+     (\HOLKeyword{let}
+        ((\ensuremath{\HOLBoundVar{w}\sb{\mathrm{1}}\sp{\prime{}}} :\HOLTyOp{word32})\HOLSymConst{,}(\ensuremath{\HOLBoundVar{w}\sb{\mathrm{2}}\sp{\prime{}}} :\HOLTyOp{word32})) = \HOLConst{RoundDe} \HOLBoundVar{n} \HOLBoundVar{ks} (\ensuremath{\HOLBoundVar{w}\sb{\mathrm{1}}}\HOLSymConst{,}\ensuremath{\HOLBoundVar{w}\sb{\mathrm{2}}});
+        (\HOLBoundVar{ki} :\HOLTyOp{word32}) =
+          \HOLConst{EL} ((((\HOLNumLit{2} :\HOLTyOp{num}) \HOLSymConst{\HOLTokenProd{}} \HOLConst{SUC} \HOLBoundVar{n}) :\HOLTyOp{num}) \HOLSymConst{\ensuremath{-}} (\HOLNumLit{2} :\HOLTyOp{num}))
+            (\HOLConst{REVERSE} \HOLBoundVar{ks});
+        (\ensuremath{\HOLBoundVar{ki}\sb{\mathrm{2}}} :\HOLTyOp{word32}) =
+          \HOLConst{EL} ((((\HOLNumLit{2} :\HOLTyOp{num}) \HOLSymConst{\HOLTokenProd{}} \HOLConst{SUC} \HOLBoundVar{n}) :\HOLTyOp{num}) \HOLSymConst{\ensuremath{-}} (\HOLNumLit{1} :\HOLTyOp{num}))
+            (\HOLConst{REVERSE} \HOLBoundVar{ks});
+        (\HOLBoundVar{B} :\HOLTyOp{word32}) = (\ensuremath{\HOLBoundVar{w}\sb{\mathrm{2}}\sp{\prime{}}} \HOLSymConst{\ensuremath{-}} \HOLBoundVar{ki}) \HOLSymConst{\HOLTokenRor{}} \HOLConst{w2n} \ensuremath{\HOLBoundVar{w}\sb{\mathrm{1}}\sp{\prime{}}} \HOLSymConst{\HOLTokenEor{}} \ensuremath{\HOLBoundVar{w}\sb{\mathrm{1}}\sp{\prime{}}};
+        (\HOLBoundVar{A} :\HOLTyOp{word32}) = (\ensuremath{\HOLBoundVar{w}\sb{\mathrm{1}}\sp{\prime{}}} \HOLSymConst{\ensuremath{-}} \ensuremath{\HOLBoundVar{ki}\sb{\mathrm{2}}}) \HOLSymConst{\HOLTokenRor{}} \HOLConst{w2n} \HOLBoundVar{B} \HOLSymConst{\HOLTokenEor{}} \HOLBoundVar{B}
+      \HOLKeyword{in}
+        (\HOLBoundVar{A}\HOLSymConst{,}\HOLBoundVar{B}))\hfill{[RoundDe_def]}
+\end{alltt}
+
+The full decryption process is round operations first, and subtracts the first two elements of $S$ to $A$ and $B$ at last.
+\verb|RoundDe64_def| can then be represented using \verb|RoundDe_def| by subtracting the outputs of it by the elements.
+
+\begin{alltt}
+\HOLTokenTurnstile{} \HOLSymConst{\HOLTokenForall{}}(\HOLBoundVar{n} :\HOLTyOp{num}) (\HOLBoundVar{w} :\HOLTyOp{word64}) (\HOLBoundVar{k} :\HOLTyOp{word64}).
+     \HOLConst{RoundDe64} \HOLBoundVar{n} \HOLBoundVar{w} \HOLBoundVar{k} \HOLSymConst{=}
+     (\HOLKeyword{let}
+        ((\ensuremath{\HOLBoundVar{w}\sb{\mathrm{1}}} :\HOLTyOp{word32})\HOLSymConst{,}(\ensuremath{\HOLBoundVar{w}\sb{\mathrm{2}}} :\HOLTyOp{word32})) = \HOLConst{Split64} \HOLBoundVar{w};
+        ((\HOLBoundVar{A} :\HOLTyOp{word32})\HOLSymConst{,}(\HOLBoundVar{B} :\HOLTyOp{word32})\HOLSymConst{,}(\HOLBoundVar{Lk} :\HOLTyOp{word32} \HOLTyOp{list})\HOLSymConst{,}
+           (\HOLBoundVar{Sk} :\HOLTyOp{word32} \HOLTyOp{list})\HOLSymConst{,}(\HOLBoundVar{i} :\HOLTyOp{num})\HOLSymConst{,}(\HOLBoundVar{j} :\HOLTyOp{num})) = \HOLConst{rc5keys} \HOLBoundVar{n} \HOLBoundVar{k};
+        ((\ensuremath{\HOLBoundVar{w}\sb{\mathrm{1}}\sp{\prime{}}} :\HOLTyOp{word32})\HOLSymConst{,}(\ensuremath{\HOLBoundVar{w}\sb{\mathrm{2}}\sp{\prime{}}} :\HOLTyOp{word32})) = \HOLConst{RoundDe} \HOLBoundVar{n} \HOLBoundVar{Sk} (\ensuremath{\HOLBoundVar{w}\sb{\mathrm{1}}}\HOLSymConst{,}\ensuremath{\HOLBoundVar{w}\sb{\mathrm{2}}});
+        (\ensuremath{\HOLBoundVar{k}\sb{\mathrm{0}}} :\HOLTyOp{word32}) = \HOLConst{EL} (\HOLNumLit{0} :\HOLTyOp{num}) \HOLBoundVar{Sk};
+        (\ensuremath{\HOLBoundVar{k}\sb{\mathrm{1}}} :\HOLTyOp{word32}) = \HOLConst{EL} (\HOLNumLit{1} :\HOLTyOp{num}) \HOLBoundVar{Sk}
+      \HOLKeyword{in}
+        \HOLConst{Join64'} (\ensuremath{\HOLBoundVar{w}\sb{\mathrm{1}}\sp{\prime{}}} \HOLSymConst{\ensuremath{-}} \ensuremath{\HOLBoundVar{k}\sb{\mathrm{0}}}\HOLSymConst{,}\ensuremath{\HOLBoundVar{w}\sb{\mathrm{2}}\sp{\prime{}}} \HOLSymConst{\ensuremath{-}} \ensuremath{\HOLBoundVar{k}\sb{\mathrm{1}}}))\hfill{[RoundDe64_def]}
+\end{alltt}
+
+By the same reason as encryption, there is also a \verb|half_messageDe_def| that returns only one words and can be converted
+among the other two sets. The use of the ``half message'' function is to avoid type \verb|block|, and future verifications
+can convert a block to two separate words which may facilitate verifications.
+
+\begin{alltt}
+\HOLTokenTurnstile{} \HOLSymConst{\HOLTokenForall{}}(\ensuremath{\HOLBoundVar{w}\sb{\mathrm{2}}} :\HOLTyOp{word32}) (\ensuremath{\HOLBoundVar{w}\sb{\mathrm{1}}} :\HOLTyOp{word32}) (\HOLBoundVar{n} :\HOLTyOp{num}) (\HOLBoundVar{ks} :\HOLTyOp{word32} \HOLTyOp{list}).
+     \HOLConst{half_messageDe} \ensuremath{\HOLBoundVar{w}\sb{\mathrm{1}}} \ensuremath{\HOLBoundVar{w}\sb{\mathrm{2}}} \HOLBoundVar{ks} \HOLBoundVar{n} \HOLSymConst{=}
+     (\HOLKeyword{let}
+        (\HOLBoundVar{ki} :\HOLTyOp{word32}) = \HOLConst{EL} (\HOLBoundVar{n} \HOLSymConst{\ensuremath{-}} (\HOLNumLit{2} :\HOLTyOp{num})) (\HOLConst{REVERSE} \HOLBoundVar{ks});
+        (\ensuremath{\HOLBoundVar{ki}\sb{\mathrm{2}}} :\HOLTyOp{word32}) = \HOLConst{EL} (\HOLBoundVar{n} \HOLSymConst{\ensuremath{-}} (\HOLNumLit{2} :\HOLTyOp{num})) (\HOLConst{REVERSE} \HOLBoundVar{ks})
+      \HOLKeyword{in}
+        \HOLKeyword{if} \HOLBoundVar{n} \HOLSymConst{=} (\HOLNumLit{0} :\HOLTyOp{num}) \HOLKeyword{then} \ensuremath{\HOLBoundVar{w}\sb{\mathrm{2}}}
+        \HOLKeyword{else} \HOLKeyword{if} \HOLBoundVar{n} \HOLSymConst{=} (\HOLNumLit{1} :\HOLTyOp{num}) \HOLKeyword{then} \ensuremath{\HOLBoundVar{w}\sb{\mathrm{1}}}
+        \HOLKeyword{else}
+          (\HOLConst{half_messageDe} \ensuremath{\HOLBoundVar{w}\sb{\mathrm{1}}} \ensuremath{\HOLBoundVar{w}\sb{\mathrm{2}}} \HOLBoundVar{ks} (\HOLBoundVar{n} \HOLSymConst{\ensuremath{-}} (\HOLNumLit{2} :\HOLTyOp{num})) \HOLSymConst{\ensuremath{-}} \HOLBoundVar{ki}) \HOLSymConst{\HOLTokenRor{}}
+          \HOLConst{w2n} (\HOLConst{half_messageDe} \ensuremath{\HOLBoundVar{w}\sb{\mathrm{1}}} \ensuremath{\HOLBoundVar{w}\sb{\mathrm{2}}} \HOLBoundVar{ks} (\HOLBoundVar{n} \HOLSymConst{\ensuremath{-}} (\HOLNumLit{1} :\HOLTyOp{num}))) \HOLSymConst{\HOLTokenEor{}}
+          \HOLConst{half_messageDe} \ensuremath{\HOLBoundVar{w}\sb{\mathrm{1}}} \ensuremath{\HOLBoundVar{w}\sb{\mathrm{2}}} \HOLBoundVar{ks} (\HOLBoundVar{n} \HOLSymConst{\ensuremath{-}} (\HOLNumLit{1} :\HOLTyOp{num})))\hfill{[half_messageDe_def]}
+\end{alltt}
+
+The proofs of conversions are also done by proof by induction and their definitions defined by induction.
+
+\begin{alltt}
+\HOLTokenTurnstile{} \HOLConst{RoundDe} \HOLFreeVar{n} \HOLFreeVar{ks} (\ensuremath{\HOLFreeVar{w}\sb{\mathrm{1}}}\HOLSymConst{,}\ensuremath{\HOLFreeVar{w}\sb{\mathrm{2}}}) \HOLSymConst{=}
+   (\HOLConst{half_messageDe} \ensuremath{\HOLFreeVar{w}\sb{\mathrm{1}}} \ensuremath{\HOLFreeVar{w}\sb{\mathrm{2}}} \HOLFreeVar{ks} (\HOLNumLit{2} \HOLSymConst{\HOLTokenProd{}} \HOLFreeVar{n} \HOLSymConst{\ensuremath{+}} \HOLNumLit{1})\HOLSymConst{,}
+    \HOLConst{half_messageDe} \ensuremath{\HOLFreeVar{w}\sb{\mathrm{1}}} \ensuremath{\HOLFreeVar{w}\sb{\mathrm{2}}} \HOLFreeVar{ks} (\HOLNumLit{2} \HOLSymConst{\HOLTokenProd{}} \HOLFreeVar{n}))\hfill{[RoundDe_alt_half_messageDe]}
+\end{alltt}
+
+\begin{alltt}
+\HOLTokenTurnstile{} (\ensuremath{\HOLFreeVar{w}\sb{\mathrm{1}}}\HOLSymConst{,}\ensuremath{\HOLFreeVar{w}\sb{\mathrm{2}}}) \HOLSymConst{=} \HOLConst{Split64} \HOLFreeVar{w} \HOLSymConst{\HOLTokenConj{}} (\HOLFreeVar{A}\HOLSymConst{,}\HOLFreeVar{B}\HOLSymConst{,}\HOLFreeVar{Lk}\HOLSymConst{,}\HOLFreeVar{Sk}\HOLSymConst{,}\HOLFreeVar{i}\HOLSymConst{,}\HOLFreeVar{j}) \HOLSymConst{=} \HOLConst{rc5keys} \HOLFreeVar{r} \HOLFreeVar{k} \HOLSymConst{\HOLTokenConj{}}
+   \ensuremath{\HOLFreeVar{k}\sb{\mathrm{0}}} \HOLSymConst{=} \HOLConst{EL} \HOLNumLit{0} \HOLFreeVar{Sk} \HOLSymConst{\HOLTokenConj{}} \ensuremath{\HOLFreeVar{k}\sb{\mathrm{1}}} \HOLSymConst{=} \HOLConst{EL} \HOLNumLit{1} \HOLFreeVar{Sk} \HOLSymConst{\HOLTokenImp{}}
+   \HOLConst{RoundDe64} \HOLFreeVar{r} \HOLFreeVar{w} \HOLFreeVar{k} \HOLSymConst{=}
+   \HOLConst{Join64'}
+     (\HOLConst{half_messageDe} \ensuremath{\HOLFreeVar{w}\sb{\mathrm{1}}} \ensuremath{\HOLFreeVar{w}\sb{\mathrm{2}}} \HOLFreeVar{Sk} (\HOLNumLit{2} \HOLSymConst{\HOLTokenProd{}} \HOLFreeVar{r} \HOLSymConst{\ensuremath{+}} \HOLNumLit{1}) \HOLSymConst{\ensuremath{-}} \ensuremath{\HOLFreeVar{k}\sb{\mathrm{0}}}\HOLSymConst{,}
+      \HOLConst{half_messageDe} \ensuremath{\HOLFreeVar{w}\sb{\mathrm{1}}} \ensuremath{\HOLFreeVar{w}\sb{\mathrm{2}}} \HOLFreeVar{Sk} (\HOLNumLit{2} \HOLSymConst{\HOLTokenProd{}} \HOLFreeVar{r}) \HOLSymConst{\ensuremath{-}} \ensuremath{\HOLFreeVar{k}\sb{\mathrm{1}}})\hfill{[RoundDe64_alt_half_messageDe]}
+\end{alltt}
+
+\subsection{RC5 properties}
+As the last part of RC5, I want to prove the property that all encryption algorithms have. The property is that
+decrypting the encrypted text will change the text back to the plaintext. I first proved that for message that
+encrypt by a single round, it can be converted back by a single round of decryption. \verb|RoundEnSg_def| and
+\verb|RoundDeSg_def| defines the single round operations. The prove is quite obvious as the left shifts and right shifts
+can be cancelled out, the \verb|XOR| of the same word can also be cancelled out. When doing the proof, after the expanding using
+definitions, the goal that looks complex can be directly proved by \verb|rw[]|
+
+\begin{alltt}
+\HOLTokenTurnstile{} \HOLSymConst{\HOLTokenForall{}}(\HOLBoundVar{b} :\ensuremath{\alpha} \HOLTyOp{word} \HOLTokenProd{} \ensuremath{\alpha} \HOLTyOp{word}) (\HOLBoundVar{ki} :\ensuremath{\alpha} \HOLTyOp{word}) (\ensuremath{\HOLBoundVar{ki}\sb{\mathrm{2}}} :\ensuremath{\alpha} \HOLTyOp{word}).
+     \HOLConst{RoundEnSg} \HOLBoundVar{b} \HOLBoundVar{ki} \ensuremath{\HOLBoundVar{ki}\sb{\mathrm{2}}} \HOLSymConst{=}
+     (\HOLKeyword{let}
+        ((\ensuremath{\HOLBoundVar{w}\sb{\mathrm{1}}} :\ensuremath{\alpha} \HOLTyOp{word})\HOLSymConst{,}(\ensuremath{\HOLBoundVar{w}\sb{\mathrm{2}}} :\ensuremath{\alpha} \HOLTyOp{word})) = \HOLBoundVar{b};
+        (\HOLBoundVar{A} :\ensuremath{\alpha} \HOLTyOp{word}) = (\ensuremath{\HOLBoundVar{w}\sb{\mathrm{1}}} \HOLSymConst{\HOLTokenEor{}} \ensuremath{\HOLBoundVar{w}\sb{\mathrm{2}}}) \HOLSymConst{\HOLTokenRol{}} \HOLConst{w2n} \ensuremath{\HOLBoundVar{w}\sb{\mathrm{2}}} \HOLSymConst{\ensuremath{+}} \HOLBoundVar{ki};
+        (\HOLBoundVar{B} :\ensuremath{\alpha} \HOLTyOp{word}) = (\ensuremath{\HOLBoundVar{w}\sb{\mathrm{2}}} \HOLSymConst{\HOLTokenEor{}} \HOLBoundVar{A}) \HOLSymConst{\HOLTokenRol{}} \HOLConst{w2n} \HOLBoundVar{A} \HOLSymConst{\ensuremath{+}} \ensuremath{\HOLBoundVar{ki}\sb{\mathrm{2}}}
+      \HOLKeyword{in}
+        (\HOLBoundVar{A}\HOLSymConst{,}\HOLBoundVar{B}))\hfill{[RoundEnSg_def]}
+\end{alltt}
+
+\begin{alltt}
+\HOLTokenTurnstile{} \HOLSymConst{\HOLTokenForall{}}(\HOLBoundVar{b} :\ensuremath{\alpha} \HOLTyOp{word} \HOLTokenProd{} \ensuremath{\alpha} \HOLTyOp{word}) (\HOLBoundVar{ki} :\ensuremath{\alpha} \HOLTyOp{word}) (\ensuremath{\HOLBoundVar{ki}\sb{\mathrm{2}}} :\ensuremath{\alpha} \HOLTyOp{word}).
+     \HOLConst{RoundDeSg} \HOLBoundVar{b} \HOLBoundVar{ki} \ensuremath{\HOLBoundVar{ki}\sb{\mathrm{2}}} \HOLSymConst{=}
+     (\HOLKeyword{let}
+        ((\ensuremath{\HOLBoundVar{w}\sb{\mathrm{1}}} :\ensuremath{\alpha} \HOLTyOp{word})\HOLSymConst{,}(\ensuremath{\HOLBoundVar{w}\sb{\mathrm{2}}} :\ensuremath{\alpha} \HOLTyOp{word})) = \HOLBoundVar{b};
+        (\HOLBoundVar{B} :\ensuremath{\alpha} \HOLTyOp{word}) = (\ensuremath{\HOLBoundVar{w}\sb{\mathrm{2}}} \HOLSymConst{\ensuremath{-}} \ensuremath{\HOLBoundVar{ki}\sb{\mathrm{2}}}) \HOLSymConst{\HOLTokenRor{}} \HOLConst{w2n} \ensuremath{\HOLBoundVar{w}\sb{\mathrm{1}}} \HOLSymConst{\HOLTokenEor{}} \ensuremath{\HOLBoundVar{w}\sb{\mathrm{1}}};
+        (\HOLBoundVar{A} :\ensuremath{\alpha} \HOLTyOp{word}) = (\ensuremath{\HOLBoundVar{w}\sb{\mathrm{1}}} \HOLSymConst{\ensuremath{-}} \HOLBoundVar{ki}) \HOLSymConst{\HOLTokenRor{}} \HOLConst{w2n} \HOLBoundVar{B} \HOLSymConst{\HOLTokenEor{}} \HOLBoundVar{B}
+      \HOLKeyword{in}
+        (\HOLBoundVar{A}\HOLSymConst{,}\HOLBoundVar{B}))\hfill{[RoundDeSg_def]}
+\end{alltt}
+
+\begin{alltt}
+\HOLTokenTurnstile{} \HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{b} \HOLBoundVar{ki} \ensuremath{\HOLBoundVar{ki}\sb{\mathrm{2}}}. \HOLConst{RoundDeSg} (\HOLConst{RoundEnSg} \HOLBoundVar{b} \HOLBoundVar{ki} \ensuremath{\HOLBoundVar{ki}\sb{\mathrm{2}}}) \HOLBoundVar{ki} \ensuremath{\HOLBoundVar{ki}\sb{\mathrm{2}}} \HOLSymConst{=} \HOLBoundVar{b}\hfill{[RoundDe_EnSg]}
+\end{alltt}
+
+Then for convenience and the lack of time, I complete the proof of the property for the whole round functions by assuming the
+keys between rounds do not change. As a result, $A$ and $B$ are keeping adding and subtracting by the same key $ki$ and $ki2$
+each round. The proof of it proves the property partially. I first define the encryption and decryption for such situation.
+
+\begin{alltt}
+\HOLTokenTurnstile{} (\HOLSymConst{\HOLTokenForall{}}(\HOLBoundVar{ki} :\ensuremath{\alpha} \HOLTyOp{word}) (\ensuremath{\HOLBoundVar{ki}\sb{\mathrm{2}}} :\ensuremath{\alpha} \HOLTyOp{word}) (\HOLBoundVar{b} :\ensuremath{\alpha} \HOLTyOp{word} \HOLTokenProd{} \ensuremath{\alpha} \HOLTyOp{word}).
+      \HOLConst{RoundEn'} (\HOLNumLit{0} :\HOLTyOp{num}) \HOLBoundVar{ki} \ensuremath{\HOLBoundVar{ki}\sb{\mathrm{2}}} \HOLBoundVar{b} \HOLSymConst{=} \HOLBoundVar{b}) \HOLSymConst{\HOLTokenConj{}}
+   \HOLSymConst{\HOLTokenForall{}}(\HOLBoundVar{n} :\HOLTyOp{num}) (\HOLBoundVar{ki} :\ensuremath{\alpha} \HOLTyOp{word}) (\ensuremath{\HOLBoundVar{ki}\sb{\mathrm{2}}} :\ensuremath{\alpha} \HOLTyOp{word})
+       (\HOLBoundVar{b} :\ensuremath{\alpha} \HOLTyOp{word} \HOLTokenProd{} \ensuremath{\alpha} \HOLTyOp{word}).
+     \HOLConst{RoundEn'} (\HOLConst{SUC} \HOLBoundVar{n}) \HOLBoundVar{ki} \ensuremath{\HOLBoundVar{ki}\sb{\mathrm{2}}} \HOLBoundVar{b} \HOLSymConst{=}
+     (\HOLKeyword{let}
+        (\ensuremath{\HOLBoundVar{b}\sp{\prime{}}} :\ensuremath{\alpha} \HOLTyOp{word} \HOLTokenProd{} \ensuremath{\alpha} \HOLTyOp{word}) = \HOLConst{RoundEn'} \HOLBoundVar{n} \HOLBoundVar{ki} \ensuremath{\HOLBoundVar{ki}\sb{\mathrm{2}}} \HOLBoundVar{b}
+      \HOLKeyword{in}
+        \HOLConst{RoundEnSg} \ensuremath{\HOLBoundVar{b}\sp{\prime{}}} \HOLBoundVar{ki} \ensuremath{\HOLBoundVar{ki}\sb{\mathrm{2}}})\hfill{[RoundEn'_def]}
+\end{alltt}
+
+\begin{alltt}
+\HOLTokenTurnstile{} (\HOLSymConst{\HOLTokenForall{}}(\HOLBoundVar{ki} :\HOLTyOp{word32}) (\ensuremath{\HOLBoundVar{ki}\sb{\mathrm{2}}} :\HOLTyOp{word32}) (\HOLBoundVar{b} :\HOLTyOp{block}).
+      \HOLConst{RoundDe'} (\HOLNumLit{0} :\HOLTyOp{num}) \HOLBoundVar{ki} \ensuremath{\HOLBoundVar{ki}\sb{\mathrm{2}}} \HOLBoundVar{b} \HOLSymConst{=} \HOLBoundVar{b}) \HOLSymConst{\HOLTokenConj{}}
+   \HOLSymConst{\HOLTokenForall{}}(\HOLBoundVar{n} :\HOLTyOp{num}) (\HOLBoundVar{ki} :\HOLTyOp{word32}) (\ensuremath{\HOLBoundVar{ki}\sb{\mathrm{2}}} :\HOLTyOp{word32}) (\HOLBoundVar{b} :\HOLTyOp{block}).
+     \HOLConst{RoundDe'} (\HOLConst{SUC} \HOLBoundVar{n}) \HOLBoundVar{ki} \ensuremath{\HOLBoundVar{ki}\sb{\mathrm{2}}} \HOLBoundVar{b} \HOLSymConst{=}
+     (\HOLKeyword{let}
+        (\ensuremath{\HOLBoundVar{b}\sp{\prime{}}} :\HOLTyOp{block}) = \HOLConst{RoundDe'} \HOLBoundVar{n} \HOLBoundVar{ki} \ensuremath{\HOLBoundVar{ki}\sb{\mathrm{2}}} \HOLBoundVar{b}
+      \HOLKeyword{in}
+        \HOLConst{RoundDeSg} \ensuremath{\HOLBoundVar{b}\sp{\prime{}}} \HOLBoundVar{ki} \ensuremath{\HOLBoundVar{ki}\sb{\mathrm{2}}})\hfill{[RoundDe'_def]}
+\end{alltt}
+
+The proof also use the induction methods, base case is proved directly, the induction definition helps rewrite the goal in induction step.
+But support functions are used to finish the proof. With the help of \verb|RoundDe'_comm| , \verb|RoundEn'_comm| and \verb|RoundDe_EnSg|,
+the proof is done. \verb|RoundDe'_comm| and \verb|RoundEn'_comm| show the encryption by n rounds and then encrypt a single further round
+is equal to encrypt by one round first and then n rounds. The same for decryption is proved.
+
+\begin{alltt}
+\HOLTokenTurnstile{} \HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{n} \HOLBoundVar{b} \HOLBoundVar{ks} \HOLBoundVar{ki} \ensuremath{\HOLBoundVar{ki}\sb{\mathrm{2}}}.
+     \HOLConst{RoundDeSg} (\HOLConst{RoundDe'} \HOLBoundVar{n} \HOLBoundVar{ki} \ensuremath{\HOLBoundVar{ki}\sb{\mathrm{2}}} \HOLBoundVar{b}) \HOLBoundVar{ki} \ensuremath{\HOLBoundVar{ki}\sb{\mathrm{2}}} \HOLSymConst{=}
+     \HOLConst{RoundDe'} \HOLBoundVar{n} \HOLBoundVar{ki} \ensuremath{\HOLBoundVar{ki}\sb{\mathrm{2}}} (\HOLConst{RoundDeSg} \HOLBoundVar{b} \HOLBoundVar{ki} \ensuremath{\HOLBoundVar{ki}\sb{\mathrm{2}}})\hfill{[RoundDe'_comm]}
+\end{alltt}
+
+\begin{alltt}
+\HOLTokenTurnstile{} \HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{n} \HOLBoundVar{b} \HOLBoundVar{ks} \HOLBoundVar{ki} \ensuremath{\HOLBoundVar{ki}\sb{\mathrm{2}}}.
+     \HOLConst{RoundEnSg} (\HOLConst{RoundEn'} \HOLBoundVar{n} \HOLBoundVar{ki} \ensuremath{\HOLBoundVar{ki}\sb{\mathrm{2}}} \HOLBoundVar{b}) \HOLBoundVar{ki} \ensuremath{\HOLBoundVar{ki}\sb{\mathrm{2}}} \HOLSymConst{=}
+     \HOLConst{RoundEn'} \HOLBoundVar{n} \HOLBoundVar{ki} \ensuremath{\HOLBoundVar{ki}\sb{\mathrm{2}}} (\HOLConst{RoundEnSg} \HOLBoundVar{b} \HOLBoundVar{ki} \ensuremath{\HOLBoundVar{ki}\sb{\mathrm{2}}})\hfill{[RoundEn'_comm]}
+\end{alltt}
+
+The above theorems match with the induction definition of \verb|RoundEn'_def| and \verb|RoundDe'_def|. The proof is then done by
+the law of commutation and the cancellation of one round of encryption and decryption.
+
+\begin{alltt}
+\HOLTokenTurnstile{} \HOLSymConst{\HOLTokenForall{}}\HOLBoundVar{n} \HOLBoundVar{b} \HOLBoundVar{ki} \ensuremath{\HOLBoundVar{ki}\sb{\mathrm{2}}}. \HOLConst{RoundDe'} \HOLBoundVar{n} \HOLBoundVar{ki} \ensuremath{\HOLBoundVar{ki}\sb{\mathrm{2}}} (\HOLConst{RoundEn'} \HOLBoundVar{n} \HOLBoundVar{ki} \ensuremath{\HOLBoundVar{ki}\sb{\mathrm{2}}} \HOLBoundVar{b}) \HOLSymConst{=} \HOLBoundVar{b}\hfill{[RoundEn'_De']}
+\end{alltt}
+
+\section{Conclusion}
+    Overall, I described the Data Encryption Standard(DES), differential cryptanalysis and RC5 in detail. I also introduce the powerful
+    theorem proving tool HOL4, the related content and methods of using it. More importantly, I successfully verify the properties of DES
+    in HOL4, ensure they are correct and can be safely used. I also implement part of the differential cryptanalysis attack and check
+    some of the related properties of it. At last, I implement RC5 algorithm in HOL4, with partial proof of its correctness. The correctness
+    of them can be ensured. The theorems and definitions related to them have been merged to the project and can be reused by others in the
+    future. However, there are still things left to be explored. For the differential cryptanalysis part, the last implementation about
+    ``X cause Y by F function'' is not exactly the same as described, a simplified version is built and proved. More adjustments can be
+    made based on my work. Also for the RC5 implementation, the final verification about the correctness of my implementation is not done
+    perfectly. Only part of the implementation can be proved as right, further verification or adjustment of implementation is needed for
+    the future use of RC5 in HOL4.
+
 
 %% APPENDIX
 \input{HOLdes}
