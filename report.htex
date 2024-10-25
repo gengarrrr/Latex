@@ -1346,11 +1346,11 @@ bijection proof is done. Using \verb|FINITE_BIJ_CARD|, they are proved to have t
 their sample spaces are also the same.
 
 \begin{alltt}
-\HOLthm[nosp,showtypes]{des_prop.transktoxF}\hfill{[transktoxF]}
+\HOLthm[nosp,showtypes]{des_prop.transktoxF_def}\hfill{[transktoxF_def]}
 \end{alltt}
 
 \begin{alltt}
-\HOLthm[nosp,showtypes]{des_prop.transxtokF}\hfill{[transxtokF]}
+\HOLthm[nosp,showtypes]{des_prop.transxtokF_def}\hfill{[transxtokF_def]}
 \end{alltt}
 
 \begin{alltt}
