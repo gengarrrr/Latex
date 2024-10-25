@@ -94,6 +94,14 @@ the parent theories that focusing on some more specific aspects from its parent 
 more details. It builds upon the concepts from the parent theories, and they are overall organized hierarchically
 to form a tree-like framework.
 
+\subsection{Basic use of HOL4}
+There are some basic tactics and conversions that are widely used to form the basic of proving. \verb|rw[]| is the most basic one,
+It can input any theorems and can rewrite the goal using the theorems inside the bracket. It contains also some basic theorems automatically that
+even with empty bracker, it can still apply rewriting to the goal.
+Then \verb|fs[]| is similar to \verb|rw[]|, but rewrites the assumptions instead of the goal.
+\verb|POP_ASSUME MP_TAC| is to transfer the lowest assumption to the goal. \verb|Q.ABBREV_TAC| is used to short the statements as users want, and
+\verb|Abbr| can be used to extract the abbreviation back.
+
 \subsection{Word theory in HOL4}
 In this paper, \verb|wordsTheory| in HOL4 are mainly used to prove the properties of DES, Differential Crypatanalysis
 and the implementation of RC5. It is built upon some basic theories and \verb|fcpTheory| which are also common used in
