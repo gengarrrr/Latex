@@ -197,7 +197,7 @@ but use the round keys in reverse order.
 In this paper, some important DES properties are implemented and proved with the assistance of HOL4. They are the implementation properties,
 weak key and semi-weak key properties.
 
-The DES complementation property [2] is for a plaintext input m and key k, and the bitwise complement of them \verb|~m| and \verb|~k|, the
+The DES complementation property \cite{DEScomplementationproperty} is for a plaintext input m and key k, and the bitwise complement of them \verb|~m| and \verb|~k|, the
 complement result after encrypting m using DES and k as key is the same as the result after the DES encryption step
 using \verb|~w| and \verb|~k| like shown in below.
 
@@ -208,7 +208,7 @@ using \verb|~w| and \verb|~k| like shown in below.
 \end{equation*}
 
 By verifying this, we know a limitation of DES, in a chosen message attack
-this property can reduce the cost of exhaustive key search by half[2]. It is because to check if one guessing k is right,
+this property can reduce the cost of exhaustive key search by half \cite{DEScomplementationproperty}. It is because to check if one guessing k is right,
 one known message and DES encryption can produce two ciphertext c and ~c by applying bitwise complementation to c. This process
 equals to two DES encryption for two known messages and keys, the exhaustive search of key of length 56 can reduce from
 $2^{55}$ to $2^{54}$.
